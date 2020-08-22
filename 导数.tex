@@ -1,0 +1,527 @@
+\part{导数}
+\section{基本概念}
+.
+\begin{definition}
+    若函数$f(x)$在某点$x_0$的领域内有定义，并且有
+    \[ f'(x) = \lim_{x \to x_0} \frac{f(x)-f(x_0)}{x-x_0} \]
+    则函数$f(x)$在$x_0$处可导。
+\end{definition}
+
+\begin{theorem}
+    函数$f(x)$在$x_0$处可导且$f(x_0) = A \iff$函数$f(x)$在$x_0$点单侧可导
+    且$f'_-(x_0)=f'_+(x_0)=A$
+\end{theorem}
+
+
+\section{求导法则}
+导数的四则运算如下
+\begin{theorem}
+    设函数$u(x), v(x)$均在$(a,b)$内可导，则函数$u(x), v(x)$的和、差、积、商（分母不为零）均在$(a,b)$内可导，并且有
+    \begin{align}
+        \left[u(x) \pm v(x) \right]'      & = u'(x) \pm v'(x)                      \\
+        \left[ u(x) \cdot v(x) \right]'   & = u'(x)v(x) + u(x)v'(x)                \\
+        \left[ \frac{u(x)}{v(x)} \right]' & = \frac{u'(x)v(x) - u(x)v'(x)}{v^2(x)}
+    \end{align}
+\end{theorem}
+
+\begin{theorem}
+    (反函数求导法则)
+    \label{th:反函数求导法则}
+    设函数$\varphi (y)$可导，如果$\varphi'(y) \neq 0$，则反函数$y=f(x)$可导.
+    \[ f'(x) = \frac{\diff y}{\diff x} = \left. 1 \middle / \frac{\diff x}{\diff y}\right. = \frac{1}{\varphi'(y)} = \frac{1}{\varphi'(f(x))} \]
+\end{theorem}
+复合函数求导如下
+\begin{theorem}
+    (链式法则)
+    \label{th:链式法则}
+    设函数$y=f(u)$与函数$u=\varphi(x)$均可导，则符合函数$y=f(\varphi(x))$在其定义域内可导，并且有$(f\circ\varphi)'(x)=f'(\varphi(x))\cdot\varphi'(x)$即
+    \[ \frac{\diff y}{\diff x} = \frac{\diff y}{\diff u} \cdot \frac{\diff u}{\diff x} \]
+\end{theorem}
+
+\subsection{高阶导数}
+在求高阶导数的通式和值时，主要使用Leibiz公式，对于不是很好求的函数时，可对部分项进行泰勒展开。
+\begin{theorem}
+    (Leibniz公式)
+    \label{th:Leibniz公式}
+    设$u=u(x),v=v(x)$在$x$点处有$n$阶导数，则
+    \[ (uv)^{(n)} = \sum^n_{k=0}C^k_n u^{(n-k)}v^{(k)} \]
+\end{theorem}
+
+\begin{example}
+    已知$y=x^2\sin 2x$，求$y^{(50)}$
+\end{example}
+\begin{solution}
+    根据Leibniz公式\ref{th:Leibniz公式}，可得
+    \begin{align}
+        y^{(50)} & = \sum_{n=0}^{50} C_{50}^n (x^2)^{(n)}\cdot(\sin 2x)^{(50-n)}                                                       \\
+                 & = C_{50}^0(x^2)\cdot(\sin 2x)^{(50)} + C_{50}^1(x^2)'\cdot(\sin 2x)^{(49)} + C_{50}^2(x^2)''\cdot(\sin 2x)^{(48)}+0 \\
+                 & = 2^{50}\cdot \left[ x^2 \sin(2x+25\pi) + 50x\sin(2x+\frac{49\pi}{2})+\frac{25 \cdot 49}{2}\sin(2x+24\pi) \right]   \\
+                 & = 2^{50}\cdot\left[ -x^2\sin 2x + 50x\cos 2x + \frac{1225}{2}\sin 2x \right]
+    \end{align}
+\end{solution}
+
+\begin{example}
+    已知
+    \begin{math}
+        y =
+        \begin{cases}
+            \frac{\sin x}{x}, & x \neq 0 \\
+            1,                & x = 0
+        \end{cases}
+    \end{math}
+    求$y^{(n)}(0)$
+\end{example}
+\begin{solution}
+    当$x\neq 0$时，由泰勒展开可得
+    \begin{align}
+        y & = \frac{1}{x}(x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots) \\
+          & = 1-\frac{x^2}{3!}+\frac{x^4}{5!}-\cdots                    \\
+          & =\sum_{k=0}^\infty \frac{(-1)^{k}x^{2k}}{(2k+1)!}
+    \end{align}
+    同时有
+    \[ \lim_{x \to 0} \sum_{k=0}^\infty \frac{(-1)^{k}x^{2k}}{(2k+1)!} = 1 \]
+    所以对于$(-\infty,+\infty)$，泰勒展开恒成立。
+    又由于
+    \[ y = \sum_{n=0}^{\infty}\frac{y^{(n)}}{n!}x^{n} \]
+    比较系数可得
+    \[
+        y^{(n)}(0) =
+        \begin{cases}
+            0,                      & n = 2k+1, \\
+            \dfrac{(-1)^{k}}{2k+1}, & n=2k
+        \end{cases}
+    \]
+\end{solution}
+
+\section{微分中值定理}
+微分中值定理属于重要且必考的定理，常出现于证明题中。
+\begin{theorem}
+    (罗尔定理)
+    \label{th:罗尔定理}
+    设函数$f(x)$在区间$[a,b]$上连续，$(a,b)$内可导，
+    且$f(a)=f(b)$，则有
+    \[ f'(\xi) = 0 \qquad \xi \in (a,b)\]
+\end{theorem}
+
+\begin{theorem}
+    (拉格朗日中值定理)
+    \label{th:拉格朗日中值定理}
+    设函数$f(x)$在区间$[a,b]$上连续，$(a,b)$内可导，则有
+    \[ \frac{f(b)-f(a)}{b-a} = f'(\xi) \qquad \xi \in (a,b)\]
+\end{theorem}
+
+\begin{theorem}
+    (柯西中值定理)
+    \label{th:柯西中值定理}
+    设函数$f(x),g(x)$在区间$[a,b]$上连续，$(a,b)$内可导，且$g'(x)\neq0$恒成立，则有
+    \[ \frac{f(b)-f(a)}{g(b)-g(a)} = \frac{f'(\xi)}{g'(\xi)} \qquad \xi \in (a,b)\]
+\end{theorem}
+
+\begin{example}
+    设$f(x)$在$[a,b]$上连续，$f''(x)$在$(a,b)$存在。连接点$(a,f(a)),(b,f(b))$交曲线$y=f(x)$于点$(c,f(c))$，且$a<c<b$，
+    证明存在$\xi\in(a,b)$使得$f''(\xi)=0$.
+\end{example}
+\begin{proof}
+    根据拉格朗日中值定理得
+    \begin{align*}
+        \frac{f(c)-f(a)}{c-a} & = f'(\xi_1) & \xi_1 \in (a,c) \\
+        \frac{f(b)-f(c)}{b-c} & = f'(\xi_2) & \xi_2 \in (c,b)
+    \end{align*}
+    而由于点$(a,f(a)),(c,f(c)),(b,f(b))$共线，所以有
+    \[ f'(\xi_1) = f'(\xi_2) \qquad \xi_1,\xi_2 \in (a,b) \]
+    根据罗尔定理可知
+    \[ f''(\xi) = 0  \qquad \xi \in (\xi_1,\xi_2) \subseteq (a,b) \]
+\end{proof}
+
+
+\begin{example}
+    设函数$f(x)$在区间$[a,b]$上连续，$(a,b)$内可导，且$f'(x)\neq 0$，试证存在$\xi,\eta \in (a,b)$使得
+    \[ \frac{f'(\xi)}{f'(\eta)} = \frac{\mathrm{e}^b-\mathrm{e}^a}{b-a}\mathrm{e}^{-\eta} \]
+\end{example}
+
+\begin{proof}
+    根据柯西中值定理可得
+    \[ \frac{f(b)-f(a)}{\mathrm{e}^b-\mathrm{e}^a} = \frac{f'(\eta)}{\mathrm{e}^\eta} \qquad \eta \in (a,b) \]
+    根据拉格朗日中值定理得
+    \[ \frac{f(b)-f(a)}{b-a} = f'(\xi) \qquad \xi \in (a,b) \]
+    因此有
+    \[ f(b)-f(a) = \left( \mathrm{e}^b - \mathrm{e}^a \right)f'(\eta)\mathrm{e}^{-\eta}=(b-a)f'(\xi)  \qquad \xi,\eta \in (a,b) \]
+    变形得
+    \[ \frac{f'(\xi)}{f'(\eta)} = \frac{\mathrm{e}^b-\mathrm{e}^a}{b-a}\mathrm{e}^{-\eta} \qquad \xi,\eta \in (a,b) \]
+\end{proof}
+
+\begin{example}
+    设函数$f(x)$在$[a,b]$上连续，在$(a,b)$内可导，且$f(a)=f(b)=0$，求证：
+    \begin{enumerate}[(1)]
+        \item 存在$\xi\in(a,b)$，使$f(\xi)+\xi f'(\xi)=0$;
+        \item 存在$\eta\in(a,b)$，使$\eta f(\eta) + f'(\eta)=0$;
+    \end{enumerate}
+\end{example}
+\begin{proof}
+    \begin{enumerate}[(1)]
+        \item 设$g(x)=xf(x)$，则由罗尔定理得，存在$\xi\in(a,b)$使得
+              \[ g'(\xi)=f(\xi)+\xi f'(\xi)=0 \]
+        \item 设$h(x)=\mathrm{e}^{\frac{x^2}{2}}f(x)$，则由罗尔定理得，存在$\eta\in(a,b)$使得
+              \[ h'(\eta) = \mathrm{e}^{\frac{\eta^2}{2}}(\eta f(\eta)+f'(\eta)) = 0 \]
+              即
+              \[ \eta f(\eta) + f'(\eta)=0 \]
+    \end{enumerate}
+\end{proof}
+常见的构造函数如下：
+\begin{alignat*}{2}
+     & g(x)=xf(x),                           & \qquad & g'(x)=f(x)+xf'(x)                                  \\
+     & g(x)=\dfrac{f(x)}{x},                 & \qquad & g'(x) = \dfrac{xf'(x)-f(x)}{x^2}, (x\neq 0)        \\
+     & g(x)=\mathrm{e}^{m(x)}f(x),           & \qquad & g'(x) = \mathrm{e}^{m(x)}(m'(x)f(x)+f'(x))         \\
+     & g(x)=\dfrac{f(x)}{\mathrm{e}^{m(x)}}, & \qquad & g'(x) = \dfrac{f'(x)-m'(x)f(x)}{\mathrm{e}^{m(x)}} \\
+\end{alignat*}
+前两个的$f(x)$系数为$\pm1$，后两个则是$f'(x)$的系数为$1$。
+
+当无法猜出$g(x)$时，可以考虑$\frac{m'(x)}{n'(x)}$，根据柯西中值定理来推出$m(x)$和$n(x)$。
+
+\begin{example}
+    设函数$f(x)$在$[a,b]$上连续，在$(a,b)$内可导，且$f(a)\neq f(b)$，求证：$\exists \xi,\eta \in (a,b)$使得
+    \[ \frac{f'(\xi)}{2\xi} = \frac{f'(\eta)}{b+a} \]
+\end{example}
+\begin{proof}
+    因为
+    \[ \frac{f'(\xi)}{2\xi}, \qquad \frac{f'(\eta)}{b+a} = \frac{f'(\eta)(b-a)}{b^2-a^2} \]
+    所以可以猜测需要柯西中值定理以及涉及两个函数$f(x)$和$x^2$，所以有
+    \[ \frac{f(b)-f(a)}{b^2-a^2} = \frac{f'(\xi)}{2\xi}, \qquad \xi\in(a,b) \]
+    注意到
+    \[ \frac{f(b)-f(a)}{b^2-a^2} = \frac{f(b)-f(a)}{(b-a)(b+a)} = \frac{f'(\eta)}{b+a}, \qquad \eta\in(a,b)\]
+    所以有
+    \[ \frac{f'(\xi)}{2\xi} = \frac{f'(\eta)}{b+a}, \qquad \xi,\eta\in(a,b) \]
+\end{proof}
+
+
+\section{泰勒展开}
+泰勒公式不仅可以用于求解极限，还能证明与导数相关的题目。
+\begin{example}
+    设$f(x)$在$x_0$处$n$阶可导，且$f^{(m)}(x)=0,(m=1,2,\cdots,n-1),f^{(n)}(x)\neq 0(n\geq 2)$，证明：
+    \begin{enumerate}[(1)]
+        \item 当$n$为偶数且$f^{(n)}(x_0)<0$时，$f(x)$在$x_0$取得极小值;
+        \item 当$n$为偶数且$f^{(n)}(x_0)>0$时，$f(x)$在$x_0$取得极大值;
+    \end{enumerate}
+\end{example}
+\begin{proof}
+    根据泰勒公式可知:
+    \begin{align*}
+        f(x) & = f(x_0) + \sum_{k=1}^{n-1} \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k + \frac{f^{(n)}(\xi)}{n!}(x-x_0)^n \\
+             & = f(x_0) +  \frac{f^{(n)}(\xi)}{n!}(x-x_0)^n
+    \end{align*}
+    其中$\xi$位于$x_0$的去心领域内。
+
+    当$n$为偶数且$f^{(n)}(x_0)<0$时，$x_0$的去心领域内有，$f(x) \leq f(x_0)$，则$f(x)$在$x_0$取得极小值;
+
+    当$n$为偶数且$f^{(n)}(x_0)>0$时，$x_0$的去心领域内有，$f(x) \geq f(x_0)$，则$f(x)$在$x_0$取得极大值。
+\end{proof}
+
+\begin{example}
+    若函数$\varphi(x)$及$\psi(x)$是$n$阶可微的，且$\varphi^{(k)}(x_0)=\psi^{(k)}(x_0),k=0,1,2,\cdots,n-1$，又$x>x_0$时，
+    $\varphi^{(n)}(x)>\psi^{(n)}(x)$。试证：当$x>x_0$时，$\varphi(x)>\psi(x)$
+\end{example}
+\begin{proof}
+    根据泰勒公式可知
+    \[ \varphi(x) = \sum_{k=0}^{n-1}\frac{\varphi^{(k)}(x_0)}{k!}(x-x_0)^k + \frac{\varphi^{(n)}(\xi_1)}{n!}(x-x_0)^n \]
+    \[ \psi(x) = \sum_{k=0}^{n-1}\frac{\psi^{(k)}(x_0)}{k!}(x-x_0)^k + \frac{\psi^{(n)}(\xi_2)}{n!}(x-x_0)^n \]
+    当$x>x_0$时，$\xi_1,\xi_2\in(x_0,x)$，此时由上述两个等式可得
+    \[ \varphi(x) - \psi(x) = \frac{(x-x_0)^n}{n!}[\varphi^{(n)}(\xi_1) - \psi^{(n)}(\xi_2)] > 0\]
+    因此当$x>x_0$时，$\varphi(x)>\psi(x)$
+\end{proof}
+
+\section{导数的应用}
+\subsection{极值求解}
+极值的定义如下
+\begin{definition}
+    极大值与极小值（统称极值）是指在一个域上函数取得最大值（或最小值）的点的函数值。而使函数取得极值的点（的横坐标）被称作极值点。这个域既可以是一个邻域，又可以是整个函数域（这时极值称为最值）
+    若某点连续且左右两侧的单调性相异，则该点为极值点。
+\end{definition}
+\begin{theorem}
+    当$f'(x_0)=0$时
+    \begin{enumerate}
+        \item 当$f(x)$在$x_0$连续，且$f'_-(x_0)<0,f'_+(x_0)>0$时， $x_0$为极小值点
+        \item 当$f(x)$在$x_0$连续，且$f'_-(x_0^)>0,f'_+(x_0)<0$时， $x_0$为极大值点
+        \item $f''(x_0)>0,\ x_0$为极小值点
+        \item $f''(x_0)<0,\ x_0$为极大值点
+    \end{enumerate}
+\end{theorem}
+
+\subsection{零点的求解}
+对于函数$f(x)$，零点的存在性由介值定理得出。零点位置、个数要根据函数的变化（单调性，水平渐近线）来进行求解。
+\begin{theorem}
+    介值定理
+    \label{th:介值定理}
+    若函数$f(x)$在$[a,b]$上连续，且$f(a)<f(b)$，若$\forall u$满足$f(a)<u<f(b)$，则至少存在一点$x=c$且$a<c<b$，使得$f(c)=u$。$f(a)>f(b)$同理。
+\end{theorem}
+
+\begin{example}
+    讨论方程$ax\mathrm{e}^x+b=0,(a>0)$的实根情况。
+\end{example}
+\begin{marginfigure}
+    \begin{tikzpicture}
+        \begin{axis}[
+                ticks=none,
+                axis x line=none,
+                axis y line=middle,
+                ymax=5,
+                ymin=1,
+                xmin=-10,
+                xmax=10,
+                domain=-10:10,
+                xlabel=$x$,
+                ylabel=$y$,
+                scale only axis,
+                width=\textwidth
+            ]
+            \addplot[CarnationPink,smooth,domain=-10:1] {exp(1)*x*exp(x)+3} node [right,pos=0.65,scale=0.7] {$ax\mathrm{e}^x+b$};
+            \addplot[Gray,dashed,name path = L1] {3.05};
+            \addplot[Gray,name path = L2] {2};
+            \path[name path=YMax] (-10,5) -- (10,5);
+            \path[name path=YMin] (-10,1) -- (10,1);
+            \addplot [thick,color=red,fill=red,fill opacity=0.05]fill between[of=YMax and L1];
+            \addplot [thick,color=blue,fill=blue,fill opacity=0.05]fill between[of=L1 and L2];
+            \addplot [thick,color=green,fill=green,fill opacity=0.05]fill between[of=L2 and YMin];
+            \node [Gray, scale=0.7] at (8,1.5) {无实根};
+            \node [Gray, scale=0.7] at (8,2.5) {两个实根};
+            \node [Gray, scale=0.7] at (8,4) {一个实根};
+            \node [Gray, scale=0.7] at (8,2) {一个实根};
+        \end{axis}
+    \end{tikzpicture}
+\end{marginfigure}
+\begin{solution}
+    令$f(x) = ax\mathrm{e}^x+b$，则有
+    \[
+        \lim_{x\to-\infty}f(x)
+        = a\lim_{x\to-\infty} x\mathrm{e}^x + b
+        = a\lim_{x\to-\infty} \frac{x}{\mathrm{e}^{-x}} + b
+        = a\lim_{x\to-\infty} \frac{1}{-\mathrm{e}^{-x}} + b
+        = b
+    \]
+    \[
+        \lim_{x\to+\infty}f(x) = +\infty
+    \]
+    对函数$f'(x)=a\mathrm{e}^x(1+x)=0$进行求解，得$x=-1$，则函数得单调性如下
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            $x$     & $(-\infty,-1)$ & $-1$                      & $(-1,+\infty)$ \\ \hline
+            $f'(x)$ & $-$            & $0$                       & $+$            \\ \hline
+            $f(x)$  & $\searrow$     & $-\frac{a}{\mathrm{e}}+b$ & $\nearrow$     \\ \hline
+        \end{tabular}
+    \end{center}
+    所以
+    \begin{enumerate}
+        \item 当$0 < -\frac{a}{\mathrm{e}}+b$时，即$b\in(-\frac{a}{\mathrm{e}},+\infty)$，方程无实根。
+        \item 当$0 = -\frac{a}{\mathrm{e}}+b$或$0 \geq b$时，即$b\in(-\infty,0]\cup \left\{ -\frac{a}{\mathrm{e}} \right\}$，方程有一实根。
+        \item 当$-\frac{a}{\mathrm{e}}+b < 0 < b$时，即$b\in(0,-\frac{a}{\mathrm{e}})$，方程有两个不同的实根。
+    \end{enumerate}
+\end{solution}
+
+对于求$f(x)$的极值步骤如下
+\begin{enumerate}
+    \item 确定定义域
+    \item 计算导函数$f'(x)$
+    \item 求解方程$f'(x)=0$（根可能为临界点）
+    \item 确定可能的极值点（临界点、\textcolor{red}{不可导点}）
+    \item 按照极值的充分性判断极值点
+    \item 计算极值点的函数值，得出极值
+\end{enumerate}
+
+\begin{example}
+    求函数$y=(x^2-1)^{2/3}$的极值。
+\end{example}
+\begin{solution}
+    由
+    \[ y'=\frac{4}{3}\frac{x}{\sqrt[3]{x^2-1}}=0 \]
+    解得临界点$x=0$和不可导点$x=\pm 1$
+    因此可得如下情况：
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|}
+            \hline
+            $x$  & $(-\infty,1)$ & $-1$     & $(-1,0)$   & $0$      & $(0,1)$    & $1$    & $(1,+\infty)$ \\ \hline
+            $y'$ & $-$           & 不存在   & $+$        & $0$      & $-$        & 不存在 & $+$           \\ \hline
+            $y$  & $\searrow$    & $\smile$ & $\nearrow$ & $\frown$ & $\searrow$ & 极小值 & $\nearrow$    \\ \hline
+        \end{tabular}
+    \end{center}
+    故函数$y=(x^2-1)^{2/3}$有极大值$y|_{x=0}=1$，有极小值$y|_{x=\pm 1}=0$
+\end{solution}
+
+\subsection{函数的凹凸性}
+当函数弦在上，曲在下，函数称为凹函数(反之则为凸函数)。以数学的语言，即如下不等式成立时，函数为凹函数
+\begin{definition}
+    设函数$f(x)$在区间$(a,b)$内有定义，如果$x_1,x_2\in(a,b), t \in [0,1]$时，恒有
+    \[ f((1-t)x_1+tx_2)\leq (1-t)f(x_1)+tf(x_2) \]
+    则函数$f(x)$在区间$(a,b)$为凹函数。
+\end{definition}
+换句话说，组合的像小于等于像的组合时，函数为凹函数
+
+\begin{theorem}
+    设函数$f(x)$在区间$[a,b]$上连续，在$(a,b)$内二阶可导，则
+    \begin{enumerate}
+        \item 当$f''(x)>0$于$(a,b)$时，$f(x)$是$[a,b]$上的严格凹函数
+        \item 当$f''(x)<0$于$(a,b)$时，$f(x)$是$[a,b]$上的严格凸函数
+        \item 若该函数在某点的二阶导数为零或不存在，且二阶导数在该点两侧符号相反，该点即为函数的拐点。
+    \end{enumerate}
+\end{theorem}
+
+\subsection{函数的曲率}
+曲率的几何概念可由右图给出
+\begin{marginfigure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                ticks=none,
+                disabledatascaling,
+                axis lines=middle,
+                xmin=0,
+                xmax=8,
+                ymin=0,
+                ymax=8,
+                domain=0:8,
+                xlabel=$x$,
+                ylabel=$y$,
+                scale only axis,
+                unit vector ratio=1 1,
+                width=\textwidth
+            ]
+            \pgfmathsetmacro{\cx}{4}
+            \pgfmathsetmacro{\cy}{4}
+            \pgfmathsetmacro{\r}{3}
+            \pgfmathsetmacro{\a}{30}
+            \pgfmathsetmacro{\da}{30}
+
+            \coordinate (C) at ({\cx},{\cy});
+            \coordinate (A) at ({\r*sin(\a)+\cx},{\cy-\r*cos(\a)});
+            \coordinate (B) at ({\r*sin(\a+\da)+\cx},{\cy-\r*cos(\a+\da)});
+            \node at (C) [above right] {$\textcolor{red}{\Delta\alpha}$};
+            \draw [name path=circle] (C) circle [radius={\r}];
+            \draw (A) -- (C) node [left,pos=0.3] {$R$} -- (B) pic [draw=Gray] {angle=A--C--B};
+            \addplot [name path =L1, Gray] {tan(\a) * (x-\r*sin(\a)-\cx) + \cy - \r*cos(\a)};
+            \addplot [name path =L2, Gray] {tan(\a+\da) * (x-\r*sin(\a+\da)-\cx) + \cy - \r*cos(\a+\da)};
+            \path [name intersections={of=L1 and L2}];
+            \coordinate (D) at (intersection-1);
+            \coordinate (E) at (8, {tan(\a) * (8-\r*sin(\a)-\cx) + \cy - \r*cos(\a)});
+            \pic [draw=Gray,"$\textcolor{red}{\Delta\alpha}$", angle radius=15, angle eccentricity=1.5] {angle=E--D--B};
+            \coordinate (X) at (8,0);
+            \path [name path=XAxis] (0,0)--(X);
+            \path [name intersections={of=L1 and XAxis}];
+            \coordinate (F) at (intersection-1);
+            \path [name intersections={of=L2 and XAxis}];
+            \coordinate (G) at (intersection-1);
+            \pic [draw=Gray,"$\alpha$", angle radius=15, angle eccentricity=1.5] {angle=X--F--D};
+            \pic [draw=Gray,"$\alpha+\textcolor{red}{\Delta\alpha}$", angle radius=15, angle eccentricity=2] {angle=X--G--D};
+            \draw [very thick, blue] (A) arc[radius={\r}, start angle={\a-90}, end angle={\a+\da-90}] node [left, pos=0.8] {$\Delta s$};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{某段曲线的曲率变化}
+\end{marginfigure}
+
+\begin{definition}
+    (曲率$K$和曲率半径$R$)
+    \begin{align*}
+        R & = \lim_{\Delta\alpha\to 0} \left| \frac{\Delta s}{\Delta \alpha} \right| = \left| \frac{\diff s}{\diff\alpha} \right| &                 \\
+        \\
+        K & = \frac{1}{R} = \left| \frac{\diff\alpha}{\diff s} \right|                                                            & \text{定义式}   \\
+          & =\frac{|y''|}{[1+y'^2]^{3/2}}                                                                                         & \text{函数形式} \\
+          & =\frac{|x'y''-x''y'|}{[x'^2+y'^2]^{3/2}}                                                                              & \text{参数形式}
+    \end{align*}
+\end{definition}
+
+\begin{proof}
+    如果曲线$L$的方程$y=f(x)$具有二阶导数，则
+    \[ \alpha = \arctan y',\, \diff \alpha=\frac{y''}{1+y'^2}\,\diff x \]
+    根据弧长公式$\diff s=\sqrt{\diff x^2 + \diff y^2} = \sqrt{1+y'^2}\, \diff x$，可得
+    \[ K = \frac{|y''|}{[1+y'^2]^{3/2}} \]
+\end{proof}
+
+\begin{example}
+    已知$f(x)$二阶可导，且$f(x)>0,f(x)f''(x)-[f'(x)]^2 \geq 0 (x\in \mathbf{R})$，
+    证明
+    \[f(x_1)f(x_2)\geq f^2\left(\frac{x_1+x_2}{2}\right)\ (x_1,x_2\in \mathbf{R})\];
+\end{example}
+
+\begin{proof}
+    令$g(x)=\ln f(x)$，则
+    \[g''(x) = \frac{f(x)f''(x)-[f'(x)]^2}{f^2(x)} \geq 0 \]
+    所以$g(x)$为凹函数，所以有
+    \[ \frac{1}{2}[g(x_1)+g(x_2)] \geq g\left(\frac{x_1+x_2}{2}\right) \]
+    即
+    \[f(x_1)f(x_2)\geq f^2\left(\frac{x_1+x_2}{2}\right)\]
+\end{proof}
+
+
+\subsection{渐近线}
+渐近线分为\textcolor{red}{水平渐近线}、\textcolor{red}{垂直渐近线}、\textcolor{red}{斜渐近线}。如下图
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.3\linewidth}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    ticks=none,
+                    axis lines=middle,
+                    ymin=-pi,
+                    ymax=pi,
+                    xlabel=$x$,
+                    ylabel=$y$,
+                    scale only axis,
+                    width=\textwidth
+                ]
+                \addplot[CarnationPink, smooth] {rad(atan(x))};
+                \addplot[Gray, dashed] {pi/2} node [midway, left, text=black] {$\frac{\pi}{2}$};
+                \addplot[Gray, dashed] {-pi/2} node [midway, left, text=black] {$-\frac{\pi}{2}$};
+            \end{axis}
+        \end{tikzpicture}
+        \subcaption{$\textcolor{CarnationPink}{\arctan x}$的水平渐近线}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\linewidth}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    ticks=none,
+                    axis lines=middle,
+                    ymin=-4.5,ymax=4.5,
+                    xmin=-pi,xmax=pi,
+                    xlabel=$x$,
+                    ylabel=$y$,
+                    scale only axis,
+                    width=\textwidth
+                ]
+                \addplot[CarnationPink, smooth, domain=-pi/2:pi/2] {tan(deg(x))};
+                \addplot[CarnationPink, smooth, domain=-pi:-pi/2] {tan(deg(x))};
+                \addplot[CarnationPink, smooth, domain=pi/2:pi] {tan(deg(x))};
+                \addplot[Gray, dashed, variable=\y, domain=-4.5:4.5] (pi/2, {\y}) node [midway, below left,text=black] {$\frac{\pi}{2}$};
+                \addplot[Gray, dashed, variable=\y, domain=-4.5:4.5] (-pi/2, {\y}) node [midway, below left,text=black] {$-\frac{\pi}{2}$};
+            \end{axis}
+        \end{tikzpicture}
+        \subcaption{$\textcolor{CarnationPink}{\tan x}$的垂直渐近线}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\linewidth}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    ticks=none,
+                    axis lines=middle,
+                    ymin=-pi,
+                    ymax=2*pi,
+                    xlabel=$x$,
+                    ylabel=$y$,
+                    scale only axis,
+                    unit vector ratio=1 1,
+                    width=\textwidth
+                ]
+                \addplot[CarnationPink, smooth] {x+rad(90-atan(x))};
+                \addplot[Gray, dashed] {x} node [below right, pos=0.7, text=black] {$y=x$};
+                \addplot[Gray, dashed] {x+pi} node [above left, pos=0.5, text=black] {$y=x+\pi$};
+            \end{axis}
+        \end{tikzpicture}
+        \subcaption{$\textcolor{CarnationPink}{x + \arccot x}$的斜渐近线}
+    \end{subfigure}
+    \caption{三种渐近线}
+\end{figure}
+
+寻找渐进线的步骤为：
+\begin{enumerate}
+    \item 确定函数的间断点，判断间断点处是否存在垂直渐近线。
+    \item 当函数在$x\to\infty$、$x\to-\infty$、$x\to+\infty$存在极限值时，函数存在水平渐近线（此时对应的$x$则没有斜渐近线）。
+    \item 若$x\to\infty$、$x\to-\infty$、$x\to+\infty$时下式成立，则斜渐近线存在。
+          \sidenote{其中函数曲线到斜渐近线的距离为\[d(x) = \dfrac{|f(x)-kx-b|}{\sqrt{1+k^2}} \]}
+          \[ \frac{f(x)}{x}\to k, \qquad f(x)-kx\to b \]
+\end{enumerate}
