@@ -699,3 +699,115 @@ $A'B'C'D'$是四边形$ABCD$在平面$\pi_2$上的投影，则有\textcolor{red}
               $(z_x',-1),(z_y',-1)$，因此$\bm{n} = (z_x',z_y',-1)$
     \end{enumerate}
 \end{proof}
+
+\subsection{二次曲面}
+由三元二次方程所确定的曲面称为二次曲面。二次曲面与平面的交线都是二次曲线。
+
+\subsubsection{椭球面}
+由方程
+\begin{equation}
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1
+\end{equation}
+所确定的曲面称为椭球面。任意平面与椭球的交线均为椭圆。
+\begin{marginfigure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[hide axis,colormap/cool,z buffer=sort, opacity=0.5, axis equal]
+            \addplot3[surf, domain=0:360,y domain=0:180] ({1.5*cos(x)*sin(y)},{sin(x)*sin(y)},{cos(y)});
+        \end{axis}
+    \end{tikzpicture}
+    \caption{椭球面。}
+\end{marginfigure}
+
+\subsubsection{单叶双曲面}
+分别由方程
+\begin{align}
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2}   & = 1 \\
+    \frac{x^2}{a^2} - \frac{y^2}{b^2} + \frac{z^2}{c^2}   & = 1 \\
+    - \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} & = 1
+\end{align}
+所确定的曲面称为单叶双曲面。
+\begin{marginfigure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[hide axis,colormap/cool,z buffer=sort, opacity=0.5, axis equal]
+            \addplot3[surf, domain=0:360,y domain=-1:1] ({cosh(y)*cos(x)},{cosh(y)*sin(x)},{sinh(y)});
+        \end{axis}
+    \end{tikzpicture}
+    \caption{单叶双曲面。}
+\end{marginfigure}
+
+\subsubsection{二次锥面}
+分别由方程
+\begin{align}
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2}   & = 0 \\
+    \frac{x^2}{a^2} - \frac{y^2}{b^2} + \frac{z^2}{c^2}   & = 0 \\
+    - \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} & = 0
+\end{align}
+所确定的曲面称为二次锥面。
+\begin{marginfigure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[hide axis,colormap/cool,z buffer=sort, opacity=0.5, axis equal]
+            \addplot3[surf, domain=0:360,y domain=-1:1] ({y*cos(x)},{y*sin(x)},{y});
+        \end{axis}
+    \end{tikzpicture}
+    \caption{二次锥面。}
+\end{marginfigure}
+
+\subsubsection{双叶双曲线}
+分别由方程$(pq>0)$
+\begin{align}
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2}   & = -1 \\
+    \frac{x^2}{a^2} - \frac{y^2}{b^2} + \frac{z^2}{c^2}   & = -1 \\
+    - \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} & = -1
+\end{align}
+所确定的曲面称为双叶双曲线。
+\begin{marginfigure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[hide axis,colormap/cool,z buffer=sort, opacity=0.5, axis equal]
+            \addplot3[surf, domain=0:360,y domain=-3:3] ({y*cos(x)},{y*sin(x)},{sqrt(y^2+1)});
+            \addplot3[surf, domain=0:360,y domain=-3:3] ({y*cos(x)},{y*sin(x)},{-sqrt(y^2+1)});
+        \end{axis}
+    \end{tikzpicture}
+    \caption{双叶双曲线。}
+\end{marginfigure}
+
+\subsubsection{双曲抛物面}
+分别由方程
+\begin{align}
+    z = -\frac{x^2}{2p} + \frac{y^2}{2q} \\
+    x = -\frac{y^2}{2p} + \frac{z^2}{2q} \\
+    y = -\frac{z^2}{2p} + \frac{x^2}{2q}
+\end{align}
+所确定的曲面称为双曲抛物面。
+\begin{marginfigure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[hide axis,colormap/cool,z buffer=sort, opacity=0.5, axis equal,view/h=60]
+            \addplot3[surf] {0.2*(-x^2+y^2)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{双曲抛物面。}
+\end{marginfigure}
+
+\subsubsection{椭圆抛物面}
+分别由方程
+\begin{align}
+    z = \frac{x^2}{2p} + \frac{y^2}{2q} \\
+    x = \frac{y^2}{2p} + \frac{z^2}{2q} \\
+    y = \frac{z^2}{2p} + \frac{x^2}{2q}
+\end{align}
+所确定的曲面称为椭圆抛物面。
+\begin{marginfigure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[hide axis,colormap/cool,z buffer=sort, opacity=0.5, axis equal]
+            \addplot3[surf] {0.2*(x^2+y^2)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{椭圆抛物面。}
+\end{marginfigure}
+
+对于截面曲线的判断，只需要让其中一个分量等于零，在根据平面曲线来判断曲线的 类型。
