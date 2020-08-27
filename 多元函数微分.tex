@@ -1,0 +1,583 @@
+\part{多元函数微分}
+\section{多元函数的概念}
+在坐标平面上，如果$P_0(x_0,y_0)$是一个点，$\delta > 0$，则称到点$P_0$点距离小于$\delta$的
+点$P(x,y)$的全体为$P_0$的$\delta$邻域，记作$B(P_0,\delta)$，即
+\begin{align*}
+    B(P_0,\delta) & = \{P:|PP_0|<\delta\}                              \\
+                  & = \{(x,y)\,|\, (x-x_0)^2 + (y-y_0)^2 < \delta^2 \}
+\end{align*}
+
+一个平面点集$E$中的点$P$称为\textcolor{red}{\textbf{\textsf{内点}}}，是指存在一个邻域$B(P_0,\delta)$，
+满足
+\[ B(P_0,\delta) \subset E \]
+每个点都是内殿的平面点集称为\textcolor{red}{\textbf{\textsf{开集}}}。如果一个平面点集包含了每个边界点，
+则称为\textcolor{red}{\textbf{\textsf{闭集}}}。若平面点集中的任意两个点可以用点集中的一条连续取许连接，
+则称该点集为\textcolor{red}{\textbf{\textsf{连通点集}}}。
+连通的开集称为\textcolor{red}{\textbf{\textsf{开区域}}}，常简称为\textcolor{red}{\textbf{\textsf{区域}}}；
+连通的闭集称为\textcolor{red}{\textbf{\textsf{闭区域}}}，有时也简称区域。
+
+从$n$维向量空间$\mathbb{R}^n$的非空子集$X$到实数域$\mathbb{R}$的映射$f:X\to \mathbb{R}$，称为$n$元函数。
+
+\section{多元函数的极限}
+按照向量表示法，多元函数的极限可以统一定义为
+\begin{definition}
+    设函数$f(x)$在$\bm{x}_0\in\mathbb{R}^n$点的某邻域内有定义，称$\bm{x}\to\bm{x}_0$时，
+    $f(\bm{x})$的极限为$A$，记作
+    \[ \lim_{\bm{x}\to\bm{x}_0}f(\bm{x})=A \]
+    如果对充分小的$\varepsilon>0$，都存在$\delta>0$，使当$0<|\bm{x}-\bm{x}_0|<\delta$时，恒有
+    \[ |f(\bm{x}-A|<\varepsilon \]
+\end{definition}
+
+\subsection{二重极限}
+按照分量表示法，二元函数在内点的极限可以定义如下
+\begin{definition}
+    设函数$f(x,y)$在$(x_0,y_0)$点的某邻域内有定义，称$(x,y)\to(x_0,y_0)$时，$f(x,y)$的极限为$A$，记作
+    \[ \lim_{(x,y)\to(x_0,y_0)} f(x,y) = A \]
+    如果对任意小的$\varepsilon>0$，都存在$\delta>0$，使当
+    \[ 0<|x-x_0|^2 +|y-y_0|^2<\delta \]
+    时，恒有
+    \[ |f(x,y)-A| < \varepsilon \]
+\end{definition}
+
+多元函数的极限具有唯一性、局部有界性、局部保号性、四则运算法则、两边夹法则、变量代换法则和海因定理等。
+
+\begin{theorem}
+    如果对任意的$\varepsilon>0$，当$(x,y)\to(x_0,y_0)$时，恒有
+    \[ A-\varepsilon \leftarrow f(x,y,\varepsilon) \leq h(x,y)\leq g(x,y,\varepsilon) \to A + \varepsilon \]
+    则
+    \[ \lim_{(x,y)\to(x_0,y_0)} h(x,y) = A \]
+\end{theorem}
+
+变量代换法则可以表述为
+\begin{theorem}
+    设$\lim_{(x,y)\to(x_0,y_0)} f(x,y) = A, \lim_{t\to A} g(t) = B$，若$(x,y)\to(x_0,y_0)$时，恒有
+    $f(x,y)\to,\neq A$，则
+    \[ \lim_{(x,y)\to(x_0,y_0)} g[f(x,y)] = \lim_{t\to A}g(t) = B \]
+\end{theorem}
+更一般地，有
+\begin{theorem}
+    设$\lim_{(x,y)\to(x_0,y_0)} f(x,y) = A$，若$(u,v)\to(u_0,v_0)$时，恒有
+    \[ (x(u,v),y(u,v))\to,\neq(x_0,y_0) \]
+    则
+    \[ \lim_{(u,v)\to(u_0,v_0)}f(x(u,v),y(u,v)) = \lim_{(x,y)\to(x_0,y_0)} f(x,y) = A \]
+\end{theorem}
+
+海因定理可以描述为\textbf{\textsf{二重极限存在=数列话极限恒存在且相等}}，即
+\begin{theorem}
+    $\lim_{(x,y)\to(x_0,y_0)}f(x,y) = A \iff $当$n\to\infty$时$(x_n,y_n)\to,\neq(x_0,y_0)$，恒有
+    \[ \lim_{n\to\infty} f(x_n,y_n) = A \]
+\end{theorem}
+\begin{situation}
+    海因定理常用来否定极限的存在性，更常用的是一元化方法：\textbf{\textsf{二重极限存在=一元化极限存在且相等}}。
+\end{situation}
+\begin{theorem}
+    $\lim_{(x,y)\to(x_0,y_0)}f(x,y) = A \iff $当$x=x(t),y=y(t)$为连续曲线且$(x(t),y(t))=(x_0,y_0)$只有$t=t_0$解时，
+    恒有
+    \[ \lim_{t\to t_0}f(x(t),y(t)) = A \]
+\end{theorem}
+
+对于二元函数，其在$(x_0,y_0)$处的极限存在，根据上述定理可知，对于任意一条参数化曲线$x=x(t),y=y(t)$，其逼近$(x_0,y_0)$时，
+所得极限值需要相等。
+
+\begin{example}
+    证明函数$f(x,y)=(1+xy)^{\dfrac{1}{x+y}}$在原点$(0,0)$处的极限不存在。
+\end{example}
+\begin{proof}
+    \[ \lim_{(x,y)\to(0,0)}f(x,y) = \exp\left(\lim_{(x,y)\to(0,0)}\frac{\ln(1+xy)}{x+y}\right) \]
+    令$y=\lambda x$，
+    则
+    \[
+        \lim_{(x,y)\to(0,0)}f(x,y)
+        = \exp\left(\lim_{x\to 0}\frac{\ln(1+\lambda x^2)}{(1+\lambda)x}\right)
+        = \exp\left(\lim_{x\to 0}\frac{\lambda x}{1+\lambda}\right)
+    \]
+    其中$\lambda \neq -1$时，原极限为$1$。当$\lambda = -1$时，需要考察一条曲线在$(0,0)$处切线为$y=-x$时的逼近，
+    不妨令$y=x^2-x$，则有
+    \[
+        \lim_{(x,y)\to(0,0)}f(x,y)
+        = \lim_{x\to 0} f(x,x^2-x)
+        = \exp\left(\lim_{x\to 0}\frac{\ln(1+x^3-x^2)}{x^2}\right)
+        = \frac{1}{\mathrm{e}}
+    \]
+    故沿两个曲线逼近$(0,0)$的极限不相等，所以愿继续不存在。
+\end{proof}
+
+\subsection{二次极限}
+形如
+\[ \lim_{y\to y_0} \lim_{x\to x_0}f(x,y),\qquad \lim_{x\to x_0}\lim_{y\to y_0}f(x,y) \]
+的极限称为二次极限。
+
+二重极限与二次极限没有直接关系，但存在间接关系。
+\begin{theorem}
+    若$\lim_{(x,y)\to(x_0,y_0)}f(x,y)$存在且当$x\to,\neq x_0$时，$\lim_{y\to y_0}f(x,y)$存在，
+    则$\lim_{x\to x_0} \lim_{y\to y_0}f(x,y)$存在且
+    \[ \lim_{(x,y)\to(x_0,y_0)}f(x,y) = \lim_{x\to x_0} \lim_{y\to y_0}f(x,y) \]
+\end{theorem}
+
+\begin{theorem}
+    若
+    \[\lim_{(x,y)\to(x_0,y_0)}f(x,y)\]
+    \[\lim_{x\to x_0} \lim_{y\to y_0}f(x,y)\]
+    \[\lim_{y\to y_0}\lim_{x\to x_0}f(x,y)\]
+    存在，则三者相等。
+\end{theorem}
+
+\begin{theorem}
+    若二次极限
+    \[ \lim_{x\to x_0} \lim_{y\to y_0}f(x,y),\lim_{y\to y_0}\lim_{x\to x_0}f(x,y) \]
+    都存在，但不相等，则二重极限$\lim_{(x,y)\to(x_0,y_0)}f(x,y)$不存在。
+\end{theorem}
+
+\subsection{多元函数的连续性}
+如果函数的极限值等于函数值，即
+\[ \lim_{(x,y)\to(x_0,y_0)} f(x,y) = f(x_0,y_0) \]
+则称$f(x,y)$在$(x_0,y_0)$处连续。如果函数$f(x,y)$在区域或闭区域$E$上的每个点都连续，则称$f(x,y)$是$E$上的连续函数，
+记作$f\in C(E)$
+
+连续函数的四则运算一定是连续函数，连续函数的复合函数也一定是连续函数。对于二元初等函数，其在有定义的区域内都是连续函数，
+且满足有限次四则运算、有限次复合运算得到的二元函数也称为二元初等函数。
+
+在有界闭区域上的连续函数具有有界性、最值性、介值性和一直连续性。
+
+\section{多元函数的偏导数}
+\subsection{一阶偏导数}
+\subsubsection{偏导数的概念}
+一元函数$x\mapsto f(x,y)$的导数称为二元函数$(x,y)\mapsto f(x,y)$的偏导数，记为$f'_x(x,y)$，用极限语言描述为
+\begin{definition}
+    设函数$z=f(x,y)$在$(x_0,y_0)$点的某个邻域内有定义，如果
+    \[ \lim_{\delta x\to 0} \frac{f(x_0+\delta x,y_0)-f(x_0,y_0)}{\delta} \]
+    存在，则称此极限为函数$z=f(x,y)$在$(x_0,y_0)$点对$x$的偏导数，记作
+    \[
+        f'_x(x_0,y_0),\,
+        f'_1(x_0,y_0),\,
+        \frac{\partial f}{\partial x}(x_0,y_0),\,
+        \left.\frac{\partial f}{\partial x}\right|_{(x_0,y_0)},\,
+        \left.\frac{\partial z}{\partial x}\right|_{(x_0,y_0)},\,
+        z'_{(x_0,y_0)}
+    \]
+\end{definition}
+
+由此定义可知，二元函数是否可导与是否连续没有直接关系。即\textcolor{red}{“可导$\centernot\implies$连续”}
+
+如果函数$z=f(x,y)$在区域$D$内的每一个点对$x$的偏导数都存在，那么这个偏导数也是$x,y$的导数，称为偏导函数，也简称偏导数。
+如果两个偏导数都存在时，则称二原函数可导。
+
+\begin{situation}
+    求一个给定点的偏导数，通常时先求偏导函数，再求骗到函数的函数值。对于特殊点的偏导数，大多需要用定义计算，
+    或用非求导变量先代入的一元化方法。
+\end{situation}
+
+\subsubsection{偏导数的几何意义}
+设函数$z=f(x,y)$在区域$D$上连续可导，则它的图像时一个曲面，记为$\Sigma$。那么对于曲面上任意一点$(x_0,y_0,z_0)$，
+其延$x,y$轴方向的切向量为
+\[ (1,0,f'_x(x,y)),\quad(0,1,f'_y(x,y)) \]
+则法向量为
+\begin{equation}
+    \bm{n} = (1,0,f'_x(x,y)\times(0,1,f'_y(x,y))) = (-z'_x, -z'_y, 1)
+\end{equation}
+得到了法向量，就可以构建此点的切平面方程和法线方程。
+
+更一般地，偏导数可以用来表示参数曲面的坐标线切下来和曲面法向量。设参数曲面
+\[ \Sigma : \bm{r}=(x(u,v),y(u,v),z(u,v)) \]
+可以看成时$u$-曲线
+\[ u \mapsto (x(u,v),y(u,v),z(u,v)) \]
+和$v$-曲线编织的图形。根据切向量的定义，两条曲线的切向量分别为
+\[
+    \frac{\partial\bm{r}}{\partial u} = \left(\frac{\partial x}{\partial u}, \frac{\partial y}{\partial u}, \frac{\partial z}{\partial u}\right)
+    ,\quad
+    \frac{\partial\bm{r}}{\partial v} = \left(\frac{\partial x}{\partial v}, \frac{\partial y}{\partial v}, \frac{\partial z}{\partial v}\right)
+\]
+则法向量为
+\begin{equation}
+    \bm{n} = \frac{\partial\bm{r}}{\partial u} \times \frac{\partial\bm{r}}{\partial v} =
+    \begin{vmatrix}
+        \bm{i} & \bm{j} & \bm{k} \\
+        x'_u   & y'_u   & z'_u   \\
+        x'_v   & y'_v   & z'_v
+    \end{vmatrix}
+    =
+    \left(\frac{\partial(y,z)}{\partial(u,v)},\frac{\partial(z,x)}{\partial(u,v)}, \frac{\partial(x,y)}{\partial(u,v)}\right)
+\end{equation}
+其中
+\[
+    \frac{\partial(y,z)}{\partial(u,v)} =
+    \begin{vmatrix}
+        y'_u & z'_u \\
+        y'_v & z'_v
+    \end{vmatrix},\quad
+    \frac{\partial(z,x)}{\partial(u,v)} =
+    \begin{vmatrix}
+        z'_u & x'_u \\
+        z'_v & x'_v
+    \end{vmatrix},\quad
+    \frac{\partial(x,y)}{\partial(u,v)} =
+    \begin{vmatrix}
+        x'_u & y'_u \\
+        x'_v & y'_v
+    \end{vmatrix}
+\]
+并称为\textcolor{red}{\textbf{\textsf{雅可比行列式}}}。
+
+\subsection{高阶偏导数}
+对于函数$z=f(x,y)$，其偏导数$f'_x(x,y), f'_y(x,y)$的偏导数称为$z=f(x,y)$的二阶偏导数，记为
+\begin{align*}
+    \frac{\partial}{\partial x}\left(\frac{\partial z}{\partial x}\right) & = \frac{\partial^2 z}{\partial x^2} = \frac{\partial^2 f}{\partial x^2} = z''_{xx}=f''_x(x,y)                     \\
+    \frac{\partial}{\partial y}\left(\frac{\partial z}{\partial x}\right) & = \frac{\partial^2 z}{\partial y \partial x} = \frac{\partial^2 f}{\partial y\partial x} = z''_{xy}=f''_{xy}(x,y) \\
+    \frac{\partial}{\partial x}\left(\frac{\partial z}{\partial y}\right) & = \frac{\partial^2 z}{\partial x\partial y} = \frac{\partial^2 f}{\partial x\partial y} = z''_{yx}=f''_{yx}(x,y)  \\
+    \frac{\partial}{\partial y}\left(\frac{\partial z}{\partial y}\right) & = \frac{\partial^2 z}{\partial y^2} = \frac{\partial^2 f}{\partial y^2} = z''_{yy}=f''_{yy}(x,y)                  \\
+\end{align*}
+其中$\dfrac{\partial^z}{\partial y\partial x}$称为$z$先对$x$后对$y$的二阶混合偏导数。
+
+对于二阶混合偏导数能否交换偏导顺序，有如下定理
+\begin{theorem}
+    设$f''_{xy}(x,y),f''_{yx}(x,y)$在$(x_0,y_0)$点连续，则
+    \[ f''_{xy}(x_0,y_0) = f''_{yx}(x_0,y_0) \]
+\end{theorem}
+
+\section{多元函数的全微分}
+\subsection{一阶全微分}
+\subsubsection{全微分的概念}
+对于二元函数$z=f(x,y)$的增量
+\[ \Delta z = f(x+\Delta x,y+\Delta y) - f(x,y) \]
+用线性逼近的形式应为$\diff z = A \Delta x + B \Delta y$，最佳逼近条件为
+\[ \Delta z- \diff z = \Delta z - A\Delta x - B \Delta y = o(\rho) \quad (\rho \to 0) \]
+其中$\rho = \sqrt{\Delta x^2 + \Delta y^2}$。
+
+根据上述描述，可定义
+\begin{definition}
+    设函数$z=f(x,y)$在$(x,y)$点的某邻域内有定义。如果存在常数$A,B$使当
+    \[ \rho = \sqrt{\Delta x^2 + \Delta y^2} \to 0 \]
+    时，恒有
+    \[ \Delta z - A\Delta x - B\Delta y = o(\rho) \]
+    则称$A\Delta x + B\Delta y$为函数$z=f(x,y)$在$(x,y)$点的微分，记作
+    \[ \diff z = \diff f(x,y) = A\Delta + B\Delta \]
+\end{definition}
+微分存在时称函数可微，当函数在区域$D$内每个点都可微时，称函数时区域$D$内的可微函数。
+
+要判断函数的可微性，首先需要微分$A\Delta x+ B\Delta y$的系数；其次需要证明极限关系
+\begin{equation}
+    \lim_{\substack{\Delta x\to 0\\ \Delta y \to 0}}
+    = \frac{\Delta z - (A\Delta x + B\Delta y)}{\sqrt{\Delta x^2 + \Delta y^2}}
+    =0
+\end{equation}
+
+\subsubsection{微分中值定理}
+对于一元可微函数$y=f(x)$，拉格朗日中值定理\ref{th:拉格朗日中值定理}，
+\[ f(x+\Delta x) = f(x) + f'(x+\theta x)\Delta x,\quad (0<\theta<1) \]
+将这一定理推广至二元函数，则有
+\begin{theorem}
+    （微分中值定理）
+    \label{th:微分中值定理}
+    设函数$z=f(x,y)$在矩形域
+    \[ D = \{(x,y)\,|\,|x-x_0|<\delta_1, |y-y_0| < \delta_2 \} \]
+    上有定义，若$f(x,y)$在$D$内可导，则当$|\Delta x|<\delta_1, |\Delta y|<\delta_2$时，
+    必存在$\theta_1,\theta_2\in(0,1)$，使得
+    \begin{align*}
+        \Delta z & = f(x_0+\Delta x, y_0 +\Delta y) - f(x_0,y_0)                                                 \\
+                 & =f'_x(x_0+\theta_1\Delta x, y_0 + \Delta y) \Delta x + f'_y(x_0,y_0+\theta_2\Delta y)\Delta y
+    \end{align*}
+\end{theorem}
+可以理解为函数先沿$x$-曲线变化到$f(x_0,y_0+\Delta y)$，这个变化与$f'_y$相关；
+之后再延$y$-曲线变化到$f(x_0+\Delta x, y_0+\Delta y)$，这个变化与$f'_x$相关。
+
+作为推论有
+\begin{theorem}
+    对于微分中值定理的推论，有
+    \begin{enumerate}[(1)]
+        \item 设函数$z=f(x,y)$在区域$D$内可导且两个偏导数恒为零，则$f(x,y)$在$D$内必为常数。
+        \item 设函数$z=f(x,y)$在$(x_0,y_0)$点的某邻域内可导且两偏导数有界，则$f(x,y)$在$(x_0,y_0)$点连续。
+    \end{enumerate}
+\end{theorem}
+
+\subsubsection{可微性条件}
+用定义直接判断可微性是比较困难的，因此有必要探究可微的条件。
+\begin{theorem}
+    （可微的必要条件）
+    若函数$z=f(x,y)$在$(x,y)$点可微，$\implies$
+    \begin{enumerate}[(1)]
+        \item $f(x,y)$在$(x,y)$点连续；
+        \item $f(x,y)$在$(x,y)$点可导，且$\diff z = f'_x(x,y)\Delta x+ f'_y(x,y)\Delta y$；
+        \item 当$x,y$为自变量时，有
+              \[ \diff z = f'_x(x,y)\,\diff x, f'_y(x,y)\,\diff y \]
+    \end{enumerate}
+\end{theorem}
+
+可微可以推出连续，也可以推出可导，但可导不能推出连续，自然不能推出可微。判断可微一般通过下面的定理来得出。
+\begin{theorem}
+    （可微的充分条件）
+    \label{th:可微的充分条件}
+    若函数$z=f(x,y)$在$(x,y)$点的偏导数连续，则$z=f(x,y)$在$(x,y)$点处可微。
+\end{theorem}
+这里要注意偏导是可微的\textcolor{red}{充分条件但非必要条件}。例如下面的例子中$f(x,y)$在$(0,0)$点
+偏导不连续，但却可微。
+\begin{example}
+    讨论函数
+    \[
+        f(x,y) =
+        \begin{cases}
+            (x^2+y^2)\sin \frac{1}{x^2+y^2}, & x^2+y^2 \neq 0, \\
+            0,                               & x^2+y^2=0
+        \end{cases}
+    \]
+    在$(0,0)$点是否可微，其偏导数是否连续。
+\end{example}
+\begin{solution}
+    \begin{align*}
+          & \lim_{\substack{\Delta x\to 0  \\ \Delta y \to 0}} \frac{f(\Delta x, \Delta y)-(A\Delta x+ B\Delta y)}{\sqrt{\Delta x^2 + \Delta y^2}}\\
+        = & \lim_{\substack{\Delta x\to 0  \\ \Delta y \to 0}} \frac{(\Delta x^2+\Delta y^2)\sin \frac{1}{\Delta x^2+\Delta y^2} - (A\Delta x + B \Delta y)}{\sqrt{\Delta x^2 + \Delta y^2}}\\
+        = & \lim_{\substack{\Delta x\to 0  \\ \Delta y \to 0}} \sqrt{\Delta x^2 + \Delta y^2}\sin \frac{1}{\Delta x^2 +\Delta y^2} - \lim_{\substack{\Delta x\to 0 \\ \Delta y \to 0}} \frac{A\Delta x + B\Delta y}{\sqrt{\Delta x^2 + \Delta y^2}}\\
+        = & -\lim_{\substack{\Delta x\to 0 \\ \Delta y \to 0}} \frac{A\Delta x + B\Delta y}{\sqrt{\Delta x^2 + \Delta y^2}}
+    \end{align*}
+    其中$A,B$为常数，当$A=B=0$时原极限存在且为零，此时可得$f(x,y)$在$(0,0)$处可微。
+
+    当$ x^2+y^2 \neq 0$时，
+    \begin{align*}
+        f'_x(x,y) & = 2x\sin\frac{1}{x^2+y^2} -\frac{2x}{x^2+y^2}\cos\frac{1}{x^2+y^2} \\
+        f'_y(x,y) & = 2y\sin\frac{1}{x^2+y^2} -\frac{2y}{x^2+y^2}\cos\frac{1}{x^2+y^2}
+    \end{align*}
+    当$x^2+y^2=0$，即$x=y=0$时，
+    \begin{align*}
+        f'_x(0,0) & = \lim_{x\to 0} \frac{f(x,0)-f(0,0)}{x-0} = \lim_{x\to 0}x\sin\frac{1}{x^2} = 0 \\
+        f'_y(0,0) & = \lim_{y\to 0} \frac{f(0,y)-f(0,0)}{y-0} = \lim_{y\to 0}y\sin\frac{1}{y^2} = 0
+    \end{align*}
+    由于
+    \[ \lim_{x\to 0} f'_x(x,0) = \lim_{x\to 0}\frac{-2}{x}\cos\frac{1}{x^2} = \text{不存在} \]
+    \[ \lim_{y\to 0} f'_y(0,y) = \lim_{y\to 0}\frac{-2}{y}\cos\frac{1}{y^2} = \text{不存在} \]
+    所以偏导函数$f'_x(x,y),f'_y(x,y)$在$(0,0)$点不连续。
+\end{solution}
+
+\begin{theorem}
+    若$f'_x(x,y)$在$(x_0,y_0)$处连续，$f'_y(x,y)$在$(x_0,y_0)$点存在，则
+    $f(x,y)$在$(x_0,y_0)$点可微。
+\end{theorem}
+
+利用一元函数的可微与可导的等价性，可以证明一元可微函数与二元可微函数的复合函数仍是可微函数，即
+\begin{theorem}
+    设函数$u=f(x,y)$在$(x_0,y_0)$点可微，函数$z=g(u)$在$u_0=f(x_0,y_0)$点可微，
+    则函数$z=g(f(x,y))$在$(x_0,y_0)$点可微并且有
+    \[ \diff z|_{(x_0,y_0)} = g'(u_0)\,\diff f(x_0,y_0) = g'(u_0)\left[f'_x(x_0,y_0)\,\diff x + f'_y(x_0,y_0)\,\diff y\right] \]
+\end{theorem}
+
+\subsubsection{一阶全微分不变性}
+对于可微函数的复合形式
+\[ z= f(\varphi(x,y),\psi(x,y)) \]
+或联立形式
+\[ z = f(u,v), u=\varphi(x,y), v=\psi(x,y) \]
+可以证明微分公式
+\begin{equation}
+    \diff z
+    = \frac{\partial f}{\partial u}\,\diff \varphi + \frac{\partial f}{\partial v}\,\diff \psi
+    = f'_1\,\diff \varphi + f'_2\,\diff \psi
+\end{equation}
+这一性质称为\textcolor{red}{\textbf{\textsf{一阶全微分的不变性}}}。
+\begin{proof}
+    设可微函数$z=F(x,y) = f(\varphi(x,y), \psi(x,y))$，则
+    \begin{align*}
+        \diff F & = \frac{\partial F}{\partial x}\,\diff x + \frac{\partial F}{\partial y}\,\diff y                                                                      \\
+                & = \left(\frac{\partial f}{\partial u}\frac{\partial\varphi}{\partial x} + \frac{\partial f}{\partial v}\frac{\partial\psi}{\partial x}\right)\,\diff x
+        +\left(\frac{\partial f}{\partial u}\frac{\partial\varphi}{\partial y} + \frac{\partial f}{\partial v}\frac{\partial\psi}{\partial y}\right)\,\diff y            \\
+                & =\frac{\partial f}{\partial u}\,\diff \varphi + \frac{\partial f}{\partial v}\,\diff \psi
+    \end{align*}
+\end{proof}
+
+对于隐函数的求导委托，可以方程两端同时微分后解出方程即可。
+\begin{example}
+    设
+    \[
+        \begin{cases}
+            x=-u^2+v+z, \\
+            y=u+vz
+        \end{cases}
+    \]
+    求$\dfrac{\partial u}{\partial x}, \dfrac{\partial v}{\partial x},\dfrac{\partial u}{\partial y}$
+\end{example}
+\begin{solution}
+    方程组两端同时微分可得
+    \[
+        \begin{cases}
+            \diff x = -2u\,\diff u + \diff v + \diff z \\
+            \diff y = \diff u + z\,\diff v + v\,\diff z
+        \end{cases}
+    \]
+    解得
+    \[ \diff u = \frac{-z\,\diff x + (z-v)\,\diff z + \diff y}{2uz + 1} \]
+    \[ \diff v = \frac{\diff x + 2u\,\diff y - (1+2uv)\,\diff z}{2uz + 1} \]
+    由此可得
+    \[
+        \frac{\partial u}{\partial x} = -\frac{z}{2uv+1},\quad
+        \frac{\partial v}{\partial x} = \frac{1}{2uz+1},\quad
+        \frac{\partial u}{\partial y} = \frac{1}{2uz+1}
+    \]
+\end{solution}
+
+\subsubsection{微分的几何意义}
+微分的几何意义为：
+\[ \text{可微~} \iff \text{ 可导~}+\text{ 切平面存在} \]
+微分就是切平面函数的增量。
+
+\subsection{高阶全微分}
+二元函数$z=f(x,y)$的全微分时一个四元函数
+\[ (x,y,\diff x,\diff y)\mapsto f'_x(x,y)\,\diff x + f'_y(x,y)\,\diff y \]
+如果$x,y$是自变量，则$\diff x,\diff y$也是自变量，此时$\diff x,\diff y$可以视为相对常量。在这种约定下，二元函数
+$F(x,y)=f'_x(x,y)\,\diff x+ f'_y(x,y)\,\diff y$的微分$\diff F$称为二元函数$z=f(x,y)$的二阶全微分$\diff^2f(x,y)$，即
+\begin{equation}
+    \diff^2 f
+    = \diff F
+    = \frac{\partial^2 f}{\partial x^2}\,\diff x\diff x
+    + \frac{\partial^2 f}{\partial x\partial y}\,\diff x\diff y
+    + \frac{\partial^2 f}{\partial y\partial x}\,\diff y\diff x
+    + \frac{\partial^2 f}{\partial y^2}\,\diff y\diff y
+\end{equation}
+作交换性约定
+\[
+    \diff x\diff x = \diff x^2,\, \diff x\diff y= \diff y\diff x,\, \diff y\diff y=\diff y^2
+\]
+则有全微分的二项式公式
+\begin{equation}
+    \diff^2 f
+    = \frac{\partial^2 f}{\partial x^2}\,\diff x^2
+    + 2\frac{\partial^2 f}{\partial x\partial y}\,\diff x\diff y
+    + \frac{\partial^2 f}{\partial y^2}\,\diff y^2
+    = \left(\frac{\partial}{\partial x}\,\diff x + \frac{\partial}{\partial y}\,\diff y\right)^2 f
+\end{equation}
+值得注意的是当$x,y$不是自变量时，全微分二项式公式不成立。而应为
+\begin{equation}
+    \begin{split}
+        \diff^2 z
+        &= \diff \left(\frac{\partial f}{\partial x}\,\diff x + \frac{\partial f}{\partial y}\,\diff y\right)                    \\
+        &= \diff\left(\frac{\partial f}{\partial x}\right)\,\diff x
+        + \frac{\partial f}{\partial x}\,\diff^2 x
+        + \diff\left(\frac{\partial f}{\partial y}\right)\,\diff y
+        + \frac{\partial f}{\partial y}\,\diff^2 y                                                                                 \\
+        &= \left(\frac{\partial^2 f}{\partial x^2}\,\diff x + \frac{\partial^2 f}{\partial y\partial x}\,\diff y\right)\,\diff x
+        + \frac{\partial f}{\partial x}\,\diff^2 x
+        + \left(\frac{\partial^2 f}{\partial x\partial y}\,\diff x + \frac{\partial^2 f}{\partial^2 y}\,\diff y\right)
+        + \frac{\partial f}{\partial y}\,\diff^2 y                                                                                 \\
+        &= \left(\frac{\partial}{\partial x}\,\diff x + \frac{\partial}{\partial y}\,\diff y\right)^2 f
+        + \frac{\partial f}{\partial x}\,\diff^2 x
+        + \frac{\partial f}{\partial y}\,\diff^2 y
+    \end{split}
+\end{equation}
+其中$\diff^2 x$为$x$的二阶全微分，$\diff^2 y$为$y$的二阶全微分。
+
+
+\section{多元函数的微分法}
+\subsection{复合函数微分法}
+
+\begin{theorem}
+    （链法则）
+    \label{th:链法则}
+    设函数$u=\varphi(x,y),v=\psi(x,y)$在$(x,y)$点可导，函数$z=f(u,v)$在对应点$(u,v)$可微，则复合函数$z=f(u(x,y),v(x,y))$在$(x,y)$点可导
+    且
+    \[
+        \frac{\partial z}{\partial x} = \frac{\partial f}{\partial u}\cdot\frac{\partial\varphi}{\partial x} + \frac{\partial f}{\partial v}\cdot\frac{\partial\psi}{\partial x}
+    \]
+    \[
+        \frac{\partial z}{\partial y} = \frac{\partial f}{\partial u}\cdot\frac{\partial\varphi}{\partial y} + \frac{\partial f}{\partial v}\cdot\frac{\partial\psi}{\partial y}
+    \]
+\end{theorem}
+
+\begin{theorem}
+    更一般的链法则：设函数$u=f(x_1,x_2,\cdots,x_n)$可微，$x_i=x_i(t_1,t_2,\cdots,t_m)$可导，则复合函数$u=f(x_1(t_1,t_2,\cdots,t_m),\cdots,x_n(t_1,t_2,\cdots,t_m))$可导，且有
+    \[
+        \frac{\partial u}{\partial t_j} = \sum_{i=1}^n \frac{\partial f}{\partial x_i}\cdot\frac{\partial x_i}{\partial t_j}, \quad j = 1,2,...,m
+    \]
+\end{theorem}
+
+\subsection{隐函数微分法}
+\subsubsection{隐函数定理}
+设$F(x,y)=0$时一个二元函数，如果方程
+\[ F(x,y) = 0 \]
+存在一个解函数$y=f(x)$，则称这个解函数微隐函数。
+\begin{theorem}
+    （隐函数定理）
+    \label{th:隐函数定理}
+    设函数$F(x,y),F'_y(x,y)$在$(x_0,y_0)$附近连续且
+    \[ F(x_0,y_0) = 0, \quad F'_y(x_0,y_0)\neq 0 \]
+    则在$(x_0,y_0)$点的某个邻域内，唯一存在连续函数$y=f(x)$，使得
+    \[ F(x,f(x)) \equiv 0 \]
+    并当$F'_x(x,y)$在该邻域连续时，$y=f(x)$连续可导且
+    \[ f'(x) = - \frac{F'_x(x,y)}{F'_y(x,y)} \]
+\end{theorem}
+
+更一般的隐函数定理是
+\begin{theorem}
+    设$x=(x_1,x_2,\cdots,x_n),y=(y_1,y_2,\cdots,y_m)$，若函数
+    \[ F(x,y) = (F_1(x,y),\cdots,F_m(x,y)) \]
+    在$(x_0,y_0)$附近连续可导，且
+    \[ F(x_0,y_0) = 0, \quad\left.\frac{\partial(F_1,\cdots,F_m)}{\partial(y_1,\cdots,y_m)}\right|_{(x_0,y_0)} \neq 0 \]
+    则在$(x_0,y_0)$点的某个邻域内，唯一存在连续可导函数$y=f(x)$，使得
+    \[ F(x,f(x))\equiv 0 \]
+    且当$1\leq i \leq n, 1\leq j\leq m$时，恒有
+    \[
+        \frac{\partial y_j}{\partial x_i}
+        =
+        \left.
+        - \frac{\partial(F_1,\cdots,F_m)}{\partial(y_1,\cdots,y_{j-1},x_i,y_{j+1},\cdots,y_m)}
+        \middle/
+        \frac{\partial(F_1,\cdots,F_m)}{\partial(y_1,\cdots,y_m)}
+        \right.
+    \]
+\end{theorem}
+
+隐函数求导公式的特征可概括为：\textbf{\textsf{雅可比，变分子；$A$导$B$，$A$换$B$}}。
+其中$F_1,F_2,\cdots,F_m$为方程组
+\[
+    \begin{cases}
+        F_1(x,y) = 0, \\
+        F_2(x,y) = 0, \\
+        \cdots        \\
+        F_m(x,y) = 0
+    \end{cases}
+\]
+分母为
+\begin{equation}
+    \frac{\partial(F_1,\cdots,F_m)}{\partial(y_1,\cdots,y_m)}
+    =
+    \begin{vmatrix}
+        \frac{\partial F_1}{\partial y_1} & \dots  & \frac{\partial F_1}{\partial y_m} \\
+        \vdots                            & \ddots & \vdots                            \\
+        \frac{\partial F_m}{\partial y_1} & \dots  & \frac{\partial F_m}{\partial y_m}
+    \end{vmatrix}
+\end{equation}
+计算$y_j$对$x_i$的偏导时，只需将分母雅可比中的$y_j$替换成$x_i$，即可得出$\dfrac{\partial y_j}{\partial x_i}$对应的分子雅可比。
+
+\subsubsection{反函数定理}
+.
+\begin{theorem}
+    （雅可比法则）
+    \label{th:雅可比法则}
+    设函数
+    \[ z_i = z_i(y_i,\cdots,y_n),\quad y_i=y_i(x_1,\cdots,x_n),\quad (i=1,\cdots n) \]
+    在拟讨论点附近连续可导，则
+    \[
+        \frac{\partial(z_1,\cdots,z_n)}{\partial(x_1,\cdots,x_m)}
+        = \frac{\partial(z_1,\cdots,z_n)}{\partial(y_1,\cdots,y_n)} \cdot \frac{\partial(y_1,\cdots,y_n)}{\partial(x_1,\cdots,x_n)}
+    \]
+\end{theorem}
+
+\begin{theorem}
+    （反函数定理）
+    \label{th:反函数定理}
+    设函数
+    \[ y_i=y_i(x_1,\cdots,x_n),\quad (i=1,\cdots,n) \]
+    在拟讨论点附近可导且$\dfrac{\partial(y_1,\cdots,y_n)}{\partial(x_1,\cdots,x_n)}\neq 0$，则在该点附近反函数
+    \[ x_i = x_i(y_1,\cdots,y_n),\quad (i=1,\cdots,n) \]
+    存在且连续可导，并有
+    \begin{enumerate}[(1)]
+        \item
+              $
+                  \dfrac{\partial x_i}{\partial y_j}
+                  = \left.(-1)^{i+j} \dfrac{\partial(y_1,\cdots,y_{j-1},y_{j+1},\cdots,y_n)}{\partial(x_1,\cdots,x_{i-1},x_{i+1},\cdots,x_n)}
+                  \middle/
+                  \dfrac{\partial(y_1,\cdots,y_n)}{\partial(x_1,\cdots,x_n)}
+                  \right.
+              $
+        \item
+              $
+                  \dfrac{\partial(x_1,\cdots,x_n)}{\partial(y_1,\cdots,y_n)} = \left.1\middle/\dfrac{\partial(y_1,\cdots,y_n)}{\partial(x_1,\cdots,x_n)}\right.
+              $
+    \end{enumerate}
+\end{theorem}
+
+\section{偏导数的应用}
