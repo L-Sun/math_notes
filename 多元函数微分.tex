@@ -10,7 +10,7 @@
 一个平面点集$E$中的点$P$称为\textcolor{red}{\textbf{\textsf{内点}}}，是指存在一个邻域$B(P_0,\delta)$，
 满足
 \[ B(P_0,\delta) \subset E \]
-每个点都是内殿的平面点集称为\textcolor{red}{\textbf{\textsf{开集}}}。如果一个平面点集包含了每个边界点，
+每个点都是内点的平面点集称为\textcolor{red}{\textbf{\textsf{开集}}}。如果一个平面点集包含了每个边界点，
 则称为\textcolor{red}{\textbf{\textsf{闭集}}}。若平面点集中的任意两个点可以用点集中的一条连续取许连接，
 则称该点集为\textcolor{red}{\textbf{\textsf{连通点集}}}。
 连通的开集称为\textcolor{red}{\textbf{\textsf{开区域}}}，常简称为\textcolor{red}{\textbf{\textsf{区域}}}；
@@ -25,7 +25,7 @@
     $f(\bm{x})$的极限为$A$，记作
     \[ \lim_{\bm{x}\to\bm{x}_0}f(\bm{x})=A \]
     如果对充分小的$\varepsilon>0$，都存在$\delta>0$，使当$0<|\bm{x}-\bm{x}_0|<\delta$时，恒有
-    \[ |f(\bm{x}-A|<\varepsilon \]
+    \[ |f(\bm{x})-A|<\varepsilon \]
 \end{definition}
 
 \subsection{二重极限}
@@ -80,7 +80,7 @@
 所得极限值需要相等。
 
 \begin{example}
-    证明函数$f(x,y)=(1+xy)^{\dfrac{1}{x+y}}$在原点$(0,0)$处的极限不存在。
+    证明函数$f(x,y)=(1+xy)^{\frac{1}{x+y}}$在原点$(0,0)$处的极限不存在。
 \end{example}
 \begin{proof}
     \[ \lim_{(x,y)\to(0,0)}f(x,y) = \exp\left(\lim_{(x,y)\to(0,0)}\frac{\ln(1+xy)}{x+y}\right) \]
@@ -99,7 +99,7 @@
         = \exp\left(\lim_{x\to 0}\frac{\ln(1+x^3-x^2)}{x^2}\right)
         = \frac{1}{\mathrm{e}}
     \]
-    故沿两个曲线逼近$(0,0)$的极限不相等，所以愿继续不存在。
+    故沿两个曲线逼近$(0,0)$的极限不相等，所以原极限不存在。
 \end{proof}
 
 \subsection{二次极限}
@@ -137,7 +137,7 @@
 连续函数的四则运算一定是连续函数，连续函数的复合函数也一定是连续函数。对于二元初等函数，其在有定义的区域内都是连续函数，
 且满足有限次四则运算、有限次复合运算得到的二元函数也称为二元初等函数。
 
-在有界闭区域上的连续函数具有有界性、最值性、介值性和一直连续性。
+在有界闭区域上的连续函数具有有界性、最值性、介值性和一致连续性。
 
 \section{多元函数的偏导数}
 \subsection{一阶偏导数}
@@ -145,7 +145,7 @@
 一元函数$x\mapsto f(x,y)$的导数称为二元函数$(x,y)\mapsto f(x,y)$的偏导数，记为$f'_x(x,y)$，用极限语言描述为
 \begin{definition}
     设函数$z=f(x,y)$在$(x_0,y_0)$点的某个邻域内有定义，如果
-    \[ \lim_{\delta x\to 0} \frac{f(x_0+\delta x,y_0)-f(x_0,y_0)}{\delta} \]
+    \[ \lim_{\Delta x\to 0} \frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta} \]
     存在，则称此极限为函数$z=f(x,y)$在$(x_0,y_0)$点对$x$的偏导数，记作
     \[
         f'_x(x_0,y_0),\,
@@ -163,17 +163,17 @@
 如果两个偏导数都存在时，则称二原函数可导。
 
 \begin{situation}
-    求一个给定点的偏导数，通常时先求偏导函数，再求骗到函数的函数值。对于特殊点的偏导数，大多需要用定义计算，
+    求一个给定点的偏导数，通常时先求偏导函数，再求偏导函数的函数值。对于特殊点的偏导数，大多需要用定义计算，
     或用非求导变量先代入的一元化方法。
 \end{situation}
 
 \subsubsection{偏导数的几何意义}
-设函数$z=f(x,y)$在区域$D$上连续可导，则它的图像时一个曲面，记为$\Sigma$。那么对于曲面上任意一点$(x_0,y_0,z_0)$，
+设函数$z=f(x,y)$在区域$D$上连续可导，则它的图像是一个曲面，记为$\Sigma$。那么对于曲面上任意一点$(x_0,y_0,z_0)$，
 其延$x,y$轴方向的切向量为
 \[ (1,0,f'_x(x,y)),\quad(0,1,f'_y(x,y)) \]
 则法向量为
 \begin{equation}
-    \bm{n} = (1,0,f'_x(x,y)\times(0,1,f'_y(x,y))) = (-z'_x, -z'_y, 1)
+    \bm{n} = (1,0,f'_x(x,y)) \times (0,1,f'_y(x,y)) = (-z'_x, -z'_y, 1)
 \end{equation}
 得到了法向量，就可以构建此点的切平面方程和法线方程。
 
@@ -416,7 +416,7 @@
 微分就是切平面函数的增量。
 
 \subsection{高阶全微分}
-二元函数$z=f(x,y)$的全微分时一个四元函数
+二元函数$z=f(x,y)$的全微分是一个四元函数
 \[ (x,y,\diff x,\diff y)\mapsto f'_x(x,y)\,\diff x + f'_y(x,y)\,\diff y \]
 如果$x,y$是自变量，则$\diff x,\diff y$也是自变量，此时$\diff x,\diff y$可以视为相对常量。在这种约定下，二元函数
 $F(x,y)=f'_x(x,y)\,\diff x+ f'_y(x,y)\,\diff y$的微分$\diff F$称为二元函数$z=f(x,y)$的二阶全微分$\diff^2f(x,y)$，即
@@ -463,7 +463,7 @@ $F(x,y)=f'_x(x,y)\,\diff x+ f'_y(x,y)\,\diff y$的微分$\diff F$称为二元函
 
 \section{多元函数的微分法}
 \subsection{复合函数微分法}
-
+.
 \begin{theorem}
     （链法则）
     \label{th:链法则}
@@ -581,3 +581,340 @@ $F(x,y)=f'_x(x,y)\,\diff x+ f'_y(x,y)\,\diff y$的微分$\diff F$称为二元函
 \end{theorem}
 
 \section{偏导数的应用}
+\subsection{方向导数}
+如果$l$是从$P_0$点出发的射线，则函数$f(P)$在$P_0$点沿射线$l$的方向导数由极限
+\begin{equation}
+    \frac{\partial f}{\partial l} = \lim_{P\to P_0,P\in l}\frac{f(P)-f(P_0)}{|PP_0|}
+\end{equation}
+确定。如果射线$l$的参数方程为
+\[
+    l:
+    \begin{cases}
+        x = x_0 + \rho\cos\alpha &          \\
+        y = y_0 + \rho\cos\beta, & \rho >0. \\
+        z = z_0 + \rho\cos\gamma &
+    \end{cases}
+\]
+因此，方向导数的坐标形式为
+\begin{equation}
+    \frac{\partial f}{\partial l} = \lim_{\rho\to 0^+}\frac{f(x_0 + \rho\cos\alpha,y_0 + \rho\cos\beta,z_0 + \rho\cos\gamma)-f(x_0,y_0,z_0)}{\rho}
+\end{equation}
+当$f(x,y,z)$可微时，由洛必达法则和复合函数求导法则，有
+\begin{align*}
+    \frac{\partial f}{\partial l}(x_0,y_0,z_0)
+     & = \frac{\partial f}{\partial x}\cos\alpha + \frac{\partial f}{\partial y}\cos\beta + \frac{\partial f}{\partial z}\cos\gamma                                                \\
+     & = \left.\left(\frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z}\right)\right|_{(x_0,y_0,z_0)}\cdot(\cos\alpha,\cos\beta,\cos\gamma) \\
+     & = \nabla f(x_0,y_0,z_0)\cdot \bm{e}_l
+\end{align*}
+
+其中$\bm{e}_l=(\cos\alpha,\cos\beta,\cos\gamma)$为射线$l$的方向，向量
+\begin{equation}
+    \nabla f(x_0,y_0,z_0)=\left.\left(\frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z}\right)\right|_{(x_0,y_0,z_0)}
+\end{equation}
+称为函数$f(x,y,z)$在$(x_0,y_0,z_0)$点的梯度。简言之，\textbf{\textsf{函数的方向导数就是梯度在给定射线方向上的投影}}。
+\begin{equation}
+    \frac{\partial f}{\partial l} = \nabla f\cdot \bm{e}_l
+\end{equation}
+
+需要注意的是，函数可导，某一方向的方向导数不一定存在。某点的任意方向导数存在，但是可以不可微，也可以不可导。
+这是因为方向导数是按某一方向的单侧导数；但偏导数要求左右导数相等（此时方向相反的方向导数应互为相反数）。
+
+
+\subsection{梯度}
+符号$\nabla=\left(\frac{\partial}{\partial x},\frac{\partial }{\partial y},\frac{\partial}{\partial z}\right)$称为Hamilton算子。
+梯度的重要性在于
+\begin{enumerate}[(1)]
+    \item 梯度的模表示函数的最大方向导数，梯度的方向表示函数的最大增长方向；
+    \item 梯度是等值面的法向量；
+    \item 函数的方向导数是梯度的定向投影。
+\end{enumerate}
+
+根据方向导数与梯度的关系，梯度的模表示函数的最大方向导数，梯度的方向表示函数的最大增长方向。对于(2)来说，不妨等值曲面
+\[ \Sigma : f(x,y,z) = f(x_0,y_0,z_0) \]
+设
+\[ C: \bm{r}(t) = (x(t),y(t),z(t)),\quad \bm{r}(0) = (x_0,y_0,z_0) \]
+为曲面$\Sigma$上任意一条光滑曲线，则有
+\[ f(x(t),y(t),z(t)) \equiv f(x_0,y_0,z_0) \]
+根据复合函数求导法则对$t$求导，则有
+\[
+    \frac{\partial f}{\partial x} x'(t) + \frac{\partial f}{\partial y} y'(t) + \frac{\partial f}{\partial z} z'(t)
+    = \nabla f\cdot\bm{r}'(t)
+    = 0
+\]
+这表明梯度$\nabla f$是曲面$\Sigma$在点$(x_0,y_0,z_0)$处的法向量，因此梯度是等值面的法向量。所以一个曲面在某点的切平面，法线方程可以利用梯度求出。
+
+对于两个曲面的交线
+\[
+    L :
+    \begin{cases}
+        f(x,y,z) = 0 \\
+        g(x,y,z) = 0
+    \end{cases}
+\]
+$L$上某点的切线
+\sidenote{
+    法平面：过交线上某一定点，且以此点的交线方向向量为法向量的平面称为法平面。
+}
+可以由两个曲面在此点的切平面相交而得，其切线方向为
+\[
+    \bm{v} = \nabla f \times \nabla g
+    =
+    \begin{vmatrix}
+        \bm{i} & \bm{j} & \bm{k} \\
+        f'_x   & f'_y   & f'_z   \\
+        g'_x   & g'_y   & g'_z
+    \end{vmatrix}
+    = \left(\frac{\partial(f,g)}{\partial(y,z)}, \frac{\partial(f,g)}{\partial(z,x)},\frac{\partial(f,g)}{\partial(x,y)}\right)
+\]
+简言之，\textbf{\textsf{交线方向梯度叉}}。
+
+梯度的运算法则如下
+\begin{enumerate}[(1)]
+    \item （线性性）$\nabla (\lambda u + \mu v) = \lambda \nabla u + \mu \nabla v$，其中$\lambda,\mu$为常数；
+    \item （乘法则）$\nabla(uv) = v\nabla u + u\nabla v$；
+    \item （除法则）$\nabla\left(\dfrac{u}{v}\right) = \dfrac{v\nabla u - u\nabla v}{v^2}$；
+    \item （链法则）$\nabla F(u) = F'(u)\nabla u, \nabla F(u,v) = F'_u(u,v)\nabla u + F'_v(u,v)\nabla v$
+\end{enumerate}
+
+\subsection{泰勒公式}
+仿照一元函数的泰勒公式，二元函数的泰勒公式如下
+\begin{theorem}
+    设二元函数$f(x,y)$在$(x_0,y_0)$的邻域内有$n+1$阶连续导数，并且设$(x_0+h,y_0+k)$位于该邻域内，则存在$\theta\in(0,1)$使得，
+    \[
+        f(x_0+h,y_0+k) = \sum_{m=1}^n \frac{1}{m!}\left(h\frac{\partial}{\partial x} + k\frac{\partial}{\partial y}\right)^mf(x_0,y_0) + R_n
+    \]
+    其中
+    \[
+        R_n = \frac{1}{(n+1)!}\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)^{n+1}f(x_0+\theta h,y_0 +\theta k)
+    \]
+
+    多元函数的泰勒公式也可以表示为Peano形式，例如
+    \begin{equation}
+        \begin{split}
+            f(x_0+\Delta x, y_0 + \Delta y) = f(x_0,y_0) + f'_x(x_0,y_0)\Delta x + f'_y(x_0,y_0)\Delta y \\
+            + \frac{1}{2}\left(A\Delta x^2 + 2B\Delta x\Delta y + C\Delta y^2\right) + o(\rho^2),\quad (\rho\to 0)
+        \end{split}
+    \end{equation}
+    其中$A=f''_{xx}(x_0,y_0),B=f''_{xy}(x_0,y_0),C=f''_{yy}(x_0,y_0),\rho=\sqrt{\Delta x^2 + \Delta y^2}$
+\end{theorem}
+
+\subsection{自由极值}
+在多元函数的极值问题中，没有约束条件（平面区域或空间区域上）的极值称为\textcolor{red}{\textbf{\textsf{自由极值}}}，
+带有约束条件（曲面或曲线上）的极值称为\textcolor{red}{\textbf{\textsf{条件极值}}}。
+
+仿照一元函数极值的定义，多元函数的极值可以定义为
+\begin{definition}
+    设二元函数$f(x,y)$在$(x_0,y_0)$点的某邻域内有定义，如果$(x,y)$位于该邻域时恒有$f(x,y)\leq f(x_0,y_0)$，则称$f(x_0,y_0)$时函数$f(x,y)$的极大值，
+    $(x_0,y_0)$时$f(x,y)$的极大值点。
+\end{definition}
+
+值得注意的是，函数极值的存在性与函数的可导没有直接关系。例如在$f(x,y)$在$(x_0,y_0)$处取得极值，但此点不一定可导。
+
+\begin{theorem}
+    （极值的必要条件）
+    设二元函数$f(x,y)$在$(x_0,y_0)$点可导，且有极值，则
+    \[ \left.\frac{\partial f}{\partial x}\right|_{(x_0, y_0)} = \left.\frac{\partial f}{\partial y}\right|_{(x_0, y_0)} = 0 \]
+\end{theorem}
+
+
+通过泰勒公式，可以得出一个极值的充分条件。
+\begin{theorem}
+    （极值的充分条件）
+    设函数$f(x,y)$在$(x_0,y_0)$点附近有连续的二阶偏导，并且$(x_0,y_0)$时临界点，如果
+    \[ A = f''_{xx}(x_0,y_0),\, B = f''_{xy}(x_0,y_0),\, C = f''_{yy}(x_0,y_0) \]
+    则有
+    \begin{enumerate}[(1)]
+        \item 当$B^2 - AC < 0$，且$A>0$，则$f(x_0,y_0)$为极小值；
+        \item 当$B^2 - AC < 0$，且$A<0$，则$f(x_0,y_0)$为极大值；
+        \item 当$B^2 - AC > 0$，则$f(x_0,y_0)$不是极值；
+        \item 当$B^2 - AC = 0$，则$f(x_0,y_0)$可能是极值，也可能不是极值。
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    设$f(x,y)$在临界点$(x_0,y_0)$附近有连续的二阶偏导，根据泰勒公式，有
+    \begin{align*}
+        f(x,y)
+        = & f(x_0,y_0) + f'_x(x_0,y_0)\Delta x + f'_y(x_0,y_0)\Delta y                \\
+          & + \frac{1}{2}(A\Delta x^2 + 2B\Delta x\Delta y + C\Delta y^2) + o(\rho^2) \\
+        = & + \frac{1}{2}(A\Delta x^2 + 2B\Delta x\Delta y + C\Delta y^2) + o(\rho^2)
+    \end{align*}
+    移项得
+    \[
+        f(x,y) - f(x_0,y_0) = \frac{1}{2}(A\Delta x^2 + 2B\Delta x\Delta y + C\Delta y^2) + o(\rho^2)
+    \]
+    其中$ A = f''_{xx}(x_0,y_0),\, B = f''_{xy}(x_0,y_0),\, C = f''_{yy}(x_0,y_0)$，
+    那么根据二次函数有
+    \[ \Delta = 4B^2 - 4AC = 4(B^2 - AC) \]
+    当二次函数有零点时，解为一个过原点的直线，即$\Delta x = \lambda \Delta y$，以下讨论$f(x,y)-f(x_0,y_0)$的符号。
+    \begin{enumerate}[(1)]
+        \item 当$B^2 - AC < 0$，且$A>0$，则此邻域内恒有$f(x,y)-f(x_0,y_0)>0$，即$f(x_0,y_0)<f(x,y)$，此时$f(x_0,y_0)$为极小值；
+        \item 同理有当$B^2 - AC < 0$，且$A<0$，$f(x_0,y_0)$为极大值;
+        \item 当$B^2 - AC > 0$时，二次函数有两个不同的零点，在此邻域内$f(x,y)-f(x_0,y_0)$的符号有变化，故$f(x_0,y_0)$不是极值；
+        \item 当$B^2 - AC = 0$时，二次函数只有一个零点，设为$\Delta x =\lambda\Delta y$。当此直线的两侧的函数值同号时，$f(x_0,y_0)$是极值，否则不是极值。
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    设$f(x,y)$是连续函数，且$\lim_{(x,y)\to(0,0)}\dfrac{f(x,y)-f(0,0)}{x^3+y^3 - 3x^2 - 3y^2} = 1$，
+    判断$(0,0)$是否为极值点。
+\end{example}
+\begin{solution}
+    设
+    \[ g(x,y) = x^3 + y^3 - 3x^2 -3y^2 \]
+    则有
+    \[ g'_x(0,0) = g'_y(0,0) = 0 \]
+    \[ A = g''_{xx}(0,0) = -6, \quad B = g''_{xy}(0,0) = 0, \quad C = g''_{yy}(0,0) = -6 \]
+    则有
+    \[\Delta = B^2 - AC < 0, \quad A  < 0 \]
+    则$(0,0)$为极大值点，$g(0,0) = 0$。故在$(0,0)$的去心邻域内，恒有$g(x,y)<0$
+    即极限的分母为负，根据极限的保号性，存在$\delta > 0$，使当$0 < \sqrt{x^2 + y^2} < \delta$，
+    \[
+        \frac{f(x,y) - f(0,0)}{x^3 + y^3 - 3x^2 -3y^2} > 0 \implies f(x,y) < f(0,0)
+    \]
+    所以$(0,0)$为极大值点。
+\end{solution}
+
+\begin{example}
+    设$f(x,y)$在点$O(0,0)$的某邻域$U$内连续，且$\lim_{(x,y)\to(0,0)}\frac{f(x,y) - xy}{x^2 + y^2} = a > \frac{1}{2}$，
+    判断$(0,0)$是否为极值点。
+\end{example}
+\begin{solution}
+    由题目极限可设
+    \[ \frac{f(x,y) - xy}{x^2 + y^2} = a + \alpha \]
+    即
+    \[ f(x,y) = (a + \alpha)(x^2 + y^2) + xy \]
+    其中$\lim_{(x,y)\to(0,0)} \alpha = 0$，则$\alpha$在$(x,y)\to(0,0)$时有界，不妨先将其作为常数。
+    根据$f(x,y)$的连续性可知
+    \[ f(0,0) = \lim_{(x,y)\to(0,0)} f(x,y) = \lim_{(x,y)\to(0,0)} [(a + \alpha)(x^2 + y^2) + xy] = 0 \]
+    则设
+    \[ g(x,y) = f(x,y) - f(0,0) = (a + \alpha)(x^2 + y^2) + xy \]
+    \[ g'_x(0,0) = g'_y(0,0) = 0 \]
+    \[ A = g''_{xx}(0,0) = 2(a+\alpha), \quad B=g''_{xy}(0,0) = 1,\quad C = g''_{yy}(0,0) = 2(a+\alpha) \]
+    则有
+    \[ \Delta = B^2 - AC = 1 - 4(a+\alpha)^2 \]
+    令$\Delta < 0$，得
+    \[ \alpha \in (-\infty,  - \frac{1}{2} - a) \cup (\frac{1}{2} - a, +\infty) \]
+    由于$\lim_{(x,y)\to(0,0)} \alpha = 0$，则存在$\delta > 0$，使当$0<\sqrt{x^2 + y^2}<\delta$时，恒有
+    \[ |\alpha| < a - \frac{1}{2} \]
+    即
+    \[ \alpha \in (\frac{1}{2} - a, a - \frac{1}{2}) \]
+    属于$\Delta < 0$的区间内，故在$O(0,0)$的去心邻域内恒有$g(x,y) > g(0,0)$，即$f(x,y) > f(0,0)$，
+    所以$(0,0)$为极小值点。
+\end{solution}
+
+\begin{example}
+    求二元函数$z=f(x,y)=x^2y(4-x-y)$在由直线$x+y=6$，$x$轴和$y$轴所围成的闭区域$D$上的极值，最大值和最小值。
+\end{example}
+\begin{solution}
+    令
+    \[
+        \begin{cases}
+            f'_x  = 2xy(4-x-y) - x^2y = = xy(8-3x-2y) =  0 \\
+            f'_y  = x^2(4-x-y) - x^2y = x^2(4-x-2y) = 0
+        \end{cases}
+    \]
+    则有
+    \[
+        \begin{cases}
+            x = 0                        \\
+            y = 0 \text{ 且~} 4-x-2y = 0 \\
+            8-3x-2y = 0 \text{ 且~} 4-x-2y = 0
+        \end{cases}
+    \]
+    解得$x=0, (x,y)=(4,0), (x,y)=(2,1)$，其中只有$(2,1)$为内点。
+    \[ A = f''_{xx}(2,1) = -6 ,\quad B = f''_{xy}(2,1) = -4, C = f''_{yy}(2,1) = -8 \]
+    则有
+    \[ \Delta = B^2 -AC -32 < 0,\quad A < 0 \]
+    所以闭区域$D$的极大值为$f(2,1)=4$。
+
+    在线段$x=0(0\leq y \leq 6)$上有$z=f(0,y)=0$。在线段$y=0(0\leq x\leq 6)$上有$z=f(x,0)=0$
+
+    在直线$x+y=6$上，令$y=6-x$代入$z=f(x,y)$中，得$g(x) = z =-2x^2(6-x)=2x^3-12x^2,(0\leq x\leq 6)$，
+    令
+    \[ g'(x) = 6x^2 -24x =0 \]
+    得$x = {0, 4}$，所以$g(0) = 0, g(4) = -64, g(6) = 0$
+
+    综上所得点得函数值，可知$z_{\max} = f(2,1) = 4, z_{\min} = f(4,2) = -64$，极大值为$f(2,1)=4$。
+
+
+\end{solution}
+
+\subsection{条件极值}
+条件极值常常需要转化为自由极值，有时候可以通过消去一个变量变为自由极值，更多情况下可以通过增加一个变量变为自由极值（拉格朗日数乘法）。
+
+考察条件极小值问题
+\[
+    \begin{cases}
+        f(x,y,z) \to \min, \\
+        \varphi(x,y,z) = 0.
+    \end{cases}
+\]
+假设$S:\varphi(x,y,z)=0$是一个光滑曲面且$P(x_0,y_0,z_0)$是函数$f:S\to R$（即曲面上的点的对应函数值）的极小值点。
+又设$\Gamma : \bm{r} = \bm{r}(t) = (x(t),y(t),z(t))$是曲面$S$上的任意一条光滑曲线，且满足$\bm{r}(0)=(x_0,y_0,z_0)$，则$t=0$是一元函数$g(t)=f(x(t),y(t),z(t))$的极小值点。
+因此又$g'(t)=0$，即
+\[
+    \left.\frac{\partial f}{\partial x}x'(t) + \frac{\partial f}{\partial y}y'(t) + \frac{\partial f}{\partial z}z'(t)\right|_{t=0}
+    =
+    \nabla f(x_0,y_0,z_0) \cdot \bm{r}'(0) = 0
+\]
+这表面$\nabla f(x_0,y_0,z_0)$垂直于曲面$S$在$P$点的切平面，故$\nabla f(x_0,y_0,z_0)$是曲面$S$在点$P$的法向量。
+
+另一方面，曲面$S$在点$P$的法向量为$\nabla\varphi(x_0,y_0,z_0)$，因此两个法向量线性相关，引入常数$\lambda$。故有
+\[ \nabla f(x_0,y_0,z_0) + \lambda\nabla\varphi(x_0,y_0,z_0) = 0 \]
+由此设拉格朗日函数
+\begin{equation}
+    \label{eq:拉格朗日函数}
+    L(x,y,z,\lambda) = f(x,y,z) + \lambda\varphi(x,y,z)
+\end{equation}
+那么$(x_0,y_0,z_0)$是拉格朗日函数的临界点，即
+\[ \nabla L(x_0,y_0,z_0,\lambda) = \nabla f(x_0,y_0,z_0) + \lambda\nabla\varphi(x_0,y_0,z_0) = 0 \]
+因此只需解临界方程，可得出条件极值的极值点。
+
+梯度形式：
+\begin{equation}
+    \label{eq:拉格朗日临界方程}
+    \nabla L(x,y,z,\lambda) = 0
+\end{equation}
+方程组形式：
+\begin{equation}
+    \begin{dcases*}
+        \frac{\partial f}{\partial x} = 0,       \\
+        \frac{\partial f}{\partial y} = 0,       \\
+        \frac{\partial f}{\partial z} = 0,       \\
+        \frac{\partial f}{\partial \lambda} = 0. \\
+    \end{dcases*}
+\end{equation}
+
+\begin{example}
+    在第一象限的椭圆$\frac{x^2}{4} + y^2 = 1$上求一点，使过该点的法线与原点的距离最大。
+\end{example}
+\begin{solution}
+    设$f(x,y) = \frac{x^2}{4} + y^2 - 1 = 0$
+    \[ \bm{n} = \left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}\right) = \left(\frac{x}{2}, 2y\right) \]
+    则法线方程为
+    \[ \frac{X - x}{\frac{x}{2}} = \frac{Y - y}{2y} \]
+    即
+    \[ 2y(X-x)-\frac{x}{2}(Y-y) = 0 \]
+    故法线到原点的距离为
+    \[
+        d
+        = \left| \frac{2y(0-x)-\frac{x}{2}(0-y)}{\sqrt{(2y)^2 + \left(-\frac{x}{2}\right)^2}} \right|
+        = \frac{3}{2}\frac{|xy|}{\sqrt{(2y^2)+\left(\frac{x}{2}\right)^2}}
+        = \frac{3}{2} \left[\left(\frac{2}{x}\right)^2 + \left(\frac{1}{2y}\right)^2\right]^{-\frac{1}{2}}
+    \]
+    为简化运算，设$g(x,y) = (\dfrac{2}{x})^2 + (\dfrac{1}{2y})^2$，拉格朗日函数$L(x,y,\lambda) = g(x,y) + \lambda f(x,y)$
+    则当$g(x,y)$取最小值时，$d$最大。
+    令
+    \[
+        \begin{dcases}
+            L'_x = -\frac{8}{x^3} + \frac{\lambda}{2} x = 0 \\
+            L'_y = -\frac{1}{2y^3} + 2\lambda y = 0         \\
+            L'_\lambda = f(x,y)=0
+        \end{dcases}
+    \]
+    所以有$\lambda = \dfrac{16}{x^4} = \dfrac{1}{4y^4}$，解得$x=2\sqrt{2}y$，带入$f(x,y)=0$
+    得$y = \frac{\sqrt{3}}{3},x=\frac{2\sqrt{6}}{3}$。
+    根据实际问题距离$d$存在最大值，又驻点唯一，故所得即所求，所以$\left(\dfrac{2\sqrt{6}}{3}, \dfrac{\sqrt{3}}{3}\right)$为所求点。
+\end{solution}
+
+此题目较难的是构造拉格朗日选用的函数，复杂的函数会使求导变为复杂，所以应该适当地将目的函数变形。利用变形后的函数来构造拉格朗日函数，使求导变简单。
