@@ -29,7 +29,7 @@
     （积分判别法）
     \label{th:积分判别法}
     若函数$f(x)$是区间$[1,+\infty)$上的非负递减函数，则
-    \[ \sum_{n=1}^\infty f(n)\text{ 收敛} \iff \int_1^{+\infty}f(x)\,\diff x\text{ 收敛}\]
+    \[ \sum_{n=1}^\infty f(n)\text{ 收敛} \iff \int_1^{+\infty}f(x)\dd{x}\text{ 收敛}\]
 \end{theorem}
 
 \begin{theorem}
@@ -145,8 +145,8 @@
 \subsection{任意项级数}
 一般项级数的敛散性常用有限片段的方法研究，即数列极限的柯西准则\ref{th:柯西准则}。
 级数的部分和$S_n$，根据柯西准则，当$\forall \varepsilon > 0,\exists N$，使得当$m>n>N$时，恒有
-$|S_m-S_n|<\varepsilon$，即
-\[ \left|\sum_{k\geq n}^m u_k \right|<\varepsilon \]
+$\abs{S_m-S_n}<\varepsilon$，即
+\[ \abs{\sum_{k\geq n}^m u_k}<\varepsilon \]
 
 
 形如$u_1 - u_2 + \cdots + (-1)^{n+1}u_n + \cdots$或$-u_1 + u_2 - \cdots + (-1)^n u_n + \cdots$
@@ -160,7 +160,7 @@ $|S_m-S_n|<\varepsilon$，即
 \end{theorem}
 
 一个级数$\displaystyle\sum_{n=1}^\infty u_n$的\textcolor{red}{\textbf{\textsf{绝对化级数}}}
-$\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\textbf{\textsf{绝对收敛}}}；
+$\displaystyle\sum_{n=1}^\infty \abs{u_n}$收敛，则称该级数\textcolor{red}{\textbf{\textsf{绝对收敛}}}；
 一个收敛的级数的绝对化级数发散，则称该级数\textcolor{red}{\textbf{\textsf{条件收敛}}}。
 \sidenote{
     绝对化级数收敛$\implies$绝对收敛\\
@@ -171,7 +171,7 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
     （绝对收敛法）
     \label{th:绝对收敛法}
     绝对收敛级数一定收敛。
-    \[ \sum_{n=1}^\infty |u_n|\text{ 收敛}\implies \sum_{n=1}^\infty u_n \text{ 收敛} \]
+    \[ \sum_{n=1}^\infty \abs{u_n}\text{ 收敛}\implies \sum_{n=1}^\infty u_n \text{ 收敛} \]
 \end{theorem}
 
 \begin{example}
@@ -180,7 +180,7 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
 \begin{solution}
     根据比值判别法，
     \[
-        \lim_{n\to\infty} \frac{|u_{n+1}|}{|u_n|}
+        \lim_{n\to\infty} \frac{\abs{u_{n+1}}}{\abs{u_n}}
         =
         \lim_{n\to\infty} x\left(\frac{n}{n+1}\right)^p
         =
@@ -188,7 +188,7 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
     \]
     当$x<1$时，原级数绝对收敛；
 
-    当$x>1$时，$\displaystyle\lim_{n\to\infty}|u_n|=\lim_{n\to\infty}\frac{x^n}{n^p}=+\infty$，
+    当$x>1$时，$\displaystyle\lim_{n\to\infty}\abs{u_n}=\lim_{n\to\infty}\frac{x^n}{n^p}=+\infty$，
     所以原级数发散；
 
     当$x=1$时，若$p>1$，则$\displaystyle\sum_{n=0}^\infty u_n$绝对收敛，若$p\leq 1$，根据Leibniz判别法，$\displaystyle\sum_{n=0}^\infty u_n$条件收敛。
@@ -203,13 +203,13 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
     由于$f(x)$存在连续二阶导数，且$\displaystyle\lim_{x\to 0}\frac{f(x)}{x} = 0$，所以$f(0)=f'(0)=0$
     那么有
     \[
-        \lim_{n\to\infty} \frac{\left|f\left(\frac{1}{n}\right)\right|}{\frac{1}{n^2}}
+        \lim_{n\to\infty} \frac{\abs{f\left(\frac{1}{n}\right)}}{\frac{1}{n^2}}
         =
-        \lim_{x\to 0^+}\left|\frac{f(x)}{x^2}\right|
+        \lim_{x\to 0^+}\abs{\frac{f(x)}{x^2}}
         =
-        \lim_{x\to0^+} \left|\frac{f'(x)}{2x}\right|
+        \lim_{x\to0^+} \abs{\frac{f'(x)}{2x}}
         =
-        \frac{1}{2}|f''(0)|
+        \frac{1}{2}\abs{f''(0)}
     \]
     因为$\displaystyle\sum_{n=1}^\infty\frac{1}{n^2}$收敛，
     所以$\displaystyle\sum_{n=1}^\infty f\left(\frac{1}{n}\right)$绝对收敛。
@@ -296,13 +296,13 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
     即原级数收敛。
     而级数
     \[
-        \sum_{n=2}^\infty |u_n|
+        \sum_{n=2}^\infty \abs{u_n}
         =
         \sum_{n=2}^\infty \frac{1}{\sqrt{n+(-1)^n}}
         >
         \sum_{n=2}^\infty \frac{1}{\sqrt{n+1}}
     \]
-    根据比较判别法可知，级数$\displaystyle\sum_{n=2}^\infty |u_n|$发散，故原级数条件收敛。
+    根据比较判别法可知，级数$\displaystyle\sum_{n=2}^\infty \abs{u_n}$发散，故原级数条件收敛。
 \end{proof}
 
 \section{函数项级数}
@@ -377,7 +377,7 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
 \begin{definition}
     设$S(x),S_n(x)$分别是级数$\displaystyle\sum_{n=1}^\infty u_n(x)$在区间$I$上的和函数与部分和函数，
     如果$\varepsilon > 0,\exists N$，使得当$n>N,x\in I$时，恒有
-    \[ \left| S_n(x) - S(x) \right| < \varepsilon \]
+    \[ \abs{S_n(x) - S(x)} < \varepsilon \]
     则称$S_n(x)$或级数$\displaystyle\sum_{n=1}^\infty u_n(x)$在区间$I$上一致收敛于$S(x)$
 \end{definition}
 其实为部分和函数到和函数的距离为无穷小量时，级数一致收敛。
@@ -386,7 +386,7 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
 \[
     \displaystyle\sum_{n=1}^\infty u_n(x)\,(x\in I)\text{ 一致收敛}
     \iff
-    \forall \varepsilon >0,\exists N, m>n>N, x\in I, \text{ 恒有} |S_m(x)-S_n(x)|<\varepsilon
+    \forall \varepsilon >0,\exists N, m>n>N, x\in I, \text{ 恒有} \abs{S_m(x)-S_n(x)}<\varepsilon
 \]
 
 要判断函数项级数的一致收敛性，常用方法时构造一个收敛的数项控制级数，只要控制级数收敛，便有被控制级数的一致收敛。
@@ -395,12 +395,12 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
     （控制判别法）
     \label{th:控制判别法}
     设非负数项级数$\displaystyle\sum_{n=1}^\infty M_n$收敛，如果对所有的$n$和$x\in I$，都有
-    $|u_n(x)|\leq M_n$，则$\displaystyle\sum_{n=1}^\infty u_n(x)$在$I$上一致收敛。
+    $\abs{u_n(x)}\leq M_n$，则$\displaystyle\sum_{n=1}^\infty u_n(x)$在$I$上一致收敛。
 \end{theorem}
 \begin{proof}
     由于$\displaystyle\sum_{n=1}^\infty M_n$收敛，根据柯西准则，$\forall \varepsilon>0,\exists N$使得当
     $m>n>N$时，恒有部分和片段$\displaystyle\sum_{k>n}^m M_k < \varepsilon$，于是$x\in I$，恒有
-    \[ \left| \sum_{k>n}^m u_k(x) \right| \leq \sum_{k>n}^m |u_k(x)| \leq \sum_{k>n}^m M_k < \varepsilon \]
+    \[ \abs{\sum_{k>n}^m u_k(x)} \leq \sum_{k>n}^m \abs{u_k(x)} \leq \sum_{k>n}^m M_k < \varepsilon \]
     因此$\displaystyle\sum_{n=1}^\infty u_n(x)$在$I$上一致收敛。
 \end{proof}
 
@@ -434,7 +434,7 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
     \label{th:和函数的可积性}
     设$\displaystyle\sum_{n=1}^\infty u_n(x)$在区间$[a,b]$上一致收敛于$S(x)$，如果每个$u_n(x)$都在$[a,b]$上连续，
     则和函数$S(x)$在$[a,b]$上可积，且
-    \[ \int_a^b S(x)\,\diff x = \sum_{n=1}^\infty \int_a^b u_n(x)\,\diff x \]
+    \[ \int_a^b S(x)\dd{x} = \sum_{n=1}^\infty \int_a^b u_n(x)\dd{x} \]
 \end{theorem}
 \begin{theorem}
     （和函数的可微性）
@@ -446,9 +446,9 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
 \begin{proof}
     设$a\in I$且$\displaystyle\sum_{n=1}^\infty u_n'(x)$在$I$上一致收敛于$T(x)$，则由\ref{th:和函数的可积性}可知，
     \[
-        \int_a^x T(t)\,\diff t
+        \int_a^x T(t)\dd{t}
         =
-        \sum_{n=1}^\infty \int_a^x u_n'(t)\,\diff t
+        \sum_{n=1}^\infty \int_a^x u_n'(t)\dd{t}
         =
         \sum_{n=1}^\infty [u_n(x)-u_n(a)]
         =
@@ -469,16 +469,16 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
     （Abel定理）
     \label{th:Abel定理}
     \begin{enumerate}[(1)]
-        \item 若幂级数$\displaystyle\sum_{n=0}^\infty a_nx^n$在非零点$a$收敛，则在开区间$(-|a|,|a|)$内绝对收敛。
-        \item 若幂级数$\displaystyle\sum_{n=0}^\infty a_nx^n$在非零点$a$发散，则当$|x| > |a|$时，幂级数$\displaystyle\sum_{n=0}^\infty a_nx^n$发散。
+        \item 若幂级数$\displaystyle\sum_{n=0}^\infty a_nx^n$在非零点$a$收敛，则在开区间$(-\abs{a},\abs{a})$内绝对收敛。
+        \item 若幂级数$\displaystyle\sum_{n=0}^\infty a_nx^n$在非零点$a$发散，则当$\abs{x} > \abs{a}$时，幂级数$\displaystyle\sum_{n=0}^\infty a_nx^n$发散。
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    由于级数$\displaystyle\sum_{n=0}^\infty a_na^n$收敛，则当$|x| < |a|$时有
-    \[ |a_nx^n| = \left|\frac{a_na^n \cdot x^n}{a^n}\right| \leq M\left|\frac{x}{a}\right|^n  \]
-    根据根值判别法可知$\displaystyle\sum_{n=0}^\infty M\left|\frac{x}{a}\right|^n$在$|x| < |a|$时收敛，
-    所以由比较判别法可知$\displaystyle\sum_{n=0}^\infty |a_nx^n|$收敛。
-    即幂级数$\displaystyle\sum_{n=0}^\infty a_nx^n$在开区间$(-|a|,|a|)$内绝对收敛。
+    由于级数$\displaystyle\sum_{n=0}^\infty a_na^n$收敛，则当$\abs{x} < \abs{a}$时有
+    \[ \abs{a_nx^n} = \abs{\frac{a_na^n \cdot x^n}{a^n}} \leq M\abs{\frac{x}{a}}^n  \]
+    根据根值判别法可知$\displaystyle\sum_{n=0}^\infty M\abs{\frac{x}{a}}^n$在$\abs{x} < \abs{a}$时收敛，
+    所以由比较判别法可知$\displaystyle\sum_{n=0}^\infty \abs{a_nx^n}$收敛。
+    即幂级数$\displaystyle\sum_{n=0}^\infty a_nx^n$在开区间$(-\abs{a},\abs{a})$内绝对收敛。
 \end{proof}
 根据Abel定理，幂级数$\displaystyle\sum_{n=0}^\infty a_nx^n$的收敛域有三种情况：
 \begin{enumerate}
@@ -493,7 +493,7 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
 
 \begin{theorem}
     （收敛半径）
-    如果$\displaystyle\lim_{n\to\infty}\left| \frac{a_{n+1}}{a_n} \right| = l$或$\displaystyle\lim_{n\to\infty}\sqrt[n]{|a_n|}=l$，则幂级数
+    如果$\displaystyle\lim_{n\to\infty}\abs{\frac{a_{n+1}}{a_n}} = l$或$\displaystyle\lim_{n\to\infty}\sqrt[n]{\abs{a_n}}=l$，则幂级数
     $\displaystyle\sum_{n=0}^\infty a_nx^n$的收敛半径为
     \[ R = \lim_{t \to l} \frac{1}{t} \]
 \end{theorem}
@@ -526,8 +526,8 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
     则该幂级数在$(-R,R)$的每个闭子区间$[a,b]$上一致收敛。
 \end{theorem}
 \begin{proof}
-    设$r=\max(|a|,|b|)$，则对于$x\in[a,b]$，都有
-    \[ |a_nx^n| \leq |a_nr^n| \]
+    设$r=\max(\abs{a},\abs{b})$，则对于$x\in[a,b]$，都有
+    \[ \abs{a_nx^n} \leq \abs{a_nr^n} \]
     而由于$0<r<R$，根据Abel定理\ref{th:Abel定理}可知，$\displaystyle\sum_{n=0}^\infty a_nr^n$绝对收敛级数一定收敛。
     根据控制判别法\ref{th:控制判别法}可知，原级数在$(-R,R)$上内闭一致收敛。
 \end{proof}
@@ -545,7 +545,7 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
         =\sum_{n=0}^\infty (-1)^{n+1}\frac{1}{2n-1}x^{2n-1}
     \]
     所以
-    \[  \lim_{n\to\infty} \sqrt[n]{|(-1)^{n+1}|} = 1 \]
+    \[  \lim_{n\to\infty} \sqrt[n]{\abs{(-1)^{n+1}}} = 1 \]
     所以$S(x)$的收敛半径为$R=1$。
 
     当$x=1$时
@@ -565,7 +565,7 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
          & = \frac{1}{1+x^2}
     \end{align*}
     于是，
-    \[ S(x) = S(x) - S(0)=\int_0^x S'(t)\,\diff t = \int_0^x \frac{1}{1+t^2}\,\diff t = \arctan x \]
+    \[ S(x) = S(x) - S(0)=\int_0^x S'(t)\dd{t} = \int_0^x \frac{1}{1+t^2}\dd{t} = \arctan x \]
     由此可知
     \[ S(1) = \frac{\pi}{4} \]
 \end{solution}
@@ -577,13 +577,13 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
 \begin{solution}
     设$t=x^3$，则
     \[
-        \lim_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right|
+        \lim_{n\to\infty} \abs{\frac{a_{n+1}}{a_n}}
         =
         \lim_{n\to\infty} \frac{3n+4}{3n+1}
         =
         1
     \]
-    所以$|t|<1$，即$x\in(-1,1)$时，幂函数绝对收敛。当$x=1$时，幂级数条件收敛；$x=-1$时，幂级数发散。
+    所以$\abs{t}<1$，即$x\in(-1,1)$时，幂函数绝对收敛。当$x=1$时，幂级数条件收敛；$x=-1$时，幂级数发散。
 
     所以幂级数的收敛域为$(-1,1]$，设和函数
     \[ S(x) = \sum_{n=0}^\infty \frac{(-1)^n}{3n+1}x^{3n} \]
@@ -595,9 +595,9 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
     所以
     \begin{align*}
         \varphi(x)
-         & = \varphi(0) + \int_0^x \varphi'(t)\,\diff t = \int_0^x \frac{1}{1+t^3}\,\diff t                                                                                             \\
-         & = \frac{1}{3}\int_0^x \frac{1}{1+t}\,\diff t - \frac{1}{3}\int_0^x \frac{t-2}{t^2-t+1}\,\diff t                                                                              \\
-         & = \frac{1}{3}\ln(1+x) - \frac{1}{3}\left( \frac{1}{2}\int_0^x \frac{\diff (t^2-t+1)}{t^2-t+1} - \frac{3}{2}\int_0^x \frac{\diff t}{(t-\frac{1}{2})^2 + \frac{3}{4}}  \right) \\
+         & = \varphi(0) + \int_0^x \varphi'(t)\dd{t} = \int_0^x \frac{1}{1+t^3}\dd{t}                                                                                               \\
+         & = \frac{1}{3}\int_0^x \frac{1}{1+t}\dd{t} - \frac{1}{3}\int_0^x \frac{t-2}{t^2-t+1}\dd{t}                                                                                \\
+         & = \frac{1}{3}\ln(1+x) - \frac{1}{3}\left( \frac{1}{2}\int_0^x \frac{\dd(t^2-t+1)}{t^2-t+1} - \frac{3}{2}\int_0^x \frac{\dd{t}}{(t-\frac{1}{2})^2 + \frac{3}{4}}  \right) \\
          & = \frac{1}{3}\ln(1+x) - \frac{1}{6}\ln(x^2-x+1) + \frac{1}{\sqrt{3}}\arctan\frac{2x-1}{\sqrt{3}} +\frac{\pi}{6\sqrt{3}}
     \end{align*}
     于是原幂级数的和函数为
@@ -612,15 +612,15 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
 \end{solution}
 
 \begin{example}
-    设数列${a_n}$满足$a_1=a_2=1$，且$a_{n+1}=a_n+a_{n-1}, n=2,3,\cdots$，证明在$|x|<\dfrac{1}{2}$时，
+    设数列${a_n}$满足$a_1=a_2=1$，且$a_{n+1}=a_n+a_{n-1}, n=2,3,\cdots$，证明在$\abs{x}<\dfrac{1}{2}$时，
     幂级数$\displaystyle\sum_{n=1}^\infty a_nx^{n-1}$收敛，并求其和函数与系数$a_n$。
 \end{example}
 由于幂级数的收敛类似于$\displaystyle\sum_{n=0}^\infty a^nx^n$
 其中$a$与幂级数的收敛半径$R$相关。所以当知道幂级数的收敛区间时，可以令$\dfrac{1}{a}\geq R$，且幂级数$\displaystyle\sum_{n=0}^\infty a^nx^n$收敛。
 最后利用比较判别法得出原幂级数的相关性质。
 \begin{proof}
-    注意到$|x|<\dfrac{1}{2}$，且幂级数$\displaystyle\sum_{n=1}^\infty 2^nx^n$在$|x|<\dfrac{1}{2}$时绝对收敛。
-    那么若$|a_n x^n| \leq |2^n x^n|$即$a_n\leq 2^n$成立时，则原幂级数收敛。
+    注意到$\abs{x}<\dfrac{1}{2}$，且幂级数$\displaystyle\sum_{n=1}^\infty 2^nx^n$在$\abs{x}<\dfrac{1}{2}$时绝对收敛。
+    那么若$\abs{a_n x^n} \leq \abs{2^n x^n}$即$a_n\leq 2^n$成立时，则原幂级数收敛。
 
     下证$a_n\leq 2^n$，设$b_n=2^n$，则有
     \begin{align*}
@@ -628,7 +628,7 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
         a_{n+1} & = a_{n} + a_{n-1}
     \end{align*}
     且$a_1 < b_1$。比较易知，$a_{n}<b_{n}$恒成立。
-    所以根据比较判别法，原幂级数在$|x|<\dfrac{1}{2}$时，绝对收敛。
+    所以根据比较判别法，原幂级数在$\abs{x}<\dfrac{1}{2}$时，绝对收敛。
     \begin{align*}
         S(x) = \sum_{n=1}^\infty a_nx^{n-1}
          & = a_1 + a_2x + \sum_{n=3}^\infty a_nx^{n-1}                                          \\
@@ -672,7 +672,7 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
 \begin{theorem}
     （泰勒级数）
     \label{th:泰勒级数}
-    设函数$f(x)$在$|x-x_0|<R$内有各阶导数（无穷阶导数），则$f(x)$在该领域内可展为泰勒级数当且仅当$|x-x_0|<R$时，恒有$\displaystyle\lim_{n\to\infty}R_n(x)=0$
+    设函数$f(x)$在$\abs{x-x_0}<R$内有各阶导数（无穷阶导数），则$f(x)$在该领域内可展为泰勒级数当且仅当$\abs{x-x_0}<R$时，恒有$\displaystyle\lim_{n\to\infty}R_n(x)=0$
     其中$R_n(x)$为泰勒展开的余项，即
     \[ R_n(x) = f(x) - \sum_{k=0}^{\infty}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k \]
     此时，有
@@ -736,10 +736,10 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
 \[ 1,\cos x,\sin x,\cdots,\cos nx, \sin nx \]
 在区间$[a,b]$上定义内积运算
 \begin{equation}
-    \langle f(x),g(x) \rangle  = \int_a^b f(x)g(x)\,\diff x
+    \langle f(x),g(x) \rangle  = \int_a^b f(x)g(x)\dd{x}
 \end{equation}
 即将$f(x)$看作在区间$[a,b]$上的无穷维向量$(f(x_1),f(x_2),\cdots)$，$g(x)$同理，
-则向量的内积为$f(x_1)g(x_1)+f(x_2)g(x_2)+\cdots = \int_a^b f(x)g(x)\,\diff x$
+则向量的内积为$f(x_1)g(x_1)+f(x_2)g(x_2)+\cdots = \int_a^b f(x)g(x)\dd{x}$
 
 
 在区间$[-\pi,\pi]$上，三角函数系具有正交性，即函数系中仍以两个不同函数按照，的内积都为零。
@@ -760,15 +760,15 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
 \end{equation}
 则在\textcolor{red}{逐项可积}的条件下，由三角函数系得正交性可以推出
 \begin{align}
-    a_0 & = \frac{1}{\pi}\langle f(x),1 \rangle        = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\,\diff x        \\
-    a_n & = \frac{1}{\pi}\langle f(x),\cos nx \rangle  = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\cos nx\,\diff x \\
-    b_n & = \frac{1}{\pi}\langle f(x),\sin nx \rangle  = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\sin nx\,\diff x
+    a_0 & = \frac{1}{\pi}\langle f(x),1 \rangle        = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\dd{x}        \\
+    a_n & = \frac{1}{\pi}\langle f(x),\cos nx \rangle  = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\cos nx\dd{x} \\
+    b_n & = \frac{1}{\pi}\langle f(x),\sin nx \rangle  = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\sin nx\dd{x}
 \end{align}
 
 若$f(x)$是以$2\pi$为周期，由于三角函数系周期也是$2\pi$，则当$f(x)$给出在区间$[0,2\pi]$上的表达式时，
 可以直接将傅里叶系数的计算积分上下限直接改为$[0,2\pi]$，其原因是$f(x)$与三角函数系的乘积仍以$2\pi$为周期，
 同时周期为$T$的函数定积分有
-\[ \int_a^{a+T} f(x)\,\diff x = \int_0^T f(x)\,\diff x \]
+\[ \int_a^{a+T} f(x)\dd{x} = \int_0^T f(x)\dd{x} \]
 
 \begin{theorem}
     （Dirichlet收敛定理）
@@ -794,15 +794,15 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
     其中$\alpha\neq 0$，试将$f(x)$展开成傅里叶级数，并求级数$\displaystyle\sum_{n=1}^\infty\frac{1}{1+n^2}$的和。
 \end{example}
 \begin{solution}
-    \[ a_0 = \frac{1}{\pi}\int_0^{2\pi} f(x)\,\diff x = \frac{\mathrm{e}^{2\alpha\pi} - 1}{\alpha\pi}\]
+    \[ a_0 = \frac{1}{\pi}\int_0^{2\pi} f(x)\dd{x} = \frac{\mathrm{e}^{2\alpha\pi} - 1}{\alpha\pi}\]
     \begin{align*}
-        a_n & = \frac{1}{\pi}\int_0^{2\pi} f(x)\cos nx\,\diff x = \frac{1}{\pi}\int_0^{2\pi} \mathrm{e}^{\alpha x}\cos nx\,\diff x                         \\
-            & =\frac{1}{\alpha\pi} \left(\left.\mathrm{e}^{\alpha x}\cos nx\right|_0^{2\pi} + n\int_0^{2\pi} \mathrm{e}^{\alpha x}\sin nx\,\diff x \right) \\
+        a_n & = \frac{1}{\pi}\int_0^{2\pi} f(x)\cos nx\dd{x} = \frac{1}{\pi}\int_0^{2\pi} \mathrm{e}^{\alpha x}\cos nx\dd{x}                      \\
+            & =\frac{1}{\alpha\pi} \left(\eval{\mathrm{e}^{\alpha x}\cos nx}_0^{2\pi} + n\int_0^{2\pi} \mathrm{e}^{\alpha x}\sin nx\dd{x} \right) \\
             & =\frac{\mathrm{e}^{2\alpha\pi} - 1}{\alpha\pi} +  \frac{n}{\alpha}b_n
     \end{align*}
     \begin{align*}
-        b_n & = \frac{1}{\pi}\int_0^{2\pi} f(x)\sin nx\,\diff x = \frac{1}{\pi}\int_0^{2\pi} \mathrm{e}^{\alpha x}\sin nx\,\diff x                         \\
-            & =\frac{1}{\alpha\pi} \left(\left.\mathrm{e}^{\alpha x}\sin nx\right|_0^{2\pi} - n\int_0^{2\pi} \mathrm{e}^{\alpha x}\cos nx\,\diff x \right) \\
+        b_n & = \frac{1}{\pi}\int_0^{2\pi} f(x)\sin nx\dd{x} = \frac{1}{\pi}\int_0^{2\pi} \mathrm{e}^{\alpha x}\sin nx\dd{x}                      \\
+            & =\frac{1}{\alpha\pi} \left(\eval{\mathrm{e}^{\alpha x}\sin nx}_0^{2\pi} - n\int_0^{2\pi} \mathrm{e}^{\alpha x}\cos nx\dd{x} \right) \\
             & =-\frac{n}{\alpha}a_n
     \end{align*}
     联立两式得
@@ -837,12 +837,12 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
     如果函数$f(x)$在$[0,\pi]$上可以展为正弦函数
     \[ f(x) = b_1\sin x + b_2\sin 2x + \cdots + b_n \sin nx + \cdots \]
     则有
-    \[ b_n = \frac{2}{\pi}\int_0^\pi f(x)\sin nx \,\diff x \]
+    \[ b_n = \frac{2}{\pi}\int_0^\pi f(x)\sin nx \dd{x} \]
 
     如果函数$f(x)$在$[0,\pi]$上可以展为余弦函数
     \[ f(x) = \frac{a_0}{2} + a_1\cos x + a_2\cos 2x + \cdots + a_n \cos nx + \cdots \]
     则有
-    \[ a_n = \frac{2}{\pi}\int_0^\pi f(x)\cos nx \,\diff x \]
+    \[ a_n = \frac{2}{\pi}\int_0^\pi f(x)\cos nx \dd{x} \]
 \end{theorem}
 \begin{proof}
     令
@@ -868,8 +868,8 @@ $\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则称该级数\textcolor{red}{\t
     \[ f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty(a_n\cos \frac{n\pi x}{l} + b_n\sin\frac{n\pi x}{l}) \]
     则有
     \begin{align*}
-        a_n & = \frac{1}{l}\int_{-l}^l f(x)\cos\frac{n\pi x}{l}\,\diff x (n=0,1,2,\cdots); \\
-        b_n & = \frac{1}{l}\int_{-l}^l f(x)\sin\frac{n\pi x}{l}\,\diff x (n=1,2,3,\cdots);
+        a_n & = \frac{1}{l}\int_{-l}^l f(x)\cos\frac{n\pi x}{l}\dd{x} (n=0,1,2,\cdots); \\
+        b_n & = \frac{1}{l}\int_{-l}^l f(x)\sin\frac{n\pi x}{l}\dd{x} (n=1,2,3,\cdots);
     \end{align*}
 \end{theorem}
 \begin{proof}

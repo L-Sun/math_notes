@@ -65,27 +65,27 @@
 \begin{theorem}
     （定比分点公式）
     若$D$点在$B$点与$C$点之间，向量$\overrightarrow{AD}$即可表达成向量$\overrightarrow{AB}$与向量$\overrightarrow{AC}$
-    \[ \overrightarrow{AD} = \frac{|\overrightarrow{CD}|}{|\overrightarrow{BC}|}\overrightarrow{AB} + \frac{|\overrightarrow{BD}|}{|\overrightarrow{BC}|}\overrightarrow{AC} \]
-    若$\dfrac{|\overrightarrow{CD}|}{|\overrightarrow{BC}|} = \lambda$，则有
+    \[ \overrightarrow{AD} = \frac{\norm{\overrightarrow{CD}}}{\norm{\overrightarrow{BC}}}\overrightarrow{AB} + \frac{\norm{\overrightarrow{BD}}}{\norm{\overrightarrow{BC}}}\overrightarrow{AC} \]
+    若$\dfrac{\norm{\overrightarrow{CD}}}{\norm{\overrightarrow{BC}}} = \lambda$，则有
     \[ \overrightarrow{AD} = \lambda\overrightarrow{AB} + (1-\lambda)\overrightarrow{AC} \]
 \end{theorem}
 
 \subsection{内积运算}
 两个非$\bm{0}$向量$\bm{a},\bm{b}$的夹角定义为
 \begin{equation}
-    \langle\bm{a},\bm{b}\rangle = \arccos \frac{\bm{a}\cdot\bm{b}}{|\bm{a}||\bm{b}|}
+    \langle\bm{a},\bm{b}\rangle = \arccos \frac{\bm{a}\cdot\bm{b}}{\norm{\bm{a}} \norm{\bm{b}}}
 \end{equation}
 利用上式易得余弦公式
 \begin{equation}
     \label{eq:余弦公式}
-    |\bm{a}-\bm{b}|^2 = |\bm{a}|^2 + |\bm{b}|^2 - 2|\bm{a}||\bm{b}|\cos\langle\bm{a},\bm{b}\rangle
+    \norm{\bm{a}-\bm{b}}^2 = \norm{\bm{a}}^2 + \norm{\bm{b}}^2 - 2\norm{\bm{a}}\norm{\bm{b}}\cos\langle\bm{a},\bm{b}\rangle
 \end{equation}
 同时易知两个相互垂直的向量$\bm{a},\bm{b}$有
 \[ \bm{a}\perp\bm{b} \iff \bm{a}\cdot\bm{b} \]
 
 向量$\bm{a}$在非$\bm{0}$向量$\bm{b}$上的投影为
 \begin{equation}
-    |\bm{a}|\cos\langle\bm{a},\bm{b}\rangle = \bm{a}\cdot\bm{b}_0 = \frac{\bm{a}\cdot\bm{b}}{|\bm{b}|}
+    \norm{\bm{a}}\cos\langle\bm{a},\bm{b}\rangle = \bm{a}\cdot\bm{b}_0 = \frac{\bm{a}\cdot\bm{b}}{\norm{\bm{b}}}
 \end{equation}
 其中$\bm{b}_0$是$\bm{b}$的单位化向量。
 
@@ -100,7 +100,7 @@
 
 向量$\bm{a}$与坐标轴的夹角$\alpha,\beta,\gamma$称为方向角。方向角的计算可通过向量的单位化实现。
 \begin{equation}
-    \frac{\bm{a}}{|\bm{a}|} = (\cos\alpha,\cos\beta,\cos\gamma)
+    \frac{\bm{a}}{\norm{\bm{a}}} = (\cos\alpha,\cos\beta,\cos\gamma)
 \end{equation}
 
 \subsection{外积运算}
@@ -133,7 +133,7 @@
 
 混合积可以表示为以$\bm{a},\bm{b},\bm{c}$所构成的平行六面体的体积。当构成右手系是为正数，左系为负数，线性相关时为$0$
 \begin{equation}
-    V = Sh = |\bm{a}\times\bm{b}||(\bm{e}\cdot\bm{c})| = |(\bm{a}\times\bm{b})\cdot\bm{c}| = |(\bm{a},\bm{b},\bm{c})|
+    V = Sh = \norm{\bm{a}\times\bm{b}} \abs{(\bm{e}\cdot\bm{c})} = \abs{(\bm{a}\times\bm{b})\cdot\bm{c}} = \abs{(\bm{a},\bm{b},\bm{c})}
 \end{equation}
 其中$\bm{e}$为底面的法向量。
 
@@ -192,19 +192,19 @@
 \end{equation}
 向量$\bm{n}=(A,B,C)$为平面的法向量中的一个，当$A,B,C$确定时，则$D$唯一。坐标原点到平面的距离为
 \begin{equation}
-    d = \frac{|D|}{\sqrt{A^2+B^2+C^2}}
+    d = \frac{\abs{D}}{\sqrt{A^2+B^2+C^2}}
 \end{equation}
 \begin{proof}
     不妨设原点$O$到平面距离最短的点为$P(x_0,y_0,z_0)$，则向量$\overrightarrow{OP}$为平面的一个法向量，
     \[
         d
-        = \frac{\left|\bm{n}\cdot\overrightarrow{OP}\right|}{|\bm{n}|}
-        = \frac{|Ax_0 + By_0 + Cz_0|}{\sqrt{A^2+B^2+C^2}}
+        = \frac{\abs{\bm{n}\cdot\overrightarrow{OP}}}{\norm{\bm{n}}}
+        = \frac{\abs{Ax_0 + By_0 + Cz_0}}{\sqrt{A^2+B^2+C^2}}
     \]
     同时点$P$在平面上，因此有
     \[ Ax_0 + By_0 + Cz_0 + D = 0 \]
     所以
-    \[ d= \frac{|D|}{\sqrt{A^2+B^2+C^2}} \]
+    \[ d= \frac{\abs{D}}{\sqrt{A^2+B^2+C^2}} \]
 \end{proof}
 显然两个平面一般方程中的$A,B,C$相同时，若$D$相同，则表示同一个平面，若$D$相反，则两平面关于原点对称。
 
@@ -378,7 +378,7 @@
 则向量$\bm{u},\bm{v}$的夹角就是直线$L_1,L_2$的夹角。即
 \[
     \cos\theta
-    = \frac{\bm{u}\cdot\bm{v}}{|\bm{u}||\bm{v}|}
+    = \frac{\bm{u}\cdot\bm{v}}{\norm{\bm{u}} \norm{\bm{v}}}
     = \frac{u_1v_1 + u_2v_2 + u_3v_3}{\sqrt{u_1^2+u_2^2+u_3^2}\sqrt{v_1^2+v_2^2+v_3^2}}
 \]
 
@@ -415,9 +415,9 @@
 
 直线$L$与平面$\pi$的夹角为$\theta = \dfrac{\pi}{2} - \langle\bm{v},\bm{n}\rangle$因此有
 \[
-    \sin\theta = \cos\left(\frac{\pi}{2}-\theta\right)
-    = \frac{|\bm{v}\cdot\bm{n}|}{|\bm{v}||\bm{n}|}
-    = \frac{|Av_1 + Bv_2 + Cv_3|}{\sqrt{A^2+B^2+C^2}\sqrt{v_1^2+v_2^2+v_3^2}}
+    \sin\theta = \cos(\frac{\pi}{2}-\theta)
+    = \frac{\abs{\bm{v}\cdot\bm{n}}}{\norm{\bm{v}}\norm{\bm{n}}}
+    = \frac{\abs{Av_1 + Bv_2 + Cv_3}}{\sqrt{A^2+B^2+C^2}\sqrt{v_1^2+v_2^2+v_3^2}}
 \]
 
 \subsubsection{两平面关系}
@@ -439,7 +439,7 @@
 特别需要记住，\textbf{\textsf{两平面夹角就是两法线夹角}}。由此可知，如果$ABCD$是平面$\pi_1$上的平行四边形，
 $A'B'C'D'$是四边形$ABCD$在平面$\pi_2$上的投影，则有\textcolor{red}{\textbf{\textsf{面积投影公式}}}：
 \[
-    \left\lvert \overrightarrow{A'B'}\times\overrightarrow{A'D'}\right\rvert = \left\lvert \overrightarrow{AB}\times\overrightarrow{AD}\right\rvert\cos\langle\bm{n}_1,\bm{n}_2\rangle
+    \norm{\overrightarrow{A'B'}\times\overrightarrow{A'D'}} = \norm{\overrightarrow{AB}\times\overrightarrow{AD}} \cos\langle\bm{n}_1,\bm{n}_2\rangle
 \]
 更一般地，如果$S_\text{原}$是平面$\pi_1$上的某图形面积，$S_\text{投}$是该图形在平面$\pi_2$上的投影面积，则有
 \begin{equation}
@@ -516,9 +516,9 @@ $A'B'C'D'$是四边形$ABCD$在平面$\pi_2$上的投影，则有\textcolor{red}
 设$Ax+By+Cz+D=0$是一个平面，$\bm{n}=(A,B,C)$为其法向量，$P=(x_0,y_0,z_0)$为平面外一点，任取平面上一点$M(x,y,z)$，则点$P$到平面的距离为
 \begin{equation}
     \label{eq:点到平面的距离公式}
-    d = \left\lvert \overrightarrow{PM}\cdot\frac{\bm{n}}{|\bm{n}|}\right\rvert
-    = \frac{|A(x-x_0) + B(y-y_0) + C(z-z_0)|}{\sqrt{A^2+B^2+C^2}}
-    = \frac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}
+    d = \abs{\overrightarrow{PM}\cdot\frac{\bm{n}}{\norm{\bm{n}}}}
+    = \frac{\abs{A(x-x_0) + B(y-y_0) + C(z-z_0)}}{\sqrt{A^2+B^2+C^2}}
+    = \frac{\abs{Ax_0+By_0+Cz_0+D}}{\sqrt{A^2+B^2+C^2}}
 \end{equation}
 
 \subsubsection{点到直线的距离}
@@ -545,7 +545,7 @@ $A'B'C'D'$是四边形$ABCD$在平面$\pi_2$上的投影，则有\textcolor{red}
 \end{marginfigure}
 \begin{equation}
     \label{eq:点到直线的距离公式}
-    d = \frac{\left\lvert \overrightarrow{PM}\times\bm{v}\right\rvert}{|\bm{v}|}
+    d = \frac{\norm{\overrightarrow{PM}\times\bm{v}}}{\norm{\bm{v}}}
 \end{equation}
 
 \subsubsection{异面直线间的距离}
@@ -554,8 +554,8 @@ $A'B'C'D'$是四边形$ABCD$在平面$\pi_2$上的投影，则有\textcolor{red}
 \begin{equation}
     \label{eq:异面直线间的距离公式}
     d
-    = \left\lvert (\bm{r}_2 - \bm{r}_1)\cdot \frac{\bm{u}\times\bm{v}}{|\bm{u}\times\bm{v}|} \right\rvert
-    = \frac{|(\bm{r}_2 - \bm{r}_1, \bm{u}, \bm{v})|}{|\bm{u}\times\bm{v}|}
+    = \abs{(\bm{r}_2 - \bm{r}_1)\cdot \frac{\bm{u}\times\bm{v}}{\norm{\bm{u}\times\bm{v}}}}
+    = \frac{\abs{(\bm{r}_2 - \bm{r}_1, \bm{u}, \bm{v})}}{\norm{\bm{u}\times\bm{v}}}
 \end{equation}
 \begin{marginfigure}
     \centering
@@ -657,18 +657,18 @@ $A'B'C'D'$是四边形$ABCD$在平面$\pi_2$上的投影，则有\textcolor{red}
 
 对于曲线的切向量计算如下
 \begin{equation}
-    \frac{\diff \bm{r}}{\diff{t}}
+    \dv{\bm{r}}{t}
     = \lim_{\Delta t \to 0}\frac{\Delta \bm{r}}{\Delta t}
     = \lim_{\Delta t \to 0}\frac{\bm{r}(t+\Delta t) - \bm{r}(t)}{\Delta t}
     = (x'(t),y'(t),z'(t))
 \end{equation}
 则有微分
 \begin{equation}
-    \diff \bm{r} = (\diff x, \diff y, \diff z)
+    \dd{\bm{r}} = (\dd{x}, \dd{y}, \dd{z})
 \end{equation}
 特别的有
 \begin{equation}
-    \diff s = |\diff \bm{r}| = \sqrt{\diff x^2+ \diff y^2 + \diff z^2}
+    \dd{s} = \norm{\dd{\bm{r}}} = \sqrt{\dd{x^2}+ \dd{y^2} + \dd{z^2}}
 \end{equation}
 
 \subsubsection{曲面的法线量}
@@ -691,9 +691,9 @@ $A'B'C'D'$是四边形$ABCD$在平面$\pi_2$上的投影，则有\textcolor{red}
 
 \begin{proof}
     \begin{enumerate}[(1)]
-        \item 一元函数$f(x)$的证明如下图，其中$AC$为切线，$|AB|=1$，则$|CB|=f'(x)$，那么得出向量
-              $\overrightarrow{AC}=(1,f'(x))$，同时令$|EF|=1$根据$\triangle ABC \cong\triangle FEB$，
-              那么$|AE|=f'(x)$，所以法向量$\overrightarrow{AF}=(f'(x),-1)$
+        \item 一元函数$f(x)$的证明如下图，其中$AC$为切线，$\abs{AB}=1$，则$\abs{CB}=f'(x)$，那么得出向量
+              $\overrightarrow{AC}=(1,f'(x))$，同时令$\abs{EF}=1$根据$\triangle ABC \cong\triangle FEB$，
+              那么$\abs{AE}=f'(x)$，所以法向量$\overrightarrow{AF}=(f'(x),-1)$
 
         \item 设二元函数$z=f(x,y)$上的任意一点的法向量为$\bm{n}$，则$\bm{n}$在平面$xOz, yOz$的投影向量分别为，
               $(z_x',-1),(z_y',-1)$，因此$\bm{n} = (z_x',z_y',-1)$

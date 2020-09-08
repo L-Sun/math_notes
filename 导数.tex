@@ -28,14 +28,14 @@
     (反函数求导法则)
     \label{th:反函数求导法则}
     设函数$\varphi (y)$可导，如果$\varphi'(y) \neq 0$，则反函数$y=f(x)$可导.
-    \[ f'(x) = \frac{\diff y}{\diff x} = \left. 1 \middle / \frac{\diff x}{\diff y}\right. = \frac{1}{\varphi'(y)} = \frac{1}{\varphi'(f(x))} \]
+    \[ f'(x) = \dv{y}{x} = \left. 1 \middle / \dv{x}{y}\right. = \frac{1}{\varphi'(y)} = \frac{1}{\varphi'(f(x))} \]
 \end{theorem}
 复合函数求导如下
 \begin{theorem}
     (链式法则)
     \label{th:链式法则}
     设函数$y=f(u)$与函数$u=\varphi(x)$均可导，则符合函数$y=f(\varphi(x))$在其定义域内可导，并且有$(f\circ\varphi)'(x)=f'(\varphi(x))\cdot\varphi'(x)$即
-    \[ \frac{\diff y}{\diff x} = \frac{\diff y}{\diff u} \cdot \frac{\diff u}{\diff x} \]
+    \[ \dv{y}{x} = \dv{y}{u} \cdot \dv{u}{x} \]
 \end{theorem}
 
 \subsection{高阶导数}
@@ -343,7 +343,7 @@
             $y$  & $\searrow$    & $\smile$ & $\nearrow$ & $\frown$ & $\searrow$ & 极小值 & $\nearrow$    \\ \hline
         \end{tabular}
     \end{center}
-    故函数$y=(x^2-1)^{2/3}$有极大值$y|_{x=0}=1$，有极小值$y|_{x=\pm 1}=0$
+    故函数$y=(x^2-1)^{2/3}$有极大值$\eval{y}_{x=0}=1$，有极小值$\eval{y}_{x=\pm 1}=0$
 \end{solution}
 
 \subsection{函数的凹凸性}
@@ -419,19 +419,19 @@
 \begin{definition}
     (曲率$K$和曲率半径$R$)
     \begin{align*}
-        R & = \lim_{\Delta\alpha\to 0} \left| \frac{\Delta s}{\Delta \alpha} \right| = \left| \frac{\diff s}{\diff\alpha} \right| &                 \\
+        R & = \lim_{\Delta\alpha\to 0} \abs{\frac{\Delta s}{\Delta \alpha}} = \abs{\dv{s}{\alpha}} &                 \\
         \\
-        K & = \frac{1}{R} = \left| \frac{\diff\alpha}{\diff s} \right|                                                            & \text{定义式}   \\
-          & =\frac{|y''|}{[1+y'^2]^{3/2}}                                                                                         & \text{函数形式} \\
-          & =\frac{|x'y''-x''y'|}{[x'^2+y'^2]^{3/2}}                                                                              & \text{参数形式}
+        K & = \frac{1}{R} = \abs{\dv{\alpha}{s}}                                                   & \text{定义式}   \\
+          & =\frac{\abs{y''}}{[1+y'^2]^{3/2}}                                                      & \text{函数形式} \\
+          & =\frac{\abs{x'y''-x''y'}}{[x'^2+y'^2]^{3/2}}                                           & \text{参数形式}
     \end{align*}
 \end{definition}
 
 \begin{proof}
     如果曲线$L$的方程$y=f(x)$具有二阶导数，则
-    \[ \alpha = \arctan y',\, \diff \alpha=\frac{y''}{1+y'^2}\,\diff x \]
-    根据弧长公式$\diff s=\sqrt{\diff x^2 + \diff y^2} = \sqrt{1+y'^2}\, \diff x$，可得
-    \[ K = \frac{|y''|}{[1+y'^2]^{3/2}} \]
+    \[ \alpha = \arctan y',\dd{\alpha}=\frac{y''}{1+y'^2}\dd{x} \]
+    根据弧长公式$\dd{s}=\sqrt{\dd{x^2} + \dd{y^2}} = \sqrt{1+y'^2}\dd{x}$，可得
+    \[ K = \frac{\abs{y''}}{[1+y'^2]^{3/2}} \]
 \end{proof}
 
 \begin{example}
@@ -522,6 +522,6 @@
     \item 确定函数的间断点，判断间断点处是否存在垂直渐近线。
     \item 当函数在$x\to\infty$、$x\to-\infty$、$x\to+\infty$存在极限值时，函数存在水平渐近线（此时对应的$x$则没有斜渐近线）。
     \item 若$x\to\infty$、$x\to-\infty$、$x\to+\infty$时下式成立，则斜渐近线存在。
-          \sidenote{其中函数曲线到斜渐近线的距离为\[d(x) = \dfrac{|f(x)-kx-b|}{\sqrt{1+k^2}} \]}
+          \sidenote{其中函数曲线到斜渐近线的距离为\[d(x) = \dfrac{\abs{f(x)-kx-b}}{\sqrt{1+k^2}} \]}
           \[ \frac{f(x)}{x}\to k, \qquad f(x)-kx\to b \]
 \end{enumerate}

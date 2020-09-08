@@ -3,7 +3,7 @@
 \section{求数列极限}
 数列极限的求解一般常用单调有界法、两边夹法、列紧性定理和柯西准则等等。下面对这几种常用方法进行总结。
 \subsection{\texorpdfstring{$ \delta - \varepsilon  $}{δ-ε} 语言证明}
-当需要证明$\lim_{n \to \infty} a_n = A$时，可以通过证明不等式$ \left\lvert a_n - A\right\rvert < \varepsilon $成立。
+当需要证明$\lim_{n \to \infty} a_n = A$时，可以通过证明不等式$ \abs{a_n - A} < \varepsilon $成立。
 \begin{situation}
     适用于给出数列递推公式的情况
 \end{situation}
@@ -11,17 +11,17 @@
 \begin{proof}
     \[
         \forall \varepsilon > 0, ~ \exists N ~ \text{s.t. when}~ n > N,~
-        \left\lvert a_n - A\right\rvert < \varepsilon
+        \abs{a_n - A} < \varepsilon
     \]
 \end{proof}
 
 
 \paragraph{方法二} 对不等式进行缩放间接证明：
 \begin{proof}
-    由\[ \left\lvert a_n - A \right\rvert \leq \varphi(n) < \varepsilon \]
+    由\[ \abs{a_n - A} \leq \varphi(n) < \varepsilon \]
     得出 \[ n > \psi(\varepsilon) \]
     不妨令 $N = \psi(\varepsilon)$，所以当 $n > N$时，恒有
-    \[ \left\lvert a_n - A\right\rvert < \varepsilon \]
+    \[ \abs{a_n - A} < \varepsilon \]
     $\lim_{n \to \infty} a_n$存在
 \end{proof}
 
@@ -31,7 +31,7 @@
 \begin{proof}
     根据几何不等式，得
     \[
-        \left\lvert \sqrt[n]{a} - 1 \right\rvert
+        \abs{\sqrt[n]{a} - 1}
         = \sqrt[n]{a} - 1
         = (a \cdot \underbrace{1\cdots1}_{n-1})^{1/n} - 1
         < \frac{a+(n-1)}{n} - 1
@@ -40,7 +40,7 @@
     令$ \frac{a-1}{n}<\varepsilon $，即$ n > \frac{a-1}{\varepsilon} $。
     不妨令$N = \frac{a-1}{\varepsilon}$，则有
     \[
-        \forall\varepsilon>0 \text{ and } n > N \qquad \left\lvert \sqrt[n]{a}-1 \right\rvert<\varepsilon
+        \forall\varepsilon>0 \text{ and } n > N \qquad \abs{\sqrt[n]{a}-1} <\varepsilon
     \]
     所以$\lim_{n \to \infty} = 1$成立。
 \end{proof}
@@ -56,7 +56,7 @@
     适用于给出数列递推公式地情况
 \end{situation}
 \begin{example}
-    设$a>0, x_1 > 0, x_{n+1} = \frac{1}{2}(x_n+\frac{a}{x_n}) (n=1,2,\cdots)$，求$lim_{n\to\infty}x_n$
+    设$a>0, x_1 > 0, x_{n+1} = \frac{1}{2}(x_n+\frac{a}{x_n}) (n=1,2,\cdots)$，求$\lim_{n\to\infty}x_n$
 \end{example}
 \begin{proof}
     由于
@@ -64,11 +64,11 @@
         x_{n+1}         & = \frac{1}{2}(x_n+\frac{a}{x_n}) & \geq  \sqrt{a} \\
         x_{n} - x_{n+1} & = \frac{1}{2x_n}(x_n^2-a)        & \geq  0
     \end{alignat*}
-    所以$\{x_n\}$为单调有界数列，故可设$lim_{n\to\infty} x_n = A$，当$n\to\infty$时，关系式
+    所以$\{x_n\}$为单调有界数列，故可设$\lim_{n\to\infty} x_n = A$，当$n\to\infty$时，关系式
     \[ x_{n+1} = \frac{1}{2}(x_n+\frac{a}{x_n}) \]
     变为
     \[ A = \frac{1}{2}(A+\frac{a}{A}) \]
-    解得$A=\sqrt{a}$，故$lim_{n\to\infty}=\sqrt{a}$
+    解得$A=\sqrt{a}$，故$\lim_{n\to\infty}=\sqrt{a}$
 \end{proof}
 
 \subsection{两边夹法则}
@@ -98,7 +98,7 @@
 在极限值未知地情况下，判断数列极限的存在性可用柯西准则。
 \begin{theorem}
     \label{th:柯西准则}
-    （柯西准则）数列$\{x_n\}$收敛$\iff  \forall\varepsilon>0,\exists N,\text{ s.t. }m,n>N, \lvert x_m-x_n\rvert<\varepsilon$
+    （柯西准则）数列$\{x_n\}$收敛$\iff  \forall\varepsilon>0,\exists N,\text{ s.t. }m,n>N, \abs{x_m-x_n} <\varepsilon$
 \end{theorem}
 \begin{situation}
     只需判断极限是否存在
@@ -204,15 +204,15 @@
 \subsection{求和极限转积分}
 根据积分的定义可以很容易知道如下公式
 \[
-    \int_{a}^{b} f(x) \,\diff x = (b-a)\lim_{n\to\infty}\frac{f(x_1) + f(x_2)+\cdots+f(x_n)}{n}\qquad x_i\in[a,b]
+    \int_{a}^{b} f(x) \dd{x} = (b-a)\lim_{n\to\infty}\frac{f(x_1) + f(x_2)+\cdots+f(x_n)}{n}\qquad x_i\in[a,b]
 \]
 此公式也可看做是$n$次蒙特卡洛积分后平均，其密度概率函数为$f_X(x)=\dfrac{1}{b-a}$
 \[
-    \int_a^b f(x) \,\diff x = \frac{1}{n}\sum_{i=1}^n \frac{f(x_i)}{\left.1\middle/(b-a)\right.}
+    \int_a^b f(x) \dd{x} = \frac{1}{n}\sum_{i=1}^n \frac{f(x_i)}{\left.1\middle/(b-a)\right.}
 \]
 题目常常会出现求和极限的求解，此时可对原式变形后用积分求解。下式为常出现的情况：
 \[
-    \lim_{n\to\infty}\frac{1}{n}\left[f(\frac{1}{n}) + f(\frac{2}{n}) + \cdots + f(\frac{n}{n})\right] = \int_0^1 f(x) \,\diff x
+    \lim_{n\to\infty}\frac{1}{n}\left[f(\frac{1}{n}) + f(\frac{2}{n}) + \cdots + f(\frac{n}{n})\right] = \int_0^1 f(x) \dd{x}
 \]
 
 
@@ -220,19 +220,19 @@
 \subsection{函数极限的概念}
 由数列的极限类比，能得出如下定义
 \begin{definition}
-    \[ \lim_{x\to+\infty} f(x) = A \iff \forall\varepsilon >0, \exists X, \text{ 当~} x > X\text{ 时~}, \left\lvert f(x) - A \right\rvert < \varepsilon \]
-    \[ \lim_{x\to-\infty} f(x) = A \iff \forall\varepsilon >0, \exists X, \text{ 当~} x < X\text{ 时~}, \left\lvert f(x) - A \right\rvert < \varepsilon \]
-    \[ \lim_{x\to\infty}  f(x) = A \iff \forall\varepsilon >0, \exists X, \text{ 当~} \lvert x \rvert > X\text{ 时~}, \left\lvert f(x) - A \right\rvert < \varepsilon \]
+    \[ \lim_{x\to+\infty} f(x) = A \iff \forall\varepsilon >0, \exists X, \text{ 当~} x > X\text{ 时~}, \abs{f(x) - A} < \varepsilon \]
+    \[ \lim_{x\to-\infty} f(x) = A \iff \forall\varepsilon >0, \exists X, \text{ 当~} x < X\text{ 时~}, \abs{f(x) - A} < \varepsilon \]
+    \[ \lim_{x\to\infty}  f(x) = A \iff \forall\varepsilon >0, \exists X, \text{ 当~} \abs{x} > X\text{ 时~}, \abs{f(x) - A} < \varepsilon \]
 
-    \[ \lim_{x\to x_0^+} f(x) = A \iff \forall\varepsilon > 0, \exists \delta > 0, \text{ 当~} 0 < x - x_0 < \delta \text{ 时~}, \left\lvert f(x) - A \right\rvert < \varepsilon \]
-    \[ \lim_{x\to x_0^-} f(x) = A \iff \forall\varepsilon > 0, \exists \delta > 0, \text{ 当~} 0 < x_0 - x < \delta \text{ 时~}, \left\lvert f(x) - A \right\rvert < \varepsilon \]
-    \[ \lim_{x\to x_0}   f(x) = A \iff \forall\varepsilon > 0, \exists \delta > 0, \text{ 当~} 0 < \lvert x-x_0 \rvert < \delta \text{ 时~}, \left\lvert f(x) - A \right\rvert < \varepsilon \]
+    \[ \lim_{x\to x_0^+} f(x) = A \iff \forall\varepsilon > 0, \exists \delta > 0, \text{ 当~} 0 < x - x_0 < \delta \text{ 时~}, \abs{f(x) - A} < \varepsilon \]
+    \[ \lim_{x\to x_0^-} f(x) = A \iff \forall\varepsilon > 0, \exists \delta > 0, \text{ 当~} 0 < x_0 - x < \delta \text{ 时~}, \abs{f(x) - A} < \varepsilon \]
+    \[ \lim_{x\to x_0}   f(x) = A \iff \forall\varepsilon > 0, \exists \delta > 0, \text{ 当~} 0 < \abs{x-x_0} < \delta \text{ 时~}, \abs{f(x) - A} < \varepsilon \]
 
     \[  \lim_{x\to x_0}  f(x) = A \iff \lim_{n\to x_0^-} f(x) = \lim_{n\to x_0^+} f(x) = A \]
 
-    \[ \lim_{x\to x_0} f(x) = \infty \iff \forall M, \exists \delta > 0, \text{ 使得~} 0 < \lvert x-x_0 \rvert < \delta \implies \left\lvert f(x) \right\rvert > M \]
-    \[ \lim_{x\to x_0} f(x) = +\infty \iff \forall M, \exists \delta > 0, \text{ 使得~} 0 < \lvert x-x_0 \rvert < \delta \implies f(x) > M \]
-    \[ \lim_{x\to x_0} f(x) = -\infty \iff \forall M, \exists \delta > 0, \text{ 使得~} 0 < \lvert x-x_0 \rvert < \delta \implies f(x) < M \]
+    \[ \lim_{x\to x_0} f(x) = \infty \iff \forall M, \exists \delta > 0, \text{ 使得~} 0 < \abs{x-x_0} < \delta \implies \abs{f(x)} > M \]
+    \[ \lim_{x\to x_0} f(x) = +\infty \iff \forall M, \exists \delta > 0, \text{ 使得~} 0 < \abs{x-x_0} < \delta \implies f(x) > M \]
+    \[ \lim_{x\to x_0} f(x) = -\infty \iff \forall M, \exists \delta > 0, \text{ 使得~} 0 < \abs{x-x_0} < \delta \implies f(x) < M \]
 \end{definition}
 
 \subsection{与数列极限的相似之处}
@@ -499,18 +499,18 @@
 \begin{definition}
     \label{def:一致连续}
     （一致连续）
-    $\forall \varepsilon>0,\exists \delta>0, \text{ 当~}x,y\in I \text{ 且~} \lvert x-y\rvert< \delta \text{ 时，恒有}$
-    \[ \left\lvert f(x)-f(y)\right\rvert<\varepsilon \]
+    $\forall \varepsilon>0,\exists \delta>0, \text{ 当~}x,y\in I \text{ 且~} \abs{x-y}< \delta \text{ 时，恒有}$
+    \[ \abs{f(x)-f(y)} <\varepsilon \]
 \end{definition}
 \begin{theorem}
     若函数$f(x)$的一阶导数$f'(x)$有界，则函数$f(x)$一致连续。（可通过中值定理得证）
 \end{theorem}
 \begin{proof}
-    因为$\left\lvert f'(x) \right\rvert < M$，根据中值定理，对于定义域内任意的$a,b,\lvert a-b \rvert < \delta$，令$\delta=\frac{\varepsilon}{M}$可得
+    因为$\abs{f'(x)} < M$，根据中值定理，对于定义域内任意的$a,b,\abs{a-b} < \delta$，令$\delta=\frac{\varepsilon}{M}$可得
     \[
-        \left\lvert f(a) - f(b) \right\rvert
-        = \left\lvert f'(\xi)(a-b) \right\rvert
-        < M\left\lvert a-b \right\rvert
+        \abs{f(a) - f(b)}
+        = \abs{f'(\xi)(a-b)}
+        < M\abs{a-b}
         < M\delta = \varepsilon
     \]
 \end{proof}
