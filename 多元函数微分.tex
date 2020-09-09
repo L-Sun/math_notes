@@ -605,16 +605,16 @@ $F(x,y)=f'_x(x,y)\dd{x}+ f'_y(x,y)\dd{y}$的微分$\dd{F}$称为二元函数$z=f
     \pdv{f}{l}(x_0,y_0,z_0)
      & = \pdv{f}{x}\cos\alpha + \pdv{f}{y}\cos\beta + \pdv{f}{z}\cos\gamma                                          \\
      & = \eval{\left(\pdv{f}{x},\pdv{f}{y},\pdv{f}{z}\right)}_{(x_0,y_0,z_0)}\cdot(\cos\alpha,\cos\beta,\cos\gamma) \\
-     & = \nabla f(x_0,y_0,z_0)\cdot \bm{e}_l
+     & = \grad f(x_0,y_0,z_0)\cdot \bm{e}_l
 \end{align*}
 
 其中$\bm{e}_l=(\cos\alpha,\cos\beta,\cos\gamma)$为射线$l$的方向，向量
 \begin{equation}
-    \nabla f(x_0,y_0,z_0)=\eval{\left(\pdv{f}{x},\pdv{f}{y},\pdv{f}{z}\right)}_{(x_0,y_0,z_0)}
+    \grad f(x_0,y_0,z_0)=\eval{\left(\pdv{f}{x},\pdv{f}{y},\pdv{f}{z}\right)}_{(x_0,y_0,z_0)}
 \end{equation}
 称为函数$f(x,y,z)$在$(x_0,y_0,z_0)$点的梯度。简言之，\textbf{\textsf{函数的方向导数就是梯度在给定射线方向上的投影}}。
 \begin{equation}
-    \pdv{f}{l} = \nabla f\cdot \bm{e}_l
+    \pdv{f}{l} = \grad f\cdot \bm{e}_l
 \end{equation}
 
 需要注意的是，函数可导，某一方向的方向导数不一定存在。某点的任意方向导数存在，但是可以不可微，也可以不可导。
@@ -622,7 +622,7 @@ $F(x,y)=f'_x(x,y)\dd{x}+ f'_y(x,y)\dd{y}$的微分$\dd{F}$称为二元函数$z=f
 
 
 \subsection{梯度}
-符号$\nabla=\left(\pdv{x},\pdv{y},\pdv{z}\right)$称为Hamilton算子。
+符号$\grad=\left(\pdv{x},\pdv{y},\pdv{z}\right)$称为Hamilton算子。
 梯度的重要性在于
 \begin{enumerate}[(1)]
     \item 梯度的模表示函数的最大方向导数，梯度的方向表示函数的最大增长方向；
@@ -639,10 +639,10 @@ $F(x,y)=f'_x(x,y)\dd{x}+ f'_y(x,y)\dd{y}$的微分$\dd{F}$称为二元函数$z=f
 根据复合函数求导法则对$t$求导，则有
 \[
     \pdv{f}{x} x'(t) + \pdv{f}{y} y'(t) + \pdv{f}{z} z'(t)
-    = \nabla f\cdot\bm{r}'(t)
+    = \grad f\cdot\bm{r}'(t)
     = 0
 \]
-这表明梯度$\nabla f$是曲面$\Sigma$在点$(x_0,y_0,z_0)$处的法向量，因此梯度是等值面的法向量。所以一个曲面在某点的切平面，法线方程可以利用梯度求出。
+这表明梯度$\grad f$是曲面$\Sigma$在点$(x_0,y_0,z_0)$处的法向量，因此梯度是等值面的法向量。所以一个曲面在某点的切平面，法线方程可以利用梯度求出。
 
 对于两个曲面的交线
 \[
@@ -658,7 +658,7 @@ $L$上某点的切线
 }
 可以由两个曲面在此点的切平面相交而得，其切线方向为
 \[
-    \bm{v} = \nabla f \times \nabla g
+    \bm{v} = \grad f \times \grad g
     =
     \begin{vmatrix}
         \bm{i} & \bm{j} & \bm{k} \\
@@ -671,10 +671,10 @@ $L$上某点的切线
 
 梯度的运算法则如下
 \begin{enumerate}[(1)]
-    \item （线性性）$\nabla (\lambda u + \mu v) = \lambda \nabla u + \mu \nabla v$，其中$\lambda,\mu$为常数；
-    \item （乘法则）$\nabla(uv) = v\nabla u + u\nabla v$；
-    \item （除法则）$\nabla\left(\dfrac{u}{v}\right) = \dfrac{v\nabla u - u\nabla v}{v^2}$；
-    \item （链法则）$\nabla F(u) = F'(u)\nabla u, \nabla F(u,v) = F'_u(u,v)\nabla u + F'_v(u,v)\nabla v$
+    \item （线性性）$\grad (\lambda u + \mu v) = \lambda \grad u + \mu \grad v$，其中$\lambda,\mu$为常数；
+    \item （乘法则）$\grad(uv) = v\grad u + u\grad v$；
+    \item （除法则）$\grad\left(\dfrac{u}{v}\right) = \dfrac{v\grad u - u\grad v}{v^2}$；
+    \item （链法则）$\grad F(u) = F'(u)\grad u, \grad F(u,v) = F'_u(u,v)\grad u + F'_v(u,v)\grad v$
 \end{enumerate}
 
 \subsection{泰勒公式}
@@ -856,25 +856,25 @@ $L$上某点的切线
 \[
     \eval{\pdv{f}{x}x'(t) + \pdv{f}{y}y'(t) + \pdv{f}{z}z'(t)}_{t=0}
     =
-    \nabla f(x_0,y_0,z_0) \cdot \bm{r}'(0) = 0
+    \grad f(x_0,y_0,z_0) \cdot \bm{r}'(0) = 0
 \]
-这表面$\nabla f(x_0,y_0,z_0)$垂直于曲面$S$在$P$点的切平面，故$\nabla f(x_0,y_0,z_0)$是曲面$S$在点$P$的法向量。
+这表面$\grad f(x_0,y_0,z_0)$垂直于曲面$S$在$P$点的切平面，故$\grad f(x_0,y_0,z_0)$是曲面$S$在点$P$的法向量。
 
-另一方面，曲面$S$在点$P$的法向量为$\nabla\varphi(x_0,y_0,z_0)$，因此两个法向量线性相关，引入常数$\lambda$。故有
-\[ \nabla f(x_0,y_0,z_0) + \lambda\nabla\varphi(x_0,y_0,z_0) = 0 \]
+另一方面，曲面$S$在点$P$的法向量为$\grad\varphi(x_0,y_0,z_0)$，因此两个法向量线性相关，引入常数$\lambda$。故有
+\[ \grad f(x_0,y_0,z_0) + \lambda\grad\varphi(x_0,y_0,z_0) = 0 \]
 由此设拉格朗日函数
 \begin{equation}
     \label{eq:拉格朗日函数}
     L(x,y,z,\lambda) = f(x,y,z) + \lambda\varphi(x,y,z)
 \end{equation}
 那么$(x_0,y_0,z_0)$是拉格朗日函数的临界点，即
-\[ \nabla L(x_0,y_0,z_0,\lambda) = \nabla f(x_0,y_0,z_0) + \lambda\nabla\varphi(x_0,y_0,z_0) = 0 \]
+\[ \grad L(x_0,y_0,z_0,\lambda) = \grad f(x_0,y_0,z_0) + \lambda\grad\varphi(x_0,y_0,z_0) = 0 \]
 因此只需解临界方程，可得出条件极值的极值点。
 
 梯度形式：
 \begin{equation}
     \label{eq:拉格朗日临界方程}
-    \nabla L(x,y,z,\lambda) = 0
+    \grad L(x,y,z,\lambda) = 0
 \end{equation}
 方程组形式：
 \begin{equation}
