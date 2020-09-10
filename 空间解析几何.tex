@@ -9,9 +9,9 @@
         \item 加法：$\bm{a}+\bm{b} = (a_1+b_1,a_2+b_2,a_3+b_3)$
         \item 减法：$\bm{a}+\bm{b} = (a_1-b_1,a_2-b_2,a_3-b_3)$
         \item 数乘：$\lambda\bm{a} = \bm{a}\lambda = (\lambda a_1, \lambda a_2, \lambda a_3)$
-        \item 内积：$\bm{a}\cdot\bm{b} = \bm{b}\cdots\bm{a} = a_1b_1+a_2b_2+a_3b_3$
+        \item 内积：$\bm{a}\vdot\bm{b} = \bm{b}\vdot\bm{a} = a_1b_1+a_2b_2+a_3b_3$
         \item 外积：$\bm{a}\times\bm{b} = -\bm{b}\times\bm{a} = (a_2b_3-a_3b_2, a_3b_1-a_1b_3, a_1b_2-a_2b_1)$
-        \item 三重积（混合积）：$(\bm{a},\bm{b},\bm{c}) = (\bm{a}\times\bm{b})\cdot\bm{c}$
+        \item 三重积（混合积）：$(\bm{a},\bm{b},\bm{c}) = (\bm{a}\times\bm{b})\vdot\bm{c}$
     \end{enumerate}
 \end{definition}
 其中内积满足交换性；外积满足\textcolor{red}{反}交换性；三重积满足轮换不变性和兑换反号性。
@@ -73,7 +73,7 @@
 \subsection{内积运算}
 两个非$\bm{0}$向量$\bm{a},\bm{b}$的夹角定义为
 \begin{equation}
-    \langle\bm{a},\bm{b}\rangle = \arccos \frac{\bm{a}\cdot\bm{b}}{\norm{\bm{a}} \norm{\bm{b}}}
+    \langle\bm{a},\bm{b}\rangle = \arccos \frac{\bm{a}\vdot\bm{b}}{\norm{\bm{a}} \norm{\bm{b}}}
 \end{equation}
 利用上式易得余弦公式
 \begin{equation}
@@ -81,21 +81,21 @@
     \norm{\bm{a}-\bm{b}}^2 = \norm{\bm{a}}^2 + \norm{\bm{b}}^2 - 2\norm{\bm{a}}\norm{\bm{b}}\cos\langle\bm{a},\bm{b}\rangle
 \end{equation}
 同时易知两个相互垂直的向量$\bm{a},\bm{b}$有
-\[ \bm{a}\perp\bm{b} \iff \bm{a}\cdot\bm{b} \]
+\[ \bm{a}\perp\bm{b} \iff \bm{a}\vdot\bm{b} \]
 
 向量$\bm{a}$在非$\bm{0}$向量$\bm{b}$上的投影为
 \begin{equation}
-    \norm{\bm{a}}\cos\langle\bm{a},\bm{b}\rangle = \bm{a}\cdot\bm{b}_0 = \frac{\bm{a}\cdot\bm{b}}{\norm{\bm{b}}}
+    \norm{\bm{a}}\cos\langle\bm{a},\bm{b}\rangle = \bm{a}\vdot\bm{b}_0 = \frac{\bm{a}\vdot\bm{b}}{\norm{\bm{b}}}
 \end{equation}
 其中$\bm{b}_0$是$\bm{b}$的单位化向量。
 
 由此可知，向量$\bm{a}$在$\bm{b}$上的投影向量可以表示为
 \begin{equation}
-    (\bm{a}\cdot\bm{b}_0)\bm{b}_0 = \frac{\bm{a}\cdot\bm{b}}{\bm{b}^2}\bm{b}
+    (\bm{a}\vdot\bm{b}_0)\bm{b}_0 = \frac{\bm{a}\vdot\bm{b}}{\bm{b}^2}\bm{b}
 \end{equation}
 于是$\bm{a}$关于$\bm{b}$的正交化向量为
 \begin{equation}
-    \bm{a} - \frac{\bm{a}\cdot\bm{b}}{\bm{b}^2}\bm{b}
+    \bm{a} - \frac{\bm{a}\vdot\bm{b}}{\bm{b}^2}\bm{b}
 \end{equation}
 
 向量$\bm{a}$与坐标轴的夹角$\alpha,\beta,\gamma$称为方向角。方向角的计算可通过向量的单位化实现。
@@ -133,13 +133,13 @@
 
 混合积可以表示为以$\bm{a},\bm{b},\bm{c}$所构成的平行六面体的体积。当构成右手系是为正数，左系为负数，线性相关时为$0$
 \begin{equation}
-    V = Sh = \norm{\bm{a}\times\bm{b}} \abs{(\bm{e}\cdot\bm{c})} = \abs{(\bm{a}\times\bm{b})\cdot\bm{c}} = \abs{(\bm{a},\bm{b},\bm{c})}
+    V = Sh = \norm{\bm{a}\times\bm{b}} \abs{(\bm{e}\vdot\bm{c})} = \abs{(\bm{a}\times\bm{b})\vdot\bm{c}} = \abs{(\bm{a},\bm{b},\bm{c})}
 \end{equation}
 其中$\bm{e}$为底面的法向量。
 
 混合积也可以用行列式表示
 \begin{equation}
-    (\bm{a},\bm{b},\bm{c}) = (\bm{a}\times\bm{b})\cdot\bm{c}
+    (\bm{a},\bm{b},\bm{c}) = (\bm{a}\times\bm{b})\vdot\bm{c}
     =
     \begin{vmatrix}
         a_1 & a_2 & a_3 \\
@@ -151,7 +151,7 @@
 设$\bm{a},\bm{b},\bm{c}$为向量，则有二叉积
 \begin{eqnarray}
     \label{eq:二叉积}
-    \bm{a}\times(\bm{b}\times\bm{c}) = (\bm{a}\cdot\bm{c})\bm{b} - (\bm{a}\cdot\bm{b})\bm{c}
+    \bm{a}\times(\bm{b}\times\bm{c}) = (\bm{a}\vdot\bm{c})\bm{b} - (\bm{a}\vdot\bm{b})\bm{c}
 \end{eqnarray}
 
 若有线性表示
@@ -181,7 +181,7 @@
 设$\bm{r}_0=(x_0,y_0,z_0),\bm{n}=(A,B,C)$，则过$P(x_0,y_0,z_0)$点且与非$\bm{0}$向量$\bm{n}$垂直的平面方程为
 \begin{equation}
     \label{eq:平面点法式方程}
-    (\bm{r}-\bm{r}_0)\cdot \bm{n} = A(x-x_0) + B(y-y_0) + C(z-z_0) = 0
+    (\bm{r}-\bm{r}_0)\vdot \bm{n} = A(x-x_0) + B(y-y_0) + C(z-z_0) = 0
 \end{equation}
 
 \subsubsection{一般方程}
@@ -198,7 +198,7 @@
     不妨设原点$O$到平面距离最短的点为$P(x_0,y_0,z_0)$，则向量$\overrightarrow{OP}$为平面的一个法向量，
     \[
         d
-        = \frac{\abs{\bm{n}\cdot\overrightarrow{OP}}}{\norm{\bm{n}}}
+        = \frac{\abs{\bm{n}\vdot\overrightarrow{OP}}}{\norm{\bm{n}}}
         = \frac{\abs{Ax_0 + By_0 + Cz_0}}{\sqrt{A^2+B^2+C^2}}
     \]
     同时点$P$在平面上，因此有
@@ -277,7 +277,7 @@
 如果平面于原点的距离为$p$且法向量$\bm{n}_0=(\cos\alpha,\cos\beta,\cos\gamma)$，则该平面方程为
 \begin{equation}
     \label{eq:平面法式方程}
-    \bm{r}\cdot\bm{n}_0 = x\cos\alpha + y\cos\beta + z\cos\gamma = p
+    \bm{r}\vdot\bm{n}_0 = x\cos\alpha + y\cos\beta + z\cos\gamma = p
 \end{equation}
 
 \subsection{直线方程}
@@ -378,12 +378,12 @@
 则向量$\bm{u},\bm{v}$的夹角就是直线$L_1,L_2$的夹角。即
 \[
     \cos\theta
-    = \frac{\bm{u}\cdot\bm{v}}{\norm{\bm{u}} \norm{\bm{v}}}
+    = \frac{\bm{u}\vdot\bm{v}}{\norm{\bm{u}} \norm{\bm{v}}}
     = \frac{u_1v_1 + u_2v_2 + u_3v_3}{\sqrt{u_1^2+u_2^2+u_3^2}\sqrt{v_1^2+v_2^2+v_3^2}}
 \]
 
 特别有，两直线的垂直条件：
-\[ L_1 \perp L_2 \iff \bm{u}\cdot\bm{v} = u_1v_1 + u_2v_2 + u_3v_3 = 0 \]
+\[ L_1 \perp L_2 \iff \bm{u}\vdot\bm{v} = u_1v_1 + u_2v_2 + u_3v_3 = 0 \]
 两直线平行条件：
 \[ L_1 \parallel L_2 \iff \bm{u}\times\bm{v} = \bm{0} \iff \frac{u_1}{v_1} = \frac{u_2}{v_2} = \frac{u_3}{v_v}  \]
 
@@ -395,9 +395,9 @@
 \end{align*}
 则直线$L$方向向量为$\bm{v}=(v_1,v_2,v_3)$，平面$\pi$的法向量为$\bm{n}=(A,B,C)$，
 则直线$L$与平面$\pi$平行的条件为
-\[ \bm{v}\cdot\bm{n} = Av_1 + Bv_2 + Cv_3 = 0 \]
+\[ \bm{v}\vdot\bm{n} = Av_1 + Bv_2 + Cv_3 = 0 \]
 相交条件为
-\[ \bm{v}\cdot\bm{n} = Av_1 + Bv_2 + Cv_3 \neq 0 \]
+\[ \bm{v}\vdot\bm{n} = Av_1 + Bv_2 + Cv_3 \neq 0 \]
 
 将直线写成参数形式
 \[
@@ -416,7 +416,7 @@
 直线$L$与平面$\pi$的夹角为$\theta = \dfrac{\pi}{2} - \langle\bm{v},\bm{n}\rangle$因此有
 \[
     \sin\theta = \cos(\frac{\pi}{2}-\theta)
-    = \frac{\abs{\bm{v}\cdot\bm{n}}}{\norm{\bm{v}}\norm{\bm{n}}}
+    = \frac{\abs{\bm{v}\vdot\bm{n}}}{\norm{\bm{v}}\norm{\bm{n}}}
     = \frac{\abs{Av_1 + Bv_2 + Cv_3}}{\sqrt{A^2+B^2+C^2}\sqrt{v_1^2+v_2^2+v_3^2}}
 \]
 
@@ -516,7 +516,7 @@ $A'B'C'D'$是四边形$ABCD$在平面$\pi_2$上的投影，则有\textcolor{red}
 设$Ax+By+Cz+D=0$是一个平面，$\bm{n}=(A,B,C)$为其法向量，$P=(x_0,y_0,z_0)$为平面外一点，任取平面上一点$M(x,y,z)$，则点$P$到平面的距离为
 \begin{equation}
     \label{eq:点到平面的距离公式}
-    d = \abs{\overrightarrow{PM}\cdot\frac{\bm{n}}{\norm{\bm{n}}}}
+    d = \abs{\overrightarrow{PM}\vdot\frac{\bm{n}}{\norm{\bm{n}}}}
     = \frac{\abs{A(x-x_0) + B(y-y_0) + C(z-z_0)}}{\sqrt{A^2+B^2+C^2}}
     = \frac{\abs{Ax_0+By_0+Cz_0+D}}{\sqrt{A^2+B^2+C^2}}
 \end{equation}
@@ -554,7 +554,7 @@ $A'B'C'D'$是四边形$ABCD$在平面$\pi_2$上的投影，则有\textcolor{red}
 \begin{equation}
     \label{eq:异面直线间的距离公式}
     d
-    = \abs{(\bm{r}_2 - \bm{r}_1)\cdot \frac{\bm{u}\times\bm{v}}{\norm{\bm{u}\times\bm{v}}}}
+    = \abs{(\bm{r}_2 - \bm{r}_1)\vdot \frac{\bm{u}\times\bm{v}}{\norm{\bm{u}\times\bm{v}}}}
     = \frac{\abs{(\bm{r}_2 - \bm{r}_1, \bm{u}, \bm{v})}}{\norm{\bm{u}\times\bm{v}}}
 \end{equation}
 \begin{marginfigure}

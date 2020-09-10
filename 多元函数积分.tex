@@ -7,13 +7,13 @@
 \begin{enumerate}
     \item \textbf{\textsf{基本域}} 是指闭区间、矩形或长方体的光滑形变，即连续可微条件下一一对应。
     \item \textbf{\textsf{简单域}} 由有限个基本域拼接而成的曲线，曲面或闭区域。
-    \item \textbf{\textsf{积分域}} 指的是存在两两内部不交的（有限或无限）基本域序列$\Omega_1,\Omega_2,\cdots,\Omega_n,\cdots$，
+    \item \textbf{\textsf{积分域}} 指的是存在两两内部不交的（有限或无限）基本域序列$\Omega_1,\Omega_2,\vdots,\Omega_n,\vdots$，
           使得
-          \[ \Omega = \Omega_1\cup\Omega_2\cup\cdots\cup\Omega_n\cup\cdots \]
+          \[ \Omega = \Omega_1\cup\Omega_2\cup\vdots\cup\Omega_n\cup\vdots \]
           并且级数
           \[ \int_\Omega \dd\Omega = \sum_{n=1}^\infty \int_{\Omega_n} \dd\Omega \]
           收敛。
-    \item \textbf{\textsf{剖分}} 基本域$\Omega_1,\Omega_2,\cdots,\Omega_n,\cdots$为$\Omega$的剖分。
+    \item \textbf{\textsf{剖分}} 基本域$\Omega_1,\Omega_2,\vdots,\Omega_n,\vdots$为$\Omega$的剖分。
           其中全体基本域的直径的最小上界称为剖分的直径。
 \end{enumerate}
 
@@ -117,7 +117,7 @@
 
 同理可得三重积分的换元公式
 \begin{equation}
-    \iiint\limits_\Omega f(x,y,z)\dd{x}\dd{y}\dd{z} = \iiint\limits_{\Omega_{uvw}} f(x(u,v,w),\cdots)\abs{\pdv{(x,y,z)}{(u,v,w)}}\dd{u}\dd{v}\dd{w}
+    \iiint\limits_\Omega f(x,y,z)\dd{x}\dd{y}\dd{z} = \iiint\limits_{\Omega_{uvw}} f(x(u,v,w),\vdots)\abs{\pdv{(x,y,z)}{(u,v,w)}}\dd{u}\dd{v}\dd{w}
 \end{equation}
 
 在使用换元法时，选定好变量变换后，对区域边界进行变换，然后计算雅可比，
@@ -202,7 +202,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 \]
 则有球坐标变换公式
 \begin{equation}
-    \iiint\limits_{\Omega} f(x,y,z)\dd{x}\dd{y}\dd{z} = \iiint\limits_{V}f(r\cos\varphi\sin\theta,\cdots)r^2\sin\theta\dd{r}\dd{\theta}\dd{\varphi}
+    \iiint\limits_{\Omega} f(x,y,z)\dd{x}\dd{y}\dd{z} = \iiint\limits_{V}f(r\cos\varphi\sin\theta,\vdots)r^2\sin\theta\dd{r}\dd{\theta}\dd{\varphi}
 \end{equation}
 
 \begin{situation}
@@ -396,7 +396,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     \begin{align*}
         S & = \iint\limits_D \sqrt{{z'_x}^2 + {z'_y}^2 + 1}\dd{x}\dd{y}                                               \\
           & = \iint\limits_D \sqrt{\frac{16}{h^2(t)}(x^2+y^2) + 1} \dd{x}\dd{y}                                       \\
-          & = \int_0^{2\pi} \dd{\theta} \int_0^{\frac{1}{\sqrt{2}}h(t)} \sqrt{\frac{16}{h^2(t)}r^2 + 1} \cdot r\dd{r} \\
+          & = \int_0^{2\pi} \dd{\theta} \int_0^{\frac{1}{\sqrt{2}}h(t)} \sqrt{\frac{16}{h^2(t)}r^2 + 1} \vdot r\dd{r} \\
           & = \frac{13}{12}\pi h^2(t)
     \end{align*}
     因此有
@@ -410,7 +410,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 按照黎曼积分的定义，分布在积分域$\Omega$上的连续介质，其质量密度为$\rho(x,y,z)$时，总质量为
 \[ m = \int_\Omega f(x,y,z)\dd{\Omega} \]
 
-对于给定质点系$(\bm{r}_i,m_i)\,(i=1,2,3,\cdots)$，物理上称指点位置关于质量的加权平均为\textcolor{red}{\textbf{\textsf{重心}}}。
+对于给定质点系$(\bm{r}_i,m_i)\,(i=1,2,3,\vdots)$，物理上称指点位置关于质量的加权平均为\textcolor{red}{\textbf{\textsf{重心}}}。
 即
 \[ \overline{\bm{r}} = \sum_{i=1}^{n} \frac{m_i}{m}\bm{r}_i, \quad m = \sum_{i=j}^n m_j \]
 积分形式为
@@ -445,14 +445,14 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     为定向类曲线积分。
 \end{definition}
 定向类曲线积分可以这么理解
-\[ \int_L P\dd{x} + Q\dd{y} + R\dd{z} = \int_L (P,Q,R) \cdot (\dd{x},\dd{y},\dd{z}) = \int_L \bm{f}(\bm{r}) \cdot \dd{\bm{r}} \]
+\[ \int_L P\dd{x} + Q\dd{y} + R\dd{z} = \int_L (P,Q,R) \vdot (\dd{x},\dd{y},\dd{z}) = \int_L \bm{f}(\bm{r}) \vdot \dd{\bm{r}} \]
 即在曲线$L$上的微元$\dd{\bm{r}}$与此点处的向量函数$\bm{f}(\bm{r})$的点乘，进行全曲线上的累积。
 所以定向类曲线积分可以看作是向量函数在定向曲线上\textcolor{red}{投影}的积分。
 
 \begin{theorem}
     设$L$为定向的基本曲线，且$\bm{f}$是$L$上的连续向量函数，如果$L$有两种不同的参数化光滑地表示$\bm{r} = \bm{r}_1(t)\,(a\leq t\leq b),\, \bm{r}=\bm{r}_2(s)\, (c\leq s \leq d)$
     则有
-    \[ \int_a^b \bm{f}\cdot\bm{r}_1'(t)\dd{t} = \int_c^d \bm{f}\cdot\bm{r}_2'(s)\dd{s} \]
+    \[ \int_a^b \bm{f}\vdot\bm{r}_1'(t)\dd{t} = \int_c^d \bm{f}\vdot\bm{r}_2'(s)\dd{s} \]
 \end{theorem}
 
 \begin{theorem}
@@ -464,7 +464,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 
 \begin{theorem}
     设$L^+, L^-$是同一曲线积分域的两个相反定向表示，若$\bm{f}$是该曲线上的可积向量函数，则有
-    \[ \int_{L^+} \bm{f}\cdot\dd{\bm{r}} = - \int_{L^-}\bm{f}\cdot\dd{\bm{r}} \]
+    \[ \int_{L^+} \bm{f}\vdot\dd{\bm{r}} = - \int_{L^-}\bm{f}\vdot\dd{\bm{r}} \]
 \end{theorem}
 
 \subsubsection{曲线积分的计算}
@@ -479,9 +479,9 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 定向类曲面积分又称\textcolor{red}{\textbf{\textsf{第二型曲面积分}}}
 \subsubsection{定向类曲面积分}
 考虑一个流速函数$\bm{v}$，其流体通过某个微平面$\dd{\bm{S}}$，所以在单位时间内通过这个微平面的数量为
-\[ \bm{v}\cdot\dd{\bm{S}} = \bm{v}\cdot(\bm{r}'_u \cross \bm{r}'_v)\dd{u}\dd{v} = (\bm{v},\bm{r}'_u,\bm{r}'_v)\dd{u}\dd{v} \]
+\[ \bm{v}\vdot\dd{\bm{S}} = \bm{v}\vdot(\bm{r}'_u \cross \bm{r}'_v)\dd{u}\dd{v} = (\bm{v},\bm{r}'_u,\bm{r}'_v)\dd{u}\dd{v} \]
 由此流体穿过曲面$S$的总数量为
-\[ \iint\limits_S \bm{v}\cdot\dd{\bm{S}} = \iint\limits_D (\bm{v},\bm{r}'_u,\bm{r}'_v)\dd{u}\dd{v} \]
+\[ \iint\limits_S \bm{v}\vdot\dd{\bm{S}} = \iint\limits_D (\bm{v},\bm{r}'_u,\bm{r}'_v)\dd{u}\dd{v} \]
 
 根据外积运算
 \[ (\dd{y}\wedge\dd{z}, \dd{z}\wedge\dd{x}, \dd{x}\wedge\dd{y}) = \left(\pdv{(y,z)}{(u,v)},\pdv{(z,x)}{(u,v)},\pdv{(x,y)}{(u,v)}\right)\dd{u}\wedge\dd{v} \]
@@ -547,13 +547,13 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 \[ \bm{r}'_x\cross\bm{r}'_y = (-z'_x, -z'_y, 1) \]
 所以曲面积分的上侧投影公式为
 \begin{equation}
-    \iint\limits_S P\dd{y}\dd{z} + Q\dd{z}\dd{x} + R\dd{x}\dd{y} = \iint\limits_D (P,Q,R)\cdot(-z'_x,-z'_y,1)\dd{x}\dd{y}
+    \iint\limits_S P\dd{y}\dd{z} + Q\dd{z}\dd{x} + R\dd{x}\dd{y} = \iint\limits_D (P,Q,R)\vdot(-z'_x,-z'_y,1)\dd{x}\dd{y}
 \end{equation}
 其中$D$为曲面$S$在平面$xOy$的投影区域。
 
 对于下侧的投影公式为
 \begin{equation}
-    \iint\limits_S P\dd{y}\dd{z} + Q\dd{z}\dd{x} + R\dd{x}\dd{y} = \iint\limits_D (P,Q,R)\cdot(z'_x,z'_y,-1)\dd{x}\dd{y}
+    \iint\limits_S P\dd{y}\dd{z} + Q\dd{z}\dd{x} + R\dd{x}\dd{y} = \iint\limits_D (P,Q,R)\vdot(z'_x,z'_y,-1)\dd{x}\dd{y}
 \end{equation}
 
 在计算积分的时候，对于单向投影法来说，常常需要把积分域分为上下两个曲面，然后分别计算定向曲面积分，最后再相加起来。
@@ -575,8 +575,8 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     将$\Sigma$分为上、侧、下，三个面，则有
     \[ I = \iint\limits_{\Sigma_1} + \iint\limits_{\Sigma_2} + \iint\limits_{\Sigma_3} = I_1 + I_2 + I_3 \]
     其中$\Sigma_1,\Sigma_3$在$xOy$平面的投影区域均为$D : x^2+y^2\leq R^2$，则有
-    \[ I_1 = \iint_D (P,Q,R)\cdot(0,0,1)\dd{x}\dd{y} = \iint\limits_D R\dd{x}\dd{y} \]
-    \[ I_3 = \iint_D (P,Q,R)\cdot(0,0,-1)\dd{x}\dd{y} = -\iint\limits_D R\dd{x}\dd{y} \]
+    \[ I_1 = \iint_D (P,Q,R)\vdot(0,0,1)\dd{x}\dd{y} = \iint\limits_D R\dd{x}\dd{y} \]
+    \[ I_3 = \iint_D (P,Q,R)\vdot(0,0,-1)\dd{x}\dd{y} = -\iint\limits_D R\dd{x}\dd{y} \]
     所以有$I_1+I_3=0$
 
     对$\Sigma_2$，进行参数化，设$x=R\cos\theta, y=R\sin\theta, z=z$
@@ -588,7 +588,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     \end{align*}
     所以
     \begin{align*}
-        I_2 & = \iint\limits_{\Omega_2} (P,Q,R)\cdot(A,B,C)\dd{\theta}\dd{z}                \\
+        I_2 & = \iint\limits_{\Omega_2} (P,Q,R)\vdot(A,B,C)\dd{\theta}\dd{z}                \\
             & =\int_0^{2\pi}\dd{\theta}\int_{-R}^R \frac{R^2\cos^2\theta}{R^2 + z^2} \dd{z} \\
             & = \frac{\pi}{2}R\int_0^{2\pi} \cos^2\theta \dd{\theta}                        \\
             & =\frac{1}{2}R\pi^2
@@ -626,7 +626,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
             \pdv{x}      & \pdv{y}      & \pdv{z}      \\
             P            & Q            & R
         \end{vmatrix}
-        =\curl{(P,Q,R)}\cdot(\dd{y}\dd{z},\dd{z}\dd{x},\dd{x}\dd{y})
+        =\curl{(P,Q,R)}\vdot(\dd{y}\dd{z},\dd{z}\dd{x},\dd{x}\dd{y})
     \]
 \end{theorem}
 
@@ -690,13 +690,13 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
               \begin{align*}
                   I & = \iiint\limits_{\Omega} \left(\pdv{P}{x} + \pdv{Q}{y} + \pdv{R}{z}\right)\dd{x}\dd{y}\dd{z}                     \\
                     & =\iiint\limits_{\Omega} 3(x^2+y^2+z^2)\dd{x}\dd{y}\dd{z}                                                         \\
-                    & =3\int_0^{2\pi}\dd{\varphi}\int_0^{\pi}\dd{\theta}\int_0^{R} r^2\cdot r^2\sin\theta \dd{r} = \frac{12}{5}\pi R^5
+                    & =3\int_0^{2\pi}\dd{\varphi}\int_0^{\pi}\dd{\theta}\int_0^{R} r^2\vdot r^2\sin\theta \dd{r} = \frac{12}{5}\pi R^5
               \end{align*}
         \item 单向投影法。根据对称性，有
               \begin{align*}
                   I & = 3\iint\limits_\Sigma z^3\dd{x}\dd{y} =3\left(\iint\limits_{\Sigma_\text{上}}+\iint\limits_{\Sigma_\text{下}}\right)z^3\dd{x}\dd{y} \\
-                    & = 3\iint\limits_{x^2+y^2\leq R^2} (0,0,z_\text{上}^3)\cdot(-z'_{\text{上}x},-z'_{\text{上}y},1)
-                  + (0,0,z_\text{下}^3)\cdot(z'_{\text{下}x},z'_{\text{下}y},-1)\dd{x}\dd{y}                                                               \\
+                    & = 3\iint\limits_{x^2+y^2\leq R^2} (0,0,z_\text{上}^3)\vdot(-z'_{\text{上}x},-z'_{\text{上}y},1)
+                  + (0,0,z_\text{下}^3)\vdot(z'_{\text{下}x},z'_{\text{下}y},-1)\dd{x}\dd{y}                                                               \\
                     & = 6\iint\limits_{x^2+y^2\leq R^2} (\sqrt{R^2 - x^2 - y^2})^3 \dd{x}\dd{y}                                                            \\
                     & = 6\int_0^{2\pi}\dd{\varphi}\int_0^R \left(\sqrt{R^2 - r^2}\right)^3 r\dd{r} = \frac{12}{5}\pi R^5
               \end{align*}
@@ -711,7 +711,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
               \end{align*}
               因此有
               \begin{align*}
-                  I & =  \iint\limits_\Sigma (x^3,y^3,z^3)\cdot(A,B,C)\dd{\theta}\dd{\varphi}                                                                    \\
+                  I & =  \iint\limits_\Sigma (x^3,y^3,z^3)\vdot(A,B,C)\dd{\theta}\dd{\varphi}                                                                    \\
                     & =     \iint\limits_\Sigma (R^5\cos^4\varphi\sin^5\theta + R^5\sin^4\varphi\sin^5\theta + R^5\cos^4\theta\sin\theta)\dd{\theta}\dd{\varphi} \\
                     & =     R^5\int_0^{2\pi}\dd{\varphi}\int_0^{\pi} (\cos^4\varphi + \sin^4\varphi)\sin^5\theta + \cos^4\theta\sin\theta\dd{\theta}             \\
                     & =     R^5\left(\int_0^{2\pi} \cos^4\varphi \dd{\varphi}\int_0^{\pi}\sin^5\theta\dd{\theta}
@@ -747,7 +747,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     按照斯托克斯公式，有
     \begin{align*}
         I & = \int_L z\dd{x} + x\dd{y} + y\dd{z}
-        = \iint\limits_S \curl{(P,Q,R)}\cdot(\dd{y}\dd{z},\dd{z}\dd{x},\dd{x}\dd{y}) \\
+        = \iint\limits_S \curl{(P,Q,R)}\vdot(\dd{y}\dd{z},\dd{z}\dd{x},\dd{x}\dd{y}) \\
           & = \iint\limits_S \dd{y}\dd{z} + \dd{z}\dd{x} + \dd{x}\dd{y}              \\
     \end{align*}
     其中$S$的定向为上侧，根据对称性有
@@ -766,7 +766,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     根据斯托克斯公式，有
     \begin{align*}
         I & = \int_L P\dd{x} + Q\dd{y} + R\dd{z}                                         \\
-          & = \iint\limits_S \curl{(P,Q,R)}\cdot(\dd{y}\dd{z},\dd{z}\dd{x},\dd{x}\dd{y}) \\
+          & = \iint\limits_S \curl{(P,Q,R)}\vdot(\dd{y}\dd{z},\dd{z}\dd{x},\dd{x}\dd{y}) \\
           & = -2\iint\limits_S (y+z)\dd{y}\dd{z} + (z+x)\dd{z}\dd{x} + (x+y)\dd{x}\dd{y}
     \end{align*}
     其中$S$为上侧定向，设$S$在$xOy$平面上的投影区域为$D$。则$D$可以表示为
@@ -776,18 +776,167 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     由于显式方程$z=\frac{3}{2}-x-y$可得面积向量$(1,1,1)$，此时根据单向投影法有
     \begin{align*}
         I & = -2\iint\limits_S (y+z)\dd{y}\dd{z} + (z+x)\dd{z}\dd{x} + (x+y)\dd{x}\dd{y} \\
-          & =-2\iint\limits_D (y+z,z+x,x+y)\cdot(1,1,1)\dd{x}\dd{y}                      \\
+          & =-2\iint\limits_D (y+z,z+x,x+y)\vdot(1,1,1)\dd{x}\dd{y}                      \\
           & =-2\iint\limits_D 2(x+y+z)\dd{x}\dd{y}                                       \\
           & =-6\iint\limits_D\dd{x}\dd{y}
     \end{align*}
     根据投影域的几何关系可得投影域面积为正方形区域减去两个等边直角三角形区域。
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=0.8]
+            \begin{axis}[
+                    view={135}{15},
+                    axis lines=center,
+                    axis equal,
+                    xmin=0, ymin=0, zmin=0, xmax=1.5, ymax=1.5, zmax=1.5,
+                    xlabel=x,
+                    ylabel=y,
+                    zlabel=z,
+                    ticks=none
+                ]
+                \draw[color=red,opacity=0.8,fill=CarnationPink] (axis cs:0,0.5,1) -- (axis cs:0.5,0,1) -- (axis cs: 1,0,0.5)
+                -- (axis cs:1,0.5,0) -- (axis cs:0.5,1,0) -- (axis cs:0,1,0.5) -- cycle node [color=black,left,pos=0.5] {$L$};
+                \draw (axis cs:0,0,0) -- (axis cs:1,0,0) -- (axis cs:1,1,0) -- (axis cs:0,1,0) --cycle;
+                \draw (axis cs:0,0,1) -- (axis cs:1,0,1) -- (axis cs:1,1,1) -- (axis cs:0,1,1) --cycle;
+                \draw (axis cs:0,0,0) -- (axis cs:0,0,1);
+                \draw (axis cs:1,0,0) -- (axis cs:1,0,1);
+                \draw (axis cs:0,1,0) -- (axis cs:0,1,1);
+                \draw (axis cs:1,1,0) -- (axis cs:1,1,1);
+            \end{axis}
+        \end{tikzpicture}
+        \begin{tikzpicture}[scale=0.8]
+            \begin{axis}[
+                    axis lines=center,
+                    axis equal,
+                    xmin=0, ymin=0, xmax=1.5, ymax=1.5,
+                    xlabel=x,
+                    ylabel=y,
+                    ticks=none
+                ]
+                \draw (axis cs:0,0) -- (axis cs:1,0) -- (axis cs:1,1) -- (axis cs:0,1) -- cycle;
+                \draw[color=red,opacity=0.8,fill=CarnationPink] (axis cs:0.5,0) -- (axis cs:1,0)
+                -- (axis cs:1,0.5) -- (axis cs:0.5,1) -- (axis cs:0,1) -- (axis cs:0,0.5) -- cycle;
+                \node at (axis cs:0.25,0.75) {$D$};
+            \end{axis}
+        \end{tikzpicture}
+    \end{figure}
     \[ S_D = 1 - 2\times\frac{1}{2}\times\frac{1}{2}\times\frac{1}{2} = \frac{3}{4} \]
     故有
     \[ I = -6 S_D= -\frac{9}{2} \]
 \end{solution}
 
 
+
 \subsection{场的微分与积分}
+按照方向性，场可以分为数量场和向量场；按照时间相关性，场可以分为稳定场和非稳定场。
+
+在有关场的问题中，经常会出现一个运算$\grad$，称为Hamilton算子，读作Nabla，表示对空间中某点作梯度运算。
+\[ \grad = \left(\pdv{x},\pdv{y},\pdv{z}\right) \]
+对于一个向量场$\bm{f}=(P(x,y,z),Q(x,y,z),R(x,y,z))$，其散度和旋度分别为
+\[ \div{\bm{f}} = \pdv{P}{x} + \pdv{Q}{y} + \pdv{R}{z} \]
+\[
+    \curl{\bm{f}} =
+    \begin{vmatrix}
+        \bm{i}  & \bm{j}  & \bm{k}  \\
+        \pdv{x} & \pdv{y} & \pdv{z} \\
+        P       & Q       & R
+    \end{vmatrix}
+\]
+
+对于两个Hamilton算子的点积称为Laplace算子，记作
+\[ \laplacian = \grad \vdot \grad = \pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z} \]
+
 \subsubsection{数量场与梯度场}
+数量场的变化规律可以用梯度场表示，由数量场的梯度构成的向量场称为\textbf{\textsf{梯度场}}。
+
+\paragraph{梯度的运算法则}
+由于梯度运算是一种求导法则，那么根据求导公式不难得出梯度的运算法则
+\begin{enumerate}[(1)]
+    \item （线性性）$\grad(\lambda u + \mu v) = \lambda\grad{u} + \mu\grad{v}$；
+    \item （乘积公式）$\grad(uv) = v\grad{u} + u\grad{v}$；
+    \item （除法公式）$\grad(\dfrac{u}{v}) = \dfrac{v\grad{u}-u\grad{v}}{v^2}$；
+    \item （复合公式）$\grad{F(u)} = F'(u)\grad{u}$；
+    \item （复合公式）$\grad{F(u,v)} = \pdv{F}{u}\grad{u} + \pdv{F}{v}\grad{v}$
+\end{enumerate}
+其中$u,v$是数量场，$\lambda,\mu$是常数。
+
+梯度场的积分域积分域的单连通性\sn{直观地说，单连通空间中所有闭曲线都能连续地收缩至一点}相关。
+其相关性可以由如下定理给出
+\begin{theorem}
+    设$\Omega$是单连通的区域，若$P(x,y,z),Q(x,y,z),R(x,y,z)$是$D$内的偏导连续函数，则下列五个条件等价：
+    \begin{enumerate}[(1)]
+        \item （环量恒零性）当$L$是$\Omega$内的分段光滑的简单封闭曲线时，恒有
+              \[ \int_L P\dd{x} + Q\dd{y} + R\dd{z} = 0 \]
+        \item （路径无关性）当$L$是$\Omega$内的分段光滑的简单曲线时，恒有（位势函数或势能）$\displaystyle\int_L P\dd{x}+Q\dd{y}+R\dd{z}$
+              与积分路径无关；
+        \item （场的有势性）微分形式$P\dd{x}+Q\dd{y}+R\dd{z}$是$\Omega$内某个函数$u(x,y,z)$的全微分，
+              即存在三元原函数$u=u(x,y)$，使得
+              \[ \dd{u} = P\dd{x}+Q\dd{y}+R\dd{z} \]
+        \item （场的梯度性）向量场$(x,y,z)\mapsto(P,Q,R)$是$\Omega$内某一数量场$u(x,y,z)$的梯度场，即
+              \[ (P,Q,R)=\grad{u}=\left(\pdv{u}{x},\pdv{u}{y},\pdv{u}{z}\right) \]
+        \item （场的无旋性）$\curl{(P,Q,R)}$在$\Omega$内处处成立，即
+              \[ \pdv{Q}{z} = \pdv{R}{y},\pdv{R}{x}=\pdv{P}{z},\pdv{P}{y}=\pdv{Q}{x} \]
+    \end{enumerate}
+    当$\Omega$为平面区域时，将五个等价条件中与$z$相关的部分去掉即可。
+\end{theorem}
+值得注意的是平面区域一定是\textcolor{red}{无洞无缝}，但是对于空间的区域来说\textcolor{red}{可以}有洞，
+例如同心球夹层满足闭合曲线连续收缩至一个点（单连通）; “甜甜圈”空间环型却不是单连通的。
+
+在路径积分问题中，常常利用(5)和(2)将复杂的积分路径转变为简单的积分路径（往往是几条与坐标轴平行的路径）。
+
+对于区域中存在奇点的情况，则用格林公式或则是斯托克斯公式。
+
+梯度场的位势函数是不唯一的，但两个位势函数之间最多相差一个常数。（类似原函数不唯一）
+\begin{theorem}
+    设$u(x,y,z),v(x,y,z)$是空间区域$\Omega$上具有相同梯度场的数量场，如果存在$(x_0,y_0,z_0)\in\Omega$，使得
+    $u(x_0,y_0,z_0)=v(x_0,y_0,z_0)$，则$u=v$。
+\end{theorem}
+
 \subsubsection{场的通量与散度}
+流速为$\bm{v}$的流体闯关定向曲面$S$的流量可以用曲面积分$\iint\limits_S \bm{v}\vdot\dd{\bm{S}}$表示。
+用数学来说，就是向量场$\bm{f}$关于定向曲面的曲面积分$\iint\limits_S \bm{f}\vdot\dd{\bm{S}}$称为向量场的通量。
+通量与散度通过高斯公式建立对应。
+\begin{equation}
+    \oiint\limits_{S_\text{外}}\bm{f}\vdot\dd{\bm{S}} = \iiint\limits_\Omega \div{\bm{f}}\dd{V}
+\end{equation}
+
+对于闭合曲面，如果流入量大于流出量，则表明曲面内部有“渗洞”；若流入量小于流出量，则表明曲面内部有“源泉”；
+当流入量等于流出量时，则可以认为曲面内部既无源也无洞。也就是无源场。
+
+向量场的散度刻画了向量场的\textcolor{red}{扩散}或\textcolor{red}{收缩}能力，亦即向量场的法向运动能力。
+
+\paragraph{散度的运算法则}
+\begin{enumerate}[(1)]
+    \item $\div(\lambda\bm{f}+\mu\bm{g})=\lambda\div{\bm{f}} + \mu\div{\bm{g}}$；
+    \item $\div(u\bm{f})=\grad{u}\vdot\bm{f} + u\div{\bm{f}}$
+\end{enumerate}
+
+\paragraph{无散场与向量管}
+如果保持曲面边界不变，曲面可以连续变形成不同曲面，曲面的定向保持同侧，如果流量在这些不同的曲面下相同，则称为无散场
+则可以将其看成一个向量管，管子方向为通过这个曲面边界的向量线。显然向量管的侧面通量为零，任意横截面的通量相等。
+
+\begin{theorem}
+    设$\Omega$是一个二维单连通空间区域，如果$\bm{f}$是$\Omega$内的光滑向量场，则通量
+    \[ \iint\limits_\Sigma \bm{f}\vdot\dd{\bm{S}} \]
+    在$\Omega$内与所选曲面$\Sigma$无关而指取决于曲面$\Sigma$的边界，其充要条件是该向量场为无散场，即
+    \[ \div{\bm{f}} = 0 \]
+    在$\Omega$处处成立。
+\end{theorem}
+
+
 \subsubsection{场的环量与旋度}
+向量场沿有向封闭曲线的积分$\displaystyle\int_\Gamma \bm{f}\vdot\dd{\bm{r}}$称为环量，当$\bm{f}$表示作用力时，
+环量表示切向力沿封闭曲线$\Gamma$做的功，环量可视为转动能力。利用斯托克斯公式，可以联系环量与旋度。
+
+\[ \oint_{\partial S}\bm{f}\vdot\dd{\bm{r}} = \iint\limits_S \curl{\bm{f}}\vdot\dd{\bm{S}} \]
+
+\paragraph{旋度的运算}
+\begin{enumerate}[(1)]
+    \item $\curl(\lambda\bm{f}+\mu\bm{g})=\lambda\curl{\bm{f}} + \mu\curl{\bm{g}}$；
+    \item $\curl(u\bm{f})=\grad{u}\cross\bm{f} + u\curl{\bm{f}}$
+\end{enumerate}
+
+梯度场$\iff$无旋场$\iff$有势场$\iff$保守场，特别有
+\[ \curl(\grad{u}) = \bm{0} \]
+无散场$\iff$旋度场$\iff$管量场$\iff$无源场，特别有
+\[ \div(\curl{\bm{f}}) = 0 \]
