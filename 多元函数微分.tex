@@ -373,9 +373,9 @@
 \begin{proof}
     设可微函数$z=F(x,y) = f(\varphi(x,y), \psi(x,y))$，则
     \begin{align*}
-        \dd{F} & = \pdv{F}{x}\dd{x} + \pdv{F}{y}\dd{y}                                   \\
-               & = \left(\pdv{f}{u}\pdv{\varpi}{x} + \pdv{f}{v}\pdv{\pi}{x}\right)\dd{x}
-        +\left(\pdv{f}{u}\pdv{\varpi}{y} + \pdv{f}{v}\pdv{\pi}{y}\right)\dd{y}           \\
+        \dd{F} & = \pdv{F}{x}\dd{x} + \pdv{F}{y}\dd{y}                                     \\
+               & = \left(\pdv{f}{u}\pdv{\varphi}{x} + \pdv{f}{v}\pdv{\phi}{x}\right)\dd{x}
+        +\left(\pdv{f}{u}\pdv{\varphi}{y} + \pdv{f}{v}\pdv{\phi}{y}\right)\dd{y}           \\
                & =\pdv{f}{u}\dd{\varphi} + \pdv{f}{v}\dd{\psi}
     \end{align*}
 \end{proof}
@@ -470,17 +470,17 @@ $F(x,y)=f'_x(x,y)\dd{x}+ f'_y(x,y)\dd{y}$的微分$\dd{F}$称为二元函数$z=f
     设函数$u=\varphi(x,y),v=\psi(x,y)$在$(x,y)$点可导，函数$z=f(u,v)$在对应点$(u,v)$可微，则复合函数$z=f(u(x,y),v(x,y))$在$(x,y)$点可导
     且
     \[
-        \pdv{z}{x} = \pdv{f}{u}\cdot\pdv{\varpi}{x} + \pdv{f}{v}\cdot\pdv{\pi}{x}
+        \pdv{z}{x} = \pdv{f}{u}\cdot\pdv{\varphi}{x} + \pdv{f}{v}\cdot\pdv{\phi}{x}
     \]
     \[
-        \pdv{z}{y} = \pdv{f}{u}\cdot\pdv{\varpi}{y} + \pdv{f}{v}\cdot\pdv{\pi}{y}
+        \pdv{z}{y} = \pdv{f}{u}\cdot\pdv{\varphi}{y} + \pdv{f}{v}\cdot\pdv{\phi}{y}
     \]
 \end{theorem}
 
 \begin{theorem}
     更一般的链法则：设函数$u=f(x_1,x_2,\cdots,x_n)$可微，$x_i=x_i(t_1,t_2,\cdots,t_m)$可导，则复合函数$u=f(x_1(t_1,t_2,\cdots,t_m),\cdots,x_n(t_1,t_2,\cdots,t_m))$可导，且有
     \[
-        \pdv{u}{t_j} = \sum_{i=1}^n \pdv{f}{x_i}\cdot\pdv{xi}{t_j}, \quad j = 1,2,...,m
+        \pdv{u}{t_j} = \sum_{i=1}^n \pdv{f}{x_i}\cdot\pdv{x_i}{t_j}, \quad j = 1,2,\cdots,m
     \]
 \end{theorem}
 
@@ -551,8 +551,8 @@ $F(x,y)=f'_x(x,y)\dd{x}+ f'_y(x,y)\dd{y}$的微分$\dd{F}$称为二元函数$z=f
     \[ z_i = z_i(y_i,\cdots,y_n),\quad y_i=y_i(x_1,\cdots,x_n),\quad (i=1,\cdots n) \]
     在拟讨论点附近连续可导，则
     \[
-        \pdv{(z1,z_n)}{(x_1,\cdots,x_m)}
-        = \pdv{(z1,z_n)}{(y_1,\cdots,y_n)} \cdot \pdv{(y1,y_n)}{(x_1,\cdots,x_n)}
+        \pdv{(z_1,z_n)}{(x_1,\cdots,x_m)}
+        = \pdv{(z_1,z_n)}{(y_1,\cdots,y_n)} \cdot \pdv{(y_1,y_n)}{(x_1,\cdots,x_n)}
     \]
 \end{theorem}
 

@@ -7,13 +7,13 @@
 \begin{enumerate}
     \item \textbf{\textsf{基本域}} 是指闭区间、矩形或长方体的光滑形变，即连续可微条件下一一对应。
     \item \textbf{\textsf{简单域}} 由有限个基本域拼接而成的曲线，曲面或闭区域。
-    \item \textbf{\textsf{积分域}} 指的是存在两两内部不交的（有限或无限）基本域序列$\Omega_1,\Omega_2,\vdots,\Omega_n,\vdots$，
+    \item \textbf{\textsf{积分域}} 指的是存在两两内部不交的（有限或无限）基本域序列$\Omega_1,\Omega_2,\cdots,\Omega_n,\cdots$，
           使得
-          \[ \Omega = \Omega_1\cup\Omega_2\cup\vdots\cup\Omega_n\cup\vdots \]
+          \[ \Omega = \Omega_1\cup\Omega_2\cup\cdots\cup\Omega_n\cup\cdots \]
           并且级数
           \[ \int_\Omega \dd\Omega = \sum_{n=1}^\infty \int_{\Omega_n} \dd\Omega \]
           收敛。
-    \item \textbf{\textsf{剖分}} 基本域$\Omega_1,\Omega_2,\vdots,\Omega_n,\vdots$为$\Omega$的剖分。
+    \item \textbf{\textsf{剖分}} 基本域$\Omega_1,\Omega_2,\cdots,\Omega_n,\cdots$为$\Omega$的剖分。
           其中全体基本域的直径的最小上界称为剖分的直径。
 \end{enumerate}
 
@@ -60,7 +60,7 @@
 
 \subsection{重积分的计算}
 \subsubsection{累次积分法}
-对于积分域$D$上的连续函数$f(x,y)$，只要$D$可用不等式
+对于积分域$D$上的\textcolor{red}{连续函数}$f(x,y)$，只要$D$可用不等式
 \[ \alpha(x)\leq y \leq \beta(x),\quad a\leq x \leq b \]
 连续表示，即$D$为$x$型区域，那么用二重积分计算公式
 \begin{equation}
@@ -87,6 +87,101 @@
 在围成区域$\Omega$的诸多曲面中，可以通过消去$z$的办法得到一系列不含$z$的方程，由此确定投影区域；另一方面，可以通过含有$z$的全体方程解出$z$，由此确定上下边界。
 简言之，即\textbf{\textsf{找$z$解$z$定上下，缺$z$消$z$定投影}}，对于$x,y$也是同理。
 
+有时对累次积分进行积分次序交换，会简化积分的计算。
+\begin{example}
+    计算$\displaystyle \int_0^1\dd{x}\int_0^x\dd{y}\int_0^y\frac{\sin z}{(1-z)^2}\dd{z}$
+\end{example}
+\begin{solution}
+    先将$x$看作为$[0,1]$的常数，交换$y,z$的积分次序，然后同法交换$x,z$的积分次序
+    \begin{align*}
+        I & = \int_0^1\dd{x}\int_0^x\frac{\sin z}{(1-z)^2}\dd{z}\int_z^x\dd{y} \\
+          & =\int_0^1\dd{x}\int_0^x\frac{\sin z}{(1-z)^2} (x-z)\dd{z}          \\
+          & = \int_0^1\frac{\sin z}{(1-z)^2}\dd{z}\int_z^1(x-z)\dd{x}          \\
+          & = \int_0^1 \frac{\sin z}{(1-z)^2} \cdot \frac{1}{2}(1-z)^2\dd{z}   \\
+          & = \frac{1}{2}\int_0^1\sin z\dd{z}                                  \\
+          & = \frac{1}{2}(1-\cos 1)
+    \end{align*}
+\end{solution}
+
+\begin{example}
+    证明$\displaystyle \int_0^1\dd{x}\int_0^1 (xy)^{xy}\dd{y} = \int_0^1 x^x \dd{x}$
+\end{example}
+\begin{proof}
+    令$t=xy$，则有$\dd{y} = \frac{1}{x}\dd{t}$，原积分可变为
+    \begin{align*}
+        \int_0^1\dd{x}\int_0^1 (xy)^{xy}\dd{y}
+         & = \int_0^1\dd{x}\int_0^x t^t\frac{1}{x}\dd{t}  \\
+         & = \int_0^1 \frac{1}{x}\dd{x}\int_0^x t^t\dd{t} \\
+         & = \int_0^1 t^t\dd{t}\int_t^1 \frac{1}{x}\dd{x} \\
+         & =\int_0^1 -\ln{t}\cdot t^t\dd{t}
+    \end{align*}
+    则只需要证明$\displaystyle\int_0^1 -\ln{x}\cdot x^x\dd{x} = \int_0^1 x^x\dd{x}$，即
+    验证$\displaystyle\int_0^1 x^x(1-\ln{x})\dd{x} = 0$，事实上
+    \[ \int_0^1 x^x(1-\ln{x})\dd{x} = \int_0^1 \dd{x^x} = \eval{x^x}_0^1 = 0 \]
+\end{proof}
+
+\subsubsection{利用对称性、奇偶性、轮换性计算}
+设$D$是关于$y$轴对称的有界区域，且$D_1$为$D$在$y$轴右侧部分。那么有
+\begin{equation}
+    \iint\limits_D f(x,y) =
+    \begin{cases}
+        2\iint\limits_{D_1} f(x,y)\dd{x}\dd{y} & f(-x,y)=f(x,y)  \\
+        0                                      & f(-x,y)=-f(x,y) \\
+    \end{cases}
+\end{equation}
+对于积分区域关于$x$轴对称，且$f(x,y)$关于$y$具有奇偶性的情况同理。
+
+设$D_1,D_2$是关于原点对称的有界区域，且$f(x,y)$在$D_1\cup D_2$上的连续向量函数，如果
+\begin{enumerate}[(1)]
+    \item $f(-x,-y)=f(x,y)$，则有$\displaystyle\iint\limits_{D_1\cup D_2}f(x,y)\dd{\sigma}=2\iint\limits_{D_1}f(x,y)\dd{\sigma}$;
+    \item $f(-x,-y)=-f(x,y)$，则有$\displaystyle\iint\limits_{D_1\cup D_2}f(x,y)\dd{\sigma}=0$
+\end{enumerate}
+
+如果积分区域$D$是关于$y=x$对称，则可以将被积函数中的$x,y$相互交换。若关于$y=-x$，则可将$x,-y$相互交换。
+
+\begin{example}
+    记平面区域$D=\{ (x,y)\,|\, \abs{x}+\abs{y}\leq 1 \}$，计算如下二重积分：
+    \begin{enumerate}[(1)]
+        \item $\displaystyle I_1 = \iint\limits_D \frac{af(x)+bf(y)}{f(x)+f(y)}\dd{\sigma}$，其中$f(t)$为定义在$(-\infty,+\infty)$上的连续正值函数，常数$a>0,b>0$
+        \item $\displaystyle I_2 = \iint\limits_D (\mathrm{e}^{\lambda x} - \mathrm{e}^{-\lambda y})$，常数$\lambda > 0$
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    \begin{enumerate}[(1)]
+        \item 由于$D$关于$x=y$对称，所以有
+              \begin{align*}
+                  I_1 & = \frac{1}{2}\iint\limits_D \frac{af(x)+bf(y)}{f(x)+f(y)} + \frac{af(y)+bf(x)}{f(y)+f(x)} \dd{\sigma} \\
+                      & =\frac{(a+b)}{2}\iint\limits_D\dd{\sigma}                                                             \\
+                      & =a+b
+              \end{align*}
+        \item 由于$D$关于$x=-y$对称，所以有
+              \begin{align*}
+                  I_2 & = \frac{1}{2} \iint\limits_D (\mathrm{e}^{\lambda x} - \mathrm{e}^{-\lambda y}) + (\mathrm{e}^{-\lambda y} - \mathrm{e}^{\lambda x}) \dd{\sigma} \\
+                      & =0
+              \end{align*}
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    设$p(x)$在$[a,b]$上非负连续，$f(x)$与$g(x)$在$[a,b]$上连续且具有相同的单调性，其中$D=\{ (x,y)\,|\, a\leq x \leq b, a\leq y \leq b \}$，比较
+    \[ I_1 = \iint\limits_D p(x)f(x)p(y)g(y) \dd{x}\dd{y} \text{ 与~} I_2 = \iint\limits_D p(x)f(y)p(y)g(y)\dd{x}\dd{y} \]
+\end{example}
+\begin{solution}
+    \[ I_1 - I_2 = \iint\limits_D p(x)p(y)[f(x)g(y) - f(y)g(y)]\dd{x}\dd{y} \]
+    由于$D$关于$y=x$对称，所以有
+    \[ I_1 - I_2 = \iint\limits_D p(x)p(y)[f(y)g(x) - f(x)g(x)]\dd{x}\dd{y} \]
+    相加得
+    \begin{align*}
+        I_1 - I_2 & = \frac{1}{2}\iint\limits_D p(x)p(y)[f(x)g(y) - f(y)g(y) + f(y)g(x) - f(x)g(x)]\dd{x}\dd{y} \\
+                  & = \frac{1}{2}\iint\limits_D p(x)p(y)[(f(x)-f(y))g(y) + (f(y)-f(x))g(x)]\dd{x}\dd{y}         \\
+                  & = \frac{1}{2}\iint\limits_D p(x)p(y)[f(x)-f(y)][g(y)-g(x)]\dd{x}\dd{y}
+    \end{align*}
+    由于$f(x)$与$g(x)$在$[a,b]$上具有相同的单调性，所以
+    \[ [f(x)-f(y)][g(y)-g(x)] \leq 0 \]
+    由$p(x),p(y)$在$[a,b]$上非负连续，所以
+    \[ p(x)p(y)[f(x)-f(y)][g(y)-g(x)] \leq 0 \]
+    因此有$I_1 - I_2 \leq 0$，即$I_1\leq I_2$
+\end{solution}
 
 \subsubsection{换元积分法}
 在许多情况下，直接使用累次积分法计算会有很大困难，此时常用换元积分法。选择好的变量代换，对简化计算有很大的帮助。
@@ -117,12 +212,14 @@
 
 同理可得三重积分的换元公式
 \begin{equation}
-    \iiint\limits_\Omega f(x,y,z)\dd{x}\dd{y}\dd{z} = \iiint\limits_{\Omega_{uvw}} f(x(u,v,w),\vdots)\abs{\pdv{(x,y,z)}{(u,v,w)}}\dd{u}\dd{v}\dd{w}
+    \iiint\limits_\Omega f(x,y,z)\dd{x}\dd{y}\dd{z} = \iiint\limits_{\Omega_{uvw}} f(x(u,v,w),\cdots)\abs{\pdv{(x,y,z)}{(u,v,w)}}\dd{u}\dd{v}\dd{w}
 \end{equation}
 
 在使用换元法时，选定好变量变换后，对区域边界进行变换，然后计算雅可比，
 若雅可比中的偏导数不好求解时，可根据反函数定理，求雅可比的倒数，即换元后的变量对还原前的变量求偏导，
 之后再利用换元公式计算重积分。
+
+
 
 \subsection{常用坐标变换}
 \subsubsection{极坐标变换}
@@ -202,7 +299,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 \]
 则有球坐标变换公式
 \begin{equation}
-    \iiint\limits_{\Omega} f(x,y,z)\dd{x}\dd{y}\dd{z} = \iiint\limits_{V}f(r\cos\varphi\sin\theta,\vdots)r^2\sin\theta\dd{r}\dd{\theta}\dd{\varphi}
+    \iiint\limits_{\Omega} f(x,y,z)\dd{x}\dd{y}\dd{z} = \iiint\limits_{V}f(r\cos\varphi\sin\theta,\cdots)r^2\sin\theta\dd{r}\dd{\theta}\dd{\varphi}
 \end{equation}
 
 \begin{situation}
@@ -410,7 +507,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 按照黎曼积分的定义，分布在积分域$\Omega$上的连续介质，其质量密度为$\rho(x,y,z)$时，总质量为
 \[ m = \int_\Omega f(x,y,z)\dd{\Omega} \]
 
-对于给定质点系$(\bm{r}_i,m_i)\,(i=1,2,3,\vdots)$，物理上称指点位置关于质量的加权平均为\textcolor{red}{\textbf{\textsf{重心}}}。
+对于给定质点系$(\bm{r}_i,m_i)\,(i=1,2,3,\cdots)$，物理上称指点位置关于质量的加权平均为\textcolor{red}{\textbf{\textsf{重心}}}。
 即
 \[ \overline{\bm{r}} = \sum_{i=1}^{n} \frac{m_i}{m}\bm{r}_i, \quad m = \sum_{i=j}^n m_j \]
 积分形式为
@@ -677,7 +774,102 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     \end{enumerate}
 \end{solution}
 
-\subsubsection{高斯公式地应用}
+\begin{example}
+    设$f(x,y)$式$\{ (x,y)\,|\, x^2+y^2\leq 1 \}$上的二阶连续可微函数，满足$\displaystyle\pdv[2]{f}{x}+\pdv[2]{f}{y}=x^2y^2$，计算积分
+    \[ I = \iint\limits_{x^2+y^2\leq 1} \left(\frac{x}{\sqrt{x^2+y^2}}\pdv{f}{x} + \frac{y}{\sqrt{x^2+y^2}}\pdv{f}{y}\right)\dd{x}\dd{y} \]
+\end{example}
+\begin{solution}
+    由于题中给出了含二阶偏导数的条件，所以关键在于如何将被积函数向二阶偏导上变形。考虑到格林公式有$\displaystyle\pdv{Q}{x}-\pdv{P}{y}$的形式，与条件上的关联。
+    变形的关键在于二重积分中，先将一个变量看作常数，然后则有一个定积分，再联系线积分的参数化计算，则可以得出下面解题思路。
+
+    利用极坐标变换有
+    \begin{align*}
+        I & = \int_0^{2\pi}\dd{\theta}\int_0^1 \left(\cos\theta \pdv{f}{x} + \sin\theta\pdv{f}{y}\right)r\dd{r}            \\
+          & = \int_0^1 \dd{r}\int_0^{2\pi} r\cos\theta \pdv{f}{x} + r\sin\theta\pdv{f}{y}\dd{\theta}                       \\
+          & = \int_0^1 \dd{r} \int_0^{2\pi} \left(-\pdv{f}{y},\pdv{f}{x}\right)\vdot(-r\sin\theta, r\cos\theta)\dd{\theta} \\
+          & = \int_0^1 \dd{r} \oint\limits_{x^2+y^2 = r^2} \left(-\pdv{f}{y},\pdv{f}{x}\right)\cdot(\dd{x},\dd{y})         \\
+          & = \int_0^1 \dd{r} \iint\limits_{x^2+y^2\leq r^2} \pdv[2]{f}{x} + \pdv[2]{f}{y} \dd{x}\dd{y}                    \\
+          & = \int_0^1 \dd{r} \iint\limits_{x^2+y^2\leq r^2} x^2y^2 \dd{x}\dd{y}                                           \\
+          & = \int_0^1 \dd{r} \int_0^{2\pi} \dd{\theta}\int_0^r t^4\sin^2\theta\cos^2\theta \cdot t \dd{t}                 \\
+          & = \int_0^1 \dd{r} \int_0^{2\pi} \sin^2\theta\cos^2\theta \dd{\theta}\int_0^r t^5 \dd{t}                        \\
+          & = \frac{1}{6}\int_0^1 r^6 \dd{r} \int_0^{2\pi} \sin^2\theta\cos^2\theta\dd{\theta}                             \\
+          & = \frac{1}{42}\cdot 2\mathrm{B}\left(\frac{3}{2},\frac{3}{2}\right)                                            \\
+          & = \frac{\pi}{168}
+    \end{align*}
+\end{solution}
+
+\begin{example}
+    设$f(x,y)$为具有二阶连续偏导数的二次齐次函数，即对任意$x,y,t$下式成立
+    \[ f(tx,ty) = t^2f(x,y) \]
+    设$D$是由$L:x^2+y^4=4$正向一周所围成的闭区域，证明
+    \[ \oint_L f(x,y)\dd{s} = \iint\limits_D \laplacian f(x,y) \dd{\sigma} \]
+\end{example}
+\begin{proof}
+    等式两边同时对$t$求导得
+    \[ xf'_1(tx,ty) + yf'_2(tx,ty) = 2tf(x,y) \]
+    令$t=1$得
+    \[ x\pdv{f}{x} + y\pdv{f}{y} = 2f(x,y) \]
+    那么有
+    \begin{align*}
+        \oint_L f(x,y)\dd{s}
+         & = \frac{1}{2} \oint_L \left(x\pdv{f}{x} + y\pdv{f}{y}\right)\dd{s}                   \\
+         & =  \oint_L \left(-\pdv{f}{y},\pdv{f}{x}\right) \vdot(-\frac{y}{2},\frac{x}{2})\dd{s} \\
+         & =  \oint_L \left(-\pdv{f}{y},\pdv{f}{x}\right) \vdot\dd{\bm{s}}                      \\
+         & = \iint\limits_D \laplacian f(x,y) \dd{\sigma}
+    \end{align*}
+\end{proof}
+
+\begin{example}
+    设$L$为曲线$x^2+y^2=R^2$一周，$\bm{n}$为$L$的外法线方向向量，$u(x,y)$具有二阶连续偏导数且$\displaystyle \pdv[2]{u}{x} + \pdv[2]{u}{y}=x^2+y^2$。
+    求$\displaystyle\oint_L \pdv{u}{\bm{n}}\dd{s}$
+\end{example}
+\begin{solution}
+    \[
+        \pdv{u}{\bm{n}}
+        = \grad{u}\vdot\bm{n}_0
+        = \left(\pdv{u}{x},\pdv{u}{y}\right)\vdot\left(\frac{x}{R},\frac{y}{R}\right)
+        = \left(-\pdv{u}{y},\pdv{u}{x}\right)\vdot\left(-\frac{y}{R},\frac{x}{R}\right)
+        = \left(-\pdv{u}{y},\pdv{u}{x}\right)\vdot\bm{t}_0
+    \]
+    其中$\bm{n}_0$为外法线的单位方向向量，$\bm{t}_0$为曲线上逆时针方向的单位切向量。
+    故原积分为
+    \begin{align*}
+        \oint_L \pdv{u}{\bm{n}}\dd{s}
+         & = \oint_L \left(-\pdv{u}{y},\pdv{u}{x}\right)\vdot\bm{t}_0\dd{s} \\
+         & = \iint\limits_{x^2+y^2\leq R^2} \laplacian{u} \dd{x}\dd{y}      \\
+         & = \iint\limits_{x^2+y^2\leq R^2} x^2+y^2 \dd{x}\dd{y}            \\
+         & = \int_0^{2\pi} \dd{\theta} \int_0^R r^2\cdot r \dd{r}           \\
+         & =\frac{\pi}{2}R^4
+    \end{align*}
+\end{solution}
+上面两个都有一个知识点，就是如何将无向域的线积分变为定向线积分，即如何将被积函数化成向量场与曲线单位切向量的内积。
+
+\begin{example}
+    已知平面区域$D=\{ (x,y)\,|\, x^2+y^2\leq 1 \}$，$L$为$D$的边界正向一周。证明：
+    \[ I = \oint_L \frac{x\mathrm{e}^{\sin y}\dd{y} - y\mathrm{e}^{-\sin x}\dd{x}}{4x^2+5y^2} \geq \frac{2}{5}\pi \]
+\end{example}
+\begin{proof}
+    此题关键在于提前优化被积函数的表达，以简化在格林公式中的求导步骤。
+
+    由于在$L$上有
+    \[ 4x^2+5y^2 = 4 + y^2 = 5 - x^2 \]
+    所以
+    \begin{align*}
+        I & = \oint_L -\frac{y\mathrm{e}^{-\sin x}}{5-x^2}\dd{x} + \frac{x\mathrm{e}^{\sin y}}{4 + y^2}\dd{y}                                \\
+          & = \iint\limits_D \frac{\mathrm{e}^{\sin y}}{4+y^2} + \frac{\mathrm{e}^{-\sin x}}{5-x^2} \dd{x}\dd{y}                             \\
+          & = \iint\limits_D \frac{\mathrm{e}^{\sin y}}{4+y^2}\dd{x}\dd{y} + \iint\limits_D\frac{\mathrm{e}^{-\sin x}}{5-x^2} \dd{x}\dd{y}   \\
+          & \geq \frac{1}{5}\left(\iint\limits_D \mathrm{e}^{\sin y} \dd{x}\dd{y} + \iint\limits_D \mathrm{e}^{-\sin x} \dd{x}\dd{y} \right) \\
+          & = \frac{1}{5}\left(\iint\limits_D \mathrm{e}^{\sin x} \dd{x}\dd{y} + \iint\limits_D \mathrm{e}^{-\sin x} \dd{x}\dd{y} \right)    \\
+          & = \frac{1}{5}\iint\limits_D \mathrm{e}^{\sin x} + \mathrm{e}^{-\sin x} \dd{x}\dd{y}                                              \\
+          & \geq \frac{1}{5}\iint\limits_D 2\sqrt{\mathrm{e}^{\sin x}\cdot\mathrm{e}^{-\sin x}} \dd{x}\dd{y}                                 \\
+          & = \frac{2}{5}\iint\limits_D \dd{x}\dd{y}                                                                                         \\
+          & = \frac{2}{5}\pi
+    \end{align*}
+
+\end{proof}
+
+
+\subsubsection{高斯公式的应用}
 对于定向类曲面积分，如果封闭曲面由多个光滑曲面构成，用参数化方法或投影方法可能会成倍地增加计算量。遇到这种情况，一般可用高斯公式将曲面积分转化为三重积分来计算。
 \begin{example}
     计算曲面积分
@@ -773,7 +965,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     \[ D: D_1 \cup D_2 \]
     \[ D_1 : 0\leq x\leq \frac{1}{2},\quad \frac{1}{2} - x \leq y \leq 1  \]
     \[ D_2 : \frac{1}{2}\leq x\leq 1,\quad 0 \leq y \leq \frac{3}{2} - x  \]
-    由于显式方程$z=\frac{3}{2}-x-y$可得面积向量$(1,1,1)$，此时根据单向投影法有
+    由于显式方程$z=\dfrac{3}{2}-x-y$可得面积向量$(1,1,1)$，此时根据单向投影法有
     \begin{align*}
         I & = -2\iint\limits_S (y+z)\dd{y}\dd{z} + (z+x)\dd{z}\dd{x} + (x+y)\dd{x}\dd{y} \\
           & =-2\iint\limits_D (y+z,z+x,x+y)\vdot(1,1,1)\dd{x}\dd{y}                      \\
@@ -825,7 +1017,52 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     \[ I = -6 S_D= -\frac{9}{2} \]
 \end{solution}
 
+\begin{example}
+    计算$\displaystyle I=\oint_L (y^2-z^2)\dd{x} + (2z^2-x^2)\dd{y} + (3x^2-y^2)\dd{z}$，其中$L$是平面$x+y+z=2$与柱面$\abs{x}+\abs{y}=1$的交线，
+    从$z$轴正向往负向看$L$，$L$为逆时针方向。
+\end{example}
+\begin{solution}
+    向量场$(P,Q,R)=(y^2-z^2, 2z^2-x^2, 3x^2-y^2)$，则有
+    \[ \curl(P,Q,R) = (-2y-4z, -2z-6x, -2x-2y) = -2(y+2z, z+3x, x+y) \]
+    则有
+    \[
+        I = \oint_L P\dd{x} + Q\dd{y} R\dd{z}= -2\iint\limits_S (y+2z, z+3x, x+y)\vdot \dd{\bm{S}}
+    \]
+    其中$S$为$L$所的平面区域，方向为平面$x+y+z=2$的法向量方向。故有
+    \begin{align*}
+        I & = -2\iint\limits_S (y+2z, z+3x, x+y)\vdot(\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}})\dd{S} \\
+          & =-\frac{2}{\sqrt{3}} \iint\limits_S 4x+2y+3z \dd{S}                                                       \\
+          & =-\frac{2}{\sqrt{3}} \iint\limits_S x - y +6 \dd{S}                                                       \\
+          & =-\frac{2}{\sqrt{3}} \iint\limits_D (x - y +6)\sqrt{1+(-1)^2+(-1)^2} \dd{x}\dd{y}                         \\
+          & = -2 \iint\limits_D (x - y +6) \dd{x}\dd{y}                                                               \\
+    \end{align*}
+    其中$D$为$S$在平面$xOy$的投影区域，即$\abs{x}+\abs{y}=1, z=0$，根据$D$对称性，与$x,y$的奇偶性可知
+    \[ I = -2 \iint\limits_D 6 \dd{x}\dd{y} = -12 \iint\limits_D \dd{x}\dd{y} = -24 \]
+\end{solution}
 
+\begin{example}
+    设$\Sigma$为球面$x^2+y^2+z^2=1$的外侧，计算
+    \[ I = \oiint\limits_\Sigma \frac{2}{x\cos^2 x}\dd{y}\dd{z} + \frac{1}{\cos^2 y}\dd{z}\dd{x} - \frac{1}{z\cos^2 z}\dd{x}\dd{y} \]
+\end{example}
+\begin{solution}
+    对于复杂的积分，首先要考虑的是化简。对于此题来说，比较麻烦的是分子是三角函数。所以要利用对称性和奇偶性来化简。
+    \begin{align*}
+        I & = \oiint\limits_\Sigma \frac{2}{x\cos^2 x}\dd{y}\dd{z} + \frac{1}{\cos^2 y}\dd{z}\dd{x} - \frac{1}{z\cos^2 z}\dd{x}\dd{y}                                        \\
+          & = \oiint\limits_\Sigma \left(\frac{2}{x\cos^2 x} , \frac{1}{\cos^2 y} , -\frac{1}{z\cos^2 z}\right)\vdot(x,y,z)\dd{\sigma}                                       \\
+          & = \oiint\limits_\Sigma \frac{2}{\cos^2 x} + \frac{y}{\cos^2 y} - \frac{1}{\cos^2 z} \dd{\sigma}                                                                  \\
+          & = 2\oiint\limits_\Sigma \frac{}{\cos^2 x} \dd{\sigma} + \oiint\limits_\Sigma \frac{y}{\cos^2 y} \dd{\sigma} -\oiint\limits_\Sigma \frac{1}{\cos^2 z} \dd{\sigma} \\
+          & = 2I_1 + I_2 - I_3
+    \end{align*}
+    根区间对称性可知$I_1 = I_3$，根据函数奇偶性和区间对称性可知$I_2=0$，故
+    \begin{align*}
+        I & = \oiint\limits_\Sigma \frac{1}{\cos^2 z} \dd{\sigma}                                                      \\
+          & = 2\iint\limits_{x^2+y^2\leq 1} \frac{1}{\cos^2 z}\frac{1}{z}\dd{x}\dd{y}                                  \\
+          & = 2\int_0^{2\pi} \dd{\theta} \int_0^1 \frac{1}{\cos[2](\sqrt{1-r^2})} \frac{1}{\sqrt{1-r^2}}\cdot r \dd{r} \\
+          & = -2\int_0^{2\pi} \dd{\theta}\int_0^1 \frac{1}{\cos[2](\sqrt{1-r^2})} \dd{\sqrt{1-r^2}}                    \\
+          & = -2\int_0^{2\pi} \dd{\theta}\int_0^1  \dd{\tan(\sqrt{1-r^2})}                                             \\
+          & = 4\pi\tan 1
+    \end{align*}
+\end{solution}
 
 \subsection{场的微分与积分}
 按照方向性，场可以分为数量场和向量场；按照时间相关性，场可以分为稳定场和非稳定场。
@@ -882,6 +1119,27 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 值得注意的是平面区域一定是\textcolor{red}{无洞无缝}，但是对于空间的区域来说\textcolor{red}{可以}有洞，
 例如同心球夹层满足闭合曲线连续收缩至一个点（单连通）; “甜甜圈”空间环型却不是单连通的。
 
+\begin{example}
+    下列命题中不正确的是
+    \begin{enumerate}[(A)]
+        \item 若$f(u)$有连续的导数，则$\displaystyle\int_L f(x^2+y^2)(x\dd{x}+y\dd{y})$在全平面内与路径无关
+        \item 若$f(u)$连续，则$\displaystyle\int_L f(x^2+y^2)(x\dd{x}+y\dd{y})$在全平面内与路径无关
+        \item 若$P(x,y),Q(x,y)$在区域$D$内有连续的一阶偏导数，且$\displaystyle\pdv{Q}{x}\equiv\pdv{P}{y}$，
+              则$\displaystyle\int_L P\dd{x}+Q\dd{y}$在区域$D$内与路径无关。
+        \item $\displaystyle\int_L \frac{-y}{x^2+y^2}\dd{x}+\frac{x}{x^2+y^2}\dd{y}$在区域$D=\{ (x,y)\,|\,(x,y)\neq(0,0) \}$上与路径有关。
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    \begin{enumerate}[(A)]
+        \item 由于$\displaystyle\pdv{y}(f(x^2+y^2)x)=\pdv{x}(f(x^2+y^2)x)$，所以积分与路径无关。
+        \item 由于$\dd(\frac{1}{2}f(x^2+y^2)) = f(x^2+y^2)(x\dd{x}+y\dd{y})$，所以积分与路径无关。
+        \item 由于$D$可能不是单连通区域，故无法确定积分是否与区域$D$内的路径无关性是否成立。
+        \item 根据格林公式，补上一个$C:x^2+y^2=\varepsilon^2$的曲线，其方向与$L$相同，则原积分等于在$C$上的积分，
+              然后参数化可得$\displaystyle -\int\dd{\theta}$，其积分上下限与路径的方向有关。
+    \end{enumerate}
+    综上所述(C)命题不正确。
+\end{solution}
+
 在路径积分问题中，常常利用(5)和(2)将复杂的积分路径转变为简单的积分路径（往往是几条与坐标轴平行的路径）。
 
 对于区域中存在奇点的情况，则用格林公式或则是斯托克斯公式。
@@ -889,7 +1147,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 梯度场的位势函数是不唯一的，但两个位势函数之间最多相差一个常数。（类似原函数不唯一）
 \begin{theorem}
     设$u(x,y,z),v(x,y,z)$是空间区域$\Omega$上具有相同梯度场的数量场，如果存在$(x_0,y_0,z_0)\in\Omega$，使得
-    $u(x_0,y_0,z_0)=v(x_0,y_0,z_0)$，则$u=v$。
+    $u(x_0,y_0,z_0)=v(x_0,y_0,z_0)$，则$u=v$
 \end{theorem}
 
 \subsubsection{场的通量与散度}
@@ -923,6 +1181,18 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     在$\Omega$处处成立。
 \end{theorem}
 
+\begin{example}
+    设一个矢量场$\bm{A}(x,y,z)$，它在某点的矢量大小与该点到原点的距离平方成正比（比例常数为$k$），方向指向原点，计算$\div{\bm{A}}$
+\end{example}
+\begin{solution}
+    根据题意可知
+    \begin{align*}
+        \bm{A} & =k(x^2+y^2+z^2)(\frac{-x}{\sqrt{x^2+y^2+z^2}},\frac{-y}{\sqrt{x^2+y^2+z^2}},\frac{-z}{\sqrt{x^2+y^2+z^2}}) \\
+               & = -k(x\sqrt{x^2+y^2+z^2},y\sqrt{x^2+y^2+z^2},z\sqrt{x^2+y^2+z^2})
+    \end{align*}
+    则
+    \[ \div{\bm{A}} = -4k\sqrt{x^2+y^2+z^2} \]
+\end{solution}
 
 \subsubsection{场的环量与旋度}
 向量场沿有向封闭曲线的积分$\displaystyle\int_\Gamma \bm{f}\vdot\dd{\bm{r}}$称为环量，当$\bm{f}$表示作用力时，
