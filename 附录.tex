@@ -1,4 +1,3 @@
-\pagestyle{fancynotes}
 \part{附录}
 
 \section{常用不等式}
@@ -187,16 +186,54 @@
     \item $\tan x = x + \dfrac{1}{3}x^3 + \dfrac{2}{15}x^5 + o(x^5)$
 \end{enumerate}
 
-\newpage
-\section{联想}
+\section{常微分方程解法总结}
+\begin{fullpage}
+    \begin{tabularx}{\textwidth}{@{}XXX@{}}
+        \toprule
+        \multicolumn{1}{c}{微分方程}                                                                   & \multicolumn{1}{c}{解法}                                             & \multicolumn{1}{c}{通解}                                                           \\
+        \midrule
+        \rowcolor{gray!40}
+        \multicolumn{3}{c}{可分离方程}                                                                                                                                                                                                                             \\
+        一阶，变量$x$和$y$均可分离（一般情况, 下面有特殊情况）\[P_1(x)Q_1(y)+P_2(x)Q_2(y)\dv{y}{x}=0\] & 分离变量（除以$P_2Q_1$）                                             & \[ \int^x \frac{P_1(t)}{P_2(t)}\dd{t} + \int^y\frac{Q_2(t)}{Q_1(t)}\dd{t} = C \]   \\
+        \midrule
+        一阶，变量$x$可分离 \[\dv{y}{x}=F(x)\]                                                         & 直接积分                                                             & \[ y=\int^x F(t)\dd{t} + C \]                                                      \\
+        \midrule
+        一阶自治，变量$y$可分离 \[ \dv{y}{x}=F(y) \]                                                   & 分离变量（除以$F$）                                                  & \[ x=\int^y \frac{\dd{t}}{F(t)} + C \]                                             \\
+        \midrule
+        一阶，变量$x$和$y$均可分离 \[ P(y)\dv{y}{x} + Q(x) = 0 \]                                      & 整个积分                                                             & \[ \int^y P(t)\dd{t} + \int^x Q(t)\dd{t} = C \]                                    \\
+        \midrule
+        \rowcolor{gray!40}
+        \multicolumn{3}{c}{一般一阶微分方程}                                                                                                                                                                                                                       \\
+        一阶，齐次 \[ \dv{y}{x} = F\left(\frac{y}{x}\right) \]                                         & 令$y=ux$，然后通过分离变量$u$和$x$求解                               & \[ \ln(Cx) = \int^{\frac{y}{x}} \frac{\dd{t}}{F(t)-t} \]                           \\
+        \midrule
+        一阶，可分离变量 \[ y=M(xy) + xN(xy)\dv{y}{x} = 0 \]                                           & 根据$\dd{\ln(xy)}=\frac{\dd{x}}{x} + \frac{\dd{y}}{y}$，方程除以$xy$ & \[ \ln(Cx) = \int^{xy} = \frac{N(t)\dd{t}}{t[N(t)-M(t)]} \]如果$N=M$，则解为$xy=C$ \\
+        \midrule
+        恰当微分，一阶 \[ M(x,y)\dv{y}{x} + N(x,y) = 0 \] 其中$\displaystyle \pdv{M}{x}=\pdv{N}{y}$    & 整个积分                                                             &
+        {\[\begin{split}F(x,y) = & \int^y M(x,t)\dd{t} + \int^x N(t,y)\dd{t} \\& + Y(y) +X(x) = C\end{split}\]} 其中$Y(y)$和$X(x)$时积分处理的函数而不是常数，将他们列在这里以使最终函数$F(x,y)$满足初始条件                                                                                                                              \\
+        \bottomrule
+    \end{tabularx}
+\end{fullpage}
 
- {
-  \tabulinesep=1.2mm
-  \begin{tabu}{|c|c|}
-      \hline
-      看到         & 联想                                                                             \\ \hline
-      $f(x)+f'(x)$ & $(\mathrm{e}^xf(x))' = \mathrm{e}^x(f(x) + f'(x))$                               \\ \hline
-      $f(x)-f'(x)$ & $\left(-\dfrac{f(x)}{\mathrm{e}^x}\right)' = \dfrac{f(x) - f'(x)}{\mathrm{e}^x}$ \\ \hline
-  \end{tabu}
- }
-
+\begin{fullpage}
+    \begin{tabularx}{\textwidth}{@{}XXX@{}}
+        \toprule
+        \multicolumn{1}{c}{微分方程}                                                                   & \multicolumn{1}{c}{解法}                                                                                                                                                   & \multicolumn{1}{c}{通解}                                             \\
+        \midrule
+        \rowcolor{gray!40}
+        \multicolumn{3}{c}{一般一阶微分方程}                                                                                                                                                                                                                                                                                                               \\
+        反常微分, 一阶 \[ M(x,y)\dv{y}{x} + N(x,y) = 0 \] 其中$\displaystyle \pdv{M}{x}\neq\pdv{N}{y}$ & 积分变量$\mu(x,y)$ 满足\[\pdv{(\mu M)}{x}=\pdv{(\mu N)}{y}\]                                                                                                               & 如果可以得到$\mu(x,y)$
+        {\[\begin{split}F(x,y) = & \int^y \mu(x,t)M(x,t)\dd{t} \\ &+ \int^x \mu(t,y)N(t,y)\dd{t} \\& + Y(y) +X(x) = C\end{split}\]}                                                                                                                                                                                                                                                                                                                   \\
+        \midrule
+        \rowcolor{gray!40}
+        \multicolumn{3}{c}{一般二阶微分方程}                                                                                                                                                                                                                                                                                                               \\
+        二阶, 自治\[ \dv[2]{y}{x} = F(y) \]                                                            & 原方程乘以$\displaystyle 2\dv{y}{x}$，代换$2\dv{y}{x}\dv[2]{y}{x} = \dv{x}(\dv{y}{x})^2$然后两次积分                                                                       & \[ x=\pm\int^y \frac{\dd{t}}{\sqrt{2\int^t F(m)\dd{m}} +C_1} +C_2 \] \\
+        \midrule
+        \rowcolor{gray!40}
+        \multicolumn{3}{c}{线性方程}                                                                                                                                                                                                                                                                                                                       \\
+        一阶线性，非齐次的函数系数\[ \dv{y}{x + P(x)y = Q(x)} \]                                       & 积分因子$\mathrm{e}^{\int^x P(t)\dd{t}}$                                                                                                                                   &
+        \[\begin{split} y = \mathrm{e}^{-\int^x P(s)\dd{s}}\left[\int^x \mathrm{e}^{\int^t P(m)\dd{m}}Q(t)\dd{t}\right.\\ + \left.C \vphantom{\int^x}\right]\end{split} \]                                                                                                                                                                                                                                                                                                                    \\
+        \midrule
+        二阶线性，非齐次的常系数\[ \dv[2]{y}{x}+b\dv{y}{x} + cy = r(x) \]                              & 设$y_c=\mathrm{e}^{\alpha x}$代换并解出$\alpha$中的多项式，求出线性无关函数$\mathrm{e}^{\alpha_j x}$，特解$y_p$一般运用常数变易法， 虽然对于非常容易的$r(x)$可以直观判断。 &                                                                      \\
+        \bottomrule
+    \end{tabularx}
+\end{fullpage}

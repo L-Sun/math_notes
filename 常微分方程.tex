@@ -1,0 +1,496 @@
+\part{常微分方程}
+
+\section{常微分方程的基本概念}
+在数学分析中，常微分方程（英语：ordinary differential equation，简称ODE）是未知函数只含有一个自变量的微分方程。
+其一般形式为
+\begin{equation}
+    F\left(x,y,y',\cdots,y^{(n)}\right) = 0
+\end{equation}
+称为\textcolor{red}{\textbf{\textsf{$n$阶常微分方程}}}，其中$y=y(x)$是未知数。
+
+如果$F$为线性函数，即当$y=\lambda u + \mu v$且$\lambda,\mu$为常数时，恒有
+\[ F\left(x,y,y',\cdots,y^{(n)}\right) = \lambda F\left(x, u, u', \cdots, u^{(n)}\right) + \mu F\left(x, v, v', \cdots, v^{(n)}\right) \]
+则称$F\left(x,y,y',\cdots,y^{(n)}\right)=0$为\textcolor{red}{\textbf{\textsf{$n$阶齐次微分方程}}}。
+
+\begin{definition}
+    设$y=y(x)$在区间$I$上有定义，且存在$n$阶导数。如果$x\in I$时，恒有
+    \[ F\left(x,y,y',\cdots,y^{(n)}\right) = 0 \]
+    则称$y=y(x)$为方程在区间上$I$的一个解。
+\end{definition}
+
+不含\textcolor{red}{任意}常数的解称为特解，含有$n$个独立的任意常数的$n$阶方程的解称为通解。
+确定任意常数的条件称为\textcolor{red}{定解条件}。
+
+对于常微分方程，如果有解，根据解法可分为如下几类：
+\begin{enumerate}
+    \item 可分离方程；
+    \item 一般一阶微分方程；
+    \item 一般二阶微分方程；
+    \item $n$阶线性方程。
+\end{enumerate}
+
+\section{一阶微分方程}
+一阶微分方程的一般形式为
+\[ f(x,y,y')=0 \]
+显式形式为$y'=f(x,y)$，也可以写成对称形式$M(x,y)\dd{x}+N(x,y)\dd{y}=0$，一阶微分方程的常见可解类型有分离变量方程，齐次方程，准齐次方程和线性方程等。
+
+\subsection{可分离变量方程}
+分离变量方程、齐次方程、准齐次方程等统称为\textcolor{red}{\textbf{\textsf{可分离变量方程}}}，这类方程都可以通过简单的代数运算或简单的变量代换华为不定积分，
+从而求出问题的通解。
+\subsubsection{分离变量方程}
+形如\[ y'=f(x)g(y) \]方程称为\textcolor{red}{\textbf{\textsf{分离变量方程}}}。如果$g(y)\neq 0$，则上述方程等价于
+\[ \frac{\dd{y}}{g(y)} = f(x)\dd{x} \]
+两端积分即可得到方程的通解
+\[ \int \frac{\dd{y}}{g(y)} = \int f(x)\dd{x} \]
+
+\subsubsection{齐次方程}
+如果一阶微分方程\[ y' = f(x,y) \]中的函数$f(x,y)$可以写成$\frac{y}{x}$的函数，即$f(x,y)=g(\frac{y}{x})$，
+则称此方程为\textcolor{red}{\textbf{\textsf{齐次方程}}}。
+
+对于齐次方程，只要令$\frac{y}{x}=z$，则有
+\[ y=xz,\quad \dv{y}{x} = z + x\dv{z}{x} \]
+带入原方程，可得分离变量方程
+\[ \dv{z}{x} = \frac{g(z)-z}{x} \]
+然后根据分离变量方程的解法来求解。
+
+\subsubsection{准齐次方程}
+形如
+\[ \dv{y}{x} = f\left(\frac{a_1 x+ b_1 y + c_1}{a_2 x + b_2 y + c_2}\right) \]
+的方程称为\textcolor{red}{\textbf{\textsf{准齐次方程}}}。当$c_1=c_2=0$时，该方程变为齐次方程；当$c_1,c_2$不全为$0$时，可经过适当的线性变换将其化为齐次方程。
+
+\begin{enumerate}[(1)]
+    \item 当系数行列式$\Delta = \begin{vmatrix}a_1 &　b_1 \\ a_2 & b_2\end{vmatrix}\neq 0$时，方程
+          \[ \begin{cases}
+                  a_1x + b_1y + c_1 = 0 \\
+                  a_2x + b_2y + c_2 = 0
+              \end{cases} \]存在唯一解$(x,y)=(\alpha,\beta)$，令$x=X+\alpha,y=Y+\beta$，则原方程等价于齐次方程
+          \[ \dv{Y}{X} = f\left(\frac{a_1X +b_1Y}{a_2X + b_2Y}\right) \]
+    \item 当$\Delta = 0$时，可设$\dfrac{a_2}{a_1}=\dfrac{b_2}{b_1}=\lambda$，若令$z=a_1x+b_1y$，则原方程等价于分离变量方程
+          \[ \dv{z}{x} = a_1 + b_1 f\left(\frac{z+c_1}{\lambda z + c_2}\right) \]
+\end{enumerate}
+然后根据分离变量方程的解法来求解。
+
+
+\subsection{一阶线性方程}
+形如\[ y' + P(x)y = Q(x) \]的方程称为\textcolor{red}{\textbf{\textsf{一阶线性方程}}}。当$Q(x)=0$时，称为\textcolor{red}{\textbf{\textsf{线性齐次方程}}}。
+其中$P(x),Q(x)$是某一区间上的连续函数。
+
+\subsubsection{贝努里方程}
+形如
+\[ y' + P(x)y = Q(x)y^n \]
+的方程称为贝努里方程，当$n\neq 0,1$时，令$z=y^{n-1}$，则原方程可化为线性方程
+\[ z' + (1-n)Pz = (1-n)Q \]
+这个过程可概括为\textcolor{red}{“贝努里，$1-n$，幂代换，变线性”}
+
+由于
+\[ y' + Py = Q \iff (y\mathrm{e}^{\int P\dd{x}})' = \mathrm{e}^{\int P\dd{x}}Q \iff y\mathrm{e}^{\int P\dd{x}} = \int \mathrm{e}^{\int P\dd{x}}Q\dd{x} + C \]
+所以一阶线性方程的通解为
+\[ y = \mathrm{e}^{-\int P\dd{x}}\left[\int \mathrm{e}^{\int P\dd{x}}Q \dd{x} +C \right] \]
+
+\subsection{全微分类方程}
+\subsubsection{全微分方程}
+对于一阶微分方程
+\begin{equation}
+    \label{eq:一阶微分方程}
+\end{equation}
+如果$M,N$是光滑函数且
+\[ \pdv{M}{y} = \pdv{N}{x} \]
+则微分形式$M(x,y)\dd{x} + N(x,y)\dd{y}$是位势函数
+\[ u(x,y) = \int_{(x_0,y_0)}^{(x,y)} M(x,y)\dd{x} + N(x,y)\dd{y} \]
+的全微分，由此可知
+\[ u(x,y) = C \]
+是方程\ref{eq:一阶微分方程}的通解。
+
+\subsubsection{积分因子法}
+对于微分方程\ref{eq:一阶微分方程}，如果存在非零函数$\mu=\mu(x,y)$，使得
+\[ \mu M(x,y)\dd{x} + \mu N(x,y)\dd{y} = 0 \]
+成为全微分方程，则称$\mu=\mu(x,y)$为微分方程\ref{eq:一阶微分方程}的积分因子。
+
+积分因子的存在性等价于条件
+\[ \pdv{(\mu M)}{y} = \pdv{(\mu N)}{x} \]
+成立，即
+\[ M\pdv{\mu}{y} + \mu\pdv{M}{y} = N\pdv{\mu}{x} + \mu\pdv{N}{x} \]
+整理可得
+\begin{equation}
+    \label{eq:积分因子法}
+    N\pdv{\ln\mu}{x} - M\pdv{\ln\mu}{y} = \pdv{M}{y} - \pdv{N}{x}
+\end{equation}
+这是一个一阶线性偏微分方程。但要从这个方程得到精确解或初等解一般是不可能的。但是，如果$M,N$为某些特殊函数时，积分因子$\mu$可以时$x,y$或$x^2+y^2$等的一元函数，
+此时就可以将这个方程简化为常微分方程。
+
+假如积分因子具有形式$\mu=\mu(x)$，则有
+\[ N\pdv{\ln\mu}{x} = \pdv{M}{y} - \pdv{N}{x} \]
+因此，只要$\displaystyle \frac{1}{N}\left(\pdv{M}{y}-\pdv{N}{x}\right)$仅是$x$的一元函数，即
+\[ \frac{1}{N}\left(\pdv{M}{y}-\pdv{N}{x}\right) = \varphi(x) \]
+则积分因子$\mu=\mu(x)$存在，并且由微分方程
+\[ \mu'=\varphi(x)\mu \]
+确定，由此可得
+\[ \mu = \mathrm{e}^{\int \varphi(x)\dd{x}} \]
+
+简而言之积分因子法为如下几个步骤
+\begin{enumerate}
+    \item 计算等式\ref{eq:积分因子法}的右侧
+    \item 若除以$N$得出$\varphi(x)$，或除以$-M$得出$\varphi(y)$
+    \item 由此可得$\mu = \mathrm{e}^{\int \varphi(x) \dd{x}}$或$\mu = \mathrm{e}^{\int \varphi(y) \dd{y}}$
+    \item 最后得出微分方程\ref{eq:一阶微分方程}的积分因子形式$\mu M(x,y)\dd{x} + \mu N(x,y)\dd{y} = 0$
+    \item 选择一条折线$L:(x_0,y_0)\to(x,y_0)\to(x,y)$来计算积分\[u(x,y) = \int_L \mu M(x,y)\dd{x} + \mu N(x,y)\dd{y}\]
+    \item 得出通解$u(x,y)=C$
+\end{enumerate}
+\begin{example}
+    求方程$y\dd{x}+(x^2y-x)\dd{y}=0$的通解
+\end{example}
+\begin{solution}
+    首先计算
+    \[ \pdv{M}{y}-\pdv{N}{x} = 1 - (2xy - 1) = 2(1-xy) \]
+    所以有
+    \[ \frac{1}{N}\left(\pdv{M}{y}-\pdv{N}{x}\right) = \frac{2(1-xy)}{x^2y-x} = -\frac{2}{x} \]
+    只是$x$的函数，所以积分因子为
+    \[ \mu = \mathrm{e}^{\int -2/x\dd{x}} = \frac{1}{x^2}  \]
+    因此有
+    \[ \frac{y}{x^2}\dd{x} + \frac{xy-1}{x}\dd{y} = 0 \]
+    选择积分路径$L:(1,0)\to(x,0)\to(x,y)$，则有
+    \[ u(x,y) = \int_L = \int_1^x 0 \dd{x} + \int_0^y \frac{xy-1}{x}\dd{y} = \frac{1}{2}y^2-\frac{y}{x}  \]
+    所以原方程的通解为
+    \[ \frac{1}{2}y^2-\frac{y}{x} = C \]
+\end{solution}
+
+\begin{example}
+    求方程$2xy\ln y\dd{x} + (x^2+y^2\sqrt{y^2+1})\dd{y}=0$的通解
+\end{example}
+\begin{solution}
+    令$M = 2xy\ln y, N = x^2+y^2\sqrt{y^2+1}$
+    则有
+    \[ \pdv{M}{y} - \pdv{N}{x} = 2x(\ln y + 1) - 2x = 2x\ln y \]
+    所以
+    \[ -\frac{1}{M}\left(\pdv{M}{y} - \pdv{N}{x}\right) = -\frac{1}{y} \]
+    则积分因子为
+    \[ \mu = \mathrm{e}^{\int -\frac{1}{y}} \dd{y} = \frac{1}{y} \]
+    那么有全微分方程
+    \[ 2x\ln y\dd{x} + \left(\frac{x^2}{y} + y\sqrt{y^2+1}\right)\dd{y}=0 \]
+    选择折线$L:(0,1)\to(x,1)\to(x,y)$，积分得
+    \[ u(x,y) = \int_0^x 0\dd{x} + \int_1^y \frac{x^2}{y} + y\sqrt{y^2+1} \dd{y} = x^2\ln y + \frac{1}{3}(y^2+1)^{3/2} \]
+    所以原方程的通解为
+    \[ x^2\ln y + \frac{1}{3}(y^2+1)^{3/2} = C \]
+\end{solution}
+
+\subsection{一阶隐式方程}
+对于一阶隐式方程
+\begin{equation*}
+    \label{eq:一阶隐式方程}
+    F(x,y,y') = 0
+\end{equation*}
+如果不能简单地化为显式方程$y'=f(x,y)$，则可以考虑参数化方法求解。
+\subsubsection{缺\texorpdfstring{$y$}{y}型方程}
+对于不显含$y$的隐式方程
+\[ F(x,y') = 0 \]
+如果可以从方程$F(x,p)=0$解出$x$，即$x=\varphi(p)$，则有
+\[ \dd{y} = p\dd{x} = p\varphi'(p)\dd{p} \]
+积分可得
+\[ y = \int p\varphi'(p)\dd{p} \]
+于是可得参数解
+\[
+    \begin{cases}
+        x = \varphi(p) \\
+        y = \int p\varphi'(p)\dd{p}
+    \end{cases}
+\]
+
+\subsubsection{缺\texorpdfstring{$x$}{x}型方程}
+对于不显含$x$的隐式方程
+\[ F(y,y') = 0 \]
+如果可以从方程$F(y,p)=0$解出$y$，即$y=\varphi(p)$，则有$\dd{y} = \varphi'(p)\dd{p}$，又$\dd{y}=p\dd{x}$
+所以有
+\[ \dd{x} = \frac{\varphi'(p)}{p}\dd{p} \]
+积分可得
+\[ x = \int \frac{\varphi'(p)}{p}\dd{p} \]
+于是可得参数解
+\[
+    \begin{cases}
+        x = \frac{\varphi'(p)}{p}\dd{p} \\
+        y = \varphi(p)
+    \end{cases}
+\]
+
+在区间$I$上，如果存在可微函数$x=x(t),y=y(t)$，使得
+\[ F(x(t),y(t),y'(t)/x'(t)) = 0 \]
+对所有$t\in I$成立，则陈$x=x(t),y=y(t)$是方程\ref{eq:一阶隐式方程}在$I$上地参数解或参数形式解。
+
+\section{高阶微分方程}
+二阶或二阶以上的微分方程称为高阶微分方程。
+
+\subsection{高阶微分方程的降阶}
+对于有些高阶微分方程，可以通过适当的变量代换将其化成阶数较低的方程来求解。
+\subsubsection{纯导型方程}
+微分方程\[ y^{(n)} = f(x) \]
+的右端项$f(x)$仅是$x$的一元函数，与$y$无关，只要两端直接积分，便可得到一个$n-1$阶微分方程
+\[ y^{(n-1)} = \int f(x)\dd{x} + C_1 \]
+同理可得
+\[ y^{(n-2)} = \iint f(x)\dd{x} \dd{x} +C_1x + C_2 \]
+
+\subsubsection{缺\texorpdfstring{$y$}{y}型方程}
+微分方程
+\[ y'' = f(x,y') \]
+的右端项$f(x,y')$不是含未知变量$y$，此时可设$y'=p$，则有$y''=p'$及一阶微分方程
+\[ p' = f(x,p) \]
+如果$p=\varphi(x,C)$为其通解，则由$y'=p$可得一阶微分方程
+\[ y' = \varphi(x,C) \]
+因此原方程的通解为
+\[ y = \int \varphi(x,C)\dd{x} + C_1 \]
+
+\subsubsection{缺\texorpdfstring{$x$}{x}型方程}
+微分方程
+\[ y'' = f(y,y') \]
+的右端项$f(y,y')$不显含自变量$x$，此时可设$y'=p$，则有
+\[ y'' = \dv{p}{x}=\dv{p}{y}\cdot\dv{y}{x} = p\dv{p}{y} \]
+及一阶微分方程
+\[ p\dv{p}{y} = f(y,p) \]
+如果$p=\varphi(y,C)$为其通解，则由$y'=p$可得一阶微分方程
+\[ y' = \varphi(y,C) \]
+因此原方程的通解为
+\[ \int \frac{\dd{y}}{\varphi(y,C)} = x + C_1 \]
+
+\subsubsection{齐次方程}
+若同$ty$置换$y$时。方程$F(x,y,y',y'')=0$的结构不变，即$F(x,y,y',y'')$关于$y,y',y''$的齐次函数，即
+\[ F(x,ty,ty',ty'') = t^k F(x,y,y',y'') \]
+则称方程$F(x,y,y',y'')=0$为齐次方程。对于齐次方程可以用$\mathrm{e}$代换$y = \mathrm{e}^{\int z\dd{x}}$降阶。
+对于线性齐次方程，如果知道一个特解$y_1$，则可用特解乘新变量的倍代换$y=y_1z$降解，简而言之就是\textcolor{red}{“齐次$\mathrm{e}$代换，线齐特乘新”}。
+
+\begin{example}
+    求方程$x^2yy''=(y-xy')^2$的通解。
+\end{example}
+\begin{solution}
+    利用$ty$替换$y$时，方程结构不变，故为齐次方程。将$y=\mathrm{e}^{\int z\dd{x}}$带入原方程，则有
+    \begin{align*}
+        y'          & = z\mathrm{e}^{\int z\dd{x}}                          \\
+        y''         & = (z^2+z')\mathrm{e}^{\int z\dd{x}}                   \\
+        \text{左边} & = x^2(z^2+z')\left(\mathrm{e}^{\int z\dd{x}}\right)^2 \\
+        \text{右边} & = (1-xz)^2\left(\mathrm{e}^{\int z\dd{x}}\right)^2
+    \end{align*}
+    两边除以$\left(\mathrm{e}^{\int z\dd{x}}\right)^2$得
+    \[ x^2(z^2+z') = (1-xz)^2 \]
+    即一阶线性方程
+    \[ z' + \frac{2}{x}z = \frac{1}{x^2} \]
+    则有
+    \[ \int \frac{2}{x}\dd{x} = \ln{x^2} + C \]
+    所以$z$的通解为
+    \[
+        z =\mathrm{e}^{-\ln{x^2}}\left[\int \mathrm{e}^{\ln{x^2}} \frac{1}{x^2}\dd{x} + C \right]
+        =\frac{1}{x^2}(x + C)
+    \]
+    因此$y$的通解为
+    \[ y = \mathrm{e}^{\int z \dd{x}} = \exp(\ln\abs{x} + C_1 + \frac{C_2}{x}) = C_1x\mathrm{e}^{C_2/x} \]
+\end{solution}
+
+\subsection{高阶线性方程}
+n阶线性微分方程的一般形式为
+\[ y^{(n)} + p_1y^{(n-1)} + \cdots + p_2y = f \]
+齐次形式为
+\[ y^{(n)} + p_1y^{(n-1)} + \cdots + p_2y = 0 \]
+其中$p_1,\cdots,p_n,f$都是某个区间上的连续函数，由于$n$阶线性方程与二阶线性方程的理论与求解类似，所以只讨论二阶线性微分方程。
+\subsubsection{二阶线性方程的通解结构}
+对于二阶齐次线性方程
+\[ y'' + P(x)y' + Q(x)y = 0 \]
+通解的定理为
+\begin{theorem}
+    设函数$y_1(x),y_2(x)$是方程$y''+P(x)y'+Q(x)y=0$的线性无关解，则其通解为
+    \[ y = C_1y_1(x) + C_2y_2(x) \]
+    其中$C_1,C_2$为任意常数。
+\end{theorem}
+
+由于$y_1(x),y_2(x)$是特解，所以直接验证可知$y = C_1y_1(x) + C_2y_2(x)$也是齐次方程的解。需要说明的是$y_1(x),y_2(x)$的线性无关性。
+
+函数$y_1(x),y_2(x)$线性无关是指$y_1(x),y_2(x)$不成比例，即
+\[ \lambda y_1(x)+\mu y_2(x) = 0 \]
+只有$0$解，即$\lambda = \mu = 0$，更一般的，函数$y_1(x),\cdots,y_n(x)$线性无关等价于
+\[ \lambda_1y_1(x) + \cdots + \lambda_ny_n(x) = 0 \]
+只有$0$解$\lambda_1=\lambda_2=\cdots=\lambda_n = 0$，其中$\lambda_1,\cdots,\lambda_n$为常数。
+
+\begin{theorem}
+    设函数$y_1(x),y_2(x)$是方程$y''+P(x)y'+Q(x)y=0$的线性无关解，又设$y^*(x)$是非齐次方程
+    \[ y'' + P(x)y' + Q(x)y = f(x) \]
+    的特解，则该非齐次方程的通解为
+    \[ y = C_1y_1(x) + C_2y_2(x) + y^*(x) \]
+    其中$C_1, C_2$为任意常数。
+\end{theorem}
+
+\begin{theorem}
+    （叠加定理）设函数$y_1^*(x), y_2^*(x)$分别是方程
+    \[ y'' + P(x)y' + Q(x)y = f_1(x) \]
+    \[ y'' + P(x)y' + Q(x)y = f_2(x) \]
+    的特解，则$y_1^*(x)+y_2^*(x)$是方程
+    \[ y'' + P(x)y' + Q(x)y = f_1(x) + f_2(x) \]
+    的特解。
+\end{theorem}
+
+\subsubsection{常数变易法}
+若非齐次方程\[ y'' + P(x)y' + Q(x)y = f(x) \]的特解也可以通过齐次方程
+\[ y'' + P(x)y' + Q(x)y = 0 \]
+的通解
+\[ Y(x) = C_1y_1(x) + C_2y_2(x) \]
+经常数变易法求得。视常数$C_1,C_2$为变量$u=u(x),v=v(x)$。则有
+\[ y = y_1(x)u + y_2(x)v \]
+两端求导，并令$y_1u' + y_2v' = 0$。于是有
+\[ y' = y_1'u+y_2'v, y'' = y_1'u' + y_2'v' + y_1''u + y_2''v \]
+带入非齐次方程可得
+\[ y_1'u'+y_2'v' = f \]
+因此有方程组
+\[
+    \begin{cases}
+        y_1u'+y_2v' = 0, \\
+        y_1'u'+y_2'v'=f
+    \end{cases}
+\]
+由于$y_1,y_2$线性无关，所以可得
+\[
+    u' = \left.
+    \begin{vmatrix}
+        0 & y_2  \\
+        f & y_2'
+    \end{vmatrix}
+    \middle/
+    \begin{vmatrix}
+        y_1  & y_2  \\
+        y_1' & y_2'
+    \end{vmatrix}
+    \right.
+    ,
+    \quad
+    v' = \left.
+    \begin{vmatrix}
+        y_1  & 0 \\
+        y_1' & f
+    \end{vmatrix}
+    \middle/
+    \begin{vmatrix}
+        y_1  & y_2  \\
+        y_1' & y_2'
+    \end{vmatrix}
+    \right.
+\]
+
+由此可得非齐次方程的通解为
+\[ y = C_1y + C_2y + y_1\int u'\dd{x} + y_2\int v'\dd{x} \]
+
+\begin{example}
+    已知齐次方程$y''+y=0$的通解为
+    \[ Y(x) = C_1\cos x + C_2\sin x \]
+    求非齐次方程$y''+y = \dfrac{1}{\cos x}$的通解。
+\end{example}
+\begin{solution}
+    根据常数变易法有
+    \[
+        \begin{dcases}
+            u'\cos x + v'\sin x = 0 \\
+            -u'\sin x + v'\cos x = \frac{1}{\cos x}
+        \end{dcases}
+    \]
+    解得
+    \[
+        \begin{cases}
+            u' =
+            \left.
+            \begin{vmatrix}
+                0        & \sin x \\
+                1/\cos x & \cos x
+            \end{vmatrix}
+            \middle/
+            \begin{vmatrix}
+                \cos x  & \sin x \\
+                -\sin x & \cos x
+            \end{vmatrix}
+            \right.
+            = -\tan x
+            \\
+            v' =
+            \left.
+            \begin{vmatrix}
+                \cos x  & 0        \\
+                -\sin x & 1/\cos x
+            \end{vmatrix}
+            \middle/
+            \begin{vmatrix}
+                \cos x  & \sin x \\
+                -\sin x & \cos x
+            \end{vmatrix}
+            \right.
+            = 1
+        \end{cases}
+    \]
+    所以原方程的通解为
+    \begin{align*}
+        y & = C_1\cos x + C_2\sin x + \cos x\int -\tan x \dd{x} + \sin x\int 1\dd{x} \\
+          & = (\ln\abs{\cos x}+C_1)\cos x + (x+C_2)\sin x
+    \end{align*}
+\end{solution}
+
+\subsection{常系数线性方程}
+若二阶线性方程
+\[ y'' + py' + qy = f \]
+中的$p,q$均为常数，则称其为\textcolor{red}{\textbf{\textsf{常系数线性方程}}}。
+\subsubsection{二阶齐次方程}
+将$y=\mathrm{e}^{rx}$带入齐次方程
+\[ y''+py'+qy=0 \]
+则有特征方程
+\[ r^2 + pr + q = 0 \]
+如果$r$是特征方程的根，则$y=\mathrm{e}^{rx}$是齐次方程的解。按照这一特性，齐次方程的通解可构造如下。
+\begin{enumerate}[(1)]
+    \item 当特征根是不相等实数$r_1,r_2$时，齐次方程的通解为
+          \[ y = C_1\mathrm{e}^{r_1x} + C_2\mathrm{e}^{r_2x} \]
+    \item 当特征根时重根$r_1=r_2=r$时，齐次方程的通解为
+          \[ y= \mathrm{e}^{rx}(C_1 + C_2 x) \]
+    \item 当特征根时一堆共轭复根$r_{1,2}=\alpha\pm i\beta$时，齐次方程的通解为
+          \[ y = \mathrm{e}^{\alpha x}(C_1\cos\beta x + C_2 \sin\beta x) \]
+\end{enumerate}
+
+\subsubsection{二阶非齐次方程}
+对于常系数非齐次方程
+\[ y'' + py' + qy = f \]
+一般情况下，可用常数变易法，当$f(x)$是下列两种特殊情况时，可以通过形式解用待定系数法求解。
+\begin{enumerate}[(1)]
+    \item 如果$f(x)=\mathrm{e}^{\lambda x}P_m(x)$，其中$P_m(x)$为$m$次多项式，$\lambda$为常数，
+          则方程的形式特解为
+          \[ y=x^kQ_m(x)\mathrm{e}^{\lambda x} \]
+          其中$Q_m(x)$是一个系数待定的$m$次多项式，则$k$按照下列法则确定：
+          \[
+              k=
+              \begin{cases}
+                  0, & \lambda\text{ 不是特征方程的根} \\
+                  1, & \lambda\text{ 是特征方程的单根} \\
+                  2, & \lambda\text{ 是特征方程的重根}
+              \end{cases}
+          \]
+    \item 如果
+          \[ f(x) = \mathrm{e}^{\lambda x} [P_l(x)\cos\omega x+ Q_n\sin\omega x]\]
+          其中$P_l(x),Q_n(x)$分别为$l,n$次多项式，$\lambda$为常数，则方程的形式特解为
+          \[ y=x^k\mathrm{e}^{\lambda x}[A_m(x)\cos\omega x + B_m(x)\sin\omega x] \]
+          其中$m=\max(l,n),A_m(x),B_m(x)$是系数待定的$m$次多项式，而$k$按照下列法则确定：
+          \[
+              k =
+              \begin{cases}
+                  0, & \lambda\pm i\omega\text{ 不是特征方程的根} \\
+                  1, & \lambda\pm i\omega\text{ 是特征方程的根}
+              \end{cases}
+          \]
+\end{enumerate}
+
+\subsubsection{欧拉方程}
+形如
+\[ x^ny^{(n)} + p_1x^{n-1}y^{(n-1)} + \cdots + p_{n-1}xy' + p_n y = f(x) \]
+的常系数方程，称为欧拉方程。令$x=\mathrm{e}^t$，则原方程可以变为常系数线性方程
+\[ \dv[n]{y}{t} + a_1\dv[n-1]{y}{t} + \cdots + a_ny = f(\mathrm{e}^t) \]
+其特征方程$r^n + a_1r^{n-1}+\cdots+ a_n = 0$等价于
+\[ r(r-1) \cdots (r-n+1) + p_1r(r-1) \cdots (r-n+2) + \cdots + p_n = 0 \]
+
+\begin{example}
+    解欧拉方程$x^3y''' + x^2y'' -4xy' = 3x^2$
+\end{example}
+\begin{solution}
+    根据其特征方程$r(r-1)(r-2) + r(r-1) -4r = 0$，即
+    \[ r^3 - 2r^2 -3r = 0 \]
+    解得$r = -1,0,3$，则原方程在$x=\mathrm{e}^t$变换下为
+    \[ \dv[3]{y}{t} -2\dv[2]{y}{t} - 3\dv{y}{t} = 3\mathrm{e}^{2t} \]
+    解得
+    \[ Y = C_1\mathrm{e}^{-t} + C_2 + C_3\mathrm{e}^{3t} = \frac{C_1}{x} + C_2 + C_3x^3 \]
+    将型式特解$y^* = A\mathrm{e}^{2t} = Ax^2$带入变换方程或原方程可知$A = -\frac{1}{2}$，于是原方程的通解为
+    \[ y = \frac{C_1}{x} + C_2 + C_3x^3 - \frac{x^2}{2} \]
+\end{solution}

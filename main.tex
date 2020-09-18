@@ -6,15 +6,24 @@
 \setCJKsansfont{思源黑体}
 \usepackage{NotesTeX}
 \usepackage{multicol}
-\usepackage{tabu}
 \usepackage{pgfplots}
 \usepackage{centernot}
 \usepackage{subcaption}
 \usepackage{tasks}
 \usepackage{esint}
+\usepackage{colortbl}
+\usepackage{fullwidth}
+
 \pgfplotsset{compat=newest}
 \usetikzlibrary{calc,patterns,quotes,angles,intersections,arrows}
 \usepgfplotslibrary{fillbetween}
+
+% 使tabularx的cell内容垂直居中
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+% 消除fullpage的overfull警告
+\renewenvironment{fullpage}
+{\begin{fullwidth}[width=\textwidth+\marginparwidth+\marginparsep]\smallskip\noindent\begin{minipage}{\textwidth}\hrule\smallskip\smallskip}
+{\smallskip\smallskip\hrule\end{minipage}\vspace{.1in}\end{fullwidth}}
 
 \newenvironment{situation}{\paragraph{适用情形:}}{}
 \newenvironment{solution}{\paragraph{Solution.}}{}
@@ -41,7 +50,6 @@
     breakable,
 }
 
-
 \title{
     {\Huge 数学笔记}\\
     {\large{\textit{一些关于解题方法的总结}}}
@@ -60,6 +68,6 @@
 \include{空间解析几何}
 \include{多元函数微分}
 \include{多元函数积分}
-
+\include{常微分方程}
 \include{附录}
 \end{document}
