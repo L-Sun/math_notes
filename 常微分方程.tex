@@ -74,18 +74,16 @@
 \subsection{一阶线性方程}
 形如\[ y' + P(x)y = Q(x) \]的方程称为\textcolor{red}{\textbf{\textsf{一阶线性方程}}}。当$Q(x)=0$时，称为\textcolor{red}{\textbf{\textsf{线性齐次方程}}}。
 其中$P(x),Q(x)$是某一区间上的连续函数。
-
+由于
+\[ y' + Py = Q \iff (y\mathrm{e}^{\int P\dd{x}})' = \mathrm{e}^{\int P\dd{x}}Q \iff y\mathrm{e}^{\int P\dd{x}} = \int \mathrm{e}^{\int P\dd{x}}Q\dd{x} + C \]
+所以一阶线性方程的通解为
+\[ y = \mathrm{e}^{-\int P\dd{x}}\left[\int \mathrm{e}^{\int P\dd{x}}Q \dd{x} +C \right] \]
 \subsubsection{贝努里方程}
 形如
 \[ y' + P(x)y = Q(x)y^n \]
 的方程称为贝努里方程，当$n\neq 0,1$时，令$z=y^{n-1}$，则原方程可化为线性方程
 \[ z' + (1-n)Pz = (1-n)Q \]
 这个过程可概括为\textcolor{red}{“贝努里，$1-n$，幂代换，变线性”}
-
-由于
-\[ y' + Py = Q \iff (y\mathrm{e}^{\int P\dd{x}})' = \mathrm{e}^{\int P\dd{x}}Q \iff y\mathrm{e}^{\int P\dd{x}} = \int \mathrm{e}^{\int P\dd{x}}Q\dd{x} + C \]
-所以一阶线性方程的通解为
-\[ y = \mathrm{e}^{-\int P\dd{x}}\left[\int \mathrm{e}^{\int P\dd{x}}Q \dd{x} +C \right] \]
 
 \subsection{全微分类方程}
 \subsubsection{全微分方程}
