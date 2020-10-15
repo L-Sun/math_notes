@@ -852,13 +852,13 @@ $L$上某点的切线
 \]
 假设$S:\varphi(x,y,z)=0$是一个光滑曲面且$P(x_0,y_0,z_0)$是函数$f:S\to R$（即曲面上的点的对应函数值）的极小值点。
 又设$\Gamma : \bm{r} = \bm{r}(t) = (x(t),y(t),z(t))$是曲面$S$上的任意一条光滑曲线，且满足$\bm{r}(0)=(x_0,y_0,z_0)$，则$t=0$是一元函数$g(t)=f(x(t),y(t),z(t))$的极小值点。
-因此又$g'(t)=0$，即
+因此有$g'(t)=0$，即
 \[
     \eval{\pdv{f}{x}x'(t) + \pdv{f}{y}y'(t) + \pdv{f}{z}z'(t)}_{t=0}
     =
     \grad f(x_0,y_0,z_0) \cdot \bm{r}'(0) = 0
 \]
-这表面$\grad f(x_0,y_0,z_0)$垂直于曲面$S$在$P$点的切平面，故$\grad f(x_0,y_0,z_0)$是曲面$S$在点$P$的法向量。
+这表明$\grad f(x_0,y_0,z_0)$垂直于曲面$S$在$P$点的切平面，故$\grad f(x_0,y_0,z_0)$是曲面$S$在点$P$的法向量。
 
 另一方面，曲面$S$在点$P$的法向量为$\grad\varphi(x_0,y_0,z_0)$，因此两个法向量线性相关，引入常数$\lambda$。故有
 \[ \grad f(x_0,y_0,z_0) + \lambda\grad\varphi(x_0,y_0,z_0) = 0 \]
@@ -879,10 +879,10 @@ $L$上某点的切线
 方程组形式：
 \begin{equation}
     \begin{dcases*}
-        \pdv{f}{x} = 0,       \\
-        \pdv{f}{y} = 0,       \\
-        \pdv{f}{z} = 0,       \\
-        \pdv{f}{\lambda} = 0. \\
+        \pdv{L}{x} = 0,       \\
+        \pdv{L}{y} = 0,       \\
+        \pdv{L}{z} = 0,       \\
+        \pdv{L}{\lambda} = 0. \\
     \end{dcases*}
 \end{equation}
 
