@@ -82,8 +82,6 @@
     \label{eq:压缩不等式cos} \abs{\cos x - \cos y} & \leq \abs{x - y}
 \end{align}
 
-\newpage
-
 \subsection{阶乘不等式}
 \begin{align}
     \label{eq:阶乘不等式1} 2^n < n! \leq (\frac{n+1}{2})^n & \qquad (n>4) \\
@@ -130,7 +128,6 @@
     \left( \int_a^bf^2(x)\dd{x} \right)^{1/2} +\left( \int_a^bg^2(x)\dd{x} \right)^{1/2}
 \end{align}
 
-\newpage
 \section{导数表}
 \subsection{指数函数、对数函数}
 \begin{multicols}{2}
@@ -237,3 +234,56 @@
         \bottomrule
     \end{tabularx}
 \end{fullpage}
+
+\section{线性代数相关公式}
+\subsection{伴随矩阵的公式}\label{sec:伴随矩阵的公式}
+
+设$A$为$n$阶矩阵
+\begin{enumerate}[(1)]
+    \item $AA^*=A^*A=|A|E$;
+    \item $(kA)^* = k^{n-1}A^*$;
+    \item $(A^*)^\intercal = (A^\intercal)^*$;
+    \item $|A^*|=|A|^{n-1}$;
+    \item $(A^*)^*=|A|^{n-2}A$;
+    \item $(A^*)^{-1} = (A^{-1})^* = \dfrac{1}{|A|}A$;
+    \item $
+              r(A^*) =
+              \begin{cases}
+                  n, & r(A)=n,   \\
+                  1, & r(A)=n-1, \\
+                  0, & r(A)<n-1.
+              \end{cases}
+          $
+\end{enumerate}
+
+\subsection{矩阵的秩相关公式}
+\label{sec:矩阵的秩相关公式}
+
+\begin{enumerate}[(1)]
+    \item $r(A^\intercal) = r(A)$；
+    \item $r(kA) = r(A), k\neq 0$；
+    \item $r(0E - A) = r(A)$；
+    \item $r(A-E) = r(E-A)$；
+    \item $r(A+B)\leq r(A) + r(B)$;
+    \item $r(AB)\leq \min(r(A),r(B))$；
+    \item 若$A$可逆，则$r(AB)=r(BA)=r(B)$；
+    \item $r(A^\intercal A) = r(A )$；
+    \item $A_{m\times n}, B_{n\times s}, AB=0$，则$r(A)+r(B)\leq n$;
+    \item $
+              r\begin{pmatrix}
+                  A & 0 \\
+                  0 & B
+              \end{pmatrix}
+              =r(A)+r(B)
+          $
+    \item $A\sim B$，则$r(A)=r(B), r(A+kE)=r(B+kE)$
+\end{enumerate}
+
+\subsection{可逆矩阵的性质}\label{sec:可逆矩阵的性质}
+设矩阵$A,B$可逆，$k=\neq 0$，则有如下性质
+\begin{enumerate}[(1)]
+    \item $A^{-1}$可逆，$(A^{-1})^{-1} = A$；
+    \item $kA$可逆，$(kA^{-1}) = \frac{1}{k} A^{-1}$；
+    \item $AB$可逆，$(AB)^{-1} = A^{-1}B^{-1}$；
+    \item $A^\intercal$可逆，$(A^\intercal)^{-1} = (A^{-1})^\intercal$。
+\end{enumerate}

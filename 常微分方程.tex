@@ -43,6 +43,22 @@
 两端积分即可得到方程的通解
 \[ \int \frac{\dd{y}}{g(y)} = \int f(x)\dd{x} \]
 
+值得注意的是，在微分方程解题过程中，如果出现形如
+\[ a\frac{\dd{y}}{y} = \frac{\dd{x}}{x} \]
+的积分时，需要判断结果
+\[ a\ln\abs{y} = \ln\abs{x}+C \]
+即
+\[ \abs{y}^a = Cx \]
+时，是否需要去绝对值符号，可根据下面这个结论来决定。
+
+\begin{theorem}
+    当$x<0$时，$a=\frac{n}{2m}$（其中$n,2m$为整数，且互质），或$a$为无理数时，在实数范围内
+    $y=x^a$无意义。
+\end{theorem}
+
+也就是说，当$y$可正可负时，若$y^a$在$y<0$有意义时，绝对值可去。例如
+\[ \abs{y}^{\frac{1}{3}} = \pm y^{\frac{1}{3}} = Cx \implies y^\frac{1}{3} = Cx \]
+
 \subsubsection{齐次方程}
 如果一阶微分方程\[ y' = f(x,y) \]中的函数$f(x,y)$可以写成$\frac{y}{x}$的函数，即$f(x,y)=g(\frac{y}{x})$，
 则称此方程为\textcolor{red}{\textbf{\textsf{齐次方程}}}。
@@ -78,6 +94,21 @@
 \[ y' + Py = Q \iff (y\mathrm{e}^{\int P\dd{x}})' = \mathrm{e}^{\int P\dd{x}}Q \iff y\mathrm{e}^{\int P\dd{x}} = \int \mathrm{e}^{\int P\dd{x}}Q\dd{x} + C \]
 所以一阶线性方程的通解为
 \[ y = \mathrm{e}^{-\int P\dd{x}}\left[\int \mathrm{e}^{\int P\dd{x}}Q \dd{x} +C \right] \]
+这里计算的$\int P\dd{x}$\textcolor{red}{可以不用带常数项}，原因如下：
+
+设$P$的一个原函数为$P_o$，则有
+\[ \mathrm{e}^{-\int P\dd{x}} = \mathrm{e}^{-P_o - C_1} = \mathrm{e}^{-C_1}\mathrm{e}^{-P_o} \]
+\[ \mathrm{e}^{\int P\dd{x}} = \mathrm{e}^{P_o + C_1} = \mathrm{e}^{C_1}\mathrm{e}^{P_o} \]
+方程通解变为
+\begin{align*}
+    y & = \mathrm{e}^{-C_1}\mathrm{e}^{-P_o}\left[\int \mathrm{e}^{C_1}\mathrm{e}^{P_o} Q \dd{x} +C \right] \\
+      & = \mathrm{e}^{-P_o}\left[\int \mathrm{e}^{P_o} Q \dd{x} +C \right]
+\end{align*}
+
+同时如果$P$的系数既不是无理数也不是分母为偶数的时候，如果积分得到的$\ln$形式，则可不加绝对值符号。
+例如
+\[ \int P\dd{x} =  \int \frac{1}{x}\dd{x} \implies \ln x \]
+
 \subsubsection{贝努里方程}
 形如
 \[ y' + P(x)y = Q(x)y^n \]

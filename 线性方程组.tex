@@ -1,0 +1,462 @@
+\part{线性方程组}
+\section{线性方程组的基本概念}
+称
+\[
+    \begin{cases}
+        a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = 0, \\
+        a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = 0, \\
+        \cdots                                          \\
+        a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = 0
+    \end{cases}
+\]
+为齐次线性方程组，记为$A_{m\times n}X=0$，其中
+\[
+    A =
+    \begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \cdots & a_{mn}
+    \end{pmatrix},
+    \qquad
+    X=
+    \begin{pmatrix}
+        x_1 \\x_2\\\vdots\\x_n
+    \end{pmatrix}
+\]
+
+称
+\[
+    \begin{cases}
+        a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1, \\
+        a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2, \\
+        \cdots                                            \\
+        a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m
+    \end{cases}
+\]
+为非齐次线性方程组，简记为$A_{m\times n}X=b$，其中
+\[
+    A =
+    \begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \cdots & a_{mn}
+    \end{pmatrix},
+    \qquad
+    X=
+    \begin{pmatrix}
+        x_1 \\x_2\\\vdots\\x_m
+    \end{pmatrix},
+    \qquad
+    b=
+    \begin{pmatrix}
+        b_1 \\b_2\\\vdots\\b_m
+    \end{pmatrix},
+    \qquad
+    \bar{A}=
+    \left(\begin{array}{cccc|c}
+            a_{11} & a_{12} & \cdots & a_{1n} & b_1    \\
+            a_{21} & a_{22} & \cdots & a_{2n} & b_2    \\
+            \vdots & \vdots & \ddots & \vdots & \vdots \\
+            a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
+        \end{array}\right)
+\]
+$\bar{A}$为增广矩阵。
+
+\section{齐次线性方程组的有解判定定理}
+齐次线性方程组的解只有两种可能：只有零解、有无穷多解。
+\begin{theorem}
+    齐次线性方程组$A_{m\times n}X=0$有非零解$\iff r(A)<n \iff A$的列向量组线性相关。
+\end{theorem}
+作为推论有
+\begin{theorem}
+    齐次线性方程组$A_{m\times n}X=0$中
+    \begin{enumerate}[(1)]
+        \item 当$m<n$时，$AX=0$必有非零解；
+        \item 当$m=n$时，$AX=0$有非零解$\iff |A|=0$
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    如果$r(A)=r<n$，则$AX=0$有$n-r$个线性无关解$\eta_1,\eta_2,\cdots,\eta_{n-r}$称为基础解系，
+    且$AX=0$的任意一个解$\eta$一定能由$\eta_1,\eta_2,\cdots,\eta_{n-r}$线性表出。即通解为
+    \[ k_1\eta_1 + k_2\eta_2 + \cdots + k_{n-r}\eta_{n-r} \]
+    其中$k_1,k_2,\cdots,k_n$为任意常数。
+\end{theorem}
+
+基础解系的定义如下
+\begin{definition}
+    如果$\eta_1,\eta_2,\cdots,\eta_t$是$AX=0$的解，且满足
+    \begin{enumerate}[(1)]
+        \item $\eta_1,\eta_2,\cdots,\eta_t$线性无关；
+        \item $AX=0$的任意一个解都可以由$\eta_1,\eta_2,\cdots,\eta_t$线性表出。
+    \end{enumerate}
+    则称$\eta_1,\eta_2,\cdots,\eta_t$是$AX=0$的一个基础解系，且$t=n-r(A)$
+\end{definition}
+
+\begin{example}
+    解方程组
+    \[
+        \systeme{
+            x_1 - 2x_2 + x_3 + 2x_4 = 0 ,
+            x_1 + x_2 - 2x_3 - 4x_4 = 0 ,
+            x_1 - 5x_2 + 4x_3 + 8x_4 = 0
+        }
+    \]
+\end{example}
+\begin{solution}
+    对系数矩阵作初等行变换
+    \[
+        \begin{pmatrix}
+            1 & -2 & 1  & 2  \\
+            1 & 1  & -2 & -4 \\
+            1 & -5 & 4  & 8  \\
+        \end{pmatrix}
+        \longrightarrow
+        \begin{pmatrix}
+            1 & -2 & 1  & 2  \\
+            0 & 3  & -3 & -6 \\
+            0 & -3 & 3  & 6  \\
+        \end{pmatrix}
+        \longrightarrow
+        \begin{pmatrix}
+            1 & -2 & 1  & 2  \\
+            0 & 1  & -1 & -2 \\
+            0 & 0  & 0  & 0  \\
+        \end{pmatrix}
+        \longrightarrow
+        \begin{pmatrix}
+            1 & 0 & -1 & -2 \\
+            0 & 1 & -1 & -2 \\
+            0 & 0 & 0  & 0  \\
+        \end{pmatrix}
+    \]
+    因此方程组变为
+    \[
+        \systeme{
+            x_1 - x_3 - 2x_4 = 0,
+            x_2 - x_3 - 2x_4 = 0
+        }
+    \]
+    \begin{enumerate}[itemindent=1em,label=\textbf{\textsf{方法}}\arabic*]
+        \item 令自由变量$x_3=t,x_4=u$，则有
+              \[
+                  \systeme{
+                      t+2u = x_1,
+                      t+2u = x_2,
+                      t = x_3,
+                      u = x_4
+                  }
+                  \text{或~}
+                  x = t
+                  \begin{pmatrix}
+                      1 \\1\\1\\0
+                  \end{pmatrix}
+                  + u
+                  \begin{pmatrix}
+                      2 \\2\\0\\1
+                  \end{pmatrix}
+              \]
+        \item 令$x_3=1,x_4=0$得解$\eta_1 = (1,1,1,0)^\intercal$；令$x_3=0,x_4=1$得解$\eta_2=(2,2,0,1)^\intercal$
+              所以方程组的解为
+              \[
+                  x= k_1\eta_1+k_2\eta_2 =
+                  k_1
+                  \begin{pmatrix}
+                      1 \\1\\1\\0
+                  \end{pmatrix}
+                  +
+                  k_2
+                  \begin{pmatrix}
+                      2 \\2\\0\\1
+                  \end{pmatrix}
+              \]
+    \end{enumerate}
+\end{solution}
+
+\section{非齐次线性方程组的有解判断}
+对于非齐次线性方程组，它的解有三种可能：无解、唯一解、无穷多解。
+\begin{theorem}
+    且三种有解判断如下:
+    \begin{enumerate}[(1)]
+        \item 有解$\iff r(A)=r(\bar{A})$，反过来，无解$\iff r(A)\neq r(\bar{A}) \iff r(A)+1 = r(\bar{A})$；
+        \item 唯一解$\iff r(A)=r(\bar{A}) = n$；
+        \item 无穷多解$\iff r(A)=r(\bar{A})<n$。
+    \end{enumerate}
+\end{theorem}
+
+当$AX=b$有无穷多解时，引入\textbf{\textsf{解的结构}}概念。
+\begin{theorem}
+    设$\alpha$是方程组$AX=b$的解，$\eta_1,\eta_2,\cdots,\eta_t$是导出组$AX=0$的基础解系，则方程组$AX=b$的通解为
+    \[ \alpha + k_1\eta_1 + k_2\eta_2 + \cdots + k_t\eta_t \]
+    其中$k_1,k_2,\cdots,k_t$为任意常数。
+\end{theorem}
+
+\begin{theorem}
+    （解的性质）
+    \begin{enumerate}[(1)]
+        \item 方程组$AX=b$的两个解$\gamma_1,\gamma_2$的差$\gamma_1 - \gamma_2$是$AX=0$的解；
+        \item 方程组$AX=b$的一个解$\gamma_0$与$AX=0$的一个解$\eta$之和$\gamma_0+\eta$仍是$AX=b$的解。
+    \end{enumerate}
+\end{theorem}
+
+\begin{example}
+    解方程组
+    \[
+        \systeme{
+            x_1 +  x_2 +  x_3 = 5,
+            3x_1 + 2x_2 +  x_3 = 13,
+            x_2 + 2x_3 =2
+        }
+    \]
+\end{example}
+\begin{solution}
+    对增广矩阵作初等行变换
+    \[
+        \bar{A}
+        =
+        \left(\begin{array}{ccc|c}
+                1 & 1 & 1 & 5  \\
+                3 & 2 & 1 & 13 \\
+                0 & 1 & 2 & 2
+            \end{array}\right)
+        \longrightarrow
+        \left(\begin{array}{ccc|c}
+                1 & 1  & 1  & 5  \\
+                0 & -1 & -2 & -2 \\
+                0 & 1  & 2  & 2
+            \end{array}\right)
+        \longrightarrow
+        \left(\begin{array}{ccc|c}
+                1 & 1  & 1  & 5  \\
+                0 & -1 & -2 & -2 \\
+                0 & 0  & 0  & 0
+            \end{array}\right)
+        \longrightarrow
+        \left(\begin{array}{ccc|c}
+                1 & 0 & -1 & 3 \\
+                0 & 1 & 2  & 2 \\
+                0 & 0 & 0  & 0
+            \end{array}\right)
+    \]
+    因此方程组变为
+    \[
+        \systeme{
+            x_1 - x_3 = 3,
+            x_2 + 2x_3 = 2
+        }
+    \]
+    所以自由变量为$x_3$，方程组有无穷个解，则
+    \[
+        \begin{cases}
+            x_1 = 3+t  \\
+            x_2 = 2-2t \\
+            x_3 = t
+        \end{cases}
+        \text{或~}
+        x =
+        \begin{pmatrix}
+            3 \\2\\0
+        \end{pmatrix}
+        +t
+        \begin{pmatrix}
+            1 \\-2\\1
+        \end{pmatrix}
+    \]
+    对于上个题的方法二，可以令自由变量$x_3=0$，则得特解$\alpha=(3,2,0)^\intercal$。
+
+    再令化简后的方程组$AX=b$变为齐次方程组$AX=0$然后计算齐次方程组的解向量，即令$x_3=1$，得$\eta=(1,-2)^\intercal$，
+    所以基础解系为
+    \[ x= \alpha + k\eta \]
+\end{solution}
+
+\section{方程组的应用}
+利用方程组求矩阵
+\begin{example}
+    \[
+        \begin{pmatrix}
+            1 & 2 & 3 \\
+            2 & 3 & 4
+        \end{pmatrix}
+        X
+        =
+        \begin{pmatrix}
+            4 & 5 \\
+            5 & 6
+        \end{pmatrix}
+    \]
+    求$X$
+\end{example}
+\begin{solution}
+    显然$X$是$3\times 2$的矩阵。同时$AX=B$中$A$不可逆，所以要解方程组
+    \[
+        \begin{pmatrix}
+            1 & 2 & 3 \\
+            2 & 3 & 4
+        \end{pmatrix}
+        \begin{pmatrix}
+            x_1 \\ x_2 \\ x_3
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            4 \\5
+        \end{pmatrix},\qquad
+        \begin{pmatrix}
+            1 & 2 & 3 \\
+            2 & 3 & 4
+        \end{pmatrix}
+        \begin{pmatrix}
+            x_4 \\ x_5 \\ x_6
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            5 \\6
+        \end{pmatrix}
+    \]
+    那么有增广矩阵
+    \[
+        \left(\begin{array}{ccc|c}
+                1 & 2 & 3 & 4 \\
+                2 & 3 & 4 & 5
+            \end{array}\right)
+        ,\qquad
+        \left(\begin{array}{ccc|c}
+                1 & 2 & 3 & 5 \\
+                2 & 3 & 4 & 6
+            \end{array}\right)
+    \]
+    为了简便，这里可以直接合并两个增广矩阵，此时就是$(A|B)$
+    \[
+        \left(\begin{array}{ccc|cc}
+                1 & 2 & 3 & 4 & 5 \\
+                2 & 3 & 4 & 5 & 6
+            \end{array}\right)
+        \longrightarrow
+        \left(\begin{array}{ccc|cc}
+                1 & 2  & 3  & 4  & 5  \\
+                0 & -1 & -2 & -3 & -4
+            \end{array}\right)
+        \longrightarrow
+        \left(\begin{array}{ccc|cc}
+                1 & 2 & 3 & 4 & 5 \\
+                0 & 1 & 2 & 3 & 4
+            \end{array}\right)
+        \longrightarrow
+        \left(\begin{array}{ccc|cc}
+                1 & 0 & -1 & -2 & -3 \\
+                0 & 1 & 2  & 3  & 4
+            \end{array}\right)
+    \]
+    设$x_3=s,x_6=t$因此可得
+    \[
+        \begin{pmatrix}
+            x_1 \\ x_2 \\ x_3
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            -2+s \\ 3-2s \\ s
+        \end{pmatrix}
+        ,\qquad
+        \begin{pmatrix}
+            x_4 \\ x_5 \\ x_6
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            -3+t \\ 4-2t \\ t
+        \end{pmatrix}
+    \]
+    因此
+    \[
+        X =
+        \begin{pmatrix}
+            -2+s & -3+t \\
+            3-2s & 4-2t \\
+            s    & t
+        \end{pmatrix}
+    \]
+    其中$s,t$为任意常数。
+\end{solution}
+对于$A,B$都是$n$阶矩阵时，上面这种方法也可以使用，而且比求$A^{-1}$要简单，这是因为
+\[ A^{-1}(A|B) = (E|A^{-1}B) \]
+这样就简化了$A^{-1}B$的矩阵乘法，其中$A^{-1}$为一系列的初等行变换。
+
+\begin{example}
+    求一个齐次线性方程组，使其基础解系为
+    \[ \eta_1 = (4,3,1,2)^\intercal,\qquad \eta_2 = (0,1,3,-2)^\intercal \]
+\end{example}
+\begin{solution}
+    由于是求齐次方程组$AX=0$，其实也就是求矩阵$A$，那么根据解向量的维数，可知$A$矩阵的列数为$4$，同时基础解系只有两个向量，那么有
+    $n-r=2$，因此$r(A) = 4-2 = 2$，不妨设$A$为$2\times 4$的矩阵，则有
+    \[ A\eta_1 = 0, \qquad A\eta_2 = 0 \]
+    为了简便，将$\eta_1,\eta_2$合为一个矩阵，那么有
+    \[
+        \begin{pmatrix}
+            a_{11} & a_{12} & a_{13} & a_{14} \\
+            a_{21} & a_{22} & a_{23} & a_{24} \\
+        \end{pmatrix}
+        \begin{pmatrix}
+            4 & 0  \\
+            3 & 1  \\
+            1 & 3  \\
+            2 & -2
+        \end{pmatrix}
+        =0
+    \]
+    利用转置可得
+    \[
+        \begin{pmatrix}
+            4 & 3 & 1 & 2  \\
+            0 & 1 & 3 & -2
+        \end{pmatrix}
+        \begin{pmatrix}
+            a_{11} & a_{21} \\
+            a_{12} & a_{22} \\
+            a_{13} & a_{23} \\
+            a_{14} & a_{24} \\
+        \end{pmatrix}
+        =0
+    \]
+    对其进行初等行变换
+    \[
+        \begin{pmatrix}
+            4 & 3 & 1 & 2  \\
+            0 & 1 & 3 & -2
+        \end{pmatrix}
+        \longrightarrow
+        \begin{pmatrix}
+            4 & 0 & -8 & 8  \\
+            0 & 1 & 3  & -2
+        \end{pmatrix}
+        \longrightarrow
+        \begin{pmatrix}
+            1 & 0 & -2 & 2  \\
+            0 & 1 & 3  & -2
+        \end{pmatrix}
+    \]
+    那么有
+    \[
+        \systeme{
+            x_1 -2x_3 + 2x_4 = 0,
+            x_2 + 3x_3 - 2x_4 = 0
+        }
+    \]
+    令$x_3 = s, x_4=t$，则得通解为
+    \[
+        x =
+        \begin{pmatrix}
+            2s - 2t \\
+            -3s+2t  \\
+            s       \\
+            t
+        \end{pmatrix}
+    \]
+    分别令$s=0,t=1$和$s=1,t=0$得一个矩阵$A$
+    \[
+        A =
+        \begin{pmatrix}
+            -2 & 2  & 0 & 1 \\
+            2  & -3 & 1 & 0
+        \end{pmatrix}
+    \]
+\end{solution}

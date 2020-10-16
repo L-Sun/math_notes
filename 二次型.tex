@@ -1,0 +1,411 @@
+\part{二次型}
+二次型得知识点应当与特征值、特征向量相联系。
+\section{二次型得基本概念、定理}
+.
+\begin{definition}
+    设$F$是一数域，一个系数$F$中含有$n$个变元$x_1,x_2,\cdots,x_n$的\textcolor{red}{二次}齐次多项式
+    \begin{align*}
+        f(x_1,x_2,\cdots,x_n) = a_{11}x_1^2 + 2a_{12}x_1x_2 + \cdots + 2a_{1n}x_1x_n & \\
+        +a_{22}x_2^2 + \cdots + 2a_{2n}x_2x_n                                        & \\
+        +\cdots                                                                      & \\
+        +a_{nn}x_n^2                                                                 &
+    \end{align*}
+    称为数域$F$上的一个$n$元二次型，简称为二次型。
+\end{definition}
+
+对于二次型，可以将其表示为矩阵形式
+\begin{equation}
+    f(x_1,x_2,\cdots,x_n) = X^TAX
+\end{equation}
+其中$A$为对称矩阵，即
+\[
+    A =A^\intercal =
+    \begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{12} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{1n} & a_{2n} & \cdots & a_{nn}
+    \end{pmatrix}
+\]
+
+将一个二次型的$A$矩阵写法为：
+\begin{enumerate}
+    \item 将平方项$x_i^2$的系数写在对角线元素$a_{ii}$上；
+    \item 将混合项$x_ix_j$的系数一半写在$a_{ij}$，另一半写在$a_{ji}$上。
+\end{enumerate}
+
+\begin{definition}
+    （二次型的秩）
+    二次型矩阵$A$的秩称为二次型的秩，记为$r(f)=r(A)$
+\end{definition}
+
+\section{标准型}
+.
+\begin{definition}
+    （标准型）
+    如果二次型中只有平方项$x_i^2$，而没有混合项$x_{ij}$，则称为标准型。
+    \[ f(x_1,x_2,\cdots,x_n) = a_1x_1^2 + a_2x_2^2 + \cdots + a_nx_n^2 \]
+\end{definition}
+显然标准型的矩阵是一个对角矩阵。
+
+\begin{definition}
+    （规范型）
+    对于标准型
+    \[ f(x_1,x_2,\cdots,x_n) = a_1x_1^2 + a_2x_2^2 + \cdots + a_nx_n^2 \]
+    如果$a_i \in \{-1,0,1\}$，则称这个二次型为规范型。
+\end{definition}
+
+\begin{definition}
+    （惯性指数）
+    当一个二次型化为标准型后，如果系数为正的个数为\textcolor{red}{\textbf{\textsf{正惯性指数}}}，记为$p$；
+    如果系数为负的个数为\textcolor{red}{\textbf{\textsf{负惯性指数}}}，记为$q$。
+\end{definition}
+\begin{theorem}
+    二次型矩阵$A$的特征值为正的个数等于二次型的正惯性指数，二次型矩阵$A$的特征值为负的个数等于二次型的负惯性指数。
+\end{theorem}
+
+\begin{definition}
+    （坐标变换）
+    \[
+        \begin{cases}
+            x_1 = c_{11}y_1 + c_{12}y_2 + \cdots + c_{1n}y_n \\
+            x_2 = c_{21}y_1 + c_{22}y_2 + \cdots + c_{2n}y_n \\
+            ...                                              \\
+            x_n = c_{n1}y_1 + c_{n2}y_2 + \cdots + c_{nn}y_n
+        \end{cases}
+    \]
+    且矩阵
+    \[
+        C =
+        \begin{pmatrix}
+            c_{11} & c_{12} & \cdots & c_{1n} \\
+            c_{21} & c_{22} & \cdots & c_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            c_{n1} & c_{n2} & \cdots & c_{nn}
+        \end{pmatrix}
+    \]
+    可逆（行列式不为$0$），则称$X$为$Y$经过$C$的坐标变换。
+\end{definition}
+
+对于一个二次型$X^\intercal AX$进行任意的坐标变换$X=CY$，则有
+\[ X^\intercal AX = (CY)^\intercal A (CY) = Y^\intercal (C^\intercal A C)Y \]
+记$B=C^\intercal A C$，显然有
+\[ B^\intercal = (C^\intercal A C)^\intercal = C^\intercal (C^\intercal A)^\intercal = C^\intercal A^\intercal C = C^\intercal AC = B \]
+所以$B$是新的二次型$Y^\intercal BY$的矩阵。
+
+\begin{definition}
+    如果两个$n$阶可逆矩阵$C$，使得$n$阶矩阵$A,B$满足
+    \[ B = C^\intercal AC \]
+    则称$A,B$合同，记为$A\simeq B$
+\end{definition}
+注意这里的定义并没有$A=A^\intercal$。
+
+\begin{theorem}
+    对于任意一个$n$元二次型
+    \[ f(x_1,x_2,\cdots,x_n) = X^\intercal AX \]
+    存在正交变换$X=QY$，使得$f$化为标准型。
+\end{theorem}
+\begin{proof}
+    设二次型矩阵为$A$，由于$A$为实对称矩阵，所以存在正交矩阵$Q$，使得$Q^{-1}AQ =  Q^\intercal AQ$为对角矩阵$B$。
+    令$X=QY$，则有
+    \[f = X^\intercal AX = (QY)^\intercal A (QY) = Y^\intercal (Q^\intercal AQ) Y = Y^\intercal BY\]
+    由于$B$为对角矩阵，那么新的二次型$Y^\intercal B Y$为标准型。
+\end{proof}
+
+根据这条定理，就可以与可对角化矩阵的特征值联系起来。即
+\begin{equation}
+    X^\intercal AX = (QY)^\intercal A (QY) = Y^\intercal BY = \lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2
+\end{equation}
+这里$\lambda_1,\lambda_2,\cdots,\lambda_n$为$A$的特征值，坐标变换就是$Q$矩阵，也就是特征值的特征向量。
+
+因此一般的二次型变标准型的方法步骤为
+\begin{enumerate}
+    \item 计算二次型矩阵$A$的特征值，特征值就是标准型的二次型系数；
+    \item 特征值对应的特征向量组成的矩阵，就是二次型的坐标变换矩阵。
+\end{enumerate}
+
+\begin{theorem}
+    对于任意一个$n$元二次型$f=X^\intercal A X$都可以通过（配方法）可逆线性变换$X=CY$化为标准型，其中$C$为可逆矩阵。
+\end{theorem}
+\begin{example}
+    用配方法化二次型
+    \[ 2x_1^2 + 3x_2^2 + 5x_3^2 + 4x_1x_2 - 8x_2x_3 - 4x_3x_1 \]
+    为标准型，并写成所用的坐标变换。
+\end{example}
+\begin{solution}
+    先将$x_1$集中起来，然后为$x_1$配方，之后$x_2,x_3$同理
+    \begin{align*}
+        f & = 2[x_1^2 + 2x_1(x_2-x_3)] + 3x_2^2 + 5x_3^2 -8x_2x_3                              \\
+          & = 2[x_1^2 + 2x_1(x_2-x_3) + (x_2-x_3)^2] - 2(x_2-x_3)^2 + 3x_2^2 + 5x_3^2 -8x_2x_3 \\
+          & = 2(x_1+x_2-x_3)^2 - 2x_2^2 + 4x_2x_3 - 2x_3^2 + 3x_2^2 + 5x_3^2 -8x_2x_3          \\
+          & = 2(x_1+x_2-x_3)^2 + (x_2^2-4x_2x_3) + 3x_3^2                                      \\
+          & = 2(x_1+x_2-x_3)^2 + (x_2^2-4x_2x_3 +4x_3^2) - 4x_3^2 + 3x_3^2                     \\
+          & = 2(x_1+x_2-x_3)^2 + (x_2-2x_3)^2 - x_3^2
+    \end{align*}
+    令
+    \[
+        \begin{cases}
+            y_1 = x_1+x_2-x_3 \\
+            y_2 = x_2-2x_3    \\
+            y_3 = x_3
+        \end{cases}
+    \]
+    则有
+    \[
+        C  =
+        \begin{pmatrix}
+            1 & 1 & -1 \\
+            0 & 1 & -2 \\
+            0 & 0 & 1
+        \end{pmatrix}^{-1}
+    \]
+    对$C^{-1}$作行初等变换
+    \[
+        \left(\begin{array}{ccc|ccc}
+                1 & 1 & -1 & 1 & 0 & 0 \\
+                0 & 1 & -2 & 0 & 1 & 0 \\
+                0 & 0 & 1  & 0 & 0 & 1
+            \end{array}\right)
+        \longrightarrow
+        \left(\begin{array}{ccc|ccc}
+                1 & 1 & 0 & 1 & 0 & 1 \\
+                0 & 1 & 0 & 0 & 1 & 2 \\
+                0 & 0 & 1 & 0 & 0 & 1
+            \end{array}\right)
+        \longrightarrow
+        \left(\begin{array}{ccc|ccc}
+                1 & 0 & 0 & 1 & -1 & -1 \\
+                0 & 1 & 0 & 0 & 1  & 2  \\
+                0 & 0 & 1 & 0 & 0  & 1
+            \end{array}\right)
+    \]
+    因此坐标变换为
+    \[
+        X =
+        \begin{pmatrix}
+            1 & -1 & -1 \\
+            0 & 1  & 2  \\
+            0 & 0  & 1
+        \end{pmatrix}Y
+    \]
+\end{solution}
+
+\begin{example}
+    二次型$x_1^2 + 3x_2^2 + x_3^2 +2ax_1x_2 + 2x_1x_3 + 2x_2x_3$，
+    经过正交变换$X=PY$化为标准型$y_1^2 + 4y_2^2$，求$a$的值。
+\end{example}
+\begin{solution}
+    二次型的矩阵为
+    \[
+        A =
+        \begin{pmatrix}
+            1 & a & 1 \\
+            a & 3 & 1 \\
+            1 & 1 & 1
+        \end{pmatrix}
+    \]
+    由于二次型经过正交变换变为标准型$y_1^2 + 4y_2^2$，故$A$的特征值为$1,4,0$，
+    因此有$|\lambda E - A| = 0$，或则$\prod \lambda = |A|$
+    \[
+        1\times 4\times 0 = 0 = |A| =
+        \begin{vmatrix}
+            1 & a & 1 \\
+            a & 3 & 1 \\
+            1 & 1 & 1
+        \end{vmatrix}
+        =
+        \begin{vmatrix}
+            1   & a   & 1 \\
+            a-1 & 3-a & 0 \\
+            0   & 1-a & 0
+        \end{vmatrix}
+        =(a-1)(1-a)
+    \]
+    因此$a=1$
+\end{solution}
+\section{正定矩阵}
+.
+\begin{definition}
+    若$\forall X \neq 0$，恒有二次型
+    \[f(x_1,x_2,\cdots,x_n) = X^\intercal A X >0\]
+    则称二次型$f$为正定二次型，其中$A$称为正定矩阵。
+\end{definition}
+举个例子
+\[
+    \begin{cases}
+        f(x_1,x_2,x_3) = x_1^2 + 3x_2^2 + 5x_3^2 & \text{是正定二次型}   \\
+        f(x_1,x_2,x_3) = x_1^2 + 3x_2^2          & \text{不是正定二次型}
+    \end{cases}
+\]
+后者当$X=(0,0,1)^\intercal\neq 0$时，$f=0$，所以不是正定二次型。
+
+
+\begin{theorem}
+    （正定的充分必要条件）
+    \begin{align*}
+         & f=X^\intercal AX\text{是正定二次型}                                                                                    \\
+         & \iff \text{正惯性系数}p=n                                                                                              \\
+         & \iff A\simeq E (\text{存在可逆矩阵}C\text{，使得}C^\intercal AC=E\text{亦或是存在可逆矩阵}D\text{使得}A=D^\intercal D) \\
+         & \iff A\text{的特征值全部大于}0
+    \end{align*}
+\end{theorem}
+
+\begin{theorem}
+    （正定的必要条件）
+    \begin{enumerate}
+        \item 一个二次型是正定二次型$\implies$二次项系数大于$0$；
+        \item 二次型矩阵$A$主对角线全大于$0$；
+        \item $|A| = \prod \lambda > 0$
+    \end{enumerate}
+\end{theorem}
+注意这里并不是充要条件，也就是说正定二次型的二次项系数大于$0$，逆反命题则是二次项系数不大于$0$的二次型不是正定的。
+
+\begin{example}
+    判断二次型$f(x_1,x_2,x_3)=2x_1^2 + 5x_2^2 + 5x_3^2 + 4x_1x_2 - 4x_1x_3 - 8x_2x_3$
+    的正定性。
+\end{example}
+在判断一个二次型是否正定时，一般采用\textcolor{red}{\textbf{\textsf{顺序主子式}}}的方法。
+\begin{solution}
+    （顺序主子式）
+    \[
+        A =
+        \begin{pmatrix}
+            2  & 2  & -2 \\
+            2  & 5  & -4 \\
+            -2 & -4 & 5
+        \end{pmatrix}
+    \]
+    即$M_i$为$A$的$i$阶顺序主子式。即
+    \[
+        M_1 =
+        \begin{vmatrix}
+            2
+        \end{vmatrix},\qquad
+        M_2 =
+        \begin{vmatrix}
+            2 & 2 \\
+            2 & 5
+        \end{vmatrix},\qquad
+        \begin{vmatrix}
+            2  & 2  & -2 \\
+            2  & 5  & -4 \\
+            -2 & -4 & 5
+        \end{vmatrix}
+    \]
+    那么$M_1 > 0, M_2>0, M_3>0$
+    因此二次型式正定的。
+\end{solution}
+
+第二种方法就是计算特征值，判断特征值是否全大于$0$；
+
+第三种方法就是将二次型化成标准型（配方法），此时如果二次项系数全部大于$0$，则元二次型式正定的。
+
+顺序主子式也可以用于计算正定二次型中的未知参数。
+\begin{example}
+    已知正定二次型$f(x_1,x_2,x_3)=x_1^2 + 4x_2^2 + 4x_3^2 + 2tx_1x_2 - -2x_1x_3 + 4x_2x_3$
+    求$t$的值。
+\end{example}
+\begin{solution}
+    二次型矩阵为
+    \[
+        A =
+        \begin{pmatrix}
+            1  & t & -1 \\
+            t  & 4 & 2  \\
+            -1 & 2 & 4
+        \end{pmatrix}
+    \]
+    则其顺序主子式分别为
+    \begin{align*}
+         &
+        \begin{vmatrix}
+            1
+        \end{vmatrix}  = 1    \\
+         &
+        \begin{vmatrix}
+            1 & t \\
+            t & 4
+        \end{vmatrix} = 4-t^2 \\
+         &
+        \begin{vmatrix}
+            1  & t & -1 \\
+            t  & 4 & 2  \\
+            -1 & 2 & 4
+        \end{vmatrix} =
+        \begin{vmatrix}
+            1   & t    & -1 \\
+            t+2 & 4+2t & 0  \\
+            -1  & 2    & 4
+        \end{vmatrix}
+        =
+        \begin{vmatrix}
+            1   & t+2  & -1 \\
+            t+2 & 8+4t & 0  \\
+            -1  & 0    & 4
+        \end{vmatrix}
+        =
+        \begin{vmatrix}
+            1-t & t+2  & -1 \\
+            0   & 8+4t & 0  \\
+            0   & 0    & 4
+        \end{vmatrix}
+        = 16(1-t)(2+t)
+    \end{align*}
+    因此有
+    \[
+        \begin{cases}
+            1>0     \\
+            4-t^2>0 \\
+            16(1-t)(2+t) > 0
+        \end{cases}
+    \]
+    因此$t\in(-2,1)$
+\end{solution}
+
+\begin{example}
+    设
+    \[
+        A =
+        \begin{pmatrix}
+            0 & 1 & 1 \\
+            1 & 2 & 1 \\
+            1 & 1 & 0
+        \end{pmatrix}
+    \]若$A+kE$是正定矩阵，求$k$的值。
+\end{example}
+\begin{solution}
+    由于出现$A+kE$，可以联想到特征值的相关概念。首先计算$A$的特征值，
+    特征多项式
+    \begin{align*}
+        |\lambda E - A| & =
+        \begin{vmatrix}
+            \lambda & -1        & -1      \\
+            -1      & \lambda-2 & -1      \\
+            -1      & -1        & \lambda
+        \end{vmatrix}
+        =
+        \begin{vmatrix}
+            \lambda    & -1        & -1        \\
+            -1-\lambda & \lambda-1 & 0         \\
+            -1-\lambda & 0         & \lambda+1
+        \end{vmatrix}
+        =
+        \begin{vmatrix}
+            \lambda-2 & -1        & -1        \\
+            -2        & \lambda-1 & 0         \\
+            0         & 0         & \lambda+1
+        \end{vmatrix} \\
+                        & =
+        (\lambda+1)[(\lambda-2)(\lambda-1)-2]
+        =\lambda(\lambda+1)(\lambda - 3)
+    \end{align*}
+    因此$A$的特征值为$0,-1,3$，则$A+kE$的特征值为$k,k-1,k+3$，由于$A+kE$是正定矩阵，故有
+    \[
+        \begin{cases}
+            k>0   \\
+            k-1>0 \\
+            k+3>0
+        \end{cases}
+    \]
+    因此可得$k>1$
+\end{solution}

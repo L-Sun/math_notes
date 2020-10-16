@@ -1,0 +1,950 @@
+\part{矩阵代数}
+由于矩阵代数中的每个知识点都有相互联系，故此部分无法顺序地学习，应该往复看多几遍，同时学习过程中应该相互联系。
+\section{矩阵的概念和运算}
+形如
+\[
+    \begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \cdots & a_{mn}
+    \end{pmatrix}
+\]
+成为$m$行$n$列的矩阵，记为$A_{m\times n}$，简记为$A$，当$m=n$时，成为\textbf{\textsf{方阵}}。
+当矩阵内的所用元素均为$0$，则矩阵称为零矩阵，简记为$0$
+
+如果$A$和$B$都是$m\times n$的矩阵，则称$A,B$为\textbf{\textsf{同型矩阵}}。进一步的，当$a_{ij}=b_{ij}$，
+则有$A=B$
+
+矩阵有如下的运算：
+\begin{enumerate}[(1)]
+    \item 矩阵加法$A+B=(a_{ij}+b_{ij})$；
+    \item 矩阵数乘$kA = (ka_{ij})$；
+\end{enumerate}
+
+同时有加法的交换律和加法的结合律，数乘的交换律和结合律：
+\begin{enumerate}[(1)]
+    \item $A+B=B+A$；
+    \item $(A+B)+C=A+(B+C)=A+B+C$；
+    \item $k(mA) = m(kA) = (mk)A$；
+    \item $(k+m)A = kA + mA$；
+    \item $k(A+B) = kA + kB$；
+    \item $1A=A, 0A = 0$
+\end{enumerate}
+
+\subsection{矩阵的乘法}
+矩阵的乘法与数的乘法有所不同，首要就是其不满足交换律。
+\begin{definition}
+    设矩阵$A=(a_{ij})$是一个$m\times n$矩阵，$B=(b_{ij})$是一个$n\times p$矩阵，
+    则定义运算
+    \[ AB = C \]
+    其中$C=(c_{ij})$为$m\times p$矩阵，且满足
+    \[ c_{ij} = a_{i1}b_{1j} + a_{a2}b_{2j} + \cdots + a_{an}b_{nj} = a_i\vdot b_j \]
+    其中$a_i$为$A$的第$i$行行向量，$b_j$为$B$的第$j$列列向量。
+\end{definition}
+
+对于矩阵的乘法有结合律和分配律
+\begin{enumerate}[(1)]
+    \item $(AB)C=A(BC)=ABC$;
+    \item $A(B+C)=AB+AC$;
+    \item $(A+B)C=AC+BC$;
+    \item $AA=A^2$
+\end{enumerate}
+
+需要重视的是
+\begin{enumerate}[(1)]
+    \item \textcolor{red}{$AB \neq BA$}，即矩阵乘法不满足交换律；
+    \item \textcolor{red}{$AB \not\implies A=0 \text{或} B=0$};
+    \item \textcolor{red}{$AB=AC,A\neq 0 \not\implies B = C$}.
+\end{enumerate}
+
+\begin{theorem}
+    \label{th:行列式的乘法公式}
+    （行列式的乘法公式）
+    如果$A,B$为$n$阶矩阵，则有
+    \[ |AB| = |A|\cdot|B| \]
+\end{theorem}
+
+若将$A$的行列互换，所得矩阵称为$A$的\textbf{\textsf{转置}}，记为$A^\intercal$，其运算法则如下
+\begin{enumerate}[(1)]
+    \item $(A+B)^\intercal = A^\intercal + B^\intercal$;
+    \item $(kA)^\intercal = kA^\intercal$;
+    \item $(AB)^\intercal = B^\intercal A^\intercal$;
+    \item $(A^\intercal)^\intercal=A$
+\end{enumerate}
+若$A^\intercal = A$，则称$A$为\textbf{\textsf{对称矩阵}}，若$A^\intercal = - A$，则称$A$为\textbf{\textsf{反对称矩阵}}。
+其中反对称矩阵的对角线一定是$0$。
+
+
+设$\alpha,\beta$为$n$维列向量，可以将其看作$n\times 1$的矩阵，则有
+\begin{align}
+    \alpha\beta^\intercal  & =
+    \begin{pmatrix}
+        a_1b_1 & \cdots & a_1b_n \\
+        \vdots & \ddots & \vdots \\
+        a_nb_1 & \cdots & a_nb_1
+    \end{pmatrix}                                  \\
+    \alpha^\intercal\beta  & = a_1b_1+a_2b_2 + \cdots + a_nb_n \\
+    \alpha\alpha^\intercal & =
+    \begin{pmatrix}
+        a_1a_1 & \cdots & a_1a_n \\
+        \vdots & \ddots & \vdots \\
+        a_na_1 & \cdots & a_na_1
+    \end{pmatrix}\qquad\text{(对称矩阵)}          \\
+    \alpha^\intercal\alpha & = a_1^2 + a_2^2 + \cdots a_n^2
+\end{align}
+
+\begin{example}
+    已知列向量$\alpha = (1,2,3),\beta=(1,\frac{1}{2},\frac{1}{3}),A=\alpha^\intercal\beta$，
+    求$A^n$
+\end{example}
+\begin{solution}
+    \[
+        A^n = (\alpha^\intercal\beta)(\alpha^\intercal\beta)\cdots(\alpha^\intercal\beta)
+        =\alpha^\intercal(\beta\alpha^\intercal)\cdots(\beta\alpha^\intercal)\beta
+        =\alpha^\intercal(3)^{n-1}\beta
+        =3^{n-1}
+        \begin{pmatrix}
+            1 & \frac{1}{2} & \frac{1}{3} \\
+            2 & 1           & \frac{2}{3} \\
+            3 & \frac{3}{2} & 1
+        \end{pmatrix}
+    \]
+\end{solution}
+
+\begin{example}
+    设$A=E-\xi\xi^\intercal$，其中$\xi$是$n$维非$0$列向量，证明
+    $A^2=A\iff \xi\xi^\intercal = 1$
+\end{example}
+\begin{proof}
+    \begin{align*}
+        A^2-A & = A(A-E)                                                 \\
+              & = (E-\xi\xi^\intercal)(-\xi\xi^\intercal)                \\
+              & = -\xi\xi^\intercal + \xi\xi^\intercal\xi\xi^\intercal   \\
+              & = -\xi\xi^\intercal + (\xi^\intercal\xi)\xi\xi^\intercal \\
+              & = (\xi^\intercal\xi-1)\xi\xi^\intercal                   \\
+    \end{align*}
+    由于$\xi$是$n$维非$0$列向量，故$\xi\xi^\intercal\neq 0$，所以有
+    \[\xi^\intercal\xi = 1 \iff A^2 = A \]
+\end{proof}
+
+形如
+\[
+    \begin{pmatrix}
+        1 &        &   \\
+          & \ddots &   \\
+          &        & 1
+    \end{pmatrix}
+\]
+称为\textbf{\textsf{单位矩阵}}，简记为$E$，其在矩阵的乘法中起到$1$的作用，即
+\[ AE = EA = A \]
+其中$A,E$均为$n$阶方阵。
+
+形如
+\[
+    D=
+    \begin{pmatrix}
+        a_1 &        &     \\
+            & \ddots &     \\
+            &        & a_n
+    \end{pmatrix}
+\]
+称为\textbf{\textsf{对角矩阵}}，对角矩阵的乘法可满足交换律，即
+\[
+    D_1D_2 = D_2D_1
+    =
+    \begin{pmatrix}
+        a_1b_1 &        &        \\
+               & \ddots &        \\
+               &        & a_nb_n
+    \end{pmatrix}
+\]
+同时有
+\begin{equation}
+    \begin{pmatrix}
+        a_1 &        &     \\
+            & \ddots &     \\
+            &        & a_m
+    \end{pmatrix}^n
+    =
+    \begin{pmatrix}
+        a_1^n &        &       \\
+              & \ddots &       \\
+              &        & a_m^n
+    \end{pmatrix}
+\end{equation}
+此通常用于求复杂矩阵的$n$次方，常出现于特征值相关的题目中。
+
+对于对角矩阵的，可以通过下面的性质得出：
+\begin{equation}
+    \begin{pmatrix}
+        a_1 &        &     \\
+            & \ddots &     \\
+            &        & a_n
+    \end{pmatrix}
+    \begin{pmatrix}
+        \frac{1}{a_1} &        &               \\
+                      & \ddots &               \\
+                      &        & \frac{1}{a_n}
+    \end{pmatrix}
+    = E
+\end{equation}
+
+\subsection{矩阵的秩}
+在引入矩阵的秩的定义前，先说明矩阵的子式概念。
+\begin{definition}
+    对于矩阵$A_{m\times n}$，任取$k$行$k$列，所得交点元素在相对位置不变的情况下组成的行列式，称为$A_{m \times n}$的$k$阶子式。
+\end{definition}
+
+\begin{definition}
+    对于矩阵$A_{m\times n}$，如果\textcolor{red}{存在}$r$阶子式$D\neq 0$，且所有$r+1$阶子式（如果存在）全为$0$，则称矩阵$A$的秩为$r$，
+    记作$r(A)=r$，并且规定零矩阵的秩为$0$
+\end{definition}
+可以通过这个定理可以缩小求秩的范围。
+\begin{example}
+    设
+    \[
+        A =
+        \begin{pmatrix}
+            1 & 2 & 3 \\
+            2 & 4 & t \\
+            3 & 5 & 8
+        \end{pmatrix}
+    \]
+    求$r(A)$
+\end{example}
+\begin{solution}
+    由于矩阵左下角的$2$阶子式
+    \[
+        \begin{vmatrix}
+            2 & 4 \\
+            3 & 5
+        \end{vmatrix}
+        \neq 0
+    \]
+    所以$2\leq r(A) \leq 3$。注意到$t=6$时，上下两行成比例，此时$|A|=0,r(A)=2$，
+    那么当$t\neq 6$时，$r(A)=3$
+\end{solution}
+
+\begin{theorem}
+    经过初等变换的矩阵，其秩不变。
+\end{theorem}
+由这个定理可以将矩阵进行初等变换，得到阶梯矩阵或最简矩阵，主元的个数就是矩阵的秩。秩相关的公式在附录\ref{sec:矩阵的秩相关公式}给出
+\begin{theorem}
+    矩阵的秩、矩阵列向量组的秩、矩阵行向量组的秩，三秩相等。
+\end{theorem}
+\begin{theorem}
+    $n$阶矩阵$A$的行列式$|A|\neq 0 \iff r(A) = n$，反过来$|A|=0\iff r(A)< n$
+\end{theorem}
+\begin{example}
+    \[
+        A =
+        \begin{pmatrix}
+            k & 1 & 1 & 1 \\
+            1 & k & 1 & 1 \\
+            1 & 1 & k & 1 \\
+            1 & 1 & 1 & k
+        \end{pmatrix}
+    \]
+    若$r(A)=3$，求$k$
+\end{example}
+\begin{solution}
+    由于$r(A)=3<4$，所以$|A|=0$，则
+    \[
+        |A| =
+        \begin{vmatrix}
+            k & 1 & 1 & 1 \\
+            1 & k & 1 & 1 \\
+            1 & 1 & k & 1 \\
+            1 & 1 & 1 & k
+        \end{vmatrix}
+        =(k+3)
+        \begin{vmatrix}
+            1 & 1 & 1 & 1 \\
+            1 & k & 1 & 1 \\
+            1 & 1 & k & 1 \\
+            1 & 1 & 1 & k
+        \end{vmatrix}
+        =(k+3)
+        \begin{vmatrix}
+            1 & 1   & 1   & 1   \\
+            0 & k-1 & 0   & 0   \\
+            0 & 0   & k-1 & 0   \\
+            0 & 0   & 0   & k-1
+        \end{vmatrix}
+        =(k+3)(k-1)^3
+    \]
+    所以$k=-3$或$k=1$，当$k=1$时$r(A)=1$。当$k=-3$时
+    \[
+        \begin{vmatrix}
+            -3 & 1  & 1  \\
+            1  & -3 & 1  \\
+            1  & 1  & -3 \\
+        \end{vmatrix}
+        =
+        \begin{vmatrix}
+            -3 & 1  & 1  \\
+            4  & -4 & 0  \\
+            4  & 0  & -4 \\
+        \end{vmatrix}
+        =
+        =
+        \begin{vmatrix}
+            -1 & 1  & 1  \\
+            0  & -4 & 0  \\
+            0  & 0  & -4 \\
+        \end{vmatrix}
+        =-16\neq 0
+    \]
+    所以这个三阶子式不等于$0$，因此$k=-3$
+\end{solution}
+利用初等变换，有如下解法
+\begin{solution}
+    \[
+        A =
+        \begin{pmatrix}
+            k & 1 & 1 & 1 \\
+            1 & k & 1 & 1 \\
+            1 & 1 & k & 1 \\
+            1 & 1 & 1 & k
+        \end{pmatrix}
+        \longrightarrow
+        \begin{pmatrix}
+            k   & 1   & 1   & 1   \\
+            1-k & k-1 & 0   & 0   \\
+            1-k & 0   & k-1 & 0   \\
+            1-k & 0   & 0   & k-1
+        \end{pmatrix}
+        \longrightarrow
+        \begin{pmatrix}
+            k+3 & 1   & 1   & 1   \\
+            0   & k-1 & 0   & 0   \\
+            0   & 0   & k-1 & 0   \\
+            0   & 0   & 0   & k-1
+        \end{pmatrix}
+    \]
+    当$k=1$时，$r(A)=1$，当$k=-3$时，列主元有三个，故$r(A)=3$，所以$k=-3$
+\end{solution}
+
+\section{可逆矩阵}
+在研究逆矩阵前，需要引入伴随矩阵的概念。
+\begin{definition}
+    设$A$为$n$阶矩阵，则$A$的伴随矩阵为
+    \[
+        A^* =
+        \begin{pmatrix}
+            A_{\textcolor{red}{1}1} & A_{\textcolor{red}{2}1} & \cdots & A_{\textcolor{red}{n}1} \\
+            A_{\textcolor{red}{1}2} & A_{\textcolor{red}{2}2} & \cdots & A_{\textcolor{red}{n}2} \\
+            \vdots                  & \vdots                  & \ddots & \vdots                  \\
+            A_{\textcolor{red}{1}n} & A_{\textcolor{red}{2}n} & \cdots & A_{\textcolor{red}{n}n} \\
+        \end{pmatrix}
+    \]
+    其中$A_{ij}$为$A$中$a_{ij}$的代数余子式。此处要注意\textcolor{red}{下标}。
+\end{definition}
+对于伴随矩阵有下面的等式
+\begin{equation}
+    AA^* = A^*A = |A|E
+\end{equation}
+其证明如下
+\begin{proof}
+    下面只讨论$n=2$的情况，对于$n$为任意正整数的情况同理。
+    利用行列式的展开公式，有
+    \begin{align*}
+        AA^* & =
+        \begin{pmatrix}
+            a_{11} & a_{12} \\
+            a_{21} & a_{22}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_{11} & A_{21} \\
+            A_{12} & A_{22}
+        \end{pmatrix} \\
+             & =
+        \begin{pmatrix}
+            a_{11}A_{11} + a_{12}A_{12} &  & a_{11}A_{21} + a_{12}A_{22} \\
+            a_{21}A_{11} + a_{22}A_{12} &  & a_{21}A_{21} + a_{22}A_{22}
+        \end{pmatrix} \\
+             & =
+        \begin{pmatrix}
+            |A| & 0   \\
+            0   & |A|
+        \end{pmatrix} \\
+             & = |A|E
+    \end{align*}
+\end{proof}
+
+对于二阶矩阵的伴随矩阵，可以将主对角线互换，副对角线变号，即
+\begin{equation}
+    \begin{pmatrix}
+        a & b \\
+        c & d
+    \end{pmatrix}^*
+    =
+    \begin{pmatrix}
+        d  & -b \\
+        -c & a
+    \end{pmatrix}
+\end{equation}
+由此可以很简单地通过定义法求出二阶矩阵的逆矩阵。
+
+有关伴随矩阵的公式在附录\ref{sec:伴随矩阵的公式}中给出。
+
+\begin{definition}
+    对于$n$阶矩阵A，如果存在$n$阶矩阵$B$，使得
+    \[ AB = BA = E \]
+    则称矩阵$A$是可逆的，称$B$是$A$的逆矩阵，
+    记$A$的逆矩阵为$A^{-1}$，且$A^{-1}$惟一。其中$E$为$n$阶单位矩阵。
+\end{definition}
+在有关逆矩阵的证明中，常需要用单位矩阵的恒等变形，例如$A=AE=A(BB^{-1})$。
+\begin{example}
+    若矩阵$A$可逆，证明$A$的逆矩阵唯一。
+\end{example}
+\begin{proof}
+    假设$A$的逆矩阵不唯一，记$B,C$分别为$A$的逆矩阵。则有$AB=BA=E, AC=CA=E$。
+    因此有
+    \[ B = BE = BAC = EC = C \]
+    显然与假设矛盾，故假设$A$的逆矩阵唯一。
+\end{proof}
+
+利用伴随矩阵可以计算逆矩阵：
+\begin{theorem}
+    若$n$阶矩阵$A$的行列式不为$0$，则$A$的逆矩阵为
+    \[
+        A^{-1} = \frac{1}{|A|}A^*
+    \]
+\end{theorem}
+
+\begin{theorem}
+    $n$阶矩阵$A$可逆$\iff |A|\neq 0$。
+\end{theorem}
+\begin{proof}
+    （充分性）
+    \[ AA^{-1} = E \implies |AA^{-1}| = |A|\cdot|A^{-1}| = |E| = 1 \]
+    所以$|A|\neq 0$。
+    （必要性）
+    \[ AA^* = |A|E \]
+    由于$|A|\neq 0$
+    所以$A \frac{A^*}{|A|} = E$，所以$A$可逆。
+\end{proof}
+
+可逆矩阵的一些性质在附录\ref{sec:可逆矩阵的性质}给出。
+
+\subsection{逆矩阵的求解}
+如果矩阵$A$可逆，一般有如下几种方法求逆矩阵。
+\begin{enumerate}[(1)]
+    \item 定义法；
+    \item 伴随矩阵法；
+    \item 初等行变换
+          \[ (A|E) \xrightarrow{\text{由上往下}} (\text{上三角矩阵}|*)\xrightarrow{\text{由下往上}} (\text{对角矩阵}|*)\xrightarrow{\text{乘系数}}(E|A^{-1}) \]
+    \item 分块法
+          \[
+              \begin{pmatrix}
+                  A & 0 \\
+                  0 & B
+              \end{pmatrix}^{-1}
+              =
+              \begin{pmatrix}
+                  A^{-1} & 0      \\
+                  0      & B^{-1}
+              \end{pmatrix}
+          \]
+          \[
+              \begin{pmatrix}
+                  0 & A \\
+                  B & 0
+              \end{pmatrix}^{-1}
+              =
+              \begin{pmatrix}
+                  0      & B^{-1} \\
+                  A^{-1} & 0
+              \end{pmatrix}
+          \]
+\end{enumerate}
+
+\begin{example}
+    设
+    \[
+        A =
+        \begin{pmatrix}
+            1 & 1 & 1 \\
+            1 & 2 & 1 \\
+            1 & 1 & 3
+        \end{pmatrix}
+    \]
+    求$A^{-1}$
+\end{example}
+\begin{solution}
+    \begin{align*}
+         & \left(
+        \begin{array}{ccc|ccc}
+            1 & 1 & 1 & 1 & 0 & 0 \\
+            1 & 2 & 1 & 0 & 1 & 0 \\
+            1 & 1 & 3 & 0 & 0 & 1
+        \end{array}
+        \right)
+        \rightarrow
+        \left(
+        \begin{array}{ccc|ccc}
+            1 & 1 & 1 & 1  & 0 & 0 \\
+            0 & 1 & 0 & -1 & 1 & 0 \\
+            0 & 0 & 2 & -1 & 0 & 1
+        \end{array}
+        \right)
+        \rightarrow
+        \left(
+        \begin{array}{ccc|ccc}
+            1 & 0 & 1 & 2  & -1 & 0 \\
+            0 & 1 & 0 & -1 & 1  & 0 \\
+            0 & 0 & 2 & -1 & 0  & 1
+        \end{array}
+        \right)
+        \rightarrow
+        \left(
+        \begin{array}{ccc|ccc}
+            1 & 0 & 0 & \frac{5}{2} & -1 & -\frac{1}{2} \\
+            0 & 1 & 0 & -1          & 1  & 0            \\
+            0 & 0 & 2 & -1          & 0  & 1
+        \end{array}
+        \right)        \\
+         & \rightarrow
+        \left(
+        \begin{array}{ccc|ccc}
+            1 & 0 & 0 & \frac{5}{2}  & -1 & -\frac{1}{2} \\
+            0 & 1 & 0 & -1           & 1  & 0            \\
+            0 & 0 & 1 & -\frac{1}{2} & 0  & \frac{1}{2}
+        \end{array}
+        \right)
+    \end{align*}
+    所以
+    \[
+        A^{-1} =
+        \begin{pmatrix}
+            \frac{5}{2}  & -1 & -\frac{1}{2} \\
+            -1           & 1  & 0            \\
+            -\frac{1}{2} & 0  & \frac{1}{2}
+        \end{pmatrix}
+        =\frac{1}{2}
+        \begin{pmatrix}
+            5  & -2 & -1 \\
+            -2 & 2  & 0  \\
+            -1 & 0  & 1
+        \end{pmatrix}
+    \]
+\end{solution}
+
+\begin{example}
+    $A$为$n$阶矩阵，且满足$A^2 - 3A - 2E =0$
+    求$(A+E)^{-1}$
+\end{example}
+\begin{solution}
+    对于这类题目，首先写下$(A+E)$，然后根据已知条件进行凑因式的形式来求解。
+    \[ A^2 - 3A - 2E = (A+E)(A - 4E) + 2E = 0 \]
+    所以
+    \[ (A+E)^{-1} = \frac{1}{2}(4E-A) \]
+\end{solution}
+\begin{example}
+    $A,B$均为$3$阶矩阵，$AB=2A+B$，其中
+    \[
+        B = \begin{pmatrix}
+            2 & 0 & 2 \\
+            0 & 4 & 0 \\
+            2 & 0 & 2
+        \end{pmatrix}
+    \]
+    求$(A-E)^{-1}$
+\end{example}
+\begin{solution}
+    还是从已知条件上往$(A-E)$凑
+    \[ AB - 2A - B =(A-E)B - 2A = (A-E)B - 2(A-E) - 2E = (A-E)(B-2E) - 2E = 0  \]
+    所以
+    \[
+        (A-E)^{-1} = \frac{1}{2}(B-2E) =
+        \begin{pmatrix}
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+            1 & 0 & 0
+        \end{pmatrix}
+    \]
+\end{solution}
+\begin{example}
+    设$A$为$n$阶矩阵，且存在自然数$k$，使得$A^k=0$，
+    求$E-A$的逆矩阵。
+\end{example}
+\begin{solution}
+    联想到$a^n-b^n=(a-b)(a^{n-1} + a^{n-2}b + \cdots + ab^{n-2} + b^{n-1})$
+    而$E$又类似于代数中的$1$，所以有
+    \[ -E = A^k - E = A^k - E^k = (A-E)(A^{k-1} + A^{k-2} + \cdots + E) \]
+    移项可得
+    \[ (E-A)(A^{k-1} + A^{k-2} + \cdots + E) = E \]
+    所以$(E-A)^{-1}= A^{k-1} + A^{k-2} + \cdots + E$
+\end{solution}
+
+\section{初等变换、初等矩阵}
+初等变换有初等行变换、初等列变换。初等行变换有：
+\begin{enumerate}[(1)]
+    \item 用非$0$常数$k$乘以矩阵的某一行的每个元素；
+    \item 互换矩阵中两行元素的位置；
+    \item 把$A$中某行所有元素的$k$倍加到另一行对应的元素上。
+\end{enumerate}
+\begin{definition}
+    单位矩阵$E$经过\textcolor{red}{一次}初等变换所得矩阵称为初等矩阵。
+\end{definition}
+\begin{theorem}
+    对$m\times n$矩阵$A$作一次初等\textcolor{red}{行变换}相当于用\textcolor{red}{相应}的$m$阶初等矩阵\textcolor{red}{左乘}$A$；
+    对$A$作一次初等\textcolor{red}{列变换}相当于用\textcolor{red}{相应}的$n$阶初等矩阵\textcolor{red}{右乘}$A$。
+\end{theorem}
+此处的“\textcolor{red}{相应}”是指同一类的初等矩阵，例如，交换$i,j$两行，所需的初等矩阵是由单位矩阵$i,j$行交换形成。
+\begin{theorem}
+    初等矩阵都是可逆的，并且每一类初等矩阵的逆矩阵仍为同一类型的初等矩阵。
+\end{theorem}
+对于初等矩阵的逆矩阵由有如下关系
+\begin{enumerate}[(1)]
+    \item 交换两行或两列$P^{-1}(i,j) = P(i,j)$；
+    \item 某行或某列乘以非零常数$P^{-1}(i(c)) = P(i(c^{-1}))$；
+    \item 某行（列）加上另一行（列）的$k$倍$P^{-1}(i,j(k)) = P(i,j(-k))$。
+\end{enumerate}
+
+假设$A$可逆，则可以通过初等变换来求出逆矩阵，即
+\[ (A|E)\xrightarrow{\text{初等行变换}}(E|A^{-1}) \]
+用矩阵表示就是
+\begin{align*}
+    P_s\cdots P_1A = (P_s\cdots P_1)A  = E
+\end{align*}
+那么一系列的初等行变换矩阵$P_s\cdots P_1$即为$A$的逆矩阵，也就相当于对单位矩阵$E$作同样的初等行变换
+\[ P_s\cdots P_1 = P_s\cdots P_1E = A^{-1} \]
+
+\begin{definition}
+    如果$m\times n$阶矩阵$A$满足如下两个条件，则称$A$为行阶梯矩阵。
+    \begin{enumerate}[(1)]
+        \item 矩阵中如果有零行，且都在矩阵的底部；
+        \item 每个非零行的主元（该行最左边第一个非零元素）所在列的下面元素都是$0$。
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    如果$m\times n$阶矩阵$A$是行阶梯矩阵，且非零行的主元都是$1$，且主元所在列的其它元素都是$0$，
+    则称$A$为行最简矩阵。
+\end{definition}
+例如下面这个矩阵就是行最简矩阵。
+\[
+    \begin{pmatrix}
+        1 & 0 & 3  & 0 \\
+        0 & 1 & -2 & 0 \\
+        0 & 0 & 0  & 1
+    \end{pmatrix}
+\]
+
+\begin{definition}
+    矩阵$A$有限此初等变换得到矩阵$B$，就称矩阵$A$和$B$等价。
+\end{definition}
+\begin{theorem}
+    $A,B$都是$m\times n$矩阵，则有
+    \[ A,B\text{等价} \iff r(A) = r(B) \]
+\end{theorem}
+
+\begin{theorem}
+    $\forall A_{m\times n}$都存在$m$阶可逆矩阵$P$和$n$阶可逆矩阵$Q$使得
+    \[
+        PAQ =
+        \begin{pmatrix}
+            E_r & 0 \\
+            0   & 0
+        \end{pmatrix}
+    \]
+    称$PAQ$为$A$的等价标准型。其中$r$为$A$的秩。
+\end{theorem}
+需要注意的是$P,Q$不唯一。也就是说$P,Q$对应的一系列初等变换不唯一。
+
+
+在矩阵的乘法的题目中，如果某个矩阵的$0$比较多，就可以利用初等变化的思路来求解，从而节约时间。
+\begin{example}
+    计算
+    \[
+        \begin{pmatrix}
+            1 & 0 & 2  \\
+            0 & 0 & -1 \\
+            0 & 1 & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 & 2 & 3 \\
+            4 & 5 & 6 \\
+            7 & 8 & 9
+        \end{pmatrix}
+    \]
+\end{example}
+\begin{solution}
+    左侧的矩阵$0$比较多，且易看出其为满秩矩阵，可以将其看成行变换。
+    故将右侧矩阵写成行分块矩阵。
+    \[
+        \begin{pmatrix}
+            1 & 0 & 2  \\
+            0 & 0 & -1 \\
+            0 & 1 & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+            \alpha_1 \\
+            \alpha_2 \\
+            \alpha_3
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            \alpha_1 + 2\alpha_3 \\
+            -\alpha_3            \\
+            \alpha_2
+        \end{pmatrix}
+    \]
+    此时可以看出，结果的第一行为原矩阵第一行加上两倍的第三行，第二行为第三行的相反数，第三行变为了第二行。
+    所以结果为
+    \[
+        \begin{pmatrix}
+            15 & 18 & 21 \\
+            -7 & -8 & -9 \\
+            4  & 5  & 6
+        \end{pmatrix}
+    \]
+\end{solution}
+
+\section{分块矩阵}
+对矩阵的分块一般有三种类型
+\begin{enumerate}[(1)]
+    \item 十字分成四块，且对角线为上的矩阵为方阵（常用于$AB,A^n,A^{-1}$的题目中）；
+    \item 按列分块（一般与向量、秩和方程组相关）；
+    \item 按行分块（与上面相同）。
+\end{enumerate}
+
+对于分块矩阵有下面这些运算
+\begin{equation}
+    \begin{pmatrix}
+        A_1 & A_2 \\
+        A_3 & A_4
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        B_1 & B_2 \\
+        B_3 & B_4
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        A_1+B_1 & A_2+B_2 \\
+        A_3+B_3 & A_4+B_4
+    \end{pmatrix}
+\end{equation}
+\begin{equation}
+    \begin{pmatrix}
+        A & B \\
+        C & D
+    \end{pmatrix}
+    \begin{pmatrix}
+        X & Y \\
+        Z & W
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        AX+BZ & AY+BW \\
+        CX+DZ & CY+BW
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    \begin{pmatrix}
+        A & B \\
+        C & D
+    \end{pmatrix}^\intercal
+    =
+    \begin{pmatrix}
+        A^\intercal & C^\intercal \\
+        B^\intercal & D^\intercal
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    \begin{pmatrix}
+        A & 0 \\
+        0 & B
+    \end{pmatrix}^n
+    =
+    \begin{pmatrix}
+        A^n & 0   \\
+        0   & B^n
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    \begin{pmatrix}
+        A & 0 \\
+        0 & B
+    \end{pmatrix}^{-1}
+    =
+    \begin{pmatrix}
+        A^{-1} & 0      \\
+        0      & B^{-1}
+    \end{pmatrix}
+    \qquad
+    \begin{pmatrix}
+        0 & A \\
+        B & 0
+    \end{pmatrix}^{-1}
+    =
+    \begin{pmatrix}
+        0      & B^{-1} \\
+        A^{-1} & 0
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    \begin{pmatrix}
+        A_1 &        &     \\
+            & \ddots &     \\
+            &        & A_n
+    \end{pmatrix}
+    \begin{pmatrix}
+        B_1 &        &     \\
+            & \ddots &     \\
+            &        & B_n
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        A_1B_1 &        &        \\
+               & \ddots &        \\
+               &        & A_nB_n
+    \end{pmatrix}
+\end{equation}
+\begin{equation}
+    \begin{pmatrix}
+        A_1 &        &     \\
+            & \ddots &     \\
+            &        & A_n
+    \end{pmatrix}^{-1}
+    =
+    \begin{pmatrix}
+        A_1^{-1} &        &          \\
+                 & \ddots &          \\
+                 &        & A_n^{-1}
+    \end{pmatrix}
+\end{equation}
+
+\subsection{分块矩阵与线性相关、方程组的关联}
+记$A,B,C$均为$n$阶矩阵，且$AB=C$。那么下面讨论按行、按列分块后的表述。
+\paragraph{按列分块} 若$A,C$按列分块，即
+\[
+    \begin{pmatrix}
+        \gamma_1 & \cdots & \gamma_n
+    \end{pmatrix}
+    \begin{pmatrix}
+        b_{11} & \cdots & b_{1n} \\
+        \vdots & \ddots & \vdots \\
+        b_{n1} & \cdots & b_{nn}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \delta_1 & \cdots & \delta_n
+    \end{pmatrix}
+\]
+那么写成方程组就有
+\[
+    \begin{cases}
+        b_{11}\gamma_1 + b_{21}\gamma_2 + \cdots + b_{n1}\gamma_n = \delta_1 \\
+        \cdots                                                               \\
+        b_{1n}\gamma_1 + b_{2n}\gamma_2 + \cdots + b_{nn}\gamma_n = \delta_n
+    \end{cases}
+\]
+换句话说，列向量$\delta_i$可以被列向量组$(\gamma_1,\gamma_2,\cdots,\gamma_n)$线性表出。
+
+\paragraph{按行分块}如果将$B,C$按行分块，则有
+\[
+    \begin{pmatrix}
+        a_{11} & \cdots & a_{1n} \\
+        \vdots & \ddots & \vdots \\
+        a_{n1} & \cdots & a_{nn}
+    \end{pmatrix}
+    \begin{pmatrix}
+        \alpha_1 \\ \vdots \\ \alpha_n
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \beta_1 \\ \vdots \\ \beta_n
+    \end{pmatrix}
+\]
+写成方程组的形式
+\[
+    \begin{cases}
+        a_{11}\alpha_1 + a_{12}\alpha_2 + \cdots + a_{1n}\alpha_n = \beta_1 \\
+        \cdots                                                              \\
+        a_{n1}\alpha_1 + a_{n2}\alpha_2 + \cdots + a_{nn}\alpha_n = \beta_n
+    \end{cases}
+\]
+也就是行向量$\beta_i$可以由行向量组$(\alpha_1,\alpha_2,\cdots,\alpha_n)$线性表出。
+
+\paragraph{方程组的联系} 如果将$A$看作整体，$B,C$按列分块，则有
+\[
+    A
+    \begin{pmatrix}
+        \beta_1 & \cdots & \beta_n
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        A\beta_1 & \cdots & A\beta_n
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \gamma_1 & \cdots & \gamma_n
+    \end{pmatrix}
+\]
+所以有
+\[ A\beta_1 = \gamma_1, \cdots, A\beta_n = \gamma_n \]
+那么$\beta_i$是方程组$AX=\gamma_i$的解。
+
+\begin{example}
+    设
+    \[
+        A =
+        \begin{pmatrix}
+            1 & 2  & -2 \\
+            4 & t  & 3  \\
+            3 & -1 & 1
+        \end{pmatrix}
+    \]
+    $B$为$3$阶非零矩阵，且$AB=0$，求$t$的值。
+\end{example}
+\begin{solution}
+    将$B$按列分块，再与方程组联系，则有
+    \[ A\beta_1 = 0,\qquad A\beta_2 = 0,\qquad A\beta_3 = 0 \]
+    所以$\beta_1,\beta_2,\beta_3$是齐次方程组$AX=0$的解。
+    又$B$为非零矩阵，故$\beta_1,\beta_2,\beta_3$中至少有一个非零解。
+    那么系数矩阵不满秩，故而
+    \[
+        0 = |A| =
+        \begin{vmatrix}
+            1 & 2  & -2 \\
+            4 & t  & 3  \\
+            3 & -1 & 1
+        \end{vmatrix}
+        =
+        \begin{vmatrix}
+            7 & 0  & 0 \\
+            4 & t  & 3 \\
+            3 & -1 & 1
+        \end{vmatrix}
+        =
+        7\begin{vmatrix}
+            t  & 3 \\
+            -1 & 1
+        \end{vmatrix}
+        =
+        7(t+3)
+    \]
+    所以$t=-3$
+\end{solution}
+
+\section{正交矩阵}
+\label{sec:正交矩阵}
+\begin{definition}
+    $n$阶矩阵$A$，如果满足$AA^\intercal = A^\intercal A = E$
+    则称$A$是正交矩阵。
+\end{definition}
+根据正交矩阵的定义，可以得到
+\begin{theorem}
+    $A$是正交矩阵$\iff A^\intercal = A^{-1} \iff A$的列向量都是\textcolor{red}{单位向量}，且两两正交。
+\end{theorem}
+\begin{theorem}
+    $A$是正交矩阵$\implies |A|$为$1$或$-1$
+\end{theorem}
