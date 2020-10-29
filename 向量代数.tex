@@ -65,7 +65,7 @@
             k_1 & k_2 & \cdots & k_m
         \end{pmatrix}^\intercal
     \]
-    即$AX=\beta$有解$\iff r(A)=r(\bar{A})$。
+    即$AX=\beta$有解$\iff r(A)=r(\overline{A})$。
 \end{theorem}
 
 \begin{example}
@@ -91,7 +91,7 @@
     \]
     所以变为方程组$AX=b$，对增广矩阵进行行变换
     \[
-        \bar{A}=
+        \overline{A}=
         \left(\begin{array}{ccc|c}
                 1 & 1 & 2  & 2 \\
                 2 & 3 & -1 & 5 \\
@@ -145,7 +145,7 @@
 \begin{solution}
     设$\beta = \alpha_1 x_1 + \alpha_2 x_2 + \alpha_3 x_3 = AX$，则对增广矩阵作初等行变换
     \[
-        \bar{A}=
+        \overline{A}=
         \left(\begin{array}{ccc|c}
                 1+\lambda & 1         & 1         & 0         \\
                 1         & 1+\lambda & 1         & \lambda   \\
@@ -165,7 +165,7 @@
               \[ \beta = (-s-t)\alpha_1 + s\alpha_2 + t\alpha_3 \]
         \item 当$\lambda\neq 0 $时
               \[
-                  \bar{A}
+                  \overline{A}
                   \longrightarrow
                   \left(\begin{array}{ccc|c}
                           1+\lambda & 1 & 1 & 0       \\
@@ -183,7 +183,7 @@
               \subitem 当$\lambda=-3$时，$-1-\lambda=2\neq 0$，此时方程组无解，故不能线性表出
               \subitem 当$\lambda\neq-3$时，
               \[
-                  \bar{A}
+                  \overline{A}
                   \longrightarrow
                   \left(\begin{array}{ccc|c}
                           1  & 0 & 0 & -\frac{1+\lambda}{3+\lambda} \\

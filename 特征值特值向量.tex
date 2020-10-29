@@ -364,6 +364,75 @@
     \]
 \end{solution}
 
+\subsection{特征值个数与秩的关系}
+考虑$n$阶矩阵$A$，根据定义可知特征值满足下面等式
+\[ A\alpha = \lambda\alpha \]
+同时，由初等变换可知存在$n$阶可逆矩阵$P,Q$使得
+\[
+    PAQ =
+    \begin{pmatrix}
+        E_r & 0 \\
+        0   & 0
+    \end{pmatrix}
+\]
+其中$r\leq n$，将等式变形可得
+\[
+    A =
+    P^{-1}
+    \begin{pmatrix}
+        E_r & 0 \\
+        0   & 0
+    \end{pmatrix}
+    Q^{-1}
+    =
+    P^{-1}
+    \begin{pmatrix}
+        E_r \\ 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        E_r & 0
+    \end{pmatrix}
+    Q^{-1}
+    =BC
+\]
+其中$B=P^{-1}\begin{pmatrix}E_r & 0\end{pmatrix}^\intercal, C = \begin{pmatrix}E_r & 0\end{pmatrix}Q^{-1}$，
+则$B$为列满秩矩阵，$C$为行满秩矩阵，且$r(A) = r(B) = r(C) = r$。
+
+设$\lambda$为$A$的任意一非零特征值，$\alpha$为对应的特征向量，则有
+\[ A\alpha = BC\alpha = \lambda\alpha \]
+两边同时乘以矩阵$C$，则有
+\[ CBC\alpha = CB(C\alpha) = \lambda(C\alpha) \]
+其中$C\alpha\neq 0$，（若$C\alpha = 0$，则有$BC\alpha = 0 = \lambda\alpha = 0$，又$\lambda\neq 0$，则$\alpha=0$，与$\alpha\neq 0$矛盾），
+因此矩阵$CB$特征值为$\lambda$，对应特征向量为$C\alpha$。所以$BC$的任意一非零特征值为$CB$的特征值。同理可证$CB$的任意一非零特征值也为$BC$的特征值。
+因此$BC,CB$的非零特征值相同。又因为特征值个数不超过矩阵的阶数，所以非零特征值个数不超过$CB$的阶数$r$，即$A=BC$的非零特征值不超过$r$。
+
+综上可得，
+\begin{theorem}
+    设矩$n$阶矩阵$A$，且$r(A)=r$，则$A$的非零特征值个数小于等于$r$。
+\end{theorem}
+进一步的，有
+\begin{enumerate}[(1)]
+    \item 若$A$为可对角化矩阵，根据$A\sim \operatorname{diag}(\lambda_1,\lambda_2,\cdots)$，知非零特征值个数等于矩阵的秩；
+    \item 若$A$为满秩矩阵，根据$|A|=\prod \lambda \neq 0$，知$\lambda\neq 0$，则非零特征值等于$n$；
+    \item 若$A$为不可对角化的降秩矩阵，则非零特征值个数小于等于它的秩。
+\end{enumerate}
+
+\begin{example}
+    设$A=E+\alpha\beta^\intercal$，其中$\alpha,\beta$均为$n$阶非零列向量，且有$\alpha^\intercal\beta=3$，求$|A+2E|$
+\end{example}
+\begin{solution}
+    要求$|A+2E|$，则要考虑$A$的特征值，根据特征值的乘积求出行列式。又$A=E+\alpha\beta^\intercal$，因此转为考虑$\alpha\beta^\intercal$的特征值。
+    注意到
+    \[ r(\alpha\beta^\intercal) \leq \min(r(\alpha),r(\beta^\intercal)) = 1 \]
+    且$\alpha\neq 0,\beta\neq 0$，则有$\alpha\beta^\intercal\neq 0$，因此$r(\alpha\beta^\intercal)=1$，所以$\alpha\beta^\intercal$非零特征值不超过$1$。
+
+    假设非零特征值个数为$0$，则特征值为$0$的个数等于$n$，又因为$\Tr(\alpha\beta^\intercal)=\beta^\intercal\alpha = 3\neq 0$，所以非零特征值个数不等于$0$；
+
+    因此非零特征值个数为$1$，此时特征值为$0$的个数等于$n-1$，即$0$为$n-1$重特征值。根据$\Tr(\alpha\beta^\intercal)=3$，得出$3$为单重特征值。综上可得
+    \[ |A+2E| = |3E + \alpha\beta^\intercal| = \prod_i^n (3+\lambda_i) = 6\cdot 3^{n-1} = 2\cdot 3^n \]
+
+\end{solution}
+
 \section{相似矩阵}
 \subsection{相似矩阵的基本概念和性质}
 .

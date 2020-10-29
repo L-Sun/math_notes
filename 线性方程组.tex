@@ -54,7 +54,7 @@
         b_1 \\b_2\\\vdots\\b_m
     \end{pmatrix},
     \qquad
-    \bar{A}=
+    \overline{A}=
     \left(\begin{array}{cccc|c}
             a_{11} & a_{12} & \cdots & a_{1n} & b_1    \\
             a_{21} & a_{22} & \cdots & a_{2n} & b_2    \\
@@ -62,7 +62,7 @@
             a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
         \end{array}\right)
 \]
-$\bar{A}$为增广矩阵。
+$\overline{A}$为增广矩阵。
 
 \section{齐次线性方程组的有解判定定理}
 齐次线性方程组的解只有两种可能：只有零解、有无穷多解。
@@ -180,9 +180,9 @@ $\bar{A}$为增广矩阵。
 \begin{theorem}
     且三种有解判断如下:
     \begin{enumerate}[(1)]
-        \item 有解$\iff r(A)=r(\bar{A})$，反过来，无解$\iff r(A)\neq r(\bar{A}) \iff r(A)+1 = r(\bar{A})$；
-        \item 唯一解$\iff r(A)=r(\bar{A}) = n$；
-        \item 无穷多解$\iff r(A)=r(\bar{A})<n$。
+        \item 有解$\iff r(A)=r(\overline{A})$，反过来，无解$\iff r(A)\neq r(\overline{A}) \iff r(A)+1 = r(\overline{A})$；
+        \item 唯一解$\iff r(A)=r(\overline{A}) = n$；
+        \item 无穷多解$\iff r(A)=r(\overline{A})<n$。
     \end{enumerate}
 \end{theorem}
 
@@ -214,7 +214,7 @@ $\bar{A}$为增广矩阵。
 \begin{solution}
     对增广矩阵作初等行变换
     \[
-        \bar{A}
+        \overline{A}
         =
         \left(\begin{array}{ccc|c}
                 1 & 1 & 1 & 5  \\

@@ -63,6 +63,54 @@
 \begin{theorem}
     二次型矩阵$A$的特征值为正的个数等于二次型的正惯性指数，二次型矩阵$A$的特征值为负的个数等于二次型的负惯性指数。
 \end{theorem}
+作为推论有
+\begin{theorem}
+    正负惯性指数之和等于矩阵的秩。
+\end{theorem}
+\begin{example}
+    若二次型
+    \[ f(x_1,x_2,x_3) = x_1^2 + ax_2^2 + x_3^2 + 2x_1x_2 - 2ax_1x_3 - 2x_2x_3 \]
+    的正负惯性指数都是$1$，求$a$的值。
+\end{example}
+\begin{solution}
+    由于$p=q=1$，所以$r(f) = p+q = 2 < 3$，则有二次型的矩阵的行列式等于$0$，
+    \begin{align*}
+        |A| & =
+        \begin{vmatrix}
+            1  & 1  & -a \\
+            1  & a  & -1 \\
+            -a & -1 & 1
+        \end{vmatrix}
+        =
+        \begin{vmatrix}
+            0  & 1-a & 1-a \\
+            1  & a   & -1  \\
+            -a & -1  & 1
+        \end{vmatrix}
+        =(1-a)
+        \begin{vmatrix}
+            0  & 1  & 1  \\
+            1  & a  & -1 \\
+            -a & -1 & 1
+        \end{vmatrix}
+        \\
+            & =(1-a)
+        \begin{vmatrix}
+            1   & 1+a & 0  \\
+            1   & a   & -1 \\
+            1-a & a-1 & 0
+        \end{vmatrix}
+        =(1-a)^2
+        \begin{vmatrix}
+            1 & 1+a & 0  \\
+            1 & a   & -1 \\
+            1 & -1  & 0
+        \end{vmatrix}
+        =-(1-a)^2(a+2)
+    \end{align*}
+    因此$a=1,-2$，当$a=1$时，矩阵的秩$r(A)=1$不满足$r(f)=2$，而$a=-2$时，满足$r(f)=r(A)=2$，故$a=-2$
+
+\end{solution}
 
 \begin{definition}
     （坐标变换）

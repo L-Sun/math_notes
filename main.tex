@@ -4,6 +4,7 @@
 \setCJKmainfont{思源宋体}
 \setCJKmonofont{思源等宽}
 \setCJKsansfont{思源黑体}
+
 \usepackage{NotesTeX}
 \usepackage{MnSymbol}
 \usepackage{systeme}
@@ -15,6 +16,9 @@
 \usepackage{esint}
 \usepackage{colortbl}
 \usepackage{fullwidth}
+
+% 设置段间距
+\setlength{\parskip}{0.5em}
 
 \pgfplotsset{compat=newest}
 \usetikzlibrary{calc,patterns,quotes,angles,intersections,arrows}
@@ -51,6 +55,7 @@
     left=12pt,
     right=12pt,
     breakable,
+    parbox=false
 }
 
 \tcolorboxenvironment{property}{
@@ -77,14 +82,14 @@
 \pagestyle{fancynotes}
 
 % 微积分
-\include{极限}
-\include{导数}
-\include{积分}
-\include{无穷级数}
-\include{空间解析几何}
-\include{多元函数微分}
-\include{多元函数积分}
-\include{常微分方程}
+% \include{极限}
+% \include{导数}
+% \include{积分}
+% \include{无穷级数}
+% \include{空间解析几何}
+% \include{多元函数微分}
+% \include{多元函数积分}
+% \include{常微分方程}
 
 % 线性代数
 \include{行列式}
@@ -93,6 +98,9 @@
 \include{向量代数}
 \include{特征值特值向量}
 \include{二次型}
+
+% 概率论
+% \include{概率论}
 
 \include{附录}
 \end{document}
