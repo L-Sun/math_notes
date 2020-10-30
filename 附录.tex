@@ -28,7 +28,7 @@
     \centering
     \begin{tikzpicture}[scale=2.5,domain=0:1.2]
         \coordinate[label=below left:{\scriptsize$O$}]  (O) at (0, 0);
-        \coordinate[label=below:{\scriptsize$A$}]       (A) at (1, 0);
+        \coordinate[label=below:{\scriptsize$\mat{A}$}]       (A) at (1, 0);
         \coordinate[label=left:{\scriptsize$B$}]        (B) at ({cos(30)}, {sin{30}});
         \coordinate[label=below right:{\scriptsize$C$}] (C) at (1, {tan(30)});
 
@@ -238,20 +238,20 @@
 \section{线性代数相关公式}
 \subsection{伴随矩阵的公式}\label{sec:伴随矩阵的公式}
 
-设$A$为$n$阶矩阵
+设$\mat{A}$为$n$阶矩阵
 \begin{enumerate}[(1)]
-    \item $AA^*=A^*A=|A|E$;
-    \item $(kA)^* = k^{n-1}A^*$;
-    \item $(A^*)^\intercal = (A^\intercal)^*$;
-    \item $|A^*|=|A|^{n-1}$;
-    \item $(A^*)^*=|A|^{n-2}A$;
-    \item $(A^*)^{-1} = (A^{-1})^* = \dfrac{1}{|A|}A$;
+    \item $\mat{A}\mat{A}^*=\mat{A}^*\mat{A}=|\mat{A}|\mat{E}$;
+    \item $(k\mat{A})^* = k^{n-1}\mat{A}^*$;
+    \item $(\mat{A}^*)^\intercal = (\mat{A}^\intercal)^*$;
+    \item $|\mat{A}^*|=|\mat{A}|^{n-1}$;
+    \item $(\mat{A}^*)^*=|\mat{A}|^{n-2}A$;
+    \item $(\mat{A}^*)^{-1} = (\mat{A}^{-1})^* = \dfrac{1}{|\mat{A}|}\mat{A}$;
     \item $
-              r(A^*) =
+              r(\mat{A}^*) =
               \begin{cases}
-                  n, & r(A)=n,   \\
-                  1, & r(A)=n-1, \\
-                  0, & r(A)<n-1.
+                  n, & r(\mat{A})=n,   \\
+                  1, & r(\mat{A})=n-1, \\
+                  0, & r(\mat{A})<n-1.
               \end{cases}
           $
 \end{enumerate}
@@ -260,30 +260,30 @@
 \label{sec:矩阵的秩相关公式}
 
 \begin{enumerate}[(1)]
-    \item $r(A^\intercal) = r(A)$；
-    \item $r(kA) = r(A), k\neq 0$；
-    \item $r(0E - A) = r(A)$；
-    \item $r(A-E) = r(E-A)$；
-    \item $r(A+B)\leq r(A) + r(B)$;
-    \item $r(AB)\leq \min(r(A),r(B))$；
-    \item 若$A$可逆，则$r(AB)=r(BA)=r(B)$；
-    \item $r(A^\intercal A) = r(A )$；
-    \item 西尔维斯特不等式\label{eq:西尔维斯特不等式}：$A_{m\times n}, B_{n\times s}$，则$r(A)+r(B)-n\leq r(AB)$;
+    \item $r(\mat{A}^\intercal) = r(\mat{A})$；
+    \item $r(k\mat{A}) = r(\mat{A}), k\neq 0$；
+    \item $r(0\mat{E} - \mat{A}) = r(\mat{A})$；
+    \item $r(\mat{A}-\mat{E}) = r(\mat{E}-\mat{A})$；
+    \item $r(\mat{A}+\mat{B})\leq r(\mat{A}) + r(\mat{B})$;
+    \item $r(\mat{AB})\leq \min(r(\mat{A}),r(\mat{B}))$；
+    \item 若$\mat{A}$可逆，则$r(\mat{AB})=r(\mat{BA})=r(\mat{B})$；
+    \item $r(\mat{A}^\intercal\mat{A}) = r(\mat{A})$利用$\mat{AX}=\bm{0},\mat{A}\mat{A}^\intercal\mat{X}=\bm{0}$同解秩相等；
+    \item 西尔维斯特不等式\label{eq:西尔维斯特不等式}：$\mat{A}_{m\times n}, \mat{B}_{n\times s}$，则$r(\mat{A})+r(\mat{B})-n\leq r(\mat{AB})$;
     \item $
               r\begin{pmatrix}
-                  A & 0 \\
-                  0 & B
+                  \mat{A} & \mat{0} \\
+                  \mat{0} & \mat{B}
               \end{pmatrix}
-              =r(A)+r(B)
+              =r(\mat{A})+r(\mat{B})
           $
-    \item $A\sim B$，则$r(A)=r(B), r(A+kE)=r(B+kE)$
+    \item $\mat{A}\sim \mat{B}$，则$r(\mat{A})=r(\mat{B}), r(\mat{A}+k\mat{E})=r(\mat{B}+k\mat{E})$
 \end{enumerate}
 
 \subsection{可逆矩阵的性质}\label{sec:可逆矩阵的性质}
-设矩阵$A,B$可逆，$k=\neq 0$，则有如下性质
+设矩阵$\mat{A},\mat{B}$可逆，$k=\neq 0$，则有如下性质
 \begin{enumerate}[(1)]
-    \item $A^{-1}$可逆，$(A^{-1})^{-1} = A$；
-    \item $kA$可逆，$(kA^{-1}) = \frac{1}{k} A^{-1}$；
-    \item $AB$可逆，$(AB)^{-1} = A^{-1}B^{-1}$；
-    \item $A^\intercal$可逆，$(A^\intercal)^{-1} = (A^{-1})^\intercal$。
+    \item $\mat{A}^{-1}$可逆，$(\mat{A}^{-1})^{-1} = \mat{A}$；
+    \item $k\mat{A}$可逆，$(k\mat{A}^{-1}) = \frac{1}{k} \mat{A}^{-1}$；
+    \item $\mat{AB}$可逆，$(\mat{AB})^{-1} = \mat{A}^{-1}\mat{B}^{-1}$；
+    \item $\mat{A}^\intercal$可逆，$(\mat{A}^\intercal)^{-1} = (\mat{A}^{-1})^\intercal$。
 \end{enumerate}

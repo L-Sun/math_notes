@@ -5,32 +5,32 @@
     所谓数域$F$上的一个$n$为向量就是由数域$F$中$n$个数组成的有序数组
     \[ (a_1,a_2,\cdots,a_n) \]
     其中$a_i(i=1,2,\cdots,n)$称为向量的第$i$个分量。
-    特别的当所有分量均为$0$时，称为零向量，记作$0$。
+    特别的当所有分量均为$0$时，称为零向量，记作$\bm{0}$。
 \end{definition}
 向量有几个个基本的运算，同时满足结合律，交换律。
 \begin{enumerate}[(1)]
-    \item $\alpha+\beta = (a_1+b_1,a_2+b_2, \cdots, a_n+b_n)$；
-    \item $k\alpha = (ka_1,ka_2,\cdots,ka_n)$；
-    \item $(\alpha,\beta) = a_1b_1 + a_2b_2 + \cdots + a_n+b_n$；
+    \item $\bm{\alpha}+\bm{\beta} = (a_1+b_1,a_2+b_2, \cdots, a_n+b_n)$；
+    \item $k\bm{\alpha} = (ka_1,ka_2,\cdots,ka_n)$；
+    \item $(\bm{\alpha},\bm{\beta}) = a_1b_1 + a_2b_2 + \cdots + a_n+b_n$；
 \end{enumerate}
-如果内积运算$(\alpha,\beta)=0$则称$\alpha$与$\beta$正交。
+如果内积运算$(\bm{\alpha},\bm{\beta})=0$则称$\bm{\alpha}$与$\bm{\beta}$正交。
 
-称$\sqrt{(\alpha,\alpha)} = \sqrt{a_1^2 +a_2^2 + \cdots + a_n^2}$为$\alpha$的长度，记为$\norm{\alpha}$
+称$\sqrt{(\bm{\alpha},\bm{\alpha})} = \sqrt{a_1^2 +a_2^2 + \cdots + a_n^2}$为$\bm{\alpha}$的长度，记为$\norm{\bm{\alpha}}$
 
 \section{向量的线性相关与线性无关、向量组的秩}
 \subsection{向量的线性表出}
 .
 \begin{definition}
-    $m$个$n$维向量$\alpha_1,\alpha_2,\cdots,\alpha_m$及$m$个实数$k_1,k_2,\cdots,k_n$
+    $m$个$n$维向量$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_m$及$m$个实数$k_1,k_2,\cdots,k_n$
     称
-    \[ k_1\alpha_1 + k_2\alpha_2 + \cdots + k_m\alpha_m \]
-    是向量$\alpha_1,\alpha_2,\cdots,\alpha_n$的一个线性组合，称$k_1,k_2,\cdots,k_n$维这个线性组合的系数。
+    \[ k_1\bm{\alpha}_1 + k_2\bm{\alpha}_2 + \cdots + k_m\bm{\alpha}_m \]
+    是向量$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_n$的一个线性组合，称$k_1,k_2,\cdots,k_n$维这个线性组合的系数。
 \end{definition}
 
 \begin{definition}
-    如果向量$\beta$能表示为$\alpha_1,\alpha_2,\cdots,\alpha_n$的线性组合，即存在一组数$k_1,k_2,\cdots,k_m$使得
-    \[ \beta = k_1\alpha_1 + k_2\alpha_2 + \cdots + k_m\alpha_m \]
-    则称向量$\beta$可以由$\alpha_1,\alpha_2,\cdots,\alpha_n$线性表出。
+    如果向量$\bm{\beta}$能表示为$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_n$的线性组合，即存在一组数$k_1,k_2,\cdots,k_m$使得
+    \[ \bm{\beta} = k_1\bm{\alpha}_1 + k_2\bm{\alpha}_2 + \cdots + k_m\bm{\alpha}_m \]
+    则称向量$\bm{\beta}$可以由$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_n$线性表出。
 \end{definition}
 
 这里一般有三种情况：
@@ -41,57 +41,57 @@
 \end{enumerate}
 在研究线性表出的时候，通常转化为方程组来研究。
 \begin{theorem}
-    向量$\beta$可以由$\alpha_1,\alpha_2,\cdots,\alpha_m$线性表出$\iff$存在实数$k_1,k_2,\cdots,k_m$使得
+    向量$\bm{\beta}$可以由$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_m$线性表出$\iff$存在实数$k_1,k_2,\cdots,k_m$使得
     \[
-        k_1\alpha_1 + k_2\alpha_2 +\cdots + k_m\alpha_m =
+        k_1\bm{\alpha}_1 + k_2\bm{\alpha}_2 +\cdots + k_m\bm{\alpha}_m =
         \begin{pmatrix}
-            \alpha_1 & \alpha_2 & \cdots & \alpha_m
+            \bm{\alpha}_1 & \bm{\alpha}_2 & \cdots & \bm{\alpha}_m
         \end{pmatrix}
         \begin{pmatrix}
             k_1 \\k_2\\\vdots\\k_m
         \end{pmatrix}
-        =AX=
-        \beta
+        =\mat{AX}=
+        \bm{\beta}
     \]
     其中
     \[
-        A =
+        \mat{A} =
         \begin{pmatrix}
-            \alpha_1 & \alpha_2 & \cdots & \alpha_m
+            \bm{\alpha}_1 & \bm{\alpha}_2 & \cdots & \bm{\alpha}_m
         \end{pmatrix}
         \qquad
-        X =
+        \mat{X} =
         \begin{pmatrix}
             k_1 & k_2 & \cdots & k_m
         \end{pmatrix}^\intercal
     \]
-    即$AX=\beta$有解$\iff r(A)=r(\overline{A})$。
+    即$\mat{AX}=\bm{\beta}$有解$\iff r(\mat{A})=r(\overline{\mat{A}})$。
 \end{theorem}
 
 \begin{example}
-    设$\alpha_1 = (1,2,3)^\intercal,\alpha_2 = (1,3,4)^\intercal, \alpha_3 = (2,-1,1)^\intercal,\beta = (2,5,t)^\intercal$，
+    设$\bm{\alpha}_1 = (1,2,3)^\intercal,\bm{\alpha}_2 = (1,3,4)^\intercal, \bm{\alpha}_3 = (2,-1,1)^\intercal,\bm{\beta} = (2,5,t)^\intercal$，
     问$t$取何值时
     \begin{enumerate}[(1)]
-        \item 向量$\beta$不能由$\alpha_1,\alpha_2,\alpha_3$线性表出；
-        \item 向量$\beta$能由$\alpha_1,\alpha_2,\alpha_3$线性表出，并写出表达式。
+        \item 向量$\bm{\beta}$不能由$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$线性表出；
+        \item 向量$\bm{\beta}$能由$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$线性表出，并写出表达式。
     \end{enumerate}
 \end{example}
 \begin{solution}
     线性表出的表达式为
     \[
-        \beta = x_1\alpha_1 + x_2 \alpha_2 + x_3\alpha_3
-        = \alpha_1x_1 + \alpha_2x_2 + \alpha_3x_3
+        \bm{\beta} = x_1\bm{\alpha}_1 + x_2 \bm{\alpha}_2 + x_3\bm{\alpha}_3
+        = \bm{\alpha}_1x_1 + \bm{\alpha}_2x_2 + \bm{\alpha}_3x_3
         =
         \begin{pmatrix}
-            \alpha_1 & \alpha_2 & \alpha_3
+            \bm{\alpha}_1 & \bm{\alpha}_2 & \bm{\alpha}_3
         \end{pmatrix}
         \begin{pmatrix}
             x_1 \\x_2\\x_3
         \end{pmatrix}
     \]
-    所以变为方程组$AX=b$，对增广矩阵进行行变换
+    所以变为方程组$\mat{AX}=b$，对增广矩阵进行行变换
     \[
-        \overline{A}=
+        \overline{\mat{A}}=
         \left(\begin{array}{ccc|c}
                 1 & 1 & 2  & 2 \\
                 2 & 3 & -1 & 5 \\
@@ -116,7 +116,7 @@
                 0 & 0 & 0  & t-7 \\
             \end{array}\right)
     \]
-    所以当$t\neq 7$时，方程组无解，$\beta$无法被$\alpha_1,\alpha_2,\alpha_3$线性表出；
+    所以当$t\neq 7$时，方程组无解，$\bm{\beta}$无法被$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$线性表出；
     当$t=7$时，方程组变为
     \[
         \systeme{
@@ -132,20 +132,20 @@
         \end{cases}
     \]
     因此有线性表出
-    \[ \beta = (1-7k)\alpha_1 + (1+5k)\alpha_2 + k\alpha_3 \]
+    \[ \bm{\beta} = (1-7k)\bm{\alpha}_1 + (1+5k)\bm{\alpha}_2 + k\bm{\alpha}_3 \]
 \end{solution}
 \begin{example}
-    设$\alpha_1=(1+\lambda,1,1)^\intercal,\alpha_2=(1,1+\lambda,1)^\intercal,\alpha_3 = (1,1,1+\lambda)^\intercal,\beta=(0,\lambda,\lambda^2)^\intercal$
+    设$\bm{\alpha}_1=(1+\lambda,1,1)^\intercal,\bm{\alpha}_2=(1,1+\lambda,1)^\intercal,\bm{\alpha}_3 = (1,1,1+\lambda)^\intercal,\bm{\beta}=(0,\lambda,\lambda^2)^\intercal$
     当$\lambda$为何值时
     \begin{enumerate}[(1)]
-        \item 向量$\beta$不能由$\alpha_1,\alpha_2,\alpha_3$线性表出；
-        \item 向量$\beta$能由$\alpha_1,\alpha_2,\alpha_3$线性表出，并写出表达式。
+        \item 向量$\bm{\beta}$不能由$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$线性表出；
+        \item 向量$\bm{\beta}$能由$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$线性表出，并写出表达式。
     \end{enumerate}
 \end{example}
 \begin{solution}
-    设$\beta = \alpha_1 x_1 + \alpha_2 x_2 + \alpha_3 x_3 = AX$，则对增广矩阵作初等行变换
+    设$\bm{\beta} = \bm{\alpha}_1 x_1 + \bm{\alpha}_2 x_2 + \bm{\alpha}_3 x_3 = \mat{AX}$，则对增广矩阵作初等行变换
     \[
-        \overline{A}=
+        \overline{\mat{A}}=
         \left(\begin{array}{ccc|c}
                 1+\lambda & 1         & 1         & 0         \\
                 1         & 1+\lambda & 1         & \lambda   \\
@@ -162,10 +162,10 @@
     而为了消去$1$，必须要加上后面两行的$-\frac{1}{\lambda}$，所以进行分类讨论：
     \begin{enumerate}[(1)]
         \item 当$\lambda=0$时，方程组变为$x_1+x_2+x_3 = 0$，则令$x_2 = s,x_3=t$，得$x_1 = -s-t$所以
-              \[ \beta = (-s-t)\alpha_1 + s\alpha_2 + t\alpha_3 \]
+              \[ \bm{\beta} = (-s-t)\bm{\alpha}_1 + s\bm{\alpha}_2 + t\bm{\alpha}_3 \]
         \item 当$\lambda\neq 0 $时
               \[
-                  \overline{A}
+                  \overline{\mat{A}}
                   \longrightarrow
                   \left(\begin{array}{ccc|c}
                           1+\lambda & 1 & 1 & 0       \\
@@ -183,7 +183,7 @@
               \subitem 当$\lambda=-3$时，$-1-\lambda=2\neq 0$，此时方程组无解，故不能线性表出
               \subitem 当$\lambda\neq-3$时，
               \[
-                  \overline{A}
+                  \overline{\mat{A}}
                   \longrightarrow
                   \left(\begin{array}{ccc|c}
                           1  & 0 & 0 & -\frac{1+\lambda}{3+\lambda} \\
@@ -206,32 +206,32 @@
                   \end{dcases}
               \]
               因此有线性表出
-              \[\beta = -\frac{1+\lambda}{3+\lambda}\alpha_1 + \frac{2}{3+\lambda}\alpha_2 + \frac{\lambda^2+2\lambda-1}{3+\lambda}\alpha_3 \]
+              \[\bm{\beta} = -\frac{1+\lambda}{3+\lambda}\bm{\alpha}_1 + \frac{2}{3+\lambda}\bm{\alpha}_2 + \frac{\lambda^2+2\lambda-1}{3+\lambda}\bm{\alpha}_3 \]
     \end{enumerate}
     综上有
     \begin{enumerate}[(1)]
-        \item $\lambda=0$时，$\beta = (-s-t)\alpha_1+s\alpha_2+t\alpha_3$其中$s,t$为任意常数；
-        \item $\lambda=-3$时，$\beta$不能由$\alpha_1,\alpha_2,\alpha_3$线性表出;
+        \item $\lambda=0$时，$\bm{\beta} = (-s-t)\bm{\alpha}_1+s\bm{\alpha}_2+t\bm{\alpha}_3$其中$s,t$为任意常数；
+        \item $\lambda=-3$时，$\bm{\beta}$不能由$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$线性表出;
         \item $\lambda\notin\{0,3\}$时，
-              \[ \beta = -\frac{1+\lambda}{3+\lambda}\alpha_1 + \frac{2}{3+\lambda}\alpha_2 + \frac{\lambda^2+2\lambda-1}{3+\lambda}\alpha_3 \]
+              \[ \bm{\beta} = -\frac{1+\lambda}{3+\lambda}\bm{\alpha}_1 + \frac{2}{3+\lambda}\bm{\alpha}_2 + \frac{\lambda^2+2\lambda-1}{3+\lambda}\bm{\alpha}_3 \]
     \end{enumerate}
 \end{solution}
 
 \subsection{向量组的线性相关、线性无关}
 .
 \begin{theorem}
-    如果向量组$(\alpha_1,\alpha_2,\cdots,\alpha_s)$和$(\beta_1,\beta_2,\cdots,\beta_t)$可以互相线性表示，则称这两个向量组等价。
+    如果向量组$(\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s)$和$(\bm{\beta}_1,\bm{\beta}_2,\cdots,\bm{\beta}_t)$可以互相线性表示，则称这两个向量组等价。
 \end{theorem}
 
 \begin{theorem}
-    如果向量组$A = (\alpha_1,\alpha_2,\cdots,\alpha_s)$可由$B = (\beta_1,\beta_2,\cdots,\beta_t)$线性表出，则$r(A)\leq r(B)$
+    如果向量组$A = (\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s)$可由$B = (\bm{\beta}_1,\bm{\beta}_2,\cdots,\bm{\beta}_t)$线性表出，则$r(\mat{A})\leq r(B)$
     如果两个向量组等价，那么两个向量组得秩相同。
 \end{theorem}
 
 \begin{definition}
-    对于$m$个$n$维向量$\alpha_1,\alpha_2,\cdots,\alpha_m$，若存在不全为$0$的实数$k_1,k_2,\cdots,k_m$使得
-    \[ k_1\alpha_1 + k_2\alpha_2 + \cdots + k_m\alpha_m = 0 \]
-    成立，则称向量组$\alpha_1,\alpha_2,\cdots,\alpha_m$线性相关，否则称其为线性无关。
+    对于$m$个$n$维向量$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_m$，若存在不全为$0$的实数$k_1,k_2,\cdots,k_m$使得
+    \[ k_1\bm{\alpha}_1 + k_2\bm{\alpha}_2 + \cdots + k_m\bm{\alpha}_m = 0 \]
+    成立，则称向量组$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_m$线性相关，否则称其为线性无关。
 \end{definition}
 由线性相关的定义可以得到下面的定理
 \begin{theorem}
@@ -245,45 +245,45 @@
 
 根据方程组是否有解，可以得出下面定理
 \begin{theorem}
-    $n$维向量$\alpha_1,\alpha_2,\cdots,\alpha_m$\textcolor{red}{线性无关}的充要条件为
-    \[AX=0\]
+    $n$维向量$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_m$\textcolor{red}{线性无关}的充要条件为
+    \[\mat{AX}=\bm{0}\]
     只有零解。
-    其中$A=(\alpha_1,\alpha_2,\cdots,\alpha_m),\alpha_i$为$n$维列向量。
+    其中$\mat{A}=(\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_m),\bm{\alpha}_i$为$n$维列向量。
 \end{theorem}
 特别的，两个向量线性相关，其向量的对应坐标分量成比例。
 
-当向量组中向量的个数超过其向量维度时$(m>n)$，向量组必定线性相关，这是因为未知数的个数多于方程的个数，所以$AX=0$一定有非零解。
+当向量组中向量的个数超过其向量维度时$(m>n)$，向量组必定线性相关，这是因为未知数的个数多于方程的个数，所以$\mat{AX}=\bm{0}$一定有非零解。
 作为推论有
 \begin{theorem}
     .
     \begin{enumerate}[(1)]
-        \item $n$个$n$维向量$\alpha_1,\alpha_2,\cdots,\alpha_n$线性相关$\iff$行列式$|\alpha_1 \alpha_2 \cdots \alpha_n|=0$；
+        \item $n$个$n$维向量$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_n$线性相关$\iff$行列式$|\bm{\alpha}_1 \bm{\alpha}_2 \cdots \bm{\alpha}_n|=0$；
         \item $n+1$个$n$维向量必定线性相关。
     \end{enumerate}
 \end{theorem}
 \begin{example}
     设
     \[
-        A =
+        \mat{A} =
         \begin{pmatrix}
-            \alpha_1 & \alpha_2 & \cdots & \alpha_n
+            \bm{\alpha}_1 & \bm{\alpha}_2 & \cdots & \bm{\alpha}_n
         \end{pmatrix}
         \qquad
-        B =
+        \mat{B} =
         \begin{pmatrix}
-            \beta_1 & \beta_2 & \cdots & \beta_n
+            \bm{\beta}_1 & \bm{\beta}_2 & \cdots & \bm{\beta}_n
         \end{pmatrix}
         \qquad
-        AB =
+        \mat{AB} =
         \begin{pmatrix}
-            \gamma_1 & \gamma_2 & \cdots & \gamma_n
+            \bm{\gamma}_1 & \bm{\gamma}_2 & \cdots & \bm{\gamma}_n
         \end{pmatrix}
     \]
     记向量组
     \begin{tasks}[label=(\Roman*),label-width = 2em](3)
-        \task $\alpha_1,\alpha_2,\cdots,\alpha_n$;
-        \task $\beta_1,\beta_2,\cdots,\beta_n$;
-        \task $\gamma_1,\gamma_2,\cdots,\gamma_n$.
+        \task $\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_n$;
+        \task $\bm{\beta}_1,\bm{\beta}_2,\cdots,\bm{\beta}_n$;
+        \task $\bm{\gamma}_1,\bm{\gamma}_2,\cdots,\bm{\gamma}_n$.
     \end{tasks}
     若向量组(III)线性相关，则
     \begin{tasks}[label=(\Alph*),label-width = 2em](2)
@@ -294,75 +294,75 @@
     \end{tasks}
 \end{example}
 \begin{solution}
-    由于(III)线性相关所以$|AB|=|A||B|=0$，因此$|A|,|B|$至少有一个为$0$，所以(I)或(II)至少有一个相关，选(B)
+    由于(III)线性相关所以$|\mat{AB}|=|\mat{A}||\mat{B}|=0$，因此$|\mat{A}|,|\mat{B}|$至少有一个为$0$，所以(I)或(II)至少有一个相关，选(B)
 \end{solution}
 
 \begin{theorem}
-    如果$\alpha_1,\alpha_2,\cdots,\alpha_s$线性无关，$\alpha_1,\alpha_2,\cdots,\alpha_s,\beta$线性相关，
-    则$\beta$可以由$\alpha_1,\alpha_2,\cdots,\alpha_s$线性表示，且表示方法唯一。
+    如果$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s$线性无关，$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s,\bm{\beta}$线性相关，
+    则$\bm{\beta}$可以由$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s$线性表示，且表示方法唯一。
 \end{theorem}
 \begin{theorem}
-    向量组$\alpha_1,\alpha_2,\cdots,\alpha_s(s\geq 2)$线性相关
-    $\iff$\textcolor{red}{存在}$\alpha_i(1\leq i \leq s)$可由其余向量线性表出。
+    向量组$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s(s\geq 2)$线性相关
+    $\iff$\textcolor{red}{存在}$\bm{\alpha}_i(1\leq i \leq s)$可由其余向量线性表出。
 \end{theorem}
-这里需要注意的是，不是任何一个$\alpha_i$都能由其余的向量表出。也就是说下面这种写法为错误写法
+这里需要注意的是，不是任何一个$\bm{\alpha}_i$都能由其余的向量表出。也就是说下面这种写法为错误写法
 \textcolor{red}{
     \begin{align*}
-        \because   \, & \alpha_1,\alpha_2,\alpha_3\text{线性相关}              \\
-        \therefore \, & \alpha_3 \text{可以由}\alpha_1,\alpha_2\text{线性表出}
+        \because   \, & \bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3\text{线性相关}              \\
+        \therefore \, & \bm{\alpha}_3 \text{可以由}\bm{\alpha}_1,\bm{\alpha}_2\text{线性表出}
     \end{align*}
 }
-这里只能说有存在一个向量可以被其余向量线性表出，但是是否是$\alpha_3$是不确定的。
+这里只能说有存在一个向量可以被其余向量线性表出，但是是否是$\bm{\alpha}_3$是不确定的。
 同理，下面这种写法也是错误的
 \textcolor{red}{
     \begin{align*}
-        \because   \, & \alpha_3 \text{不能由}\alpha_1,\alpha_2 \text{线性表出} \\
-        \therefore \, & \alpha_1,\alpha_2,\alpha_3 \text{线性无关}
+        \because   \, & \bm{\alpha}_3 \text{不能由}\bm{\alpha}_1,\bm{\alpha}_2 \text{线性表出} \\
+        \therefore \, & \bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3 \text{线性无关}
     \end{align*}
 }
 这都是因为线性相关的向量组，其线性系数可以为零，但不是全为零。举个简单的例子
 \[
-    \alpha_1 =
+    \bm{\alpha}_1 =
     \begin{pmatrix}
         1 \\0
     \end{pmatrix}
     \qquad
-    \alpha_2 =
+    \bm{\alpha}_2 =
     \begin{pmatrix}
         2 \\0
     \end{pmatrix}
     \qquad
-    \alpha_3 =
+    \bm{\alpha}_3 =
     \begin{pmatrix}
         0 \\1
     \end{pmatrix}
 \]
-显然这三个向量线性相关，但$\alpha_3$无法由$\alpha_1,\alpha_2$线性表出。即
-\[ k_1\alpha_1 + k_2\alpha_2 + k_3\alpha_3 = 0 \]
-时，$k_3=0$且唯一，刚好就是无法由其余向量表示的$\alpha_3$
+显然这三个向量线性相关，但$\bm{\alpha}_3$无法由$\bm{\alpha}_1,\bm{\alpha}_2$线性表出。即
+\[ k_1\bm{\alpha}_1 + k_2\bm{\alpha}_2 + k_3\bm{\alpha}_3 = 0 \]
+时，$k_3=0$且唯一，刚好就是无法由其余向量表示的$\bm{\alpha}_3$
 
 \begin{theorem}
-    如果$\alpha_1,\alpha_2,\cdots,\alpha_s$可由$\beta_1,\beta_2,\cdots,\beta_t$线性表出，且$s>t$，
-    则$\alpha_1,\alpha_2,\cdots,\alpha_s$必定线性相关。
+    如果$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s$可由$\bm{\beta}_1,\bm{\beta}_2,\cdots,\bm{\beta}_t$线性表出，且$s>t$，
+    则$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s$必定线性相关。
 \end{theorem}
-这里假设$\beta_1,\beta_2,\cdots,\beta_t$线性无关，那么可以将其看作$t$维空间的一组基，
-而$s>t$，则必然有$\alpha_1,\alpha_2,\cdots,\alpha_s$线性相关；而$\beta_1,\beta_2,\cdots,\beta_t$线性相关，根据传递性，
-$\alpha_1,\alpha_2,\cdots,\alpha_s$也线性相关。
+这里假设$\bm{\beta}_1,\bm{\beta}_2,\cdots,\bm{\beta}_t$线性无关，那么可以将其看作$t$维空间的一组基，
+而$s>t$，则必然有$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s$线性相关；而$\bm{\beta}_1,\bm{\beta}_2,\cdots,\bm{\beta}_t$线性相关，根据传递性，
+$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s$也线性相关。
 
 作为推论有
 \begin{theorem}
-    如果$\alpha_1,\alpha_2,\cdots,\alpha_s$线性无关，且$\alpha_1,\alpha_2,\cdots,\alpha_s$可以由$\beta_1,\beta_2,\cdots,\beta_t$线性表出，
+    如果$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s$线性无关，且$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s$可以由$\bm{\beta}_1,\bm{\beta}_2,\cdots,\bm{\beta}_t$线性表出，
     则$s\leq t$
 \end{theorem}
-与上个定理解释用同样的思想，$\alpha$向量组线性无关，则可以将其看作$s$维空间的一组基，而$\alpha$可以由$\beta$线性表出，
-那么$\beta$中的向量要么是在同维空间，要么就是在更高维的空间，所以会有$s\leq t$。
+与上个定理解释用同样的思想，$\bm{\alpha}$向量组线性无关，则可以将其看作$s$维空间的一组基，而$\bm{\alpha}$可以由$\bm{\beta}$线性表出，
+那么$\bm{\beta}$中的向量要么是在同维空间，要么就是在更高维的空间，所以会有$s\leq t$。
 
 \subsection{向量组的秩}
 .
 \begin{definition}
-    在向量组$\alpha_1,\alpha_2,\cdots,\alpha_s$中，如果存在$r$个向量$\alpha_{i1},\alpha_{i2},\cdots,\alpha_{ir}$线性无关，
-    且再添加任意一个$\alpha_j(j=1,2,\cdots,s)$向量组$\alpha_{i1},\alpha_{i2},\cdots,\alpha_{ir},\alpha_j$变为线性相关，
-    则称$\alpha_{i1},\alpha_{i2},\cdots,\alpha_{ir}$为原向量组的一个极大线性无关组。
+    在向量组$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s$中，如果存在$r$个向量$\bm{\alpha}_{i1},\bm{\alpha}_{i2},\cdots,\bm{\alpha}_{ir}$线性无关，
+    且再添加任意一个$\bm{\alpha}_j(j=1,2,\cdots,s)$向量组$\bm{\alpha}_{i1},\bm{\alpha}_{i2},\cdots,\bm{\alpha}_{ir},\bm{\alpha}_j$变为线性相关，
+    则称$\bm{\alpha}_{i1},\bm{\alpha}_{i2},\cdots,\bm{\alpha}_{ir}$为原向量组的一个极大线性无关组。
 \end{definition}
 
 对于一个向量组，可能存在多个极大线性无关组，也可能只有一个，特别的，当只有零向量的向量组没有极大线性无关组。
@@ -370,21 +370,21 @@ $\alpha_1,\alpha_2,\cdots,\alpha_s$也线性相关。
     对于一个向量组，其所有极大线性无关组中的向量个数相同。
 \end{theorem}
 \begin{proof}
-    假设向量组$\alpha_1,\alpha_2,\cdots,\alpha_s$，有两个极大线性无关组$\alpha_{i1},\alpha_{i2},\cdots,\alpha_{ir}$和$\alpha_{j1},\alpha_{j2},\cdots,\alpha_{jd}$
+    假设向量组$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s$，有两个极大线性无关组$\bm{\alpha}_{i1},\bm{\alpha}_{i2},\cdots,\bm{\alpha}_{ir}$和$\bm{\alpha}_{j1},\bm{\alpha}_{j2},\cdots,\bm{\alpha}_{jd}$
     其个数分别为$r,d$，则有
-    \[ \alpha_{i1},\alpha_{i2},\cdots,\alpha_{ir},\alpha_{jk}\quad (k=1,2,\cdots,d) \]
-    线性相关。同时由于$\alpha_{i1},\alpha_{i2},\cdots,\alpha_{ir}$线性无关，因此$\alpha_{jk}$能由$\alpha_{i1},\alpha_{i2},\cdots,\alpha_{ir}$线性表出。
+    \[ \bm{\alpha}_{i1},\bm{\alpha}_{i2},\cdots,\bm{\alpha}_{ir},\bm{\alpha}_{jk}\quad (k=1,2,\cdots,d) \]
+    线性相关。同时由于$\bm{\alpha}_{i1},\bm{\alpha}_{i2},\cdots,\bm{\alpha}_{ir}$线性无关，因此$\bm{\alpha}_{jk}$能由$\bm{\alpha}_{i1},\bm{\alpha}_{i2},\cdots,\bm{\alpha}_{ir}$线性表出。
 
-    所以向量组$\alpha_{j1},\alpha_{j2},\cdots,\alpha_{jd}$能由向量组$\alpha_{i1},\alpha_{i2},\cdots,\alpha_{ir}$线性表出，因此$s\geq d$；
+    所以向量组$\bm{\alpha}_{j1},\bm{\alpha}_{j2},\cdots,\bm{\alpha}_{jd}$能由向量组$\bm{\alpha}_{i1},\bm{\alpha}_{i2},\cdots,\bm{\alpha}_{ir}$线性表出，因此$s\geq d$；
 
-    反过来，同理有向量组$\alpha_{i1},\alpha_{i2},\cdots,\alpha_{ir}$能由向量组$\alpha_{j1},\alpha_{j2},\cdots,\alpha_{jd}$线性表出，因此$d\geq s$；
+    反过来，同理有向量组$\bm{\alpha}_{i1},\bm{\alpha}_{i2},\cdots,\bm{\alpha}_{ir}$能由向量组$\bm{\alpha}_{j1},\bm{\alpha}_{j2},\cdots,\bm{\alpha}_{jd}$线性表出，因此$d\geq s$；
 
     那么有$d=s$，所以所有的极大线性无关组的向量个数相等。
 \end{proof}
 
 \begin{definition}
-    向量组$\alpha_1,\alpha_2,\cdots,\alpha_s$的极大线性无关组所含的向量的个数$r$称为向量组的秩，记
-    \[ r(\alpha_1,\alpha_2,\cdots,\alpha_s) = r \]
+    向量组$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s$的极大线性无关组所含的向量的个数$r$称为向量组的秩，记
+    \[ r(\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_s) = r \]
     只有零向量的向量组，其秩为$0$
 \end{definition}
 对于一个向量组，找出其极大线性无关组的方法为下面两个步骤：
@@ -395,39 +395,39 @@ $\alpha_1,\alpha_2,\cdots,\alpha_s$也线性相关。
 \end{enumerate}
 其原理为
 \[
-    PA = B
-    \implies P
+    \mat{\mat{P}A} = \mat{B}
+    \implies \mat{P}
     \begin{pmatrix}
-        \alpha_1 & \cdots & \alpha_n
+        \bm{\alpha}_1 & \cdots & \bm{\alpha}_n
     \end{pmatrix}
     =
     \begin{pmatrix}
-        P\alpha_1 & \cdots & P\alpha_n
+        \mat{P}\bm{\alpha}_1 & \cdots & \mat{P}\bm{\alpha}_n
     \end{pmatrix}
     =
     \begin{pmatrix}
-        \beta_1 & \cdots & \beta_n
+        \bm{\beta}_1 & \cdots & \bm{\beta}_n
     \end{pmatrix}
 \]
-其中$A$为原列向量组组成的矩阵，$P$为一系列初等行变换的变换矩阵，$B$为行最简矩阵。
+其中$A$为原列向量组组成的矩阵，$\mat{P}$为一系列初等行变换的变换矩阵，$\mat{B}$为行最简矩阵。
 所以有
 \begin{align*}
-    k_1\alpha_1 + \cdots + k_n\alpha_n = 0
-     & \iff P(k_1\alpha_1 + \cdots + k_n\alpha_n) = 0 \\
-     & \iff k_1P\alpha_1 + \cdots + k_nP\alpha_n = 0  \\
-     & \iff k_1\beta_1 + \cdots + k_n\beta_n = 0
+    k_1\bm{\alpha}_1 + \cdots + k_n\bm{\alpha}_n = 0
+     & \iff \mat{P}(k_1\bm{\alpha}_1 + \cdots + k_n\bm{\alpha}_n) = 0      \\
+     & \iff k_1\mat{P}\bm{\alpha}_1 + \cdots + k_n\mat{P}\bm{\alpha}_n = 0 \\
+     & \iff k_1\bm{\beta}_1 + \cdots + k_n\bm{\beta}_n = 0
 \end{align*}
-因此两个向量组等价，且系数对应位置相同，则$\beta$向量组的极大线性无关组所对应得位置就是$\alpha$向量组的极大线性无关组对应位置。
-那么显然$B$中只含一个$1$的列，就是极大线性无关组对应的位置。系数一样，所以表出形式都是一样。
+因此两个向量组等价，且系数对应位置相同，则$\bm{\beta}$向量组的极大线性无关组所对应得位置就是$\bm{\alpha}$向量组的极大线性无关组对应位置。
+那么显然$\mat{B}$中只含一个$1$的列，就是极大线性无关组对应的位置。系数一样，所以表出形式都是一样。
 
 \begin{example}
-    设向量组$\alpha_1 = (1,-1,2,4)^\intercal, \alpha_2 = (0,3,1,2)^\intercal, \alpha_3 = (3,0,7,14)^\intercal, \alpha_4 = (1,-2,2,0)^\intercal,\alpha_5 = (2,-1,5,2)^\intercal$
+    设向量组$\bm{\alpha}_1 = (1,-1,2,4)^\intercal, \bm{\alpha}_2 = (0,3,1,2)^\intercal, \bm{\alpha}_3 = (3,0,7,14)^\intercal, \bm{\alpha}_4 = (1,-2,2,0)^\intercal,\bm{\alpha}_5 = (2,-1,5,2)^\intercal$
     求其向量组的一个极大线性无关组。
 \end{example}
 \begin{solution}
     \begin{align*}
         \begin{pmatrix}
-            \alpha_1 & \alpha_2 & \alpha_3 & \alpha_4 & \alpha_5
+            \bm{\alpha}_1 & \bm{\alpha}_2 & \bm{\alpha}_3 & \bm{\alpha}_4 & \bm{\alpha}_5
         \end{pmatrix}
          & =
         \begin{pmatrix}
@@ -472,36 +472,36 @@ $\alpha_1,\alpha_2,\cdots,\alpha_s$也线性相关。
             0 & 0 & 0 & 0 & 0
         \end{pmatrix}
     \end{align*}
-    其中第$1,2,4$列只含有一个$1$，故原向量组的极大线性无关组为$\alpha_1,\alpha_2,\alpha_4$，
-    此时其余列中的元素即为由极大线性无关组线性表出的系数，即$\beta_3 = 3\beta_1 + \beta_2, \beta_5 = \beta_2 + 2\beta_4$，
-    所以原向量组对应的表出也是相同的$\alpha_3 = 3\alpha_1 + \alpha_2, \alpha_5 = \alpha_2 + 2\alpha_4$
+    其中第$1,2,4$列只含有一个$1$，故原向量组的极大线性无关组为$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_4$，
+    此时其余列中的元素即为由极大线性无关组线性表出的系数，即$\bm{\beta}_3 = 3\bm{\beta}_1 + \bm{\beta}_2, \bm{\beta}_5 = \bm{\beta}_2 + 2\bm{\beta}_4$，
+    所以原向量组对应的表出也是相同的$\bm{\alpha}_3 = 3\bm{\alpha}_1 + \bm{\alpha}_2, \bm{\alpha}_5 = \bm{\alpha}_2 + 2\bm{\alpha}_4$
 \end{solution}
 
 \section{施密特正交化}
-设$\alpha_1,\alpha_2,\alpha_3$线性无关，则施密特正交化为下面几个步骤：
+设$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$线性无关，则施密特正交化为下面几个步骤：
 \begin{enumerate}[(1)]
     \item 正交化
           \begin{align*}
-              \beta_{\textcolor{red}{1}}    & = \alpha_{\textcolor{red}{1}}                                                                                                                                                        \\
-              \beta_{\textcolor{orange}{2}} & = \alpha_{\textcolor{orange}{2}} - \frac{(\alpha_{\textcolor{orange}{2}},\beta_1)}{(\beta_1, \beta_1)}\beta_1                                                                        \\
-              \beta_{\textcolor{blue}{3}}   & = \alpha_{\textcolor{blue}{3}} - \frac{(\alpha_{\textcolor{blue}{3}},\beta_1)}{(\beta_1, \beta_1)}\beta_1 - \frac{(\alpha_{\textcolor{blue}{3}},\beta_2)}{(\beta_2, \beta_2)}\beta_2
+              \bm{\beta}_{\textcolor{red}{1}}    & = \bm{\alpha}_{\textcolor{red}{1}}                                                                                                                                                                                                          \\
+              \bm{\beta}_{\textcolor{orange}{2}} & = \bm{\alpha}_{\textcolor{orange}{2}} - \frac{(\bm{\alpha}_{\textcolor{orange}{2}},\bm{\beta}_1)}{(\bm{\beta}_1, \bm{\beta}_1)}\bm{\beta}_1                                                                                                 \\
+              \bm{\beta}_{\textcolor{blue}{3}}   & = \bm{\alpha}_{\textcolor{blue}{3}} - \frac{(\bm{\alpha}_{\textcolor{blue}{3}},\bm{\beta}_1)}{(\bm{\beta}_1, \bm{\beta}_1)}\bm{\beta}_1 - \frac{(\bm{\alpha}_{\textcolor{blue}{3}},\bm{\beta}_2)}{(\bm{\beta}_2, \bm{\beta}_2)}\bm{\beta}_2
           \end{align*}
     \item 单位化
-          \[ \gamma_1 = \frac{\beta_1}{\norm{\beta_1}},\qquad \gamma_2 = \frac{\beta_2}{\norm{\beta_2}},\qquad \gamma_3 = \frac{\beta_3}{\norm{\beta_3}} \]
+          \[ \bm{\gamma}_1 = \frac{\bm{\beta}_1}{\norm{\bm{\beta}_1}},\qquad \bm{\gamma}_2 = \frac{\bm{\beta}_2}{\norm{\bm{\beta}_2}},\qquad \bm{\gamma}_3 = \frac{\bm{\beta}_3}{\norm{\bm{\beta}_3}} \]
 \end{enumerate}
 
 \begin{example}
-    设$\alpha_1=(1,3,0)^\intercal, \alpha_2 = (-2,2,1)^\intercal$
+    设$\bm{\alpha}_1=(1,3,0)^\intercal, \bm{\alpha}_2 = (-2,2,1)^\intercal$
     将其正交单位化。
 \end{example}
 \begin{solution}
     首先正交化
     \begin{align*}
-        \beta_1 & = \alpha_1   =   (1,3,0)^\intercal                                                                                                                       \\
-        \beta_2 & = \alpha_2 - \frac{(\alpha_2,\beta_1)}{(\beta_1, \beta_1)}\beta_1  = (-2,2,1)^\intercal - \frac{4}{10}(1,3,0)^\intercal = \frac{1}{5}(-12,4,5)^\intercal
+        \bm{\beta}_1 & = \bm{\alpha}_1   =   (1,3,0)^\intercal                                                                                                                                                \\
+        \bm{\beta}_2 & = \bm{\alpha}_2 - \frac{(\bm{\alpha}_2,\bm{\beta}_1)}{(\bm{\beta}_1, \bm{\beta}_1)}\bm{\beta}_1  = (-2,2,1)^\intercal - \frac{4}{10}(1,3,0)^\intercal = \frac{1}{5}(-12,4,5)^\intercal
     \end{align*}
     然后单位化
     \[
-        \beta_1 = \frac{1}{\sqrt{10}}(1,3,0)^\intercal,\qquad \beta_2 = \frac{1}{\sqrt{185}}(-12,4,5)^\intercal
+        \bm{\beta}_1 = \frac{1}{\sqrt{10}}(1,3,0)^\intercal,\qquad \bm{\beta}_2 = \frac{1}{\sqrt{185}}(-12,4,5)^\intercal
     \]
 \end{solution}

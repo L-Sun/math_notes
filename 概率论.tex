@@ -1,0 +1,137 @@
+\part{概率论}
+\section{概率事件和概率}
+\subsection{事件、关系与运算}
+事件的关系有
+\begin{enumerate}[(1)]
+    \item 包含关系：一个事件$A$包含另一个事件$B$记作：$B\subset A$。这时只要事件$B$发生，那么事件$A$也一定发生；
+    \item 等价关系：两个事件对应的子集完全相等，记作$A=B$；
+    \item 对立关系：两个事件只能有一个发生，并且必然有一个发生，则它们是对立关系；
+    \item 互斥关系：两个事件只能有一个发生，但并不必然有一个发生。这时也称两个事件之间是互不相容的；
+    \item 如果两个事件同时发生的概率等于它们各自发生的概率的乘积，那么就称这两个事件是相互独立的。
+\end{enumerate}
+
+事件的运算有三种
+\begin{enumerate}[(1)]
+    \item 事件$A\cup B$：是事件$A$和事件$B$的和事件（并事件），指的是事件“事件$A$发生或者事件$B$发生”；
+    \item 事件$AB$或者$A\cap B$：是事件$A$和事件$B$的积事件（交事件），指的是事件“事件$A$发生且事件$B$发生”；
+    \item 事件$A-B$：是事件$A$和事件$B$的差事件，指的是事件“事件$A$发生且事件$B$不发生”。
+\end{enumerate}
+
+对于事件运算和事件关系之间的联系有:
+\begin{enumerate}[(1)]
+    \item $AB$互斥或不相等，则有$AB=\emptyset$；
+    \item $A,B$互为对立事件，则有$AB=\emptyset, A\cup B=\Omega$(全集);
+    \item $A-B = A\overline{B} = A-AB$;
+    \item $A\overline{A}=\emptyset$
+\end{enumerate}
+
+事件的运算规律：
+\begin{enumerate}[(1)]
+    \item 交换律：$A\cup B = B\cup A, AB = BA$；
+    \item 结合律：$A\cup(B\cup C) = (A\cup B)\cup C,A(BC) = (AB)C$；
+    \item 分配律：$A(B\cup C) = AB\cup AC, A\cup(BC) = (A\cup B)(A\cup C)$;
+    \item 对偶律：$\overline{A\cup B} = \overline{A}\cap \overline{B}, \overline{AB}=\overline{A}\cup\overline{B},\overline{A-B}=\overline{A\overline{B}}=\overline{A}\cup B$
+    \item $A\supset B \iff \overline{A}\subset \overline{B}$
+\end{enumerate}
+
+\begin{example}
+    设$A\cup B = \overline{A}\cup\overline{B}$，则有
+    \begin{tasks}[label=(\Alph*),label-width = 2em](2)
+        \task $A-B=\emptyset$
+        \task $AB=\emptyset$
+        \task $AB\cup \overline{A}\overline{B}=\Omega$
+        \task $A\cup \overline{B}=\Omega$
+    \end{tasks}
+\end{example}
+
+\begin{solution}
+    \begin{align*}
+        A(A\cup B)                      & = A \cup AB = A                                       \\
+        A(\overline{A}\cup\overline{B}) & = \emptyset \cup A\overline{B} = A\overline{B} = A-AB
+    \end{align*}
+    因此$A=A - AB$，显然$AB=\emptyset$，选(B)
+\end{solution}
+
+\subsection{概率统计}
+概率相关的性质
+\begin{enumerate}[(1)]
+    \item $P(\emptyset) = 0$；
+    \item 可加性$\displaystyle P(\bigcup_{i=1}^n A_i) = \sum_{i=1}^n P(A_i)$；
+    \item $P(\overline{A}) = 1 - P(A)$；
+    \item 若$A\subset B$，则$P(A)\leq P(B)$；
+    \item $0\leq P(A)\leq 1$
+\end{enumerate}
+\textcolor{red}{在计算概率的时候，永远无法从概率推出事件的关系}。
+
+
+\subsection{独立事件}
+在概率论里，说两个事件是独立的，直觉上是指一次实验中一事件的发生不会影响到另一事件发生的概率。
+\begin{definition}
+    两个事件$A$和$B$是独立的当且仅当\[ P(AB) = P(A)P(B) \]
+\end{definition}
+这里一定要注意的是：独立、互斥是两码事。（不可能事件与任何事件独立，互斥；$P(A)=0$的$A$事件与任何事件独立）
+
+这里有一个经常出的知识点：三个事件相互独立
+\[
+    \begin{cases}
+        P(ABC)=P(A)P(B)P(C) \\
+        P(AB)=P(A)P(B)      \\
+        P(AC)=P(A)P(C)      \\
+        P(BC)=P(B)P(C)
+    \end{cases}
+\]
+而两两独立指的是：两个事件之间是否独立，即$P(AB)=P(A)P(B)$。
+
+那么显然，在一些事件中，相互独立则是有两两独立的；但两两独立，不能得出相互独立。
+
+\begin{property}
+    假设$A,B$独立，则下面这些也是独立的
+    \begin{enumerate}[(1)]
+        \item $A,\overline{B}$；
+        \item $\overline{A},B$；
+        \item $\overline{A},\overline{B}$。
+    \end{enumerate}
+\end{property}
+换句话说“补”操作不影响独立性质。
+
+\begin{property}
+    当$0<P(B)<1$时，$A,B$独立等价于$P(A \mid B) = P(A \mid \overline{B})$
+    亦等价于$P(A\mid B) = P(A)$
+\end{property}
+
+\subsubsection{条件概率}
+.
+\begin{definition}
+    条件概率就是事件$A$在事件$B$发生的条件下发生的概率。条件概率记为为$P(A\mid B)$。
+    \[ P(B)>0\qquad P(A\mid B) = \frac{P(AB)}{P(B)} \]
+\end{definition}
+
+条件概率其实就是缩减样本空间，那么可以根据$P(A)=1-P(\overline{A})$，得出
+\begin{eqnarray}
+    P(A\mid B) = 1 - P(\overline{A}\mid B)
+\end{eqnarray}
+
+与独立事件相联系，就有下面这个公式：
+\begin{equation}
+    A,B\text{独立} \iff P(A\mid B) = P(A\mid \overline{B}) = P(A)
+\end{equation}
+也就是$B$是否发生，都不影响$A$发生，也就是$A,B$独立。
+
+\subsection{概率五大公式}
+\begin{enumerate}[(1)]
+    \item 加法公式：
+          \begin{align*}
+              P(A\cup B)       & = P(A)+P(B)-P(AB)                         \\
+              P(A\cup B\cup C) & = P(A)+P(B)+P(C)-P(AB)-P(BC)-P(CA)+P(ABC)
+          \end{align*}
+    \item 减法公式：$ P(A-B)=P(A)-P(AB) $
+    \item 乘法公式：$ P(AB) = P(A)P(B\mid A),\qquad P(A)>0  $
+    \item 全概率公式：完备事件组$\{A_1,A_2,\cdots,A_n \}$，即$\bigcup_{i=1}^n A_i = \Omega, A_iA_j = \emptyset, P(A_i)>0$，则对于任意一个事件$B$，有
+          \[ P(B) = \sum_i^n P(BA_i) = \sum_i^n P(B\mid A_i)P(A_i) \]
+    \item 贝叶斯公式：完备事件组$\{A_1,A_2,\cdots,A_n \}$，则任意一个事件$A_j$有
+          \[ P(A_i\mid B) = \frac{P(A_i)P(B\mid A_i)}{\sum_{j=1}^n P(B\mid A_j)P(A_j)} \]
+          其中分母为全概率公式。简单形式为随机事件$A,B$且$P(B)>0$，则有
+          \[ P(A\mid B) = \frac{P(A)P(A\mid B)}{P(B)} \]
+\end{enumerate}
+
+\subsection{古典概型、伯努利概型}

@@ -151,7 +151,7 @@
     =
     a_{11}A_{11} + a_{12}A_{12} + \cdots + a_{1n}A_{1n}
 \]
-其中$A_{ij}$为代数余子式，和余子式$M_{ij}$的关系为
+其中$A_{ij}$为$k-1$阶代数余子式，和余子式$M_{ij}$的关系为
 \[ A_{ij} = (-1)^{i+j}M_{ij} \]
 $M_{ij}$为去掉第$i$行，第$j$列元素后的行列式。
 
@@ -272,6 +272,30 @@ $M_{ij}$为去掉第$i$行，第$j$列元素后的行列式。
     = (-1)^{mn} |A| \cdot |B|
 \end{align}
 其中$|A|,|B|$分别为$n$阶行列式，$m$阶行列式。
+
+\begin{equation}
+    D_{2n}=
+    \begin{vmatrix}
+        a_1 &        &     &     &        & b_1 \\
+            & \ddots &     &     & \udots &     \\
+            &        & a_n & b_n &        &     \\
+            &        & c_n & d_n &        &     \\
+            & \udots &     &     & \ddots &     \\
+        c_1 &        &     &     &        & d_1
+    \end{vmatrix}
+    =
+    (-1)^{n+n+1+n+n+1}
+    \begin{vmatrix}
+        a_n & b_n \\
+        c_n & d_n
+    \end{vmatrix}
+    D_{2(n-1)}
+    =
+    \prod_{i=1}^n (a_id_i-b_id_i)
+\end{equation}
+等式按第$n,n+1$行的二阶子式展开，由于只有$(a_nd_n-b_nd_n)$不等于$0$，故只剩中间的二阶子式，其系数
+为$1$，这是由于$-1$的指数是行数$n,n+1$与列数$n,n+1$之和为$2$的倍数。
+
 
 \subsection{范德蒙行列式}
 称

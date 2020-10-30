@@ -9,9 +9,9 @@
         a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = 0
     \end{cases}
 \]
-为齐次线性方程组，记为$A_{m\times n}X=0$，其中
+为齐次线性方程组，记为$\mat{A}_{m\times n}\mat{X}=\bm{0}$，其中
 \[
-    A =
+    \mat{A} =
     \begin{pmatrix}
         a_{11} & a_{12} & \cdots & a_{1n} \\
         a_{21} & a_{22} & \cdots & a_{2n} \\
@@ -19,7 +19,7 @@
         a_{m1} & a_{m2} & \cdots & a_{mn}
     \end{pmatrix},
     \qquad
-    X=
+    \mat{X}=
     \begin{pmatrix}
         x_1 \\x_2\\\vdots\\x_n
     \end{pmatrix}
@@ -34,9 +34,9 @@
         a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m
     \end{cases}
 \]
-为非齐次线性方程组，简记为$A_{m\times n}X=b$，其中
+为非齐次线性方程组，简记为$\mat{A}_{m\times n}\mat{X}=\bm{b}$，其中
 \[
-    A =
+    \mat{A} =
     \begin{pmatrix}
         a_{11} & a_{12} & \cdots & a_{1n} \\
         a_{21} & a_{22} & \cdots & a_{2n} \\
@@ -44,17 +44,17 @@
         a_{m1} & a_{m2} & \cdots & a_{mn}
     \end{pmatrix},
     \qquad
-    X=
+    \mat{X}=
     \begin{pmatrix}
         x_1 \\x_2\\\vdots\\x_m
     \end{pmatrix},
     \qquad
-    b=
+    \bm{b}=
     \begin{pmatrix}
         b_1 \\b_2\\\vdots\\b_m
     \end{pmatrix},
     \qquad
-    \overline{A}=
+    \overline{\mat{A}}=
     \left(\begin{array}{cccc|c}
             a_{11} & a_{12} & \cdots & a_{1n} & b_1    \\
             a_{21} & a_{22} & \cdots & a_{2n} & b_2    \\
@@ -62,37 +62,37 @@
             a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
         \end{array}\right)
 \]
-$\overline{A}$为增广矩阵。
+$\overline{\mat{A}}$为增广矩阵。
 
 \section{齐次线性方程组的有解判定定理}
 齐次线性方程组的解只有两种可能：只有零解、有无穷多解。
 \begin{theorem}
-    齐次线性方程组$A_{m\times n}X=0$有非零解$\iff r(A)<n \iff A$的列向量组线性相关。
+    齐次线性方程组$\mat{A}_{m\times n}\mat{X}=\bm{0}$有非零解$\iff r(\mat{A})<n \iff A$的列向量组线性相关。
 \end{theorem}
 作为推论有
 \begin{theorem}
-    齐次线性方程组$A_{m\times n}X=0$中
+    齐次线性方程组$\mat{A}_{m\times n}\mat{X}=\bm{0}$中
     \begin{enumerate}[(1)]
-        \item 当$m<n$时，$AX=0$必有非零解；
-        \item 当$m=n$时，$AX=0$有非零解$\iff |A|=0$
+        \item 当$m<n$时，$\mat{AX}=\bm{0}$必有非零解；
+        \item 当$m=n$时，$\mat{AX}=\bm{0}$有非零解$\iff |\mat{A}|=0$
     \end{enumerate}
 \end{theorem}
 
 \begin{theorem}
-    如果$r(A)=r<n$，则$AX=0$有$n-r$个线性无关解$\eta_1,\eta_2,\cdots,\eta_{n-r}$称为基础解系，
-    且$AX=0$的任意一个解$\eta$一定能由$\eta_1,\eta_2,\cdots,\eta_{n-r}$线性表出。即通解为
-    \[ k_1\eta_1 + k_2\eta_2 + \cdots + k_{n-r}\eta_{n-r} \]
+    如果$r(\mat{A})=r<n$，则$\mat{AX}=\bm{0}$有$n-r$个线性无关解$\bm{\eta}_1,\bm{\eta}_2,\cdots,\bm{\eta}_{n-r}$称为基础解系，
+    且$\mat{AX}=\bm{0}$的任意一个解$\bm{\eta}$一定能由$\bm{\eta}_1,\bm{\eta}_2,\cdots,\bm{\eta}_{n-r}$线性表出。即通解为
+    \[ k_1\bm{\eta}_1 + k_2\bm{\eta}_2 + \cdots + k_{n-r}\bm{\eta}_{n-r} \]
     其中$k_1,k_2,\cdots,k_n$为任意常数。
 \end{theorem}
 
 基础解系的定义如下
 \begin{definition}
-    如果$\eta_1,\eta_2,\cdots,\eta_t$是$AX=0$的解，且满足
+    如果$\bm{\eta}_1,\bm{\eta}_2,\cdots,\bm{\eta}_t$是$\mat{AX}=\bm{0}$的解，且满足
     \begin{enumerate}[(1)]
-        \item $\eta_1,\eta_2,\cdots,\eta_t$线性无关；
-        \item $AX=0$的任意一个解都可以由$\eta_1,\eta_2,\cdots,\eta_t$线性表出。
+        \item $\bm{\eta}_1,\bm{\eta}_2,\cdots,\bm{\eta}_t$线性无关；
+        \item $\mat{AX}=\bm{0}$的任意一个解都可以由$\bm{\eta}_1,\bm{\eta}_2,\cdots,\bm{\eta}_t$线性表出。
     \end{enumerate}
-    则称$\eta_1,\eta_2,\cdots,\eta_t$是$AX=0$的一个基础解系，且$t=n-r(A)$
+    则称$\bm{\eta}_1,\bm{\eta}_2,\cdots,\bm{\eta}_t$是$\mat{AX}=\bm{0}$的一个基础解系，且$t=n-r(\mat{A})$
 \end{definition}
 
 \begin{example}
@@ -158,10 +158,10 @@ $\overline{A}$为增广矩阵。
                       2 \\2\\0\\1
                   \end{pmatrix}
               \]
-        \item 令$x_3=1,x_4=0$得解$\eta_1 = (1,1,1,0)^\intercal$；令$x_3=0,x_4=1$得解$\eta_2=(2,2,0,1)^\intercal$
+        \item 令$x_3=1,x_4=0$得解$\bm{\eta}_1 = (1,1,1,0)^\intercal$；令$x_3=0,x_4=1$得解$\bm{\eta}_2=(2,2,0,1)^\intercal$
               所以方程组的解为
               \[
-                  x= k_1\eta_1+k_2\eta_2 =
+                  x= k_1\bm{\eta}_1+k_2\bm{\eta}_2 =
                   k_1
                   \begin{pmatrix}
                       1 \\1\\1\\0
@@ -180,24 +180,24 @@ $\overline{A}$为增广矩阵。
 \begin{theorem}
     且三种有解判断如下:
     \begin{enumerate}[(1)]
-        \item 有解$\iff r(A)=r(\overline{A})$，反过来，无解$\iff r(A)\neq r(\overline{A}) \iff r(A)+1 = r(\overline{A})$；
-        \item 唯一解$\iff r(A)=r(\overline{A}) = n$；
-        \item 无穷多解$\iff r(A)=r(\overline{A})<n$。
+        \item 有解$\iff r(\mat{A})=r(\overline{\mat{A}})$，反过来，无解$\iff r(\mat{A})\neq r(\overline{\mat{A}}) \iff r(\mat{A})+1 = r(\overline{\mat{A}})$；
+        \item 唯一解$\iff r(\mat{A})=r(\overline{\mat{A}}) = n$；
+        \item 无穷多解$\iff r(\mat{A})=r(\overline{\mat{A}})<n$。
     \end{enumerate}
 \end{theorem}
 
-当$AX=b$有无穷多解时，引入\textbf{\textsf{解的结构}}概念。
+当$\mat{AX}=\bm{b}$有无穷多解时，引入\textbf{\textsf{解的结构}}概念。
 \begin{theorem}
-    设$\alpha$是方程组$AX=b$的解，$\eta_1,\eta_2,\cdots,\eta_t$是导出组$AX=0$的基础解系，则方程组$AX=b$的通解为
-    \[ \alpha + k_1\eta_1 + k_2\eta_2 + \cdots + k_t\eta_t \]
+    设$\bm{\alpha}$是方程组$\mat{AX}=\bm{b}$的解，$\bm{\eta}_1,\bm{\eta}_2,\cdots,\bm{\eta}_t$是导出组$\mat{AX}=\bm{0}$的基础解系，则方程组$\mat{AX}=\bm{b}$的通解为
+    \[ \bm{\alpha} + k_1\bm{\eta}_1 + k_2\bm{\eta}_2 + \cdots + k_t\bm{\eta}_t \]
     其中$k_1,k_2,\cdots,k_t$为任意常数。
 \end{theorem}
 
 \begin{theorem}
     （解的性质）
     \begin{enumerate}[(1)]
-        \item 方程组$AX=b$的两个解$\gamma_1,\gamma_2$的差$\gamma_1 - \gamma_2$是$AX=0$的解；
-        \item 方程组$AX=b$的一个解$\gamma_0$与$AX=0$的一个解$\eta$之和$\gamma_0+\eta$仍是$AX=b$的解。
+        \item 方程组$\mat{AX}=\bm{b}$的两个解$\bm{\gamma}_1,\bm{\gamma}_2$的差$\bm{\gamma}_1 - \bm{\gamma}_2$是$\mat{AX}=\bm{0}$的解；
+        \item 方程组$\mat{AX}=\bm{b}$的一个解$\bm{\gamma}_0$与$\mat{AX}=\bm{0}$的一个解$\bm{\eta}$之和$\bm{\gamma}_0+\bm{\eta}$仍是$\mat{AX}=\bm{b}$的解。
     \end{enumerate}
 \end{theorem}
 
@@ -214,8 +214,7 @@ $\overline{A}$为增广矩阵。
 \begin{solution}
     对增广矩阵作初等行变换
     \[
-        \overline{A}
-        =
+        \overline{\mat{A}}=
         \left(\begin{array}{ccc|c}
                 1 & 1 & 1 & 5  \\
                 3 & 2 & 1 & 13 \\
@@ -264,11 +263,11 @@ $\overline{A}$为增广矩阵。
             1 \\-2\\1
         \end{pmatrix}
     \]
-    对于上个题的方法二，可以令自由变量$x_3=0$，则得特解$\alpha=(3,2,0)^\intercal$。
+    对于上个题的方法二，可以令自由变量$x_3=0$，则得特解$\bm{\alpha}=(3,2,0)^\intercal$。
 
-    再令化简后的方程组$AX=b$变为齐次方程组$AX=0$然后计算齐次方程组的解向量，即令$x_3=1$，得$\eta=(1,-2)^\intercal$，
+    再令化简后的方程组$\mat{AX}=\bm{b}$变为齐次方程组$\mat{AX}=\bm{0}$然后计算齐次方程组的解向量，即令$x_3=1$，得$\bm{\eta}=(1,-2)^\intercal$，
     所以基础解系为
-    \[ x= \alpha + k\eta \]
+    \[ x= \bm{\alpha} + k\bm{\eta} \]
 \end{solution}
 
 \section{方程组的应用}
@@ -279,17 +278,17 @@ $\overline{A}$为增广矩阵。
             1 & 2 & 3 \\
             2 & 3 & 4
         \end{pmatrix}
-        X
+        \mat{X}
         =
         \begin{pmatrix}
             4 & 5 \\
             5 & 6
         \end{pmatrix}
     \]
-    求$X$
+    求$\mat{X}$
 \end{example}
 \begin{solution}
-    显然$X$是$3\times 2$的矩阵。同时$AX=B$中$A$不可逆，所以要解方程组
+    显然$\mat{X}$是$3\times 2$的矩阵。同时$\mat{AX}=\mat{B}$中\mat{$A}$不可逆，所以要解方程组
     \[
         \begin{pmatrix}
             1 & 2 & 3 \\
@@ -368,7 +367,7 @@ $\overline{A}$为增广矩阵。
     \]
     因此
     \[
-        X =
+        \mat{X} =
         \begin{pmatrix}
             -2+s & -3+t \\
             3-2s & 4-2t \\
@@ -377,19 +376,19 @@ $\overline{A}$为增广矩阵。
     \]
     其中$s,t$为任意常数。
 \end{solution}
-对于$A,B$都是$n$阶矩阵时，上面这种方法也可以使用，而且比求$A^{-1}$要简单，这是因为
-\[ A^{-1}(A|B) = (E|A^{-1}B) \]
-这样就简化了$A^{-1}B$的矩阵乘法，其中$A^{-1}$为一系列的初等行变换。
+对于$\mat{A},\mat{B}$都是$n$阶矩阵时，上面这种方法也可以使用，而且比求$\mat{A}^{-1}$要简单，这是因为
+\[ \mat{A}^{-1}(\mat{A}|\mat{B}) = (\mat{E}|\mat{A}^{-1}\mat{B}) \]
+这样就简化了$\mat{A}^{-1}\mat{B}$的矩阵乘法，其中$\mat{A}^{-1}$为一系列的初等行变换。
 
 \begin{example}
     求一个齐次线性方程组，使其基础解系为
-    \[ \eta_1 = (4,3,1,2)^\intercal,\qquad \eta_2 = (0,1,3,-2)^\intercal \]
+    \[ \bm{\eta}_1 = (4,3,1,2)^\intercal,\qquad \bm{\eta}_2 = (0,1,3,-2)^\intercal \]
 \end{example}
 \begin{solution}
-    由于是求齐次方程组$AX=0$，其实也就是求矩阵$A$，那么根据解向量的维数，可知$A$矩阵的列数为$4$，同时基础解系只有两个向量，那么有
-    $n-r=2$，因此$r(A) = 4-2 = 2$，不妨设$A$为$2\times 4$的矩阵，则有
-    \[ A\eta_1 = 0, \qquad A\eta_2 = 0 \]
-    为了简便，将$\eta_1,\eta_2$合为一个矩阵，那么有
+    由于是求齐次方程组$\mat{AX}=\bm{0}$，其实也就是求矩阵$\mat{A}$，那么根据解向量的维数，可知$\mat{A}$矩阵的列数为$4$，同时基础解系只有两个向量，那么有
+    $n-r=2$，因此$r(\mat{A}) = 4-2 = 2$，不妨设$\mat{A}$为$2\times 4$的矩阵，则有
+    \[ \mat{A}\bm{\eta}_1 = \bm{0}, \qquad \mat{A}\bm{\eta}_2 = \bm{0} \]
+    为了简便，将$\bm{\eta}_1,\bm{\eta}_2$合为一个矩阵，那么有
     \[
         \begin{pmatrix}
             a_{11} & a_{12} & a_{13} & a_{14} \\
@@ -401,7 +400,7 @@ $\overline{A}$为增广矩阵。
             1 & 3  \\
             2 & -2
         \end{pmatrix}
-        =0
+        =\mat{0}
     \]
     利用转置可得
     \[
@@ -415,7 +414,7 @@ $\overline{A}$为增广矩阵。
             a_{13} & a_{23} \\
             a_{14} & a_{24} \\
         \end{pmatrix}
-        =0
+        =\mat{0}
     \]
     对其进行初等行变换
     \[
@@ -451,9 +450,9 @@ $\overline{A}$为增广矩阵。
             t
         \end{pmatrix}
     \]
-    分别令$s=0,t=1$和$s=1,t=0$得一个矩阵$A$
+    分别令$s=0,t=1$和$s=1,t=0$得一个矩阵$\mat{A}$
     \[
-        A =
+        \mat{A} =
         \begin{pmatrix}
             -2 & 2  & 0 & 1 \\
             2  & -3 & 1 & 0

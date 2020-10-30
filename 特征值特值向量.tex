@@ -1,64 +1,64 @@
 \part{特征值、特值向量}
 特征值、特征向量无法避开的两个等式如下
 \begin{enumerate}[(1)]
-    \item $A\alpha = \lambda\alpha, \alpha \neq 0$；
-    \item $|\lambda E - A| = 0$；
-    \item $(\lambda_i E - A )X = 0$；
+    \item $\mat{A}\bm{\alpha} = \lambda\bm{\alpha}, \bm{\alpha} \neq \bm{0}$；
+    \item $|\lambda \mat{E} - \mat{A}| = 0$；
+    \item $(\lambda_i \mat{E} - \mat{A} )\mat{X} = \bm{0}$；
 \end{enumerate}
 
-以及相似矩阵的概念$A\sim B : \exists \text{可逆矩阵}P, P^{-1}AP = B$，其中的重点是$A$是否相似于对角矩阵。
+以及相似矩阵的概念$\mat{A}\sim \mat{B} : \exists \text{可逆矩阵}\mat{P}, \mat{P}^{-1}\mat{A}\mat{P} = \mat{B}$，其中的重点是$\mat{A}$是否相似于对角矩阵。
 
 还有实对称矩阵的概念及相关定理。
 
 \section{特征值、特值向量}
 .
 \begin{definition}
-    设$A$是$n$阶矩阵，$\alpha$是$n$维非零列向量，且
-    \[ A\alpha = \lambda\alpha \]
-    则称$\lambda$是矩阵$A$的特征值，$\alpha$是矩阵$A$是对应于特征值$\lambda$的特征向量。
+    设$\mat{A}$是$n$阶矩阵，$\bm{\alpha}$是$n$维非零列向量，且
+    \[ \mat{A}\bm{\alpha} = \lambda\bm{\alpha} \]
+    则称$\lambda$是矩阵$\mat{A}$的特征值，$\bm{\alpha}$是矩阵$\mat{A}$是对应于特征值$\lambda$的特征向量。
 \end{definition}
 特征值、特征向量的求法主要有定义法、行列式法、基础解系法。
 
 
-设$n$阶矩阵$A$，非零列向量$\alpha$，则有等式
-\[ A\alpha = \lambda\alpha \implies (\lambda E -A)\alpha = 0 \]
+设$n$阶矩阵$\mat{A}$，非零列向量$\bm{\alpha}$，则有等式
+\[ \mat{A}\bm{\alpha} = \lambda\bm{\alpha} \implies (\lambda \mat{E} - \mat{A})\bm{\alpha} = \bm{0} \]
 
 \paragraph{行列式法}
-这里同齐次线性方程组联系起来，由于$\alpha\neq 0$，所以方程组有非零解，故有行列式法
+这里同齐次线性方程组联系起来，由于$\bm{\alpha}\neq 0$，所以方程组有非零解，故有行列式法
 \begin{equation}
-    |\lambda E- A| = 0
+    |\lambda \mat{E}- \mat{A}| = 0
 \end{equation}
-称之为特征多项式。根据代数基本定理，特征多项式一定有$n$个解（允许有重根、复数），即$A$有$n$个特征值。
+称之为特征多项式。根据代数基本定理，特征多项式一定有$n$个解（允许有重根、复数），即$\mat{A}$有$n$个特征值。
 
 \paragraph{基础解系法}
 另一方面，行列式法得到的特征值$\lambda_i$，带入到等式中，即
-\[  (\lambda_i E -A)\alpha = 0 \]
+\[  (\lambda_i \mat{E} -\mat{A})\bm{\alpha} = \bm{0} \]
 求其基础解系，则可以得到特征值$\lambda_i$对应的一组线性无关的特征向量。
 然后得出特征向量的通解（即通过基础解系得出通解）。
 
 \begin{theorem}
-    设$\alpha_1,\alpha_2,\cdots,\alpha_t$都是矩阵$A$对应于特征值$\lambda$的特征向量，
-    那么当$\alpha = k_1\alpha_1+k_2\alpha_2 + \cdots + k_t\alpha_t \neq 0$时，$\alpha$仍是$A$对应于特征值$\lambda$的特征向量。
+    设$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_t$都是矩阵$\mat{A}$对应于特征值$\lambda$的特征向量，
+    那么当$\bm{\alpha} = k_1\bm{\alpha}_1+k_2\bm{\alpha}_2 + \cdots + k_t\bm{\alpha}_t \neq 0$时，$\bm{\alpha}$仍是$\mat{A}$对应于特征值$\lambda$的特征向量。
 \end{theorem}
 
 \begin{theorem}
-    如果$\lambda_1,\lambda_2,\cdots,\lambda_m$时矩阵$A$互不相同的特征值，对应的特征向量分别为$\alpha_1,\alpha_2,\cdots,\alpha_m$，
-    则$\alpha_1,\alpha_2,\cdots,\alpha_m$\textcolor{red}{线性无关}。
+    如果$\lambda_1,\lambda_2,\cdots,\lambda_m$时矩阵$\mat{A}$互不相同的特征值，对应的特征向量分别为$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_m$，
+    则$\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_m$\textcolor{red}{线性无关}。
 \end{theorem}
 这个定理要注意的是，仅仅是线性无关，而不是正交。（正交是实对称矩阵的性质。）
 
 \begin{theorem}
-    设$A$为$n$矩阵，特征值为$\lambda_1,\lambda_2,\cdots,\lambda_n$，则
+    设$\mat{A}$为$n$矩阵，特征值为$\lambda_1,\lambda_2,\cdots,\lambda_n$，则
     \begin{enumerate}
         \item $\sum_i^n \lambda_i = \sum_i^n a_{ii}$
-        \item $\prod_i^n \lambda_i = |A|$
+        \item $\prod_i^n \lambda_i = |\mat{A}|$
     \end{enumerate}
 \end{theorem}
 
 \begin{example}
     求下面矩阵的特征值，特征向量。
     \[
-        A =
+        \mat{A} =
         \begin{pmatrix}
             17 & -2 & -2 \\
             -2 & 14 & -4 \\
@@ -67,9 +67,9 @@
     \]
 \end{example}
 \begin{solution}
-    有$A$的特征多项式
+    有$\mat{A}$的特征多项式
     \begin{align*}
-        |\lambda E - A| & =
+        |\lambda \mat{E} - \mat{A}| & =
         \begin{vmatrix}
             \lambda-17 & 2            & 2           \\
             2          & \lambda - 14 & 4           \\
@@ -86,20 +86,20 @@
             \lambda-9 & 2            & 2           \\
             0         & \lambda - 18 & 0           \\
             0         & 0            & \lambda -18
-        \end{vmatrix}                    \\
-                        & = (\lambda-9)(\lambda-18)^2
+        \end{vmatrix}                                \\
+                                    & = (\lambda-9)(\lambda-18)^2
     \end{align*}
     得特征值$\lambda_1 = 9, \lambda_2 = 18(\text{重根})$
 
     当$\lambda=9$时，齐次方程组
     \[
-        (9E - A)X =
+        (9\mat{E} - \mat{A})\mat{X} =
         \begin{pmatrix}
             -8 & 2  & 2  \\
             2  & -5 & 4  \\
             2  & 4  & -5
-        \end{pmatrix}X
-        =0
+        \end{pmatrix}\mat{X}
+        =\bm{0}
     \]
     则
     \[
@@ -136,19 +136,19 @@
     所以$x_3$是自由变量，令$x_3=1$得$x_1=\frac{1}{2},x_2=1$
     那么基础解系为
     \[
-        \alpha = (\frac{1}{2},1,1)^\intercal
+        \bm{\alpha} = (\frac{1}{2},1,1)^\intercal
     \]
     因此$\lambda = 9$时对应得特征向量为
-    \[ t\alpha (t\neq 0) \]
+    \[ t\bm{\alpha} (t\neq 0) \]
     当$\lambda=18$时，齐次方程组
     \[
-        (18E - A)X =
+        (18\mat{E} - \mat{A})\mat{X} =
         \begin{pmatrix}
             1 & 2 & 2 \\
             2 & 4 & 4 \\
             2 & 4 & 4
-        \end{pmatrix}X
-        =0
+        \end{pmatrix}\mat{X}
+        =\bm{0}
     \]
     则
     \[
@@ -167,25 +167,25 @@
     所以$x_2,x_3$是自由变量，令$x_2=1,x_3=0$得$x_1=-2$，令$x_2=0,x_3=1$得$x_1=-2$
     那么基础解系为
     \[
-        \alpha_1 = (-2,1,0)^\intercal,\qquad \alpha_2 = (-2,0,1)^\intercal
+        \bm{\alpha}_1 = (-2,1,0)^\intercal,\qquad \bm{\alpha}_2 = (-2,0,1)^\intercal
     \]
     因此$\lambda = 18$时对应得特征向量为
-    \[ k_1\beta_1 + k_2\beta_2 (k_1,k_2\text{不全为}0) \]
+    \[ k_1\bm{\beta}_1 + k_2\bm{\beta}_2 (k_1,k_2\text{不全为}0) \]
 \end{solution}
 
 特征向量更快的解法由下面给出
 \begin{solution}
     当$\lambda=9$时，
     \[
-        (9E-A) =
+        (9\mat{E}-\mat{A}) =
         \begin{pmatrix}
             -8 & 2  & 2  \\
             2  & -5 & 4  \\
             2  & 4  & -5
         \end{pmatrix}
     \]
-    由于$|\lambda E - A|=0$，所以它的秩$r<3$，这里可以\textcolor{red}{明显}看出$9E-A$的秩是$2$（若无法明显看出，那么按原始方法作，以减少不必要的麻烦），
-    所以一定能经过初等行变换变成两行非零的矩阵，由于$9E-A$的任何两行都不成比例（找出两行不成比例即可，剩余的变为$0$），
+    由于$|\lambda \mat{E} - \mat{A}|=0$，所以它的秩$r<3$，这里可以\textcolor{red}{明显}看出$9\mat{E}-\mat{A}$的秩是$2$（若无法明显看出，那么按原始方法作，以减少不必要的麻烦），
+    所以一定能经过初等行变换变成两行非零的矩阵，由于$9\mat{E}-\mat{A}$的任何两行都不成比例（找出两行不成比例即可，剩余的变为$0$），
     所以直接让某一行变为全$0$，这是因为这一行能被另外两行表示。因此
     \[
         \begin{pmatrix}
@@ -218,14 +218,14 @@
             0 & 0 & 0
         \end{pmatrix}
     \]
-    那么其基础解系为$\alpha = (\frac{1}{2},1,1)^\intercal$
-    所以对应的特征向量为$t\alpha (t\neq 0)$
+    那么其基础解系为$\bm{\alpha} = (\frac{1}{2},1,1)^\intercal$
+    所以对应的特征向量为$t\bm{\alpha} (t\neq 0)$
 \end{solution}
 
 \begin{example}
     求
     \[
-        A =
+        \mat{A} =
         \begin{pmatrix}
             -1 & 1 & 0 \\
             -4 & 3 & 0 \\
@@ -237,7 +237,7 @@
 \begin{solution}
     特征多项式
     \[
-        |\lambda E - A|
+        |\lambda \mat{E} - \mat{A}|
         =
         \begin{vmatrix}
             \lambda+1 & -1        & 0         \\
@@ -254,7 +254,7 @@
     因此特征值为$2,1,1$，
     当$\lambda = 2$时，
     \[
-        \lambda E - A =
+        \lambda \mat{E} - \mat{A} =
         \begin{pmatrix}
             3  & -1 & 0 \\
             4  & -1 & 0 \\
@@ -273,12 +273,12 @@
             0 & 0 & 0
         \end{pmatrix}
     \]
-    则$(2E-A)X=0$的基础解系为$\alpha = (0,0,1)^\intercal$
-    因此对应的特征向量为$k\alpha (k\neq 0)$
+    则$(2\mat{E}-\mat{A})\mat{X}=\bm{0}$的基础解系为$\bm{\alpha} = (0,0,1)^\intercal$
+    因此对应的特征向量为$k\bm{\alpha} (k\neq 0)$
 
     当$\lambda = 1$时
     \[
-        \lambda E - A =
+        \lambda \mat{E} - \mat{A} =
         \begin{pmatrix}
             2  & -1 & 0  \\
             4  & -2 & 0  \\
@@ -303,7 +303,7 @@
             0 & 0 & 0
         \end{pmatrix}
     \]
-    所以$(E-A)X=0$基础解系为$\beta=(-1,-2,1)^\intercal$，则对应的特征向量为$t\beta (t\neq 0)$
+    所以$(\mat{E}-\mat{A})\mat{X}=\bm{0}$基础解系为$\bm{\beta}=(-1,-2,1)^\intercal$，则对应的特征向量为$t\bm{\beta} (t\neq 0)$
 \end{solution}
 
 注意到这两个例题中，\textcolor{red}{前者重根的特征向量的自由变量有两个，而后者重根的特征向量的自由变量只有一个。}
@@ -311,19 +311,19 @@
 
 根据定义，可以得到下面这个公式
 \begin{equation}
-    (A+kE)\alpha = (\lambda + k)\alpha
+    (\mat{A}+k\mat{E})\bm{\alpha} = (\lambda + k)\bm{\alpha}
 \end{equation}
-这表明$(A+kE)$和$A$的特征向量相同，特征值相差$k$
+这表明$(\mat{A}+k\mat{E})$和$\mat{A}$的特征向量相同，特征值相差$k$
 
 还有下面这个公式
 \begin{equation}
-    A^n\alpha = \lambda^n\alpha
+    \mat{A}^n\bm{\alpha} = \lambda^n\bm{\alpha}
 \end{equation}
 
 \begin{example}
-    已知$\alpha=(1,1,-1)^\intercal$是
+    已知$\bm{\alpha}=(1,1,-1)^\intercal$是
     \[
-        A =
+        \mat{A} =
         \begin{pmatrix}
             2  & -1 & 2  \\
             5  & a  & 3  \\
@@ -333,8 +333,8 @@
     的一个特征向量，求$a,b$
 \end{example}
 \begin{solution}
-    由于$\alpha$是$A$的特征向量，不妨设$\lambda$为$\alpha$对应的特征值，那么有
-    \[ A\alpha = \lambda\alpha \]
+    由于$\bm{\alpha}$是$\mat{A}$的特征向量，不妨设$\lambda$为$\bm{\alpha}$对应的特征值，那么有
+    \[ \mat{A}\bm{\alpha} = \lambda\bm{\alpha} \]
     即
     \[
         \begin{pmatrix}
@@ -365,71 +365,71 @@
 \end{solution}
 
 \subsection{特征值个数与秩的关系}
-考虑$n$阶矩阵$A$，根据定义可知特征值满足下面等式
-\[ A\alpha = \lambda\alpha \]
+考虑$n$阶矩阵$\mat{A}$，根据定义可知特征值满足下面等式
+\[ \mat{A}\bm{\alpha} = \lambda\bm{\alpha} \]
 同时，由初等变换可知存在$n$阶可逆矩阵$P,Q$使得
 \[
-    PAQ =
+    \mat{PAQ} =
     \begin{pmatrix}
-        E_r & 0 \\
-        0   & 0
+        \mat{E_r} & \mat{0} \\
+        \mat{0}   & \mat{0}
     \end{pmatrix}
 \]
 其中$r\leq n$，将等式变形可得
 \[
-    A =
-    P^{-1}
+    \mat{A} =
+    \mat{P}^{-1}
     \begin{pmatrix}
-        E_r & 0 \\
-        0   & 0
+        \mat{E_r} & \mat{0} \\
+        \mat{0}   & \mat{0}
     \end{pmatrix}
-    Q^{-1}
+    \mat{Q}^{-1}
     =
-    P^{-1}
+    \mat{P}^{-1}
     \begin{pmatrix}
-        E_r \\ 0
+        \mat{E_r} \\ \mat{0}
     \end{pmatrix}
     \begin{pmatrix}
-        E_r & 0
+        \mat{E_r} & \mat{0}
     \end{pmatrix}
-    Q^{-1}
-    =BC
+    \mat{Q}^{-1}
+    =\mat{BC}
 \]
-其中$B=P^{-1}\begin{pmatrix}E_r & 0\end{pmatrix}^\intercal, C = \begin{pmatrix}E_r & 0\end{pmatrix}Q^{-1}$，
-则$B$为列满秩矩阵，$C$为行满秩矩阵，且$r(A) = r(B) = r(C) = r$。
+其中$\mat{B}=\mat{P}^{-1}\begin{pmatrix}\mat{E_r} & \mat{0}\end{pmatrix}^\intercal, \mat{C} = \begin{pmatrix}\mat{E_r} & \mat{0}\end{pmatrix}\mat{Q}^{-1}$，
+则$\mat{B}$为列满秩矩阵，$\mat{C}$为行满秩矩阵，且$r(\mat{A}) = r(\mat{B}) = r(\mat{C}) = r$。
 
-设$\lambda$为$A$的任意一非零特征值，$\alpha$为对应的特征向量，则有
-\[ A\alpha = BC\alpha = \lambda\alpha \]
-两边同时乘以矩阵$C$，则有
-\[ CBC\alpha = CB(C\alpha) = \lambda(C\alpha) \]
-其中$C\alpha\neq 0$，（若$C\alpha = 0$，则有$BC\alpha = 0 = \lambda\alpha = 0$，又$\lambda\neq 0$，则$\alpha=0$，与$\alpha\neq 0$矛盾），
-因此矩阵$CB$特征值为$\lambda$，对应特征向量为$C\alpha$。所以$BC$的任意一非零特征值为$CB$的特征值。同理可证$CB$的任意一非零特征值也为$BC$的特征值。
-因此$BC,CB$的非零特征值相同。又因为特征值个数不超过矩阵的阶数，所以非零特征值个数不超过$CB$的阶数$r$，即$A=BC$的非零特征值不超过$r$。
+设$\lambda$为$\mat{A}$的任意一非零特征值，$\bm{\alpha}$为对应的特征向量，则有
+\[ \mat{A}\bm{\alpha} = \mat{BC}\bm{\alpha} = \lambda\bm{\alpha} \]
+两边同时乘以矩阵$\mat{C}$，则有
+\[ \mat{CBC}\bm{\alpha} = \mat{CB}(\mat{C}\bm{\alpha}) = \lambda(\mat{C}\bm{\alpha}) \]
+其中$\mat{C}\bm{\alpha}\neq \bm{0}$，（若$\mat{C}\bm{\alpha} = \bm{0}$，则有$\mat{BC}\bm{\alpha} = \bm{0} = \lambda\bm{\alpha} = \bm{0}$，又$\lambda\neq 0$，则$\bm{\alpha}=\bm{0}$，与$\bm{\alpha}\neq \bm{0}$矛盾），
+因此矩阵$\mat{CB}$特征值为$\lambda$，对应特征向量为$\mat{C}\bm{\alpha}$。所以$\mat{BC}$的任意一非零特征值为$\mat{CB}$的特征值。同理可证$\mat{CB}$的任意一非零特征值也为$\mat{BC}$的特征值。
+因此$\mat{BC},\mat{CB}$的非零特征值相同。又因为特征值个数不超过矩阵的阶数，所以非零特征值个数不超过$\mat{CB}$的阶数$r$，即$\mat{A}=\mat{BC}$的非零特征值不超过$r$。
 
 综上可得，
 \begin{theorem}
-    设矩$n$阶矩阵$A$，且$r(A)=r$，则$A$的非零特征值个数小于等于$r$。
+    设矩$n$阶矩阵$\mat{A}$，且$r(\mat{A})=r$，则$\mat{A}$的非零特征值个数小于等于$r$。
 \end{theorem}
 进一步的，有
 \begin{enumerate}[(1)]
-    \item 若$A$为可对角化矩阵，根据$A\sim \operatorname{diag}(\lambda_1,\lambda_2,\cdots)$，知非零特征值个数等于矩阵的秩；
-    \item 若$A$为满秩矩阵，根据$|A|=\prod \lambda \neq 0$，知$\lambda\neq 0$，则非零特征值等于$n$；
-    \item 若$A$为不可对角化的降秩矩阵，则非零特征值个数小于等于它的秩。
+    \item 若$\mat{A}$为可对角化矩阵，根据$\mat{A}\sim \operatorname{diag}(\lambda_1,\lambda_2,\cdots)$，知非零特征值个数等于矩阵的秩；
+    \item 若$\mat{A}$为满秩矩阵，根据$|\mat{A}|=\prod \lambda \neq 0$，知$\lambda\neq 0$，则非零特征值等于$n$；
+    \item 若$\mat{A}$为不可对角化的降秩矩阵，则非零特征值个数小于等于它的秩。
 \end{enumerate}
 
 \begin{example}
-    设$A=E+\alpha\beta^\intercal$，其中$\alpha,\beta$均为$n$阶非零列向量，且有$\alpha^\intercal\beta=3$，求$|A+2E|$
+    设$\mat{A}=\mat{E}+\bm{\alpha}\bm{\beta}^\intercal$，其中$\bm{\alpha},\bm{\beta}$均为$n$阶非零列向量，且有$\bm{\alpha}^\intercal\bm{\beta}=3$，求$|\mat{A}+2\mat{E}|$
 \end{example}
 \begin{solution}
-    要求$|A+2E|$，则要考虑$A$的特征值，根据特征值的乘积求出行列式。又$A=E+\alpha\beta^\intercal$，因此转为考虑$\alpha\beta^\intercal$的特征值。
+    要求$|\mat{A}+2\mat{E}|$，则要考虑$\mat{A}$的特征值，根据特征值的乘积求出行列式。又$\mat{A}=\mat{E}+\bm{\alpha}\bm{\beta}^\intercal$，因此转为考虑$\bm{\alpha}\bm{\beta}^\intercal$的特征值。
     注意到
-    \[ r(\alpha\beta^\intercal) \leq \min(r(\alpha),r(\beta^\intercal)) = 1 \]
-    且$\alpha\neq 0,\beta\neq 0$，则有$\alpha\beta^\intercal\neq 0$，因此$r(\alpha\beta^\intercal)=1$，所以$\alpha\beta^\intercal$非零特征值不超过$1$。
+    \[ r(\bm{\alpha}\bm{\beta}^\intercal) \leq \min(r(\bm{\alpha}),r(\bm{\beta}^\intercal)) = 1 \]
+    且$\bm{\alpha}\neq \bm{0},\bm{\beta}\neq \bm{0}$，则有$\bm{\alpha}\bm{\beta}^\intercal\neq 0$，因此$r(\bm{\alpha}\bm{\beta}^\intercal)=1$，所以$\bm{\alpha}\bm{\beta}^\intercal$非零特征值不超过$1$。
 
-    假设非零特征值个数为$0$，则特征值为$0$的个数等于$n$，又因为$\Tr(\alpha\beta^\intercal)=\beta^\intercal\alpha = 3\neq 0$，所以非零特征值个数不等于$0$；
+    假设非零特征值个数为$0$，则特征值为$0$的个数等于$n$，又因为$\Tr(\bm{\alpha}\bm{\beta}^\intercal)=\bm{\beta}^\intercal\bm{\alpha} = 3\neq 0$，所以非零特征值个数不等于$0$；
 
-    因此非零特征值个数为$1$，此时特征值为$0$的个数等于$n-1$，即$0$为$n-1$重特征值。根据$\Tr(\alpha\beta^\intercal)=3$，得出$3$为单重特征值。综上可得
-    \[ |A+2E| = |3E + \alpha\beta^\intercal| = \prod_i^n (3+\lambda_i) = 6\cdot 3^{n-1} = 2\cdot 3^n \]
+    因此非零特征值个数为$1$，此时特征值为$0$的个数等于$n-1$，即$0$为$n-1$重特征值。根据$\Tr(\bm{\alpha}\bm{\beta}^\intercal)=3$，得出$3$为单重特征值。综上可得
+    \[ |\mat{A}+2\mat{E}| = |3\mat{E} + \bm{\alpha}\bm{\beta}^\intercal| = \prod_i^n (3+\lambda_i) = 6\cdot 3^{n-1} = 2\cdot 3^n \]
 
 \end{solution}
 
@@ -437,38 +437,38 @@
 \subsection{相似矩阵的基本概念和性质}
 .
 \begin{definition}
-    设$A,B$都是$n$阶矩阵，如果存在可逆矩阵$P$，使得
-    \[ P^{-1}AP = B \]
-    就称矩阵$A$相似于矩阵$B$，$B$是$A$的相似矩阵，记为$A\sim B$
+    设$\mat{A},\mat{B}$都是$n$阶矩阵，如果存在可逆矩阵$\mat{P}$，使得
+    \[ \mat{P}^{-1}\mat{A}\mat{P} = \mat{B} \]
+    就称矩阵$\mat{A}$相似于矩阵$\mat{B}$，$\mat{B}$是$\mat{A}$的相似矩阵，记为$\mat{A}\sim \mat{B}$
 \end{definition}
-这里注意与等价概念的区别，等价是$QAP=B$，其中$Q,P$均为可逆矩阵，但$Q,P$可无关系。
+这里注意与等价概念的区别，等价是$\mat{Q\mat{A}\mat{P}}=\mat{B}$，其中$\mat{Q},\mat{P}$均为可逆矩阵，但$\mat{Q},\mat{P}$可无关系。
 
 下面介绍几个相似的基本性质
 \begin{enumerate}[(1)]
-    \item （自反性）$A\sim A$；
-    \item （对称性）如果$A\sim B$则$B \sim A$；
-    \item （传递性）如果$A\sim B, B \sim C$，则$A\sim C$；
-    \item （特征值相同）$A\sim B \implies \lambda_A = \lambda_B$；
-    \item （秩相等）$A\sim B \implies r(A)=r(B)$;
-    \item （行列式相等）$A\sim B \implies |A|=|B|$;
-    \item （迹相等）$A\sim B \implies \Tr(A) = \Tr(B)$
+    \item （自反性）$\mat{A}\sim \mat{A}$；
+    \item （对称性）如果$\mat{A}\sim \mat{B}$则$\mat{B} \sim \mat{A}$；
+    \item （传递性）如果$\mat{A}\sim \mat{B}, \mat{B} \sim \mat{C}$，则$\mat{A}\sim \mat{C}$；
+    \item （特征值相同）$\mat{A}\sim \mat{B} \implies \lambda_{\mat{A}} = \lambda_{\mat{B}}$；
+    \item （秩相等）$\mat{A}\sim \mat{B} \implies r(\mat{A})=r(\mat{B})$;
+    \item （行列式相等）$\mat{A}\sim \mat{B} \implies |\mat{A}|=|\mat{B}|$;
+    \item （迹相等）$\mat{A}\sim \mat{B} \implies \Tr(\mat{A}) = \Tr(\mat{B})$
 \end{enumerate}
 
-下面为相似的运算关系：假设$A\sim B$
+下面为相似的运算关系：假设$\mat{A}\sim \mat{B}$
 \begin{enumerate}[(1)]
-    \item $A^2 \sim B^2$；
-    \item $A+kE \sim B + kE$；
-    \item 如果$A$可逆，则$A^{-1}\sim B^{-1}$
-    \item 如果$A_1\sim B_1, A_2\sim B_2$，则
+    \item $\mat{A}^2 \sim \mat{B}^2$；
+    \item $\mat{A}+k\mat{E} \sim \mat{B} + k\mat{E}$；
+    \item 如果$\mat{A}$可逆，则$\mat{A}^{-1}\sim \mat{B}^{-1}$
+    \item 如果$\mat{A}_1\sim \mat{B}_1, \mat{A}_2\sim \mat{B}_2$，则
           $
               \begin{pmatrix}
-                  A_1 &     \\
-                      & A_2
+                  \mat{A}_1 &           \\
+                            & \mat{A}_2
               \end{pmatrix}
               \sim
               \begin{pmatrix}
-                  B_1 &     \\
-                      & B_2
+                  \mat{B}_1 &           \\
+                            & \mat{B}_2
               \end{pmatrix}
           $
 \end{enumerate}
@@ -476,14 +476,14 @@
 \begin{example}
     已知
     \[
-        A =
+        \mat{A} =
         \begin{pmatrix}
             2 & 0 & 0 \\
             0 & 0 & 1 \\
             0 & 1 & x
         \end{pmatrix}
         ,\qquad
-        B =
+        \mat{B} =
         \begin{pmatrix}
             2 & 0 & 0  \\
             0 & y & 0  \\
@@ -493,7 +493,7 @@
     相似，求$x,y$
 \end{example}
 \begin{solution}
-    由于$A\sim B$，所以$\Tr(A)=\Tr(B),|A|=|B|$，即
+    由于$\mat{A}\sim \mat{B}$，所以$\Tr(\mat{A})=\Tr(\mat{B}),|\mat{A}|=|\mat{B}|$，即
     \begin{align*}
         2+x & = 1+y \\
         -2  & = -2y
@@ -504,92 +504,92 @@
 \subsection{相似对角化}
 .
 \begin{definition}
-    如果$A$和对角矩阵相似，则称矩阵$A$可相似对角化。
+    如果$\mat{A}$和对角矩阵相似，则称矩阵$\mat{A}$可相似对角化。
 \end{definition}
 
 \begin{theorem}
-    $A$和对角矩阵相似$\iff A$有$n$个线性无关特征向量。
+    $\mat{A}$和对角矩阵相似$\iff \mat{A}$有$n$个线性无关特征向量。
 \end{theorem}
 作为推论有
 \begin{theorem}
-    $A$有$n$个不同的特征值$\implies A$可相似对角化。
+    $\mat{A}$有$n$个不同的特征值$\implies \mat{A}$可相似对角化。
 \end{theorem}
-这是因为不同的特征值对应的特征向量，一定线性无关。注意这里不是充要条件，这是因为特征值有重根的$A$也是有可能相似对角化。
+这是因为不同的特征值对应的特征向量，一定线性无关。注意这里不是充要条件，这是因为特征值有重根的$\mat{A}$也是有可能相似对角化。
 
 \begin{theorem}
-    $A$可相似对角化$\iff \lambda$是$A$的$k$重根特征值，则$\lambda$有$k$个线性无关的特征向量。
+    $\mat{A}$可相似对角化$\iff \lambda$是$\mat{A}$的$k$重根特征值，则$\lambda$有$k$个线性无关的特征向量。
 \end{theorem}
 简而言之，特征值相同的个数等于对应的特征向量的个数时，矩阵能相似对角化。
 
-相似对角化的解题步骤：假设$3$阶矩阵$A$可相似对角化
+相似对角化的解题步骤：假设$3$阶矩阵$\mat{A}$可相似对角化
 \begin{enumerate}[(1)]
     \item 求特征值$\lambda_1, \lambda_2, \lambda_3$；
-    \item 求特征向量$\alpha_1,\alpha_2,\alpha_3$；
-    \item 构造可逆矩阵$P=\begin{pmatrix} \alpha_1 & \alpha_2& \alpha_3 \end{pmatrix}$;
+    \item 求特征向量$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$；
+    \item 构造可逆矩阵$P=\begin{pmatrix} \bm{\alpha}_1 & \bm{\alpha}_2& \bm{\alpha}_3 \end{pmatrix}$;
     \item 最后有对角化矩阵$\operatorname{diag}(\lambda_1,\lambda_2,\lambda_3)$
 \end{enumerate}
 
-利用相似对角化来求$A^n$：
+利用相似对角化来求$\mat{A}^n$：
 \[
-    P^{-1}AP = B \implies    P^{-1}A^nP = B^n \implies A^n = PB^nP^{-1}
+    \mat{P}^{-1}\mat{A}\mat{P} = \mat{B} \implies    \mat{P}^{-1}\mat{A}^n\mat{P} = \mat{B}^n \implies \mat{A}^n = \mat{P}\mat{B}^n\mat{P}^{-1}
 \]
-其中$B$为对角矩阵，因此有
+其中$\mat{B}$为对角矩阵，因此有
 \begin{equation}
-    A^n = PB^nP^{-1} =
-    P
+    \mat{A}^n = \mat{P}\mat{B}^n\mat{P}^{-1} =
+    \mat{P}
     \begin{pmatrix}
         b_1 &        &     \\
             & \ddots &     \\
             &        & b_m
-    \end{pmatrix}^nP^{-1}
-    =P
+    \end{pmatrix}^n\mat{P}^{-1}
+    =\mat{P}
     \begin{pmatrix}
         b_1^n &        &       \\
               & \ddots &       \\
               &        & b_m^n
-    \end{pmatrix}P^{-1}
+    \end{pmatrix}\mat{P}^{-1}
 \end{equation}
 
 \begin{example}
     已知
     \[
-        A =
+        \mat{A} =
         \begin{pmatrix}
             2 & 0 & 0 \\
             0 & 0 & 1 \\
             0 & 1 & x
         \end{pmatrix}
         ,\qquad
-        B =
+        \mat{B} =
         \begin{pmatrix}
             2 & 0 & 0  \\
             0 & y & 0  \\
             0 & 0 & -1
         \end{pmatrix}
     \]
-    相似，求$x,y$，求可逆矩阵$P$，使得$P^{-1}AP=B$
+    相似，求$x,y$，求可逆矩阵$\mat{P}$，使得$\mat{P}^{-1}\mat{A}\mat{P}=\mat{B}$
 \end{example}
 \begin{solution}
     此例题在相似矩阵部分中解得$x=0,y=1$。因此
     \[
-        A =
+        \mat{A} =
         \begin{pmatrix}
             2 & 0 & 0 \\
             0 & 0 & 1 \\
             0 & 1 & 0
         \end{pmatrix}
         ,\qquad
-        B =
+        \mat{B} =
         \begin{pmatrix}
             2 & 0 & 0  \\
             0 & 1 & 0  \\
             0 & 0 & -1
         \end{pmatrix}
     \]
-    可以看出$B$为对角矩阵，根据相似对角化的性质，可以得到$A$的三个特征值$2,1,-1$，
-    当$\lambda=2$时，$(2E-A)\alpha=0(\alpha\neq 0)$，
+    可以看出$\mat{B}$为对角矩阵，根据相似对角化的性质，可以得到$\mat{A}$的三个特征值$2,1,-1$，
+    当$\lambda=2$时，$(2\mat{E}-\mat{A})\bm{\alpha}=0(\bm{\alpha}\neq 0)$，
     \[
-        (2E-A) =
+        2\mat{E}-\mat{A} =
         \begin{pmatrix}
             0 & 0  & 0  \\
             0 & 2  & -1 \\
@@ -602,11 +602,11 @@
             0 & 0 & 0 \\
         \end{pmatrix}
     \]
-    因此一个特征向量为$\alpha_1 = (1,0,0)^\intercal$，
+    因此一个特征向量为$\bm{\alpha}_1 = (1,0,0)^\intercal$，
 
     当$\lambda = 1$时，
     \[
-        (E-A) =
+        \mat{E}-\mat{A} =
         \begin{pmatrix}
             -1 & 0  & 0  \\
             0  & 1  & -1 \\
@@ -619,11 +619,11 @@
             0 & 0 & 0  \\
         \end{pmatrix}
     \]
-    因此一个特征向量为$\alpha_2 = (0,1,1)^\intercal$，
+    因此一个特征向量为$\bm{\alpha}_2 = (0,1,1)^\intercal$，
 
     当$\lambda = -1$时，
     \[
-        (-E-A) =
+        -\mat{E}-\mat{A} =
         \begin{pmatrix}
             -3 & 0  & 0  \\
             0  & -1 & -1 \\
@@ -636,12 +636,12 @@
             0 & 0 & 0 \\
         \end{pmatrix}
     \]
-    因此一个特征向量为$\alpha_3 = (0,-1,1)^\intercal$，
+    因此一个特征向量为$\bm{\alpha}_3 = (0,-1,1)^\intercal$，
     那么
     \[
-        P =
+        \mat{P} =
         \begin{pmatrix}
-            \alpha_1 & \alpha_2 & \alpha_3
+            \bm{\alpha}_1 & \bm{\alpha}_2 & \bm{\alpha}_3
         \end{pmatrix}
         =
         \begin{pmatrix}
@@ -655,19 +655,19 @@
 \begin{example}
     若
     \[
-        A =
+        \mat{A} =
         \begin{pmatrix}
             1 & 3  & 0 \\
             1 & -1 & 0 \\
             a & -6 & 2
         \end{pmatrix}
     \]
-    可相似对角化，求$a$，并求可逆矩阵$P$使得$P^{-1}AP=B$，$B$为对角化矩阵。
+    可相似对角化，求$a$，并求可逆矩阵$\mat{P}$使得$\mat{P}^{-1}\mat{A}\mat{P}=\mat{B}$，$\mat{B}$为对角化矩阵。
 \end{example}
 \begin{solution}
-    $A$的特征多项式为
+    $\mat{A}$的特征多项式为
     \[
-        |\lambda E-A| =
+        |\lambda \mat{E}-\mat{A}| =
         \begin{vmatrix}
             \lambda-1 & -3        & 0         \\
             -1        & \lambda+1 & 0         \\
@@ -676,10 +676,10 @@
         =(\lambda-2)[(\lambda-1)(\lambda+1)-3]
         =(\lambda-2)^2(\lambda+2)
     \]
-    因此特征值为$-2,2(\text{二重根})$由于$A$可相似对角化，所以特征值为$2$的特征向量有$2$个。
+    因此特征值为$-2,2(\text{二重根})$由于$\mat{A}$可相似对角化，所以特征值为$2$的特征向量有$2$个。
     则
     \[
-        (2E-A) =
+        2\mat{E}-\mat{A} =
         \begin{pmatrix}
             1  & -3 & 0 \\
             -1 & 3  & 0 \\
@@ -699,11 +699,11 @@
         \end{pmatrix}
     \]
     自由变量有两个，所以$6-3a=0$，即$a=2$。此时$\lambda=2$的两个线性无关特征向量为
-    \[ \alpha_1 = (3,1,0)^\intercal ,\qquad \alpha_2 = (0,0,1)^\intercal \]
+    \[ \bm{\alpha}_1 = (3,1,0)^\intercal ,\qquad \bm{\alpha}_2 = (0,0,1)^\intercal \]
 
     当$\lambda=-2$时，
     \[
-        (-2E-A) =
+        -2\mat{E}-\mat{A} =
         \begin{pmatrix}
             -3 & -3 & 0  \\
             -1 & -1 & 0  \\
@@ -734,12 +734,12 @@
             0 & 0 & 0
         \end{pmatrix}
     \]
-    所以$\lambda=-2$对应的一个特征向量为$\alpha_3 = (-1,1,2)^\intercal$，
+    所以$\lambda=-2$对应的一个特征向量为$\bm{\alpha}_3 = (-1,1,2)^\intercal$，
     因此矩阵
     \[
-        P =
+        \mat{P} =
         \begin{pmatrix}
-            \alpha_1 & \alpha_2 & \alpha_3
+            \bm{\alpha}_1 & \bm{\alpha}_2 & \bm{\alpha}_3
         \end{pmatrix}
         =
         \begin{pmatrix}
@@ -761,7 +761,7 @@
 \section{实对称矩阵}
 .
 \begin{definition}
-    对于$n$阶矩阵$A$，如果有$A^\intercal = A$，那么称矩阵$A$为实对称矩阵。
+    对于$n$阶矩阵$\mat{A}$，如果有$\mat{A}^\intercal = \mat{A}$，那么称矩阵$\mat{A}$为实对称矩阵。
 \end{definition}
 \begin{theorem}
     实对称矩阵一定可以相似对角化。
@@ -772,21 +772,21 @@
 这里相互正交，就会有内积为$0$，也就能引申到齐次方程组相关的知识点。
 
 \begin{theorem}
-    实对称矩阵一定存在正交矩阵\ref{sec:正交矩阵}$Q$，使得
-    \[ Q^{-1}AQ = Q^\intercal AQ = B \]
-    其中$B$为对角化矩阵。
+    实对称矩阵一定存在正交矩阵\ref{sec:正交矩阵}$\mat{Q}$，使得
+    \[ \mat{Q}^{-1}\mat{A}\mat{Q} = \mat{Q}^\intercal \mat{A}\mat{Q} = \mat{B} \]
+    其中$\mat{B}$为对角化矩阵。
 \end{theorem}
-在求\textcolor{red}{实对称矩阵}的相似对角化的\textcolor{red}{正交矩阵$Q$}时候，步骤在相似对角化的步骤上额外加上向量的正交标准化：
+在求\textcolor{red}{实对称矩阵}的相似对角化的\textcolor{red}{正交矩阵$\mat{Q}$}时候，步骤在相似对角化的步骤上额外加上向量的正交标准化：
 \begin{enumerate}[(1)]
     \item 求出特征值$\lambda_1,\lambda_2,\lambda_3$；
-    \item 求出特征向量$\alpha_1,\alpha_2,\alpha_3$；
+    \item 求出特征向量$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$；
     \item 由于实对称矩阵中，特征值不同的特征向量相互正交，故只需要单位化；
     \item 当特征值是重根时，如果特征向量已经正交，则只需单位化；
     \item 当特征向量是重根时，且特征向量不正交，需要施密特正交单位化；
-    \item 得到新的特征向量为$\gamma_1,\gamma_2,\gamma_3$，则正交矩阵$Q=\begin{pmatrix}=\gamma_1 & \gamma_2 & \gamma_3\end{pmatrix}$；
+    \item 得到新的特征向量为$\bm{\gamma}_1,\bm{\gamma}_2,\bm{\gamma}_3$，则正交矩阵$\mat{Q}=\begin{pmatrix}=\bm{\gamma}_1 & \bm{\gamma}_2 & \bm{\gamma}_3\end{pmatrix}$；
     \item 最后有
           \[
-              Q^{-1}AQ =
+              \mat{Q}^{-1}\mat{A}\mat{Q} =
               \begin{pmatrix}
                   \lambda_1 &           &           \\
                             & \lambda_2 &           \\
@@ -796,33 +796,33 @@
 \end{enumerate}
 
 \begin{example}
-    设$3$阶矩阵$A$为实对称矩阵，其特征值为$3,0,0$，且$\lambda=3$的特征向量$\alpha_1 = (1,1,1)^\intercal$
+    设$3$阶矩阵$\mat{A}$为实对称矩阵，其特征值为$3,0,0$，且$\lambda=3$的特征向量$\bm{\alpha}_1 = (1,1,1)^\intercal$
     \begin{enumerate}[(1)]
         \item 求$\lambda=0$的特征向量；
-        \item 求$A$；
-        \item 求正交矩阵$Q$，使得$Q^{-1}AQ$为对角化矩阵。
+        \item 求$\mat{A}$；
+        \item 求正交矩阵$\mat{Q}$，使得$\mat{Q}^{-1}\mat{A}\mat{Q}$为对角化矩阵。
     \end{enumerate}
 \end{example}
 \begin{solution}
     \begin{enumerate}[(1)]
-        \item 由于$A$是实对称矩阵，设$\lambda=0$的两个特征向量为$\alpha_2,\alpha_3$，因此有
-              \[ (\alpha_1,\alpha_2) = (\alpha_1,\alpha_3) = 0 \]
-              即$\alpha_2,\alpha_3$为齐次方程组$\alpha_1X=x_1+x_2+x_3=0$的非零解。
+        \item 由于$\mat{A}$是实对称矩阵，设$\lambda=0$的两个特征向量为$\bm{\alpha}_2,\bm{\alpha}_3$，因此有
+              \[ (\bm{\alpha}_1,\bm{\alpha}_2) = (\bm{\alpha}_1,\bm{\alpha}_3) = 0 \]
+              即$\bm{\alpha}_2,\bm{\alpha}_3$为齐次方程组$\bm{\alpha}_1X=x_1+x_2+x_3=0$的非零解。
 
-              令$x_2=1,x_3=0$得$\alpha_2 =(-1,1,0)^\intercal$；
-              令$x_2=0,x_3=1$得$\alpha_3=(-1,0,1)^\intercal$；
+              令$x_2=1,x_3=0$得$\bm{\alpha}_2 =(-1,1,0)^\intercal$；
+              令$x_2=0,x_3=1$得$\bm{\alpha}_3=(-1,0,1)^\intercal$；
 
-              所以$\lambda=0$得特征向量为$k_2\alpha_2+k_3\alpha_3 (k_2,k_3\text{不全为}0)$
+              所以$\lambda=0$得特征向量为$k_2\bm{\alpha}_2+k_3\bm{\alpha}_3 (k_2,k_3\text{不全为}0)$
 
-        \item 由于$A$可相似对角化，故有
+        \item 由于$\mat{A}$可相似对角化，故有
               \[
-                  A
+                  \mat{A}
                   \begin{pmatrix}
-                      \alpha_1 & \alpha_2 & \alpha_3
+                      \bm{\alpha}_1 & \bm{\alpha}_2 & \bm{\alpha}_3
                   \end{pmatrix}
                   =
                   \begin{pmatrix}
-                      \alpha_1 & \alpha_2 & \alpha_3
+                      \bm{\alpha}_1 & \bm{\alpha}_2 & \bm{\alpha}_3
                   \end{pmatrix}
                   \begin{pmatrix}
                       3 & 0 & 0 \\
@@ -838,14 +838,14 @@
               \]
               所以
               \[
-                  A =
+                  \mat{A} =
                   \begin{pmatrix}
                       3 & 0 & 0 \\
                       3 & 0 & 0 \\
                       3 & 0 & 0
                   \end{pmatrix}
                   \begin{pmatrix}
-                      \alpha_1 & \alpha_2 & \alpha_3
+                      \bm{\alpha}_1 & \bm{\alpha}_2 & \bm{\alpha}_3
                   \end{pmatrix}^{-1}
                   =
                   \begin{pmatrix}
@@ -865,21 +865,21 @@
                       1 & 1 & 1
                   \end{pmatrix}
               \]
-        \item 将$\alpha_1$单位化得$\gamma_1 = \frac{1}{\sqrt{3}}(1,1,1)^\intercal$，
-              对$\alpha_2,\alpha_3$进行施密特正交化，得
+        \item 将$\bm{\alpha}_1$单位化得$\bm{\gamma}_1 = \frac{1}{\sqrt{3}}(1,1,1)^\intercal$，
+              对$\bm{\alpha}_2,\bm{\alpha}_3$进行施密特正交化，得
               \begin{align*}
-                  \beta_2 & = \alpha_2 = (-1,1,0)^\intercal                                  \\
-                  \beta_3 & = \alpha_3 - \frac{(\alpha_3,\beta_2)}{(\beta_2,\beta_2)}\beta_2
+                  \bm{\beta}_2 & = \bm{\alpha}_2 = (-1,1,0)^\intercal                                                           \\
+                  \bm{\beta}_3 & = \bm{\alpha}_3 - \frac{(\bm{\alpha}_3,\bm{\beta}_2)}{(\bm{\beta}_2,\bm{\beta}_2)}\bm{\beta}_2
                   = (-1,0,1)^\intercal - \frac{1}{2}(-1,1,0)^\intercal = \frac{1}{2}(-1,-1,2)^\intercal
               \end{align*}
               单位化得
               \begin{align*}
-                  \gamma_2 & = \frac{1}{\sqrt{2}}(-1,1,0)^\intercal  \\
-                  \gamma_3 & = \frac{1}{\sqrt{6}}(-1,-1,2)^\intercal
+                  \bm{\gamma}_2 & = \frac{1}{\sqrt{2}}(-1,1,0)^\intercal  \\
+                  \bm{\gamma}_3 & = \frac{1}{\sqrt{6}}(-1,-1,2)^\intercal
               \end{align*}
               因此正交矩阵为
               \[
-                  Q =
+                  \mat{Q} =
                   \begin{pmatrix}
                       \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{6}} \\
                       \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{2}}  & -\frac{1}{\sqrt{6}} \\
