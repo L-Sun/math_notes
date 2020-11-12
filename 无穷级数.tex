@@ -155,8 +155,8 @@ $\abs{S_m-S_n}<\varepsilon$，即
 \begin{theorem}
     （Leibniz判别法）
     \label{th:Leibniz判别法}
-    如果教材级数$\displaystyle\sum_{n=1}^\infty(-1)^n u_n$的绝对通项$u_n$单调趋于$0$，
-    即$u_n>u_{n_1}\to 0(n\to\infty)$，则该级数收敛。
+    如果交错级数$\displaystyle\sum_{n=1}^\infty(-1)^n u_n$的绝对通项$u_n$单调趋于$0$，
+    即$u_n>u_{n+1}\to 0(n\to\infty)$，则该级数收敛。
 \end{theorem}
 
 一个级数$\displaystyle\sum_{n=1}^\infty u_n$的\textcolor{red}{\textbf{\textsf{绝对化级数}}}
@@ -306,7 +306,7 @@ $\displaystyle\sum_{n=1}^\infty \abs{u_n}$收敛，则称该级数\textcolor{red
 \end{proof}
 
 \section{函数项级数}
-数列与数项级数可以推广为函数列与函数项级数，即将$u_n$变为$u_n(x)$。${u_n(x)\,|\,x\in I}$
+数列与数项级数可以推广为函数列与函数项级数，即将$u_n$变为$u_n(x)$。$\{u_n(x)\,|\,x\in I\}$
 \[ \sum_{n=1}^\infty u_n(x) = u_1(x) + u_2(x) + \cdots + u_n(x) + \cdots \]
 
 函数项级数除了与数项级数有一种相同的收敛性，即点态收敛外，
@@ -389,7 +389,7 @@ $\displaystyle\sum_{n=1}^\infty \abs{u_n}$收敛，则称该级数\textcolor{red
     \forall \varepsilon >0,\exists N, m>n>N, x\in I, \text{ 恒有} \abs{S_m(x)-S_n(x)}<\varepsilon
 \]
 
-要判断函数项级数的一致收敛性，常用方法时构造一个收敛的数项控制级数，只要控制级数收敛，便有被控制级数的一致收敛。
+要判断函数项级数的一致收敛性，常用方法是构造一个收敛的数项控制级数，只要控制级数收敛，便有被控制级数的一致收敛。
 这一方法称为控制判别法。
 \begin{theorem}
     （控制判别法）

@@ -52,12 +52,12 @@
 \end{example}
 \begin{solution}
     根据Leibniz公式\ref{th:Leibniz公式}，可得
-    \begin{align}
+    \begin{align*}
         y^{(50)} & = \sum_{n=0}^{50} C_{50}^n (x^2)^{(n)}\cdot(\sin 2x)^{(50-n)}                                                       \\
                  & = C_{50}^0(x^2)\cdot(\sin 2x)^{(50)} + C_{50}^1(x^2)'\cdot(\sin 2x)^{(49)} + C_{50}^2(x^2)''\cdot(\sin 2x)^{(48)}+0 \\
                  & = 2^{50}\cdot \left[ x^2 \sin(2x+25\pi) + 50x\sin(2x+\frac{49\pi}{2})+\frac{25 \cdot 49}{2}\sin(2x+24\pi) \right]   \\
                  & = 2^{50}\cdot\left[ -x^2\sin 2x + 50x\cos 2x + \frac{1225}{2}\sin 2x \right]
-    \end{align}
+    \end{align*}
 \end{solution}
 
 \begin{example}
@@ -73,11 +73,11 @@
 \end{example}
 \begin{solution}
     当$x\neq 0$时，由泰勒展开可得
-    \begin{align}
+    \begin{align*}
         y & = \frac{1}{x}(x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots) \\
           & = 1-\frac{x^2}{3!}+\frac{x^4}{5!}-\cdots                    \\
           & =\sum_{k=0}^\infty \frac{(-1)^{k}x^{2k}}{(2k+1)!}
-    \end{align}
+    \end{align*}
     同时有
     \[ \lim_{x \to 0} \sum_{k=0}^\infty \frac{(-1)^{k}x^{2k}}{(2k+1)!} = 1 \]
     所以对于$(-\infty,+\infty)$，泰勒展开恒成立。
@@ -251,7 +251,7 @@
 \begin{theorem}
     介值定理
     \label{th:介值定理}
-    若函数$f(x)$在$[a,b]$上连续，且$f(a)<f(b)$，若$\forall u$满足$f(a)<u<f(b)$，则至少存在一点$x=c$且$a<c<b$，使得$f(c)=u$。$f(a)>f(b)$同理。
+    若函数$f(x)$在$[a,b]$上连续，且$f(a)<f(b)$，若$\forall u$满足$f(a)<u<f(b)$，则至少存在一点$x=c$且$a<c<b$，使得$f(c)=u$，$f(a)>f(b)$同理。
 \end{theorem}
 
 \begin{example}
@@ -311,9 +311,9 @@
     \end{center}
     所以
     \begin{enumerate}
-        \item 当$0 < -\frac{a}{\mathrm{e}}+b$时，即$b\in(-\frac{a}{\mathrm{e}},+\infty)$，方程无实根。
-        \item 当$0 = -\frac{a}{\mathrm{e}}+b$或$0 \geq b$时，即$b\in(-\infty,0]\cup \left\{ -\frac{a}{\mathrm{e}} \right\}$，方程有一实根。
-        \item 当$-\frac{a}{\mathrm{e}}+b < 0 < b$时，即$b\in(0,-\frac{a}{\mathrm{e}})$，方程有两个不同的实根。
+        \item 当$0 < -\frac{a}{\mathrm{e}}+b$时，即$b\in(\frac{a}{\mathrm{e}},+\infty)$，方程无实根。
+        \item 当$0 = -\frac{a}{\mathrm{e}}+b$或$0 \geq b$时，即$b\in(\infty,0]\cup \left\{ -\frac{a}{\mathrm{e}} \right\}$，方程有一实根。
+        \item 当$-\frac{a}{\mathrm{e}}+b < 0 < b$时，即$b\in(0,\frac{a}{\mathrm{e}})$，方程有两个不同的实根。
     \end{enumerate}
 \end{solution}
 

@@ -68,7 +68,7 @@
     \[ x_{n+1} = \frac{1}{2}(x_n+\frac{a}{x_n}) \]
     变为
     \[ A = \frac{1}{2}(A+\frac{a}{A}) \]
-    解得$A=\sqrt{a}$，故$\lim_{n\to\infty}=\sqrt{a}$
+    解得$A=\sqrt{a}$，故$\lim_{n\to\infty} x_n =\sqrt{a}$
 \end{proof}
 
 \subsection{两边夹法则}
@@ -76,10 +76,10 @@
 \begin{theorem}
     \label{th:两边夹法则}
     （两边夹法则）若$n\to\infty$时，恒有
-    \[ A \leftarrow x_n \leq y_n \leq z_n \implies A \]
+    \[ A \leftarrow x_n \leq y_n \leq z_n \rightarrow A \]
     或$\forall \varepsilon > 0, n\to\infty$
-    \[ A -\varepsilon \leftarrow x_n(\varepsilon) \leq y_n \leq z_n(\varepsilon) \implies A + \varepsilon \]
-    则$\lim_{n \to\infty}=A$
+    \[ A -\varepsilon \leftarrow x_n(\varepsilon) \leq y_n \leq z_n(\varepsilon) \rightarrow A + \varepsilon \]
+    则$\lim_{n \to\infty} y_n=A$
 \end{theorem}
 \begin{situation}
     已知数列通项
@@ -433,6 +433,26 @@
     \item 计算间断点的左右极限，（间断点可能有定义）
     \item 根据间断点的左右极限，判断间断点的类型
 \end{enumerate}
+\begin{definition}
+    （间断点）函数$f(x)$在$x_0$处不连续，则称$x_0$为函数$f(x)$的间断点\\
+    \begin{math}
+        \begin{cases}
+            \text{第一类间断点}
+            \begin{cases}
+                \text{可去间断点}\qquad (\text{左右极限相等}) \\
+                \text{跳跃间断点}\qquad (\text{左右极限不等})
+            \end{cases}
+            \qquad (\text{左右极限存在})
+            \\
+            \text{第二类间断点}
+            \begin{cases}
+                \text{无穷间断点}\qquad (\text{无穷大}\frac{1}{x}) \\
+                \text{振荡间断点}\qquad (\text{振荡}\sin\frac{1}{x})
+            \end{cases}
+            \qquad (\text{左极限或右极限不存在})
+        \end{cases}
+    \end{math}
+\end{definition}
 \begin{marginfigure}
     \centering
     \begin{tikzpicture}
@@ -471,26 +491,6 @@
     \end{tikzpicture}
     \caption{有界振荡和无界振荡}
 \end{marginfigure}
-\begin{definition}
-    （间断点）函数$f(x)$在$x_0$处不连续，则称$x_0$为函数$f(x)$的间断点\\
-    \begin{math}
-        \begin{cases}
-            \text{第一类间断点}
-            \begin{cases}
-                \text{可去间断点}\qquad (\text{左右极限相等}) \\
-                \text{跳跃间断点}\qquad (\text{左右极限不等})
-            \end{cases}
-            \qquad (\text{左右极限存在})
-            \\
-            \text{第二类间断点}
-            \begin{cases}
-                \text{无穷间断点}\qquad (\text{无穷大}\frac{1}{x}) \\
-                \text{振荡间断点}\qquad (\text{振荡}\sin\frac{1}{x})
-            \end{cases}
-            \qquad (\text{左极限或右极限不存在})
-        \end{cases}
-    \end{math}
-\end{definition}
 间断点不是无穷大则说明了，此间断点左右极限存在，或振荡（可有界如$\sin \frac{1}{x}$在$x=0$处，或无界如$\frac{1}{x}\sin \frac{1}{x}$）
 
 

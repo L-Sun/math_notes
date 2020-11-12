@@ -324,9 +324,9 @@
     则
     \begin{align*}
         F'(x) & = f(x)\int_a^xg(t)\dd{t} + g(x)\int_a^xf(t)\dd{t} - \int_a^xf(t)g(t)\dd{t} - (x-a)f(x)g(x)          \\
-              & =\int_a^xf(x)g(t)\dd{t} + \int_a^xf(t)g(x)\dd{t} - \int_a^xf(t)g(t)\dd{t} - \int_a^x f(x)g(x)\dd{x} \\
-              & =\int_a^x[f(x)g(t) + f(t)g(x) - f(t)g(t) -  f(x)g(x)]\dd{x}                                         \\
-              & =-\int_a^x[f(x)- f(t)][g(x) - g(t)]\dd{x} < 0
+              & =\int_a^xf(x)g(t)\dd{t} + \int_a^xf(t)g(x)\dd{t} - \int_a^xf(t)g(t)\dd{t} - \int_a^x f(x)g(x)\dd{t} \\
+              & =\int_a^x[f(x)g(t) + f(t)g(x) - f(t)g(t) -  f(x)g(x)]\dd{t}                                         \\
+              & =-\int_a^x[f(x)- f(t)][g(x) - g(t)]\dd{t} < 0
     \end{align*}
     所以$F(b)\leq F(a)=0$
 \end{proof}
@@ -344,7 +344,7 @@
     \[ \abs{f(x)} = \abs{f(x)-f(b)} = \abs{f'(\xi_2)}\abs{x-b} \leq \abs{f'(\xi)}(b-x) \]
     所以
     \begin{align*}
-        \int_a^b\abs{f(x)} & = \int_a^{\frac{a+b}{2}} \abs{f(x)}\dd{x} + \int_{\frac{a+b}{2}}^b \abs{f(x)}\dd{x}                      \\
+        \int_a^b\abs{f(x)}\dd{x} & = \int_a^{\frac{a+b}{2}} \abs{f(x)}\dd{x} + \int_{\frac{a+b}{2}}^b \abs{f(x)}\dd{x}                      \\
                            & \leq \abs{f'(\xi)}\left[ \int_a^{\frac{a+b}{2}} (x-a)\dd{x} + \int_{\frac{a+b}{2}}^b (b-x)\dd{x} \right] \\
                            & = \frac{(b-a)^2}{4}\abs{f'(\xi)}
     \end{align*}
@@ -432,18 +432,18 @@
 \begin{proof}
     设$f(x)= \mathrm{e}^{\sin x}\sin x$，显然$f(x+2\pi) = f(x)$，则$f(x)$是以$2\pi$为周期的连续函数。
     故
-    \begin{align}
+    \begin{align*}
         F(x) & = \int_0^{2\pi} \mathrm{e}^{\sin t}\sin t\dd{t}                                                  \\
              & = \int_0^{\pi}\mathrm{e}^{\sin t}\sin t\dd{t} + \int_{\pi}^{2\pi}\mathrm{e}^{\sin t}\sin t\dd{t} \\
              & = \int_0^{\pi}\mathrm{e}^{\sin t}\sin t\dd{t} - \int_0^{\pi}\mathrm{e}^{-\sin t}\sin t\dd{t}     \\
              & = \int_0^{\pi}\left(\mathrm{e}^{\sin t} - \mathrm{e}^{-\sin t}\right)\sin t\dd{t}                \\
-    \end{align}
+    \end{align*}
     因为在$[0,\pi]$上$\sin x > 0$，所以$\left(\mathrm{e}^{\sin x} - \mathrm{e}^{-\sin x}\right)\sin x >0$，
     故$F(x)$恒为正常数。
 \end{proof}
 
 \begin{example}
-    设$f(x)$在$[a,b]$上二阶连续可微，且$f(\dfrac{a+b}{2})=0$，证明
+    设$f(x)$在$[a,b]$上二阶连续可微，且$\displaystyle f\left(\frac{a+b}{2}\right)=0$，证明
     \[ \abs{\int_a^bf(x)\dd{x}} \leq \frac{M}{24}(b-a)^3  \]
     其中$M=\max_{a\leq x \leq b}\abs{f''(x)}$
 \end{example}
@@ -944,12 +944,12 @@
 \[ \int R\left(x,\sqrt[n]{\frac{ax+b}{cx+d}}\right)\dd{x} = n(ad-bc)\int R\left(\frac{b-t^nd}{ct^n-a},t\right)\frac{t^n-1}{(ct^n-a)^2}\dd{t} \]
 其中$n$为$R(x)$中$\sqrt[a_1]{\dfrac{ax+b}{cx+d}},\sqrt[a_2]{\dfrac{ax+b}{cx+d}},\cdots$的$a_1,a_2,\cdots$的最小公倍数。
 \begin{example}
-    求$\displaystyle\int\frac{x^{1/7}+x^{1/2}}{x^{8/7}+x^{15/14}}$
+    求$\displaystyle\int\frac{x^{1/7}+x^{1/2}}{x^{8/7}+x^{15/14}}\dd{x}$
 \end{example}
 \begin{solution}
     由于指数分母的最小公倍数为$14$，故令$t=\sqrt[14]{x}$，
     \begin{align*}
-        \int\frac{x^{1/7}+x^{1/2}}{x^{8/7}+x^{15/14}} & = 14\int(t^4-t^3+t^2-t+1)\dd{t}                                                                        \\
+        \int\frac{x^{1/7}+x^{1/2}}{x^{8/7}+x^{15/14}}\dd{x} & = 14\int(t^4-t^3+t^2-t+1)\dd{t}                                                                        \\
                                                       & =14(\frac{1}{5}x^{5/14} - \frac{1}{4}x^{2/7} + \frac{1}{3}x^{3/14} - \frac{1}{2}x^{1/7} + x^{1/14}) +C
     \end{align*}
 \end{solution}
