@@ -39,7 +39,7 @@
 定积分的线性性、区间可加性、积分单调性、积分中值性等也可以推广到多元函数的积分。
 \paragraph{积分线性性}
 如果$f(x),g(x)$是积分域$\Omega$上的可积函数，且$\lambda,\mu$是常数，则
-\[ \int_\Omega \lambda f(x) + \mu g(x)\dd{Omega} = \lambda\int_\Omega f(x)\dd{\Omega} + \mu\int_\Omega g(x)\dd{\Omega} \]
+\[ \int_\Omega \lambda f(x) + \mu g(x)\dd{\Omega} = \lambda\int_\Omega f(x)\dd{\Omega} + \mu\int_\Omega g(x)\dd{\Omega} \]
 
 \paragraph{区域可加性}
 如果$f(x)$是积积分域$\Omega$上的可积函数且$\Omega$可以分割成两个积分区域$\Omega_1,\Omega_2$，则
@@ -698,7 +698,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     （格林公式）
     \label{th:格林公式}
     设$D$是平面简单域，$\Gamma$为其边界。若$P(x,y),Q(x,y)$在$D$上有\textcolor{red}{连续的偏导数}，则按照$\Gamma$逆时针定向，有
-    \[ \int_\Gamma P(x,y)\dd{x} + Q(x,y)\dd{y} = \iint\limits_D \left(\pdv{Q}{x} - \pdv{Q}{y}\right) \dd{x}\dd{y} \]
+    \[ \int_\Gamma P(x,y)\dd{x} + Q(x,y)\dd{y} = \iint\limits_D \left(\pdv{Q}{x} - \pdv{P}{y}\right) \dd{x}\dd{y} \]
 \end{theorem}
 \begin{theorem}
     （高斯公式）
@@ -707,7 +707,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     \begin{align*}
         \iint\limits_\Sigma P\dd{y}\dd{z} + Q\dd{z}\dd{x} + R\dd{x}\dd{y}
          & =\iiint\limits_\Omega \left(\pdv{P}{x} + \pdv{Q}{y} + \pdv{R}{z}\right) \dd{x}\dd{y}\dd{z} \\
-         & =\div{(P,Q,R)}\dd{x}\dd{y}\dd{z}
+         & =\grad\vdot{(P,Q,R)}\dd{x}\dd{y}\dd{z}
     \end{align*}
 \end{theorem}
 \begin{theorem}
@@ -801,7 +801,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 \begin{example}
     设$f(x,y)$为具有二阶连续偏导数的二次齐次函数，即对任意$x,y,t$下式成立
     \[ f(tx,ty) = t^2f(x,y) \]
-    设$D$是由$L:x^2+y^4=4$正向一周所围成的闭区域，证明
+    设$D$是由$L:x^2+y^2=4$正向一周所围成的闭区域，证明
     \[ \oint_L f(x,y)\dd{s} = \iint\limits_D \laplacian f(x,y) \dd{\sigma} \]
 \end{example}
 \begin{proof}
@@ -918,7 +918,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     \end{enumerate}
 \end{solution}
 
-这三种解法相比，显然是高斯公式更加简便，特别当$\div{(P,Q,R)} = \left(\pdv{P}{x}+\pdv{Q}{y}+\pdv{R}{z}\right)$比较简单时，比如$0$或常数，高斯公式具有明显优势。
+这三种解法相比，显然是高斯公式更加简便，特别当$\grad\vdot{(P,Q,R)} = \left(\pdv{P}{x}+\pdv{Q}{y}+\pdv{R}{z}\right)$比较简单时，比如$0$或常数，高斯公式具有明显优势。
 在解题中，应根据实际情况选择不同的方法。
 
 对于非封闭曲面也可以用高斯公式，这类问题常常可以通过添加一些简单的曲面（特别时平面）使其封闭。这类问题可以形象地称为“缺盖补盖”问题。
@@ -1070,7 +1070,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 在有关场的问题中，经常会出现一个运算$\grad$，称为Hamilton算子，读作Nabla，表示对空间中某点作梯度运算。
 \[ \grad = \left(\pdv{x},\pdv{y},\pdv{z}\right) \]
 对于一个向量场$\bm{f}=(P(x,y,z),Q(x,y,z),R(x,y,z))$，其散度和旋度分别为
-\[ \div{\bm{f}} = \pdv{P}{x} + \pdv{Q}{y} + \pdv{R}{z} \]
+\[ \grad\vdot{\bm{f}} = \pdv{P}{x} + \pdv{Q}{y} + \pdv{R}{z} \]
 \[
     \curl{\bm{f}} =
     \begin{vmatrix}
@@ -1155,7 +1155,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 用数学来说，就是向量场$\bm{f}$关于定向曲面的曲面积分$\iint\limits_S \bm{f}\vdot\dd{\bm{S}}$称为向量场的通量。
 通量与散度通过高斯公式建立对应。
 \begin{equation}
-    \oiint\limits_{S_\text{外}}\bm{f}\vdot\dd{\bm{S}} = \iiint\limits_\Omega \div{\bm{f}}\dd{V}
+    \oiint\limits_{S_\text{外}}\bm{f}\vdot\dd{\bm{S}} = \iiint\limits_\Omega \grad\vdot{\bm{f}}\dd{V}
 \end{equation}
 
 对于闭合曲面，如果流入量大于流出量，则表明曲面内部有“渗洞”；若流入量小于流出量，则表明曲面内部有“源泉”；
@@ -1165,8 +1165,8 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 
 \paragraph{散度的运算法则}
 \begin{enumerate}[(1)]
-    \item $\div(\lambda\bm{f}+\mu\bm{g})=\lambda\div{\bm{f}} + \mu\div{\bm{g}}$；
-    \item $\div(u\bm{f})=\grad{u}\vdot\bm{f} + u\div{\bm{f}}$
+    \item $\grad\vdot(\lambda\bm{f}+\mu\bm{g})=\lambda\grad\vdot{\bm{f}} + \mu\grad\vdot{\bm{g}}$；
+    \item $\grad\vdot(u\bm{f})=\grad{u}\vdot\bm{f} + u\grad\vdot{\bm{f}}$
 \end{enumerate}
 
 \paragraph{无散场与向量管}
@@ -1177,12 +1177,12 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
     设$\Omega$是一个二维单连通空间区域，如果$\bm{f}$是$\Omega$内的光滑向量场，则通量
     \[ \iint\limits_\Sigma \bm{f}\vdot\dd{\bm{S}} \]
     在$\Omega$内与所选曲面$\Sigma$无关而指取决于曲面$\Sigma$的边界，其充要条件是该向量场为无散场，即
-    \[ \div{\bm{f}} = 0 \]
+    \[ \grad\vdot{\bm{f}} = 0 \]
     在$\Omega$处处成立。
 \end{theorem}
 
 \begin{example}
-    设一个矢量场$\bm{A}(x,y,z)$，它在某点的矢量大小与该点到原点的距离平方成正比（比例常数为$k$），方向指向原点，计算$\div{\bm{A}}$
+    设一个矢量场$\bm{A}(x,y,z)$，它在某点的矢量大小与该点到原点的距离平方成正比（比例常数为$k$），方向指向原点，计算$\grad\vdot{\bm{A}}$
 \end{example}
 \begin{solution}
     根据题意可知
@@ -1191,7 +1191,7 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
                & = -k(x\sqrt{x^2+y^2+z^2},y\sqrt{x^2+y^2+z^2},z\sqrt{x^2+y^2+z^2})
     \end{align*}
     则
-    \[ \div{\bm{A}} = -4k\sqrt{x^2+y^2+z^2} \]
+    \[ \grad\vdot{\bm{A}} = -4k\sqrt{x^2+y^2+z^2} \]
 \end{solution}
 
 \subsubsection{场的环量与旋度}
@@ -1209,4 +1209,4 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 梯度场$\iff$无旋场$\iff$有势场$\iff$保守场，特别有
 \[ \curl(\grad{u}) = \bm{0} \]
 无散场$\iff$旋度场$\iff$管量场$\iff$无源场，特别有
-\[ \div(\curl{\bm{f}}) = 0 \]
+\[ \grad\vdot(\curl{\bm{f}}) = 0 \]
