@@ -212,7 +212,7 @@ $X$为\textcolor{red}{\textbf{\textsf{随机变量}}}。
     \item $ \lim_{x\to -\infty} F(x) = 0, \lim_{x\to +\infty}F(x) = 1 $；
     \item $F(x)$是右连续函数，即$F(x^+) = F(x)$；
     \item $\forall x_1<x_2, P\{x_1<X\leq x_2\} = F(x_2) - F(x_1)$；
-    \item $\forall x, P{X=x} = F(x)-F(x^-) = F(x) - \lim_{x\to x^-} F(x)$
+    \item $\forall x, P\{X=x\} = F(x)-F(x^-) = F(x) - \lim_{x\to x^-} F(x)$
 \end{enumerate}
 若一个函数满足性质(1)到(4)，则这个函数是分布函数。
 
@@ -286,7 +286,7 @@ $n$次成功率为$p$的伯努利试验的成功次数的分布，称为二项�
     E(X)=D(X)  & =\lambda \label{eq:泊松分布期望方差}
 \end{align}
 
-两个独立且付出泊松分布的随机变量$X,Y$，其和仍然满足泊松分布，即
+两个独立且服从泊松分布的随机变量$X,Y$，其和仍然满足泊松分布，即
 \[ X\sim P(\lambda_1), Y\sim P(\lambda_2) \implies X+Y \sim P(\lambda_1+\lambda_2) \]
 
 泊松分布与泰勒展开：
@@ -1034,7 +1034,7 @@ $F(x,y)$的边缘分布为$F_X(x)$和$F_Y(y)$，其定义为
         P\{X>t\} =
         \begin{cases}
             \mathrm{e}^{-\lambda t}, & t>0      \\
-            1,                       & t\leq 0.
+            0,                       & t\leq 0.
         \end{cases}
     \]
     \begin{align*}
@@ -1672,7 +1672,7 @@ $x_1,x_2,\cdots,x_n$称为样本值或观察值。
 \begin{enumerate}[(1)]
     \item $E\left(\chi^2(n)\right) = n$；
     \item $D\left(\chi^2(n)\right) = 2n$；
-    \item 若$\chi_1^2(n_1), \chi_2^2(n_2)$独立，则$\chi_1^2(n_1) + \chi_2^2(n_2) \sim \chi(n_1+n_2)$
+    \item 若$\chi_1^2(n_1), \chi_2^2(n_2)$独立，则$\chi_1^2(n_1) + \chi_2^2(n_2) \sim \chi^2(n_1+n_2)$
 \end{enumerate}
 
 \begin{example}
@@ -1709,7 +1709,7 @@ $t$分布的性质
     服从$F$分布，记为$F\sim F(n_1,n_2)$。
 \end{definition}
 $F$分布有如下性质
-\begin{enumerate}
+\begin{enumerate}[(1)]
     \item 若$F\sim F(n_1,n_2)$，则$\frac{1}{F} \sim F(n_2,n_1)$
 \end{enumerate}
 

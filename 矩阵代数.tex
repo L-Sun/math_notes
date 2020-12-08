@@ -410,8 +410,8 @@
     第一种情况显然是成立的。对于后面两种情况，讨论如下。
     \begin{enumerate}[(1)]
         \item $r(\mat{A})=n$，则$\mat{A},\mat{A}^*$可逆，所以$r(\mat{A}^*)=n$；
-        \item 当$r(\mat{A})=n-1$时，行列式$|\mat{A}|=0$，当矩阵中存在$n-1$阶不为$0$的子式，故存在代数余子式$A_{ij}\neq 0$，则显然有$r(\mat{A}^*)\geq 1$，
-              又$\mat{A}^*\mat{A} = |\mat{A}|\mat{E} = 0$，所以$r(\mat{A})+r(\mat{A}^*)-n\leq r(\mat{A}^*A) = 0$，即$r(\mat{A}^*)\leq n - r(\mat{A}) = 1$，因此$r(\mat{A}^*)=1$；
+        \item 当$r(\mat{A})=n-1$时，行列式$|\mat{A}|=0$，但矩阵中存在$n-1$阶不为$0$的子式，故存在代数余子式$A_{ij}\neq 0$，则显然有$r(\mat{A}^*)\geq 1$，
+              又$\mat{A}^*\mat{A} = |\mat{A}|\mat{E} = 0$，所以$r(\mat{A})+r(\mat{A}^*)-n\leq r(\mat{A}^*\mat{A}) = 0$，即$r(\mat{A}^*)\leq n - r(\mat{A}) = 1$，因此$r(\mat{A}^*)=1$；
         \item 当$r(\mat{A})<n-1$时，则任意$n-1$阶子式等于$0$，即所有代数余子式等于$0$，所以$\mat{A}^*=0$，则有$r(\mat{A}^*)=0$。
     \end{enumerate}
 \end{proof}
@@ -420,7 +420,7 @@
     设$\mat{A}$为$n$阶矩阵，且满足$\sum_j^n a_{ij} = 0$，求$r(\mat{A}^*),\mat{A}^*$
 \end{example}
 \begin{solution}
-    由于$\sum_j^n a_{ij} = 0$，故方程组$AX=0$有一个非零解$(1,1,\cdots,1)^\intercal$，所以$|\mat{A}|=0$，那么有$r(\mat{A})\leq n-1$
+    由于$\sum_j^n a_{ij} = 0$，故方程组$\mat{AX}=0$有一个非零解$(1,1,\cdots,1)^\intercal$，所以$|\mat{A}|=0$，那么有$r(\mat{A})\leq n-1$
     \begin{enumerate}[(1)]
         \item 当$r(\mat{A})=n-1$时，$r(\mat{A}^*)=1$，利用列向量的秩不超过$1$，设任意非零列向量$\bm{\alpha},\bm{\beta}$，
               则有$\bm{\alpha}\bm{\beta}^\intercal\neq 0$，且$r(\bm{\alpha}\bm{\beta}^\intercal)=1$，此时只需令$\mat{A}^*=\bm{\alpha}\bm{\beta}^\intercal$即可。
@@ -981,7 +981,7 @@
 \label{sec:正交矩阵}
 .
 \begin{definition}
-    $n$阶矩阵$\mat{A}$，如果满足$A\mat{A}^\intercal = \mat{A}^\intercal \mat{A} = \mat{E}$
+    $n$阶矩阵$\mat{A}$，如果满足$\mat{A}\mat{A}^\intercal = \mat{A}^\intercal \mat{A} = \mat{E}$
     则称$\mat{A}$是正交矩阵。
 \end{definition}
 根据正交矩阵的定义，可以得到

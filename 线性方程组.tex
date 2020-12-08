@@ -67,7 +67,7 @@ $\overline{\mat{A}}$为增广矩阵。
 \section{齐次线性方程组的有解判定定理}
 齐次线性方程组的解只有两种可能：只有零解、有无穷多解。
 \begin{theorem}
-    齐次线性方程组$\mat{A}_{m\times n}\mat{X}=\bm{0}$有非零解$\iff r(\mat{A})<n \iff A$的列向量组线性相关。
+    齐次线性方程组$\mat{A}_{m\times n}\mat{X}=\bm{0}$有非零解$\iff r(\mat{A})<n \iff \mat{A}$的列向量组线性相关。
 \end{theorem}
 作为推论有
 \begin{theorem}
@@ -289,92 +289,92 @@ $\overline{\mat{A}}$为增广矩阵。
 \end{example}
 \begin{solution}
     显然$\mat{X}$是$3\times 2$的矩阵。同时$\mat{AX}=\mat{B}$中\mat{$A}$不可逆，所以要解方程组
-    \[
-        \begin{pmatrix}
-            1 & 2 & 3 \\
-            2 & 3 & 4
-        \end{pmatrix}
-        \begin{pmatrix}
-            x_1 \\ x_2 \\ x_3
-        \end{pmatrix}
-        =
-        \begin{pmatrix}
-            4 \\5
-        \end{pmatrix},\qquad
-        \begin{pmatrix}
-            1 & 2 & 3 \\
-            2 & 3 & 4
-        \end{pmatrix}
-        \begin{pmatrix}
-            x_4 \\ x_5 \\ x_6
-        \end{pmatrix}
-        =
-        \begin{pmatrix}
-            5 \\6
-        \end{pmatrix}
-    \]
-    那么有增广矩阵
-    \[
-        \left(\begin{array}{ccc|c}
-                1 & 2 & 3 & 4 \\
-                2 & 3 & 4 & 5
-            \end{array}\right)
-        ,\qquad
-        \left(\begin{array}{ccc|c}
-                1 & 2 & 3 & 5 \\
-                2 & 3 & 4 & 6
-            \end{array}\right)
-    \]
-    为了简便，这里可以直接合并两个增广矩阵，此时就是$(A|B)$
-    \[
-        \left(\begin{array}{ccc|cc}
-                1 & 2 & 3 & 4 & 5 \\
-                2 & 3 & 4 & 5 & 6
-            \end{array}\right)
-        \longrightarrow
-        \left(\begin{array}{ccc|cc}
-                1 & 2  & 3  & 4  & 5  \\
-                0 & -1 & -2 & -3 & -4
-            \end{array}\right)
-        \longrightarrow
-        \left(\begin{array}{ccc|cc}
-                1 & 2 & 3 & 4 & 5 \\
-                0 & 1 & 2 & 3 & 4
-            \end{array}\right)
-        \longrightarrow
-        \left(\begin{array}{ccc|cc}
-                1 & 0 & -1 & -2 & -3 \\
-                0 & 1 & 2  & 3  & 4
-            \end{array}\right)
-    \]
-    设$x_3=s,x_6=t$因此可得
-    \[
-        \begin{pmatrix}
-            x_1 \\ x_2 \\ x_3
-        \end{pmatrix}
-        =
-        \begin{pmatrix}
-            -2+s \\ 3-2s \\ s
-        \end{pmatrix}
-        ,\qquad
-        \begin{pmatrix}
-            x_4 \\ x_5 \\ x_6
-        \end{pmatrix}
-        =
-        \begin{pmatrix}
-            -3+t \\ 4-2t \\ t
-        \end{pmatrix}
-    \]
-    因此
-    \[
-        \mat{X} =
-        \begin{pmatrix}
-            -2+s & -3+t \\
-            3-2s & 4-2t \\
-            s    & t
-        \end{pmatrix}
-    \]
-    其中$s,t$为任意常数。
+        \[
+            \begin{pmatrix}
+                1 & 2 & 3 \\
+                2 & 3 & 4
+            \end{pmatrix}
+            \begin{pmatrix}
+                x_1 \\ x_2 \\ x_3
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                4 \\5
+            \end{pmatrix},\qquad
+            \begin{pmatrix}
+                1 & 2 & 3 \\
+                2 & 3 & 4
+            \end{pmatrix}
+            \begin{pmatrix}
+                x_4 \\ x_5 \\ x_6
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                5 \\6
+            \end{pmatrix}
+        \]
+        那么有增广矩阵
+        \[
+            \left(\begin{array}{ccc|c}
+                    1 & 2 & 3 & 4 \\
+                    2 & 3 & 4 & 5
+                \end{array}\right)
+            ,\qquad
+            \left(\begin{array}{ccc|c}
+                    1 & 2 & 3 & 5 \\
+                    2 & 3 & 4 & 6
+                \end{array}\right)
+        \]
+        为了简便，这里可以直接合并两个增广矩阵，此时就是$(A|B)$
+        \[
+            \left(\begin{array}{ccc|cc}
+                    1 & 2 & 3 & 4 & 5 \\
+                    2 & 3 & 4 & 5 & 6
+                \end{array}\right)
+            \longrightarrow
+            \left(\begin{array}{ccc|cc}
+                    1 & 2  & 3  & 4  & 5  \\
+                    0 & -1 & -2 & -3 & -4
+                \end{array}\right)
+            \longrightarrow
+            \left(\begin{array}{ccc|cc}
+                    1 & 2 & 3 & 4 & 5 \\
+                    0 & 1 & 2 & 3 & 4
+                \end{array}\right)
+            \longrightarrow
+            \left(\begin{array}{ccc|cc}
+                    1 & 0 & -1 & -2 & -3 \\
+                    0 & 1 & 2  & 3  & 4
+                \end{array}\right)
+        \]
+        设$x_3=s,x_6=t$因此可得
+        \[
+            \begin{pmatrix}
+                x_1 \\ x_2 \\ x_3
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                -2+s \\ 3-2s \\ s
+            \end{pmatrix}
+            ,\qquad
+            \begin{pmatrix}
+                x_4 \\ x_5 \\ x_6
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                -3+t \\ 4-2t \\ t
+            \end{pmatrix}
+        \]
+        因此
+        \[
+            \mat{X} =
+            \begin{pmatrix}
+                -2+s & -3+t \\
+                3-2s & 4-2t \\
+                s    & t
+            \end{pmatrix}
+        \]
+        其中$s,t$为任意常数。
 \end{solution}
 对于$\mat{A},\mat{B}$都是$n$阶矩阵时，上面这种方法也可以使用，而且比求$\mat{A}^{-1}$要简单，这是因为
 \[ \mat{A}^{-1}(\mat{A}|\mat{B}) = (\mat{E}|\mat{A}^{-1}\mat{B}) \]

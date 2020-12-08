@@ -253,7 +253,7 @@
         \end{pmatrix}
     \]
     由于二次型经过正交变换变为标准型$y_1^2 + 4y_2^2$，故$\mat{A}$的特征值为$1,4,0$，
-    因此有$|\lambda \mat{E} - \mat{A}| = 0$，或则$\prod \lambda = |\mat{A}|$
+    因此有$|\lambda \mat{E} - \mat{A}| = 0$，或者$\prod \lambda = |\mat{A}|$
     \[
         1\times 4\times 0 = 0 = |\mat{A}| =
         \begin{vmatrix}
@@ -291,9 +291,9 @@
 \begin{theorem}
     （正定的充分必要条件）
     \begin{align*}
-         & f=\mat{X}^\intercal \mat{A}\mat{X}\text{是正定二次型}                                                                                          \\
-         & \iff \text{正惯性系数}p=n                                                                                                                      \\
-         & \iff \mat{A}\simeq E (\text{存在可逆矩阵}C\text{，使得}\mat{C}^\intercal \mat{A}C=E\text{亦或是存在可逆矩阵}D\text{使得}\mat{A}=D^\intercal D) \\
+         & f=\mat{X}^\intercal \mat{A}\mat{X}\text{是正定二次型}                                                                                                                                    \\
+         & \iff \text{正惯性系数}p=n                                                                                                                                                                \\
+         & \iff \mat{A}\simeq \mat{E} (\text{存在可逆矩阵}\mat{C}\text{，使得}\mat{C}^\intercal \mat{A}\mat{C}=\mat{E}\text{亦或是存在可逆矩阵}\mat{D}\text{使得}\mat{A}=\mat{D}^\intercal \mat{D}) \\
          & \iff \mat{A}\text{的特征值全部大于}0
     \end{align*}
 \end{theorem}

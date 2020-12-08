@@ -1047,10 +1047,10 @@ $OM$与$z$轴正向的夹角为$\theta(0\leq\theta\leq\pi)$，则称$(r,\theta,\
 \begin{solution}
     对于复杂的积分，首先要考虑的是化简。对于此题来说，比较麻烦的是分子是三角函数。所以要利用对称性和奇偶性来化简。
     \begin{align*}
-        I & = \oiint\limits_\Sigma \frac{2}{x\cos^2 x}\dd{y}\dd{z} + \frac{1}{\cos^2 y}\dd{z}\dd{x} - \frac{1}{z\cos^2 z}\dd{x}\dd{y}                                        \\
-          & = \oiint\limits_\Sigma \left(\frac{2}{x\cos^2 x} , \frac{1}{\cos^2 y} , -\frac{1}{z\cos^2 z}\right)\vdot(x,y,z)\dd{\sigma}                                       \\
-          & = \oiint\limits_\Sigma \frac{2}{\cos^2 x} + \frac{y}{\cos^2 y} - \frac{1}{\cos^2 z} \dd{\sigma}                                                                  \\
-          & = 2\oiint\limits_\Sigma \frac{}{\cos^2 x} \dd{\sigma} + \oiint\limits_\Sigma \frac{y}{\cos^2 y} \dd{\sigma} -\oiint\limits_\Sigma \frac{1}{\cos^2 z} \dd{\sigma} \\
+        I & = \oiint\limits_\Sigma \frac{2}{x\cos^2 x}\dd{y}\dd{z} + \frac{1}{\cos^2 y}\dd{z}\dd{x} - \frac{1}{z\cos^2 z}\dd{x}\dd{y}                                         \\
+          & = \oiint\limits_\Sigma \left(\frac{2}{x\cos^2 x} , \frac{1}{\cos^2 y} , -\frac{1}{z\cos^2 z}\right)\vdot(x,y,z)\dd{\sigma}                                        \\
+          & = \oiint\limits_\Sigma \frac{2}{\cos^2 x} + \frac{y}{\cos^2 y} - \frac{1}{\cos^2 z} \dd{\sigma}                                                                   \\
+          & = 2\oiint\limits_\Sigma \frac{1}{\cos^2 x} \dd{\sigma} + \oiint\limits_\Sigma \frac{y}{\cos^2 y} \dd{\sigma} -\oiint\limits_\Sigma \frac{1}{\cos^2 z} \dd{\sigma} \\
           & = 2I_1 + I_2 - I_3
     \end{align*}
     根区间对称性可知$I_1 = I_3$，根据函数奇偶性和区间对称性可知$I_2=0$，故
